@@ -99,7 +99,7 @@
 <!-- Carousel 끝 -->
 
 
-<!-- 인기매물 시작 -->
+<!-- 인기매물 시작 (수정) -->
 <div class="container-fluid">
 	<div class="container newitem">
 		<h2>금주의 인기매물</h2>
