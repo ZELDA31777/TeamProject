@@ -1,0 +1,24 @@
+body {
+  padding-bottom: 20px;
+}
+
+.navbar {
+  margin-bottom: 20px;
+}
+
+.navbar-dark .navbar-nav .nav-link, .navbar-dark .navbar-nav .show>.nav-link {
+    color: #41464b;
+}
+
+.navbar-dark .navbar-brand, .navbar-dark {
+    color: #41464b;
+}
+
+.bg-black {
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--bs-white-rgb),var(--bs-bg-opacity))!important;
+}
+
+.mynavbar{
+	
+}
