@@ -23,4 +23,7 @@ public class UserController {
 	@GetMapping("/user/user_register_cor.do")
 	public void user_register_cor() {}
 	
+	@GetMapping("user/user_choose.do")
+	public void user_choose() {}
+	
 }
