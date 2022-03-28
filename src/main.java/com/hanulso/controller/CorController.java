@@ -16,4 +16,7 @@ public class CorController {
 	
 	@GetMapping("/coroperation/cor_list.do")
 	public void cor_list() {}
+
+	@GetMapping("/coroperation/cor_list2.do")
+	public void cor_list2() {}
 }
