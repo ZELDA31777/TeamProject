@@ -14,6 +14,6 @@ public class CorController {
 	@Autowired
 	private UserService service;
 	
-	@GetMapping("/coroperation/cor_list.do")
-	public void cor_list() {}
+	@GetMapping("/coroperation/cor_view.do")
+	public void cor_view() {}
 }
