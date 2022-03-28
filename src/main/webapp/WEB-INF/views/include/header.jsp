@@ -24,6 +24,7 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 <!-- IE8 에서 HTML5 요소와 미디어 쿼리를 위한 HTML5 shim 와 Respond.js -->
 <!-- WARNING: Respond.js 는 당신이 file:// 을 통해 페이지를 볼 때는 동작하지 않습니다. -->
@@ -35,40 +36,42 @@
 </head>
 <body class="test">
 	<div class="container-fluid">
-		<div class="container-fluid">
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<nav class="navbar navbar-expand-md navbar-light"
+			aria-label="Fourth navbar example">
 			<div class="container-fluid">
-				<!-- Collect the nav links, forms, and other content for toggling -->
-				<nav class="navbar navbar-expand-md navbar-dark bg-dark"
-					aria-label="Fourth navbar example">
-					<div class="container-fluid">
-						<a class="navbar-brand nav-link" href="/">OnePick</a>
-						<button class="navbar-toggler" type="button"
-							data-bs-toggle="collapse" data-bs-target="#navbarsExample04"
-							aria-controls="navbarsExample04" aria-expanded="false"
-							aria-label="Toggle navigation">
-							<span class="navbar-toggler-icon"></span>
-						</button>
+				<a class="navbar-brand nav-link" href="/">OnePick</a>
+        
+        <!-- 화면 축소시 나오는 = 버튼 -->
+				<button class="navbar-toggler" type="button"
+					data-bs-toggle="collapse" data-bs-target="#navbarsExample04"
+					aria-controls="navbarsExample04" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+        <!-- = 버튼 끝 -->
 
-						<div class="collapse navbar-collapse justify-content-end mynavbar" id="navbarsExample04">
-							<ul class="navbar-nav mb-2 mb-md-0">
-								<li class="nav-item"><a class="nav-link" href="#">지도</a></li>
-								<li class="nav-item"><a class="nav-link" href="#">관심목록</a></li>
-								<li class="nav-item"><a class="nav-link" href="#">알림</a></li>
-								<li class="nav-item"><a class="nav-link" href="/user/user_login.do">로그인</a>
-								</li>
-								<li class="nav-item dropdown"><a
-									class="nav-link dropdown-toggle" href="#" id="dropdown04"
-									data-bs-toggle="dropdown" aria-expanded="false">회원가입</a>
-									<ul class="dropdown-menu" aria-labelledby="dropdown04">
-										<li><a class="dropdown-item" href="/user/user_register.do">일반회원</a></li>
-										<li><a class="dropdown-item" href="/user/user_register_cor.do">중개사 회원</a></li>
-									</ul></li>
-							</ul>
-						</div>
-					</div>
-				</nav>
-				<!-- /.navbar-collapse -->
+        <!-- 네비 목록 시작 -->
+				<div class="collapse navbar-collapse justify-content-end mynavbar" id="navbarsExample04">
+					<ul class="navbar-nav mb-2 mb-md-0">
+						<li class="nav-item"><a class="nav-link" href="#">지도</a></li>
+						<li class="nav-item"><a class="nav-link" href="#">관심목록</a></li>
+						<li class="nav-item"><a class="nav-link" href="#">알림</a></li>
+						<li class="nav-item"><a class="nav-link" href="/user/user_login.do">로그인</a>
+						</li>
+						<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle" href="#" id="dropdown04"
+							data-bs-toggle="dropdown" aria-expanded="false">회원가입</a>
+							<ul class="dropdown-menu" aria-labelledby="dropdown04">
+								<li><a class="dropdown-item" href="/user/user_register.do">일반회원</a></li>
+								<li><a class="dropdown-item" href="/user/user_register_cor.do">중개사 회원</a></li>
+							</ul></li>
+					</ul>
+				</div>
+        <!-- 네비 목록 끝 -->
+        
 			</div>
-			<!-- /.container-fluid -->
-		</div>
+		</nav>
+		<!-- /.navbar-collapse -->
 	</div>
+	<!-- /.container-fluid -->
