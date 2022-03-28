@@ -41,11 +41,14 @@
 						name="password" placeholder="비밀번호 입력" class="form-control kHDHPO"
 						id="validationCustom03" minlength="8" required>
 						<div class="valid-feedback">확인되었습니다</div>
-						<div class="invalid-feedback">비밀번호를 입력해주십시오.</div>
+						<div class="invalid-feedback">8자리 이상의 비밀번호를 입력해주십시오.</div>
 					</label>
 				</div>
 				<input autocomplete="off" type="password" name="passwordConfirm"
-					placeholder="비밀번호 확인" class="input__Input-am2s7t-0 kHDHPO" value="">
+					placeholder="비밀번호 확인" class="form-control input__Input-am2s7t-0 kHDHPO" value=""
+          id="validationCustom04" pattern="track51" required>
+          <div class="valid-feedback">입력한 비밀번호와 일치합니다.</div>
+          <div class="invalid-feedback">입력한 비밀번호와 일치하지 않습니다.</div>
 				<button color="blue" class="button__Button-sc-153m1au-0 fiEZwu"
 					style="margin-top: 32px;">
 					<span> 확인 </span>
@@ -73,6 +76,19 @@
 			}, false)
 		})
 	})()
+  
+    $(function (){
+        $('#validationCustom03').on('change', function(){
+            $('#validationCustom04').attr('pattern', escapeRegExp($(this).val())); // $&은 일치한 문자열
+            console.log($('#validationCustom04').attr('pattern'));
+            console.log( escapeRegExp($('#validationCustom04').attr('pattern')));
+            
+        });
+
+        function escapeRegExp(string) {
+        	  return string.replace(/[.*+?$^{}()|[\]\\]/g, '\\$&'); // $&은 일치한 문자열 전체를 의미
+        }
+    });
 </script>
 
 
