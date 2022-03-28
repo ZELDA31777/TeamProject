@@ -47,7 +47,7 @@
 					</label>
 					</label>
 					<div>
-						<p class="caption1 bold">회원가입</p>
+						<a href="user_choose.do"><p class="caption1 bold">회원가입</p></a>
 						<span></span>
 						<p class="caption1 bold">비밀번호 재설정</p>
 					</div>
