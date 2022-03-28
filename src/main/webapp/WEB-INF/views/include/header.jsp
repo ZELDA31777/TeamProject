@@ -43,7 +43,11 @@
 		<nav class="navbar navbar-expand-md navbar-light"
 			aria-label="Fourth navbar example">
 			<div class="container-fluid">
-				<a class="navbar-brand nav-link" href="/">OnePick</a>
+      
+      <!-- brand 부분에 텍스트 대신 이미지 추가 -->
+				<a class="navbar-brand nav-link" href="/">
+          <img src="/resources/images/logo_001.png" onClick="location.href='/';" style="width:4%;">
+        </a>
         
         <!-- 화면 축소시 나오는 = 버튼 -->
 				<button class="navbar-toggler" type="button"
