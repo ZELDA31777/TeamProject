@@ -84,6 +84,10 @@
 					<div class="invalid-feedback">연락처를 입력해주십시오.</div>
 					</label>
 				</div>
+				
+				<!-- 주소 확인할 것 !  -->
+				
+				
 				</div>
 				<button color="blue" class="button__Button-sc-153m1au-0 fiEZwu"
 					style="margin-top: 32px;">

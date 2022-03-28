@@ -106,22 +106,22 @@
 		<div class="row">
 			<div class="col-sm-6 col-md-3">
 				<div class="thumbnail">
-					<img src="/resources/images/s_001.png" alt="...">
+					<a href="#"><img src="/resources/images/s_001.png" alt="..."></a>
 				</div>
 			</div>
 			<div class="col-sm-6 col-md-3">
 				<div class="thumbnail">
-					<img src="/resources/images/s_001.png" alt="...">
+					<a href="#"><img src="/resources/images/s_001.png" alt="..."></a>
 				</div>
 			</div>
 			<div class="col-sm-6 col-md-3">
 				<div class="thumbnail">
-					<img src="/resources/images/s_001.png" alt="...">
+					<a href="#"><img src="/resources/images/s_001.png" alt="..."></a>
 				</div>
 			</div>
 			<div class="col-sm-6 col-md-3">
 				<div class="thumbnail">
-					<img src="/resources/images/s_001.png" alt="...">
+					<a href="#"><img src="/resources/images/s_001.png" alt="..."></a>
 				</div>
 			</div>
 		</div>
@@ -147,7 +147,7 @@
       
       <div class="col-7">
         <div class="card my-5" style="width: 18rem;">
-          <img src="/resources/images/s_001.png" class="card-img-top" alt="설명">
+          <a href="#"><img src="/resources/images/s_001.png" class="card-img-top" alt="설명"></a>
         </div>
       </div>
       
