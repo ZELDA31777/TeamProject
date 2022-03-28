@@ -52,6 +52,7 @@
 						<p class="caption1 bold">비밀번호 재설정</p>
 					</div>
 				</div>
+				<!-- 추가 -->
 				<button color="blue" class="button__Button-sc-153m1au-0 fiEZwu"
 					type="submit" style="margin-top: 32px;">
 					<span> 확인 </span>
