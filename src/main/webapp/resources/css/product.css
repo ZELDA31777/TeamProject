@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+.product-picture {
+	padding : 5px;
+}
+
+.product-picture img{
+	width : 100%;
+	height : 100%;
+}
+
+.iBox {
+	widht : 500px;
+	height : 500px;
+}

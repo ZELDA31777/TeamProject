@@ -14,6 +14,14 @@ public class CorController {
 	@Autowired
 	private UserService service;
 	
+	@GetMapping("/coroperation/cor_view.do")
+	public void cor_view() {}
+	
+/*
+ * ##### 아래는 임시로 추가해둔 파일입니다 #####
+ * ##### 병합 후 삭제 예정 #####	
+ */
+	
 	@GetMapping("/coroperation/cor_list.do")
 	public void cor_list() {}
 

@@ -16,6 +16,11 @@
 		font-size: 3.5rem;
 	}
 }
+
+.index_subtitle {
+  font-size: 1.1rem;
+}
+
 </style>
 <link href="/resources/css/carousel.css" rel="stylesheet">
 
@@ -106,22 +111,22 @@
 		<div class="row">
 			<div class="col-sm-6 col-md-3">
 				<div class="thumbnail">
-					<img src="/resources/images/s_001.png" alt="...">
+					<a href="#"><img src="/resources/images/s_001.png" alt="..."></a>
 				</div>
 			</div>
 			<div class="col-sm-6 col-md-3">
 				<div class="thumbnail">
-					<img src="/resources/images/s_001.png" alt="...">
+					<a href="#"><img src="/resources/images/s_001.png" alt="..."></a>
 				</div>
 			</div>
 			<div class="col-sm-6 col-md-3">
 				<div class="thumbnail">
-					<img src="/resources/images/s_001.png" alt="...">
+					<a href="#"><img src="/resources/images/s_001.png" alt="..."></a>
 				</div>
 			</div>
 			<div class="col-sm-6 col-md-3">
 				<div class="thumbnail">
-					<img src="/resources/images/s_001.png" alt="...">
+					<a href="#"><img src="/resources/images/s_001.png" alt="..."></a>
 				</div>
 			</div>
 		</div>
@@ -135,19 +140,23 @@
   <div class="container newitem bg-light">
     <div class="row">
     
-      <div class="col-4 text-center">
+      <div class="col-4">
         <div class="index_subtitle my-2">51기님의 관심매물의 <strong>평균</strong>은 얼마일까요?</div>
-        <div class="card my-3 d-inline-block" style="width: 15rem;">
-          <div class="card-body text-start">
-            <h5 class="card-title">원룸 평균 매물가</h5>
-            <p class="card-text border-top border-secondary border-1 pt-3 pb-5 my-3">월세 500/84</p>
+        <div class="d-flex justify-content-center">
+          <div class="card my-3 d-inline-block" style="width: 15rem;">
+            <div class="card-body">
+              <h5 class="card-title">원룸 평균 매물가</h5>
+              <p class="card-text border-top border-secondary border-1 pt-3 pb-5 my-3">월세 500/84</p>
+            </div>
           </div>
         </div>
       </div>
       
       <div class="col-7">
-        <div class="card my-5" style="width: 18rem;">
+        <div class="card border-0" style="width: 14rem;">
           <img src="/resources/images/s_001.png" class="card-img-top" alt="설명">
+          <a class="stretched-link" href="#"></a>
+          <p class=""></p>
         </div>
       </div>
       

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+  <!-- ##### cor_view.jsp로 병합 후 삭제 예정 ##### -->  
 <%@ include file="../include/header.jsp"%>
 
 <noscript>
