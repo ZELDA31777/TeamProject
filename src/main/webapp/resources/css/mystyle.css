@@ -1,15 +1,27 @@
 @charset "UTF-8";
 
 body {
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size: 23px;
-	line-height: 1.42857143;
-	color: #333;
+   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+   font-size: 23px;
+   line-height: 1.42857143;
+   color: #333;
+   background-color: #fff;
+}
+
+.newitem {
+   margin-top: 150px ;
+}
+
+.newitem2 {
+	margin-top: 30px;
+}
+
+.newitem3 {
 	background-color: #fff;
 }
 
-.newitem img {
-	width: 100%;
+.thumbnail img {
+   width: 100%;
 }
 
 .footerbg {
@@ -74,7 +86,7 @@ body {
 .w-100 {
 	width: 100% !important;
 }
-
+ 
 .register {
 	margin-top: 10px;
 	font-size: 16px;
