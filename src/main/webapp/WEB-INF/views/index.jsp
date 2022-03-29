@@ -42,6 +42,7 @@
 
 
 
+
    <div class="carousel-inner">
       <div class="carousel-item active">
          <img src="/resources/images/imsi_01.png">
@@ -232,6 +233,7 @@
 
 <!-- FAQ 시작 -->
 <div class="container-fluid mt-5">
+
    <div class="container newitem bg-light">
       <div class="row">
          <div class="index_subtitle my-2">
