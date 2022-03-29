@@ -18,9 +18,8 @@
 }
 
 .index_subtitle {
-  font-size: 1.1rem;
+	font-size: 1.1rem;
 }
-
 </style>
 <link href="/resources/css/carousel.css" rel="stylesheet">
 
@@ -88,7 +87,7 @@
 				</p>
 			</div>
 		</div>
-		
+
 	</div>
 	<button class="carousel-control-prev" type="button"
 		data-bs-target="#myCarousel" data-bs-slide="prev">
@@ -107,26 +106,67 @@
 <!-- 인기매물 시작 (수정) -->
 <div class="container-fluid">
 	<div class="container newitem">
-		<h2>금주의 인기매물</h2>
+		<h2>
+			<strong>이번주</strong> 인기매물
+		</h2>
 		<div class="row">
 			<div class="col-sm-6 col-md-3">
-				<div class="thumbnail">
-					<a href="#"><img src="/resources/images/s_001.png" alt="..."></a>
+				<div class="row">
+					<div class="thumbnail">
+						<a href="/product/product_view.do"><img
+							src="/resources/images/s_001.png" alt="..."></a>
+					</div>
+				</div>
+				<div class="row">
+					<h5>원룸</h5>
+					<h3><strong>월세 1000/55</strong></h3>
+					<h5>5층 / 방 1개 / 욕실 1개 <br>
+					위치 서울특별시 서대문구 연희동 353-85</h5>
 				</div>
 			</div>
+			
 			<div class="col-sm-6 col-md-3">
-				<div class="thumbnail">
-					<a href="#"><img src="/resources/images/s_001.png" alt="..."></a>
+				<div class="row">
+					<div class="thumbnail">
+						<a href="/product/product_view.do"><img
+							src="/resources/images/s_001.png" alt="..."></a>
+					</div>
+				</div>
+				<div class="row">
+					<h5>원룸</h5>
+					<h3><strong>월세 1000/55</strong></h3>
+					<h5>5층 / 방 1개 / 욕실 1개 <br>
+					위치 서울특별시 서대문구 연희동 353-85</h5>
 				</div>
 			</div>
+			
 			<div class="col-sm-6 col-md-3">
-				<div class="thumbnail">
-					<a href="#"><img src="/resources/images/s_001.png" alt="..."></a>
+				<div class="row">
+					<div class="thumbnail">
+						<a href="/product/product_view.do"><img
+							src="/resources/images/s_001.png" alt="..."></a>
+					</div>
+				</div>
+				<div class="row">
+					<h5>원룸</h5>
+					<h3><strong>월세 1000/55</strong></h3>
+					<h5>5층 / 방 1개 / 욕실 1개 <br>
+					위치 서울특별시 서대문구 연희동 353-85</h5>
 				</div>
 			</div>
+			
 			<div class="col-sm-6 col-md-3">
-				<div class="thumbnail">
-					<a href="#"><img src="/resources/images/s_001.png" alt="..."></a>
+				<div class="row">
+					<div class="thumbnail">
+						<a href="/product/product_view.do"><img
+							src="/resources/images/s_001.png" alt="..."></a>
+					</div>
+				</div>
+				<div class="row">
+					<h5>원룸</h5>
+					<h3><strong>월세 1000/55</strong></h3>
+					<h5>5층 / 방 1개 / 욕실 1개 <br>
+					위치 서울특별시 서대문구 연희동 353-85</h5>
 				</div>
 			</div>
 		</div>
@@ -137,33 +177,125 @@
 
 <!-- 관심동네 시작 -->
 <div class="container-fluid mt-5">
-  <div class="container newitem bg-light">
-    <div class="row">
-    
-      <div class="col-4">
-        <div class="index_subtitle my-2">51기님의 관심매물의 <strong>평균</strong>은 얼마일까요?</div>
-        <div class="d-flex justify-content-center">
-          <div class="card my-3 d-inline-block" style="width: 15rem;">
-            <div class="card-body">
-              <h5 class="card-title">원룸 평균 매물가</h5>
-              <p class="card-text border-top border-secondary border-1 pt-3 pb-5 my-3">월세 500/84</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="col-7">
-        <div class="card border-0" style="width: 14rem;">
-          <img src="/resources/images/s_001.png" class="card-img-top" alt="설명">
-          <a class="stretched-link" href="#"></a>
-          <p class=""></p>
-        </div>
-      </div>
-      
-    </div>
-  </div>
+	<div class="container newitem bg-light">
+		<div class="row">
+			<div class="index_subtitle my-2">
+				51기님의 관심매물의 <strong>평균</strong>은 얼마일까요?
+			</div>
+		</div>
+		<div class="row">
+
+			<div class="col-4">
+				<div class="d-flex justify-content-center">
+					<div class="card my-3 d-inline-block" style="width: 15rem;">
+						<div class="card-body">
+							<h5 class="card-title">원룸 평균 매물가</h5>
+							<p
+								class="card-text border-top border-secondary border-1 pt-3 pb-5 my-3">월세
+								500/84</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-4">
+				<div class="d-flex justify-content-center">
+					<div class="card my-3 d-inline-block" style="width: 15rem;">
+						<div class="card-body">
+							<h5 class="card-title">오피스텔 평균 매물가</h5>
+							<p
+								class="card-text border-top border-secondary border-1 pt-3 pb-5 my-3">월세
+								2000/124</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-4">
+				<div class="d-flex justify-content-center">
+					<div class="card my-3 d-inline-block" style="width: 15rem;">
+						<div class="card-body">
+							<h5 class="card-title">원룸 평균 매물가</h5>
+							<p
+								class="card-text border-top border-secondary border-1 pt-3 pb-5 my-3">월세
+								500/84</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
 </div>
 <!-- 관심동네 끝 -->
+
+
+<!-- FAQ 시작 -->
+<div class="container-fluid mt-5">
+	<div class="container newitem bg-light">
+		<div class="row">
+			<div class="index_subtitle my-2">
+				자주묻는 <strong>질문</strong>
+			</div>
+		</div>
+		<div class="row">
+
+			<div class="col-3">
+				<div class="d-flex justify-content-center">
+					<div class="card my-3 d-inline-block" style="width: 15rem;">
+						<div class="card-body">
+							<h5 class="card-title">FAQ 제목</h5>
+							<p
+								class="card-text border-top border-secondary border-1 pt-3 pb-5 my-3">
+								FAQ 내용 원픽 허위매물 예방 5계명</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-3">
+				<div class="d-flex justify-content-center">
+					<div class="card my-3 d-inline-block" style="width: 15rem;">
+						<div class="card-body">
+							<h5 class="card-title">FAQ 제목</h5>
+							<p
+								class="card-text border-top border-secondary border-1 pt-3 pb-5 my-3">
+								FAQ 내용 원픽 허위매물 예방 5계명</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-3">
+				<div class="d-flex justify-content-center">
+					<div class="card my-3 d-inline-block" style="width: 15rem;">
+						<div class="card-body">
+							<h5 class="card-title">FAQ 제목</h5>
+							<p
+								class="card-text border-top border-secondary border-1 pt-3 pb-5 my-3">
+								FAQ 내용 원픽 허위매물 예방 5계명</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col-3">
+				<div class="d-flex justify-content-center">
+					<div class="card my-3 d-inline-block" style="width: 15rem;">
+						<div class="card-body">
+							<h5 class="card-title">FAQ 제목</h5>
+							<p
+								class="card-text border-top border-secondary border-1 pt-3 pb-5 my-3">
+								FAQ 내용 원픽 허위매물 예방 5계명</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+<!-- FAQ 끝 -->
 
 
 <footer>

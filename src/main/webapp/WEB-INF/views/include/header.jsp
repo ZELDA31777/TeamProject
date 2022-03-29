@@ -59,15 +59,15 @@
         <!-- 네비 목록 시작 -->
 				<div class="collapse navbar-collapse justify-content-end mynavbar" id="navbarsExample04">
 					<ul class="navbar-nav mb-2 mb-md-0">
-						<li class="nav-item"><a class="nav-link" href="#">지도</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">관심목록</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">알림</a></li>
+						<li class="nav-item"><a class="nav-link" href="/map/map_view.do">지도</a></li>
+						<li class="nav-item"><a class="nav-link" href="/favorite/looked_room.do">관심목록</a></li>
+						<li class="nav-item"><a class="nav-link" href="/alert/alert_list.do">알림</a></li>
 						<li class="nav-item"><a class="nav-link" href="/user/user_login.do">로그인</a>
 						</li>
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#" id="dropdown04"
 							data-bs-toggle="dropdown" aria-expanded="false">회원가입</a>
-							<ul class="dropdown-menu" aria-labelledby="dropdown04">
+							<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown04">
 								<li><a class="dropdown-item" href="/user/user_register.do">일반회원</a></li>
 								<li><a class="dropdown-item" href="/user/user_register_cor.do">중개사 회원</a></li>
 							</ul></li>
