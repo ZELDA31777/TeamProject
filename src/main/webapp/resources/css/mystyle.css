@@ -8,6 +8,18 @@ body {
 	background-color: #fff;
 }
 
+.newitem {
+   margin-top: 150px ;
+}
+
+.newitem2 {
+   margin-top: 30px;
+}
+
+.newitem3 {
+   background-color: #fff;
+}
+
 .newitem img {
 	width: 100%;
 }
@@ -40,20 +52,6 @@ body {
 	position: absolute;
 	top: 20px;
 	right: 30px;
-}
-
-.iehkos {
-	width: 160px;
-	font-size: 16px;
-	line-height: 26px;
-	font-weight: 700;
-}
-
-.gEjpOz {
-	-webkit-box-flex: 1;
-	flex-grow: 1;
-	font-size: 16px;
-	line-height: 26px;
 }
 
 .login_mark {
@@ -639,6 +637,10 @@ body p.bold {
 	font: inherit;
 }
 
+.iOHiXt >li {
+	padding-bottom: 16px;
+}
+
 .iehkos {
 	width: 160px;
 	font-size: 16px;
@@ -655,7 +657,7 @@ body p.bold {
 
 .fCMewi {
 	width: 780px;
-	padding-top: 120px;
+	padding-top: 50px;
 	position: relative;
 }
 
@@ -698,4 +700,111 @@ body p.bold {
 	line-height: 26px;
 	color: rgb(34, 34, 34);
 	border-bottom: 2px solid rgb(255, 255, 255);
+}
+
+.bEluxX {
+	width: 400px;
+	padding: 32px;
+	margin-bottom: 24px;
+	background: rgb(255, 255, 255);
+	box-shadow: rgb(0 0 0/ 10%) 0px 10px 20px;
+	border: 1px solid rgb(223, 223, 223);
+	border-radius: 2px;
+}
+
+.eBYVXv {
+	display: flex;
+	-webkit-box-align: center;
+	align-items: center;
+	-webkit-box-pack: justify;
+	justify-content: space-between;
+	margin-bottom: 16px;
+}
+
+.kbWyej {
+	display: flex;
+	-webkit-box-align: center;
+	align-items: center;
+}
+
+.hVdoJo {
+	margin-top: 16px;
+}
+
+.hVdoJo>h1 {
+	color: rgb(34, 34, 34);
+	font-size: 24px;
+	line-height: 38px;
+	letter-spacing: -0.5px;
+	font-weight: 700;
+}
+
+.hVdoJo>p {
+	color: rgb(101, 101, 101);
+	font-size: 14px;
+	line-height: 24px;
+}
+
+.eMZGot {
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: 16px;
+	margin-left: -32px;
+	margin-bottom: 24px;
+}
+
+.eMZGot li {
+	flex: 0 0 auto;
+	display: flex;
+	-webkit-box-align: center;
+	align-items: center;
+	margin-left: 16px;
+	margin-top: 8px;
+	margin-bottom: 4px;
+}
+
+.eMZGot li:nth-child(2n+1)>p {
+	width: 118px;
+}
+
+.eMZGot li>p {
+	flex: 0 0 auto;
+	color: rgb(34, 34, 34);
+	font-size: 16px;
+	line-height: 26px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.dhatyD {
+	padding-top: 24px;
+	border-top: 1px solid rgb(245, 245, 245);
+}
+
+.uLeNQ {
+	display: flex;
+	-webkit-box-align: center;
+	align-items: center;
+	height: 26px;
+	padding: 0px;
+	color: rgb(34, 34, 34);
+	font-size: 16px;
+	line-height: 26px;
+	font-weight: 700;
+	border: 0px;
+	background-color: transparent;
+}
+
+.bjZJHf {
+	margin-top: 4px;
+	margin-bottom: 8px;
+}
+
+.bjZJHf>p {
+	color: rgb(101, 101, 101);
+	font-size: 14px;
+	line-height: 24px;
 }
