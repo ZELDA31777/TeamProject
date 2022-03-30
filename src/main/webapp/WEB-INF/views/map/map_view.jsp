@@ -8,7 +8,6 @@
 .slider {
   width: 100%;
   height: 100%;
-  /* 후에 padding: 1.5rem 2rem 으로 수정합니다. 참고바랍니다. */
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
@@ -600,7 +599,10 @@ h4 { text-align: left; }
 </script>
 
 <!-- 구글 지도 스크립트 시작 -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9XnGjyJqD7v_qoTTnfxZxdvTI-pkb9ak&callback=initMap&v=weekly&libraries=visualization"
+<script>
+	mapsApiKey = ; // 구글 맵 api key 입력
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key="+mapsApiKey+"=initMap&v=weekly"
   async></script>
 <script>
   function initMap() {
