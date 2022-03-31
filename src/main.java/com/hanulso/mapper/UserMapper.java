@@ -4,6 +4,7 @@ import com.hanulso.domain.UserVO;
 
 public interface UserMapper {
 	
-	public void user_login(UserVO uvo);
-
+	
+	public void user_insert(UserVO uvo);
+	
 }

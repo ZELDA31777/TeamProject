@@ -12,10 +12,7 @@
 <!-- sub contents start -->
 <div class="container-fluid subcontent">
 	<div class="container" style="width: 50%">
-		<form class="needs-validation" method="post" action="user_register_pro.do" novalidate >
-		        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-		        <input type="hidden" name="favorite" value="favorite_test_msg">
-		        <input type="hidden" name="active" value="active_test_msg">
+		<form class="needs-validation" method="post" action="user_register_pro_backUp.do" novalidate >
 			<div class="styled__Box-sc-1etb7tu-1 cubPeM">
 				<h1>회원정보 입력</h1>
 				<h2>원픽 서비스 이용을 위해 아래 정보를 입력해주세요.</h2>
@@ -63,22 +60,22 @@
 
 
 <script>
-   (function() {
-      'use strict'
-      // Fetch all the forms we want to apply custom Bootstrap validation styles to
-      var forms = document.querySelectorAll('.needs-validation')
+	(function() {
+		'use strict'
+		// Fetch all the forms we want to apply custom Bootstrap validation styles to
+		var forms = document.querySelectorAll('.needs-validation')
 
-      // Loop over them and prevent submission
-      Array.prototype.slice.call(forms).forEach(function(form) {
-         form.addEventListener('submit', function(event) {
-            if (!form.checkValidity()) {
-               event.preventDefault()
-               event.stopPropagation()
-            }
-            form.classList.add('was-validated')
-         }, false)
-      })
-   })()
+		// Loop over them and prevent submission
+		Array.prototype.slice.call(forms).forEach(function(form) {
+			form.addEventListener('submit', function(event) {
+				if (!form.checkValidity()) {
+					event.preventDefault()
+					event.stopPropagation()
+				}
+				form.classList.add('was-validated')
+			}, false)
+		})
+	})()
   
     $(function (){
         $('#passwd').on('change', function(){
@@ -89,7 +86,7 @@
         });
 
         function escapeRegExp(string) {
-             return string.replace(/[.*+?$^{}()|[\]\\]/g, '\\$&'); // $&은 일치한 문자열 전체를 의미
+        	  return string.replace(/[.*+?$^{}()|[\]\\]/g, '\\$&'); // $&은 일치한 문자열 전체를 의미
         }
     });
 </script>

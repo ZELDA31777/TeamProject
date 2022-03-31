@@ -15,7 +15,7 @@ public class UserServiceImpl implements UserService {
 	private UserMapper mapper;
 	
 	@Override
-	public void UserLogin(UserVO uvo) {
-		mapper.user_login(uvo);
+	public void userRegister(UserVO uvo) {
+		mapper.user_insert(uvo);
 	}
 }
