@@ -859,6 +859,7 @@ body p.bold {
 	color: rgb(34, 34, 34);
 	font-weight: bold;
 	margin-bottom: 0;
+	float : left;
 }
 
 .iVhrbX {
@@ -1158,4 +1159,110 @@ body p.bold {
     font-size: 33px;
     font-weight: 400;
     line-height: 49px;
+}
+
+.contents_box{
+	width:100%;
+	heigth:240px;
+}
+
+.gxMjHR > table tr {
+    height: 70px;
+}
+
+.gxMjHR > table th {
+    min-width: 150px;
+    color: rgb(34, 34, 34);
+    font-size: 15px;
+    font-weight: 500;
+    background-color: rgb(249, 249, 249);
+    vertical-align: middle;
+    text-align: center;
+}
+
+.gxMjHR > table td {
+    vertical-align: middle;
+}
+
+.gMKyVw {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 0px 20px;
+    margin-bottom:0;
+}
+
+.blvQKJ {
+    display: block;
+    position: relative;
+    cursor: pointer;
+}
+
+.blvQKJ > input[type="radio"] {
+    width: 0px;
+    height: 0px;
+    opacity: 0;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.blvQKJ > input[type="radio"]:checked + p {
+    color: rgb(255, 255, 255);
+    border-color: rgb(50, 108, 249);
+    background-color: rgb(50, 108, 249);
+}
+
+.blvQKJ > p {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    min-width: 82px;
+    height: 46px;
+    padding: 0px 15px;
+    color: rgb(102, 102, 102);
+    font-size: 14px;
+    border: 1px solid rgb(217, 217, 217);
+    border-radius: 3px;
+    background-color: rgb(255, 255, 255);
+    user-select: none;
+}
+
+.bTJwPT {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    max-width: 1028px;
+    padding: 12px 20px;
+    position: relative;
+}
+
+.dZzEqg {
+    padding: 0px 60px;
+    color: rgb(76, 76, 76);
+    font-size: 14px;
+    border: 1px solid rgb(223, 223, 223);
+    border-radius: 2px;
+    background-color: rgb(255, 255, 255);
+    width: 110px;
+    height: 46px;
+}
+
+.ipuDqc {
+    width: 100px;
+    margin-left: 8px;
+    color: rgb(34, 34, 34);
+    font-size: 15px;
+    line-height: 46px;
+    text-align: center;
+}
+
+.cJTEJp {
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    user-select: none;
+    position: relative;
 }
