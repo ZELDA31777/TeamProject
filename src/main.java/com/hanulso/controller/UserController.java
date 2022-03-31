@@ -36,6 +36,7 @@ public class UserController {
 	@PostMapping("/user/user_register_pro.do")
 	public String user_register_pro(UserVO uvo,RedirectAttributes rttr) {
 		String inputPass = pwencoder.encode(uvo.getPasswd());
+		uvo.setPasswd(inputPass);
 		service.userRegister(uvo);
 		return "redirect:/";
 	}
