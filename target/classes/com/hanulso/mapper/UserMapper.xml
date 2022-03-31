@@ -5,11 +5,10 @@
 
 <mapper namespace="com.hanulso.mapper.UserMapper">
 	
-	<select id="user_login" resultType="com.hanulso.domain.UserVO">
-		
-	
-	
-	</select>
 
+	<insert id="user_insert">
+		insert into one_user (email, passwd, nickname, grade, favorite, active)
+		values(#{email},#{passwd},#{nickname},'ROLE_MEMBER',#{favorite},#{active})
+	</insert>
 
 </mapper>

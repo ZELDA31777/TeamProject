@@ -4,6 +4,7 @@ import com.hanulso.domain.UserVO;
 
 public interface UserService {
 
-	public void UserLogin(UserVO uvo);
+	
+	public void userRegister(UserVO uvo);
 	
 }
