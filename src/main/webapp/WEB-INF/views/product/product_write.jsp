@@ -86,38 +86,77 @@
 	<p id="scrollspyHeading1"></p>
 	<div class="row g-5">
 		<div class="col-md-8">
-			<div>
-				<div name="dealType" class="styled__Box-sc-1tbsltx-3 gxMjHR">
-					<h1>거래 정보</h1>
-					<table>
-						<tbody>
-							<tr>
-								<th>거래 종류</th>
-								<td><div class="styled__BtnWrap-sc-1xx7qac-6 fRTOlw">
-										<div class="styled__Wrap-sc-1xx7qac-0 fzNWUu">
-											<div class="styled__Price-sc-1xx7qac-5 iNyxMi">
-												<p class="styled__Tag-sc-1xx7qac-1 jNHAt">월세</p>
-												<input name="deposit" placeholder="보증금"
-													class="styled__PriceInput-sc-1xx7qac-2 ceburN" value="">
-												<p class="styled__Space-sc-1xx7qac-3 kzCtLl">/</p>
-												<input name="price" placeholder="월세"
-													class="styled__PriceInput-sc-1xx7qac-2 ceburN" value="">
-												<p class="styled__Won-sc-1xx7qac-4 ceMnZE">
-													만원<span>(예 월세 1000만원/50만원)</span>
-												</p>
-											</div>
-										</div>
-									</div></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<div name="roomType" class="styled__Box-sc-1tbsltx-3 gxMjHR">
-					<h1>매물 종류</h1>
-					<table>
-						<tbody>
-							<tr>
-								<th>종류 선택</th>
+			<h4 class="cBaPiP" style="margin-top: 35px;">가격정보</h4>
+			<div class="iOHiXt" style="list-style: none;">
+				<li>
+					<div class="row"
+						style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid rgb(245, 245, 245);">
+						<div class="iehkos col-md-3">월세</div>
+						<div class="gEjpOz col-md-9">
+							<input name="rent" placeholder="월세" id="rent"
+								class="styled__PriceInput-sc-1xx7qac-2 ceburN" value="">
+							<p class="styled__Won-sc-1xx7qac-4 ceMnZE">
+								만원<span>(예 월세 50만원)</span>
+							</p>
+						</div>
+
+					</div>
+				</li>
+				<li>
+					<div class="row"
+						style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid rgb(245, 245, 245);">
+						<div class="iehkos col-md-3">보증금</div>
+						<div class="gEjpOz col-md-9">
+							<input name="deposit" placeholder="보증금" id="deposit"
+								class="styled__PriceInput-sc-1xx7qac-2 ceburN" value="">
+							<p class="styled__Won-sc-1xx7qac-4 ceMnZE">
+								만원<span>(예 보증금 1000만원)</span>
+							</p>
+						</div>
+
+					</div>
+				</li>
+				<li>
+					<div class="row"
+						style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid rgb(245, 245, 245);">
+						<div class="iehkos col-md-3">관리비</div>
+						<div class="gEjpOz col-md-9">
+							<div>
+								<input name="manage" placeholder="관리비" id="manage"
+									class="ceburN" value=""> <label><input
+									type="checkbox" id="managebox"> 없음</label>
+								<p>별도 금액으로 부과되는 항목</p>
+								<p class="gray-700">전기료, 수도료, 가스사용료</p>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="row"
+						style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid rgb(245, 245, 245);">
+						<div class="iehkos col-md-3">
+							<p>한달</p>
+							<p>예상 주거비용</p>
+						</div>
+						<div class="gEjpOz col-md-9">
+							<input name="month" placeholder="한달 예상 주거비용" id="month"
+								class="ceburN" value="" readonly>
+							<p class="gray-700">월세 + 관리비</p>
+							<p class="body-3 gray-700">별도 금액으로 부과되는 항목 제외</p>
+						</div>
+					</div>
+				</li>
+			</div>
+
+			<p id="scrollspyHeading2"></p>
+			<div class="fCMewi">
+				<h4 class="styled__Title-sc-16d1qhz-2 cBaPiP">상세정보</h4>
+				<div class="iOHiXt" style="list-style: none;">
+					<li>
+						<div class="row"
+							style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid rgb(245, 245, 245);">
+							<div class="iehkos col-md-3">방종류</div>
+							<div class="gEjpOz col-md-9">
 								<td class="kYmWlH">
 									<ul class="gMKyVw" style="list-style: none;">
 										<li><label class="blvQKJ"><input type="radio"
@@ -128,404 +167,59 @@
 												<p>오피스텔 • 도시형</p></label></li>
 									</ul>
 								</td>
-							</tr>
-							<tr>
-								<th>건물 유형</th>
-								<td class="kYmWlH">
-									<ul class="gMKyVw" style="list-style: none;">
-										<li><label class="styled__BtnLabel-sc-18ujk9f-2 blvQKJ"><input
-												type="radio" name="buildingType">
-												<p>단독주택</p></label></li>
-										<li><label class="styled__BtnLabel-sc-18ujk9f-2 blvQKJ"><input
-												type="radio" name="buildingType">
-												<p>다가구주택</p></label></li>
-										<li><label class="styled__BtnLabel-sc-18ujk9f-2 blvQKJ"><input
-												type="radio" name="buildingType">
-												<p>빌라/연립/다세대</p></label></li>
-										<li><label class="styled__BtnLabel-sc-18ujk9f-2 blvQKJ"><input
-												type="radio" name="buildingType">
-												<p>상가주택</p></label></li>
-									</ul>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<div name="baseInfo" class="styled__Box-sc-1tbsltx-3 gxMjHR">
-					<h1>기본 정보</h1>
-					<table>
-						<colgroup>
-							<col width="150px">
-							<col width="450px">
-							<col width="150px">
-							<col width="430px">
-						</colgroup>
-						<tbody>
-							<tr>
-								<th rowspan="2"><p>건물 크기</p> <span>(1P = 3.3058㎡)</span></th>
-								<td><div class="styled__Wrap-wlma5f-0 nIpBu">
-										<p class="styled__SubTitle-wlma5f-5 boOTqL">공급 면적</p>
-										<div class="styled__SizeInputWrap-wlma5f-7 bSHhTa">
-											<input name="provisionSizePyeong"
-												class="styled__Input-wlma5f-2 jkqspU" value="">
-											<p class="styled__Space-wlma5f-3 kBhohh">평</p>
-											<input name="provisionSize"
-												class="styled__Input-wlma5f-2 jkqspU" value="">
-											<p class="styled__Space-wlma5f-3 kBhohh">㎡</p>
-										</div>
-									</div></td>
-								<th rowspan="2">건물 층수</th>
-								<td><div class="styled__Wrap-wlma5f-0 nIpBu">
-										<p class="styled__SubTitle-wlma5f-5 boOTqL">건물 층수</p>
-										<select name="buildingFloor" width="170"
-											class="styled__Select-wlma5f-1 gwaqis"><option
-												value="">건물 층수 선택</option>
-											<option value="1">1층</option>
-											<option value="2">2층</option>
-											<option value="3">3층</option>
-											<option value="4">4층</option>
-											<option value="5">5층</option>
-											<option value="6">6층</option>
-											<option value="7">7층</option>
-											<option value="8">8층</option>
-											<option value="9">9층</option>
-											<option value="10">10층</option>
-											<option value="11">11층</option>
-											<option value="12">12층</option>
-											<option value="13">13층</option>
-											<option value="14">14층</option>
-											<option value="15">15층</option>
-											<option value="16">16층</option>
-											<option value="17">17층</option>
-											<option value="18">18층</option>
-											<option value="19">19층</option>
-											<option value="20">20층</option>
-											<option value="21">21층</option>
-											<option value="22">22층</option>
-											<option value="23">23층</option>
-											<option value="24">24층</option>
-											<option value="25">25층</option>
-											<option value="26">26층</option>
-											<option value="27">27층</option>
-											<option value="28">28층</option>
-											<option value="29">29층</option>
-											<option value="30">30층</option>
-											<option value="31">31층</option>
-											<option value="32">32층</option>
-											<option value="33">33층</option>
-											<option value="34">34층</option>
-											<option value="35">35층</option>
-											<option value="36">36층</option>
-											<option value="37">37층</option>
-											<option value="38">38층</option>
-											<option value="39">39층</option>
-											<option value="40">40층</option>
-											<option value="41">41층</option>
-											<option value="42">42층</option>
-											<option value="43">43층</option>
-											<option value="44">44층</option>
-											<option value="45">45층</option>
-											<option value="46">46층</option>
-											<option value="47">47층</option>
-											<option value="48">48층</option>
-											<option value="49">49층</option>
-											<option value="50">50층</option></select>
-									</div></td>
-							</tr>
-							<tr>
-								<td><div class="styled__Wrap-wlma5f-0 nIpBu">
-										<p class="styled__SubTitle-wlma5f-5 boOTqL">전용 면적</p>
-										<input name="roomSizePyeong"
-											class="styled__Input-wlma5f-2 jkqspU" value="">
-										<p class="styled__Space-wlma5f-3 kBhohh">평</p>
-										<input name="roomSize" class="styled__Input-wlma5f-2 jkqspU"
-											value="">
-										<p class="styled__Space-wlma5f-3 kBhohh">㎡</p>
-									</div></td>
-								<td><div class="styled__Wrap-wlma5f-0 nIpBu">
-										<p class="styled__SubTitle-wlma5f-5 boOTqL">해당 층수</p>
-										<select name="roomFloor" width="170"
-											class="styled__Select-wlma5f-1 gwaqis"><option
-												value="">해당 층수 선택</option>
-											<option value="-1">반지층</option>
-											<option value="0">옥탑</option>
-											<option value="1">1층</option>
-											<option value="2">2층</option>
-											<option value="3">3층</option>
-											<option value="4">4층</option>
-											<option value="5">5층</option>
-											<option value="6">6층</option>
-											<option value="7">7층</option>
-											<option value="8">8층</option>
-											<option value="9">9층</option>
-											<option value="10">10층</option>
-											<option value="11">11층</option>
-											<option value="12">12층</option>
-											<option value="13">13층</option>
-											<option value="14">14층</option>
-											<option value="15">15층</option>
-											<option value="16">16층</option>
-											<option value="17">17층</option>
-											<option value="18">18층</option>
-											<option value="19">19층</option>
-											<option value="20">20층</option>
-											<option value="21">21층</option>
-											<option value="22">22층</option>
-											<option value="23">23층</option>
-											<option value="24">24층</option>
-											<option value="25">25층</option>
-											<option value="26">26층</option>
-											<option value="27">27층</option>
-											<option value="28">28층</option>
-											<option value="29">29층</option>
-											<option value="30">30층</option>
-											<option value="31">31층</option>
-											<option value="32">32층</option>
-											<option value="33">33층</option>
-											<option value="34">34층</option>
-											<option value="35">35층</option>
-											<option value="36">36층</option>
-											<option value="37">37층</option>
-											<option value="38">38층</option>
-											<option value="39">39층</option>
-											<option value="40">40층</option>
-											<option value="41">41층</option>
-											<option value="42">42층</option>
-											<option value="43">43층</option>
-											<option value="44">44층</option>
-											<option value="45">45층</option>
-											<option value="46">46층</option>
-											<option value="47">47층</option>
-											<option value="48">48층</option>
-											<option value="49">49층</option>
-											<option value="50">50층</option></select>
-									</div></td>
-							</tr>
-							<tr>
-								<th>난방 종류</th>
-								<td colspan="3"><div class="styled__Wrap-wlma5f-0 nIpBu">
-										<select name="heatingType" width="180"
-											class="styled__Select-wlma5f-1 gwaqmT"><option
-												value="">난방 종류 선택</option>
-											<option value="0">중앙 난방</option>
-											<option value="1">개별 난방</option>
-											<option value="2">지역 난방</option></select>
-									</div></td>
-							</tr>
-							<tr>
-								<th>입주 가능일</th>
-								<td colspan="3"><div class="styled__Wrap-wlma5f-0 nIpBu">
-										<button class="styled__MoveDate-wlma5f-9 czmmBl">즉시
-											입주</button>
-										<button class="styled__MoveDate-wlma5f-9 czmmBl">날짜
-											협의</button>
-										<button class="styled__MoveDate-wlma5f-9 czmmBl">날짜
-											선택</button>
-									</div></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<div name="additional" class="styled__Box-sc-1tbsltx-3 gxMjHR">
-					<h1>추가 정보</h1>
-					<table>
-						<colgroup>
-							<col width="150px">
-							<col width="450px">
-							<col width="150px">
-							<col width="430px">
-						</colgroup>
-						<tbody>
-							<tr>
-								<th rowspan="2">관리비</th>
-								<td colspan="3"><div
-										class="styled__Wrap-sc-1nti3md-0 bTJwPT">
-										<input name="maintenanceCost"
-											class="styled__Cost-sc-1nti3md-2 dZzEqg" value="">
-										<p class="styled__Space-sc-1nti3md-3 ipuDqc">만원</p>
-										<div class="styled__CheckWrap-sc-1nti3md-5 fa-DpEA">
-											<label class="styled__CheckLabel-sc-1nti3md-6 dDOghw"><input
-												type="checkbox" name="maintenanceOption">
-												<p>협의가능</p></label><label
-												class="styled__CheckLabel-sc-1nti3md-6 dDOghw"><input
-												type="checkbox" name="maintenance">
-												<p>관리비 없음</p></label>
-										</div>
-										<div class="styled__Notice-sc-1nti3md-4 cJTEJp">
-											<svg width="18" height="18" viewBox="0 0 25 25">
-												<g fill="none" fill-rule="evenodd">
-												<circle cx="12.6" cy="12.6" r="12.6" fill="#E6E7EA"></circle>
-												<path fill="#9C9EA3"
-													d="M12.596 18.9a1.05 1.05 0 1 1 0-2.1 1.05 1.05 0 0 1 0 2.1zm.014-3.498c-.888 0-1.05-7.629-1.05-8.402 0-.773.47-1.4 1.05-1.4.58 0 1.05.627 1.05 1.4 0 .773-.162 8.402-1.05 8.402z"></path></g></svg>
-											<p>협의가능 선택 시, 숫자 뒤에 (협의가능) 문구가 표시됩니다.</p>
-											<p>협의가능 옵션은 금액을 입력해야만 선택 가능합니다.</p>
-										</div>
-									</div></td>
-							</tr>
-							<tr>
-								<th>구조</th>
-								<td><div class="styled__Wrap-sc-1nti3md-0 bTJwPT">
-										<label
-											class="styled__OptionCheckbox-sc-1nti3md-7 styled__OptionLargeCheckbox-sc-1nti3md-8 eXAGyI kkuWgy"><input
-											type="checkbox" name="duplex">
-											<p>복층</p></label><label
-											class="styled__OptionCheckbox-sc-1nti3md-7 styled__OptionLargeCheckbox-sc-1nti3md-8 eXAGyI kkuWgy"><input
-											type="checkbox" name="division">
-											<p>1.5룸/주방분리형</p></label>
-									</div></td>
-							</tr>
-							<tr>
-								<th>옵션항목</th>
-								<td colspan="3"><div
-										class="styled__Wrap-sc-1nti3md-0 bTJwPT"
-										style="flex-wrap: wrap;">
-										<label class="styled__OptionCheckbox-sc-1nti3md-7 eXAGyI"
-											style="margin: 5px 10px 5px 0px;"><input
-											type="checkbox" name="room_options">
-											<p>인덕션</p></label><label
-											class="styled__OptionCheckbox-sc-1nti3md-7 eXAGyI"
-											style="margin: 5px 10px 5px 0px;"><input
-											type="checkbox" name="room_options">
-											<p>전자레인지</p></label><label
-											class="styled__OptionCheckbox-sc-1nti3md-7 eXAGyI"
-											style="margin: 5px 10px 5px 0px;"><input
-											type="checkbox" name="room_options">
-											<p>에어컨</p></label><label
-											class="styled__OptionCheckbox-sc-1nti3md-7 eXAGyI"
-											style="margin: 5px 10px 5px 0px;"><input
-											type="checkbox" name="room_options">
-											<p>세탁기</p></label><label
-											class="styled__OptionCheckbox-sc-1nti3md-7 eXAGyI"
-											style="margin: 5px 10px 5px 0px;"><input
-											type="checkbox" name="room_options">
-											<p>TV</p></label><label
-											class="styled__OptionCheckbox-sc-1nti3md-7 eXAGyI"
-											style="margin: 5px 10px 5px 0px;"><input
-											type="checkbox" name="room_options">
-											<p>옷장</p></label><label
-											class="styled__OptionCheckbox-sc-1nti3md-7 eXAGyI"
-											style="margin: 5px 10px 5px 0px;"><input
-											type="checkbox" name="room_options">
-											<p>침대</p></label><label
-											class="styled__OptionCheckbox-sc-1nti3md-7 eXAGyI"
-											style="margin: 5px 10px 5px 0px;"><input
-											type="checkbox" name="room_options">
-											<p>책상</p></label><label
-											class="styled__OptionCheckbox-sc-1nti3md-7 eXAGyI"
-											style="margin: 5px 10px 5px 0px;"><input
-											type="checkbox" name="room_options">
-											<p>신발장</p></label><label
-											class="styled__OptionCheckbox-sc-1nti3md-7 eXAGyI"
-											style="margin: 5px 10px 5px 0px;"><input
-											type="checkbox" name="room_options">
-											<p>비데</p></label><label
-											class="styled__OptionCheckbox-sc-1nti3md-7 eXAGyI"
-											style="margin: 5px 10px 5px 0px;"><input
-											type="checkbox" name="room_options">
-											<p>가스레인지</p></label><label
-											class="styled__OptionCheckbox-sc-1nti3md-7 eXAGyI"
-											style="margin: 5px 10px 5px 0px;"><input
-											type="checkbox" name="room_options">
-											<p>냉장고</p></label><label
-											class="styled__OptionCheckbox-sc-1nti3md-7 eXAGyI"
-											style="margin: 5px 10px 5px 0px;"><input
-											type="checkbox" name="room_options">
-											<p>전자도어락</p></label>
-									</div></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<div name="detailInfo" class="styled__Box-sc-1tbsltx-3 gxMjHR">
-					<h1>상세 설명</h1>
-					<table>
-						<colgroup>
-							<col width="150px">
-							<col>
-						</colgroup>
-						<tbody>
-							<tr>
-								<th>제목</th>
-								<td><div class="styled__Wrap-sc-17hggnx-0 gUYVyr">
-										<input name="title" type="text"
-											placeholder="예)신논현역 도보 5분거리, 혼자 살기 좋은 방 입니다."
-											class="styled__Title-sc-17hggnx-1 dFOPJc" value="">
-									</div></td>
-							</tr>
-							<tr>
-								<th>상세 설명</th>
-								<td><div class="styled__Wrap-sc-17hggnx-0 gUYVyr">
-										<textarea name="memo"
-											placeholder="[상세설명 작성 주의사항]
-
-  - 매물 정보와 관련없는 홍보성 정보는 입력할 수 없습니다.
-  - 매물등록규정에 위반되는 금칙어는 입력할 수 없습니다.
-  
-  위 주의사항 위반시 임의로 매물 삭제 혹은 서비스 이용이 제한될 수 있습니다."
-											class="styled__Memo-sc-17hggnx-2 knSOrZ"></textarea>
-									</div></td>
-							</tr>
-							<tr>
-								<th>비공개 메모</th>
-								<td><div class="styled__Wrap-sc-17hggnx-0 gUYVyr">
-										<textarea name="privateMemo"
-											placeholder="외부에 공개되지 않으며, 등록자에게만 보이는 메모입니다."
-											class="styled__Private-sc-17hggnx-3 fbJuVv"></textarea>
-									</div></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<div name="photo" class="styled__Box-sc-1tbsltx-3 gxMjHR">
-					<h1>사진 등록</h1>
-					<div class="styled__Wrap-wjzlfv-0 iEQbFd">
-						<div class="styled__TabWrap-wjzlfv-1 cVGnCj">
-							<button class="styled__Tab-wjzlfv-2 iDIMSt">일반사진</button>
-							<button class="styled__Tab-wjzlfv-2 iokHEK">360˚사진</button>
-						</div>
-						<div class="styled__DescWrap-l8ol3j-0 ldqoTx">
-							<p>- 사진은 가로로 찍은 사진을 권장합니다. (가로 사이즈 최소 800px)</p>
-							<p>- 사진 용량은 사진 한 장당 10MB 까지 등록이 가능합니다.</p>
-							<p>- 사진은 최소 3장 이상 등록해야하며, 최대 15장 까지 권장합니다. 그 이상 등록할 경우 업로드
-								시간이 다소 지연될 수 있습니다.</p>
-						</div>
-						<div class="styled__Screen-l8ol3j-1 jiOwMe">
-							<svg width="70" height="70" viewBox="0 0 70 70">
-								<g fill="none" fill-rule="evenodd">
-								<circle cx="35" cy="35" r="35" fill="#D8D8D8"></circle>
-								<g transform="translate(19 23)">
-								<rect width="30" height="22" x="1" y="1" stroke="#777"
-									stroke-width="2" rx="3"></rect>
-								<circle cx="25" cy="7" r="2" fill="#777"></circle>
-								<path fill="#777"
-									d="M3.996 13.038l6.042-6.042 4 4 2.981-2.98 10.988 10.988v1.015H3.984z"></path></g></g></svg>
-							<p class="styled__Text-l8ol3j-2 eerxgz">실 사진 최소 3장 이상 등록 하셔야
-								하며, 가로 사진을 권장합니다.</p>
-							<p class="styled__WarningText-l8ol3j-3 ntKoY">다방 로고를 제외한 불필요한
-								정보(워터마크, 상호, 전화번호 등)가 있는 매물은 비공개 처리 됩니다.</p>
-							<div>
-								<button id="uploader" class="dz-clickable">사진 추가하기</button>
 							</div>
 						</div>
-						<p class="styled__Text-wjzlfv-3 cyVvon">
-							<svg width="18" height="18" viewBox="0 0 18 18">
-								<g fill="none" fill-rule="evenodd">
-								<circle cx="9" cy="9" r="9" fill="#E6E7EA"></circle>
-								<path fill="#9C9EA3"
-									d="M8.997 13.5a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5zm.01-2.499c-.634 0-.75-5.449-.75-6.001 0-.552.336-1 .75-1s.75.448.75 1-.116 6.001-.75 6.001z"></path></g></svg>
-							<span>허위 매물을 등록할 경우 다방에서 임의로 계정 및 매물 전체 삭제 처리됩니다.</span><a
-								href="https://pro.dabangapp.com/terms/7" target="_blank"
-								rel="noopener noreferrer">허위매물 제재 정책 확인하기</a>
-						</p>
-					</div>
+					</li>
+					<li>
+						<div class="row"
+							style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid rgb(245, 245, 245);">
+							<div class="iehkos col-md-3">해당층/건물층</div>
+							<div class="gEjpOz col-md-9">
+								<p>1층/5층</p>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="row"
+							style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid rgb(245, 245, 245);">
+
+
+							<div class="iehkos col-md-3">전용/공급면적</div>
+
+							<div class="gEjpOz flex col-md-9">
+								<p>11.9m² / 16.52m²</p>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="row"
+							style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid rgb(245, 245, 245);">
+							<div class="iehkos col-md-3">방 수/욕실 수</div>
+							<div class="gEjpOz col-md-9">1개/1개</div>
+						</div>
+					</li>
 				</div>
-				<div class="styled__AgreeWrap-sc-1tbsltx-4 egZnIW">
-					<label class="styled__CheckLabel-sc-1tbsltx-5 lhiCpH"><input
-						type="checkbox">
-						<p>매물관리규정을 확인하였으며, 입력한 정보는 실제 매물과 다름이 없습니다.</p></label>
-					<div class="btn-wrap">
-						<button class="cancel">취소</button>
-						<button class="add">매물등록</button>
+			</div>
+
+			<div class="fCMewi">
+				<p id="scrollspyHeading3"></p>
+				<h4 class="styled__Title-sc-16d1qhz-2 cBaPiP">옵션</h4>
+				<div class="iOHiXt" style="list-style: none;">
+
+					<p>이미지 첨부 영역</p>
+
+				</div>
+			</div>
+			<div class="fCMewi">
+				<p id="scrollspyHeading4"></p>
+				<h4 class="cBaPiP">상세설명</h4>
+				<div class="iOHiXt" style="list-style: none;">
+					<div class="styled__InfoWrap-sc-13shacj-0 jGAWeI">
+						<p class="title">대형풀옵션투룸동물가능</p>
+						<p class="styled__Memo-sc-13shacj-1 hhaHrn">가격도 착하게 월세 65만원입니다
+							!!! ㅎㅎ 잔여 1세대 남았습니다^^ 현재 공실입니다 관악구 지역 좋은방 많이 보유중입니다!! 제가 뛰어다니며
+							올리지 못한 방들도 아주 많습니다^^ 한반도하면 대한민국 대한민국 하면 한국에 중심 서울입니다 누구나 살고싶은 서울에
+							역세권입니다</p>
 					</div>
 				</div>
 			</div>
@@ -547,8 +241,21 @@
 								fill="#CCCCCC"></path></svg>
 					</div>
 					<div class="styled__PriceWrap-cvrpi1-5 fzGgeZ">
-						<p class="eswqdM">월세 1000/65</p>
-						<p class="iVhrbX">최근 7일 매물 조회 수 31회</p>
+						<div class="row">
+							<div class="col-md-3">
+								<p class="eswqdM">월세</p>
+							</div>
+							<div class="col-md-2">
+								<p class="eswqdM" id="deposit2"></p>
+							</div>
+							<div class="col-md-1">
+								<p class="eswqdM">/</p>
+							</div>
+							<div class="col-md-2">
+								<p class="eswqdM" id="rent2"></p>
+							</div>
+							<p class="iVhrbX">최근 7일 매물 조회 수 31회</p>
+						</div>
 					</div>
 					<ul class="bIRVVc">
 						<li><div class="styled__Item-cvrpi1-9 fYSHvV left">
@@ -558,7 +265,7 @@
 									<path fill-rule="evenodd" clip-rule="evenodd"
 										d="M11.4845 1.12518L11.5941 1.19559L20.5941 7.8423C20.8175 8.00727 20.9607 8.25644 20.993 8.52876L21 8.64671L21.0007 13.4264C21.9338 14.484 22.5 15.8731 22.5 17.3944C22.5 20.7081 19.8137 23.3944 16.5 23.3944C14.7234 23.3944 13.1272 22.6223 12.0286 21.3953L2 21.3944C1.48716 21.3944 1.06449 21.0084 1.00673 20.511L1 20.3944V8.64671C1 8.36902 1.11533 8.10576 1.31519 7.91798L1.40592 7.8423L10.4059 1.19559C10.7237 0.960882 11.1459 0.937411 11.4845 1.12518ZM16.5 12.3944C13.7386 12.3944 11.5 14.633 11.5 17.3944C11.5 20.1558 13.7386 22.3944 16.5 22.3944C19.2614 22.3944 21.5 20.1558 21.5 17.3944C21.5 14.633 19.2614 12.3944 16.5 12.3944ZM16.9919 17.3045C16.9496 17.0713 16.7455 16.8944 16.5 16.8944C16.2239 16.8944 16 17.1183 16 17.3944V20.1944L16.0081 20.2843C16.0504 20.5175 16.2545 20.6944 16.5 20.6944C16.7761 20.6944 17 20.4705 17 20.1944V17.3944L16.9919 17.3045ZM11 2L2 8.64671V20.3944L11.303 20.3948C10.7923 19.5122 10.5 18.4874 10.5 17.3944C10.5 14.0807 13.1863 11.3944 16.5 11.3944C17.8066 11.3944 19.0156 11.812 20.0009 12.5211L20 8.64671L11 2ZM17.2 15.0944C17.2 14.7078 16.8866 14.3944 16.5 14.3944C16.1134 14.3944 15.8 14.7078 15.8 15.0944C15.8 15.481 16.1134 15.7944 16.5 15.7944C16.8866 15.7944 17.2 15.481 17.2 15.0944Z"
 										fill="#222222"></path></svg>
-								<span><c:if test=""</span>
+								<span>투룸</span>
 							</div>
 							<div class="styled__Item-cvrpi1-9 fYSHvV">
 								<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -648,6 +355,45 @@
 		})
 
 	});
+
+	$(document).ready(function() {
+		$("#managebox").change(function() {
+			if ($("#managebox").is(":checked")) {
+				$("#manage").val("0");
+				$("#manage").prop("readonly", true);
+			} else {
+				$("#manage").prop("readonly", false);
+			}
+		});
+	});
+
+	var rent = 0;
+	var manage = 0;
+	var deposit = 0;
+	$(function() {
+		$("#rent").on("blur", function() {
+			rent = $("#rent").val();
+			rent = parseInt(rent);
+			$("#rent2").text(rent);
+			return false;
+		})
+	})
+
+	$(function() {
+		$("#deposit").on("blur", function() {
+			deposit = $("#deposit").val();
+			deposit = parseInt(deposit);
+			$("#deposit2").text(deposit);
+			return false;
+		})
+	})
+	$(function() {
+		$("#manage").on("blur", function() {
+			manage = $("#manage").val();
+			manage = parseInt(manage);
+			$("#month").val(rent + manage);
+		})
+	})
 </script>
 <!-- 스크롤 스파이 navar 관련 script 끝 -->
 

@@ -1,5 +1,7 @@
 package com.hanulso.domain;
 
+import java.util.List;
+
 import lombok.Data;
 
 @Data

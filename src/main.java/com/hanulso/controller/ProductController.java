@@ -11,9 +11,9 @@ public class ProductController {
 	@GetMapping("/product_view.do")
 	public void product_view() {}
 	
+	@GetMapping("/product_write_backUp.do")
+	public void product_write_backUp() {}
+	
 	@GetMapping("/product_write.do")
 	public void product_write() {}
-	
-	@GetMapping("/product_write2.do")
-	public void product_write2() {}
 }
