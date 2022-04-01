@@ -12,94 +12,126 @@
 <!-- sub contents start -->
 <div class="container-fluid subcontent">
 	<div class="container" style="width: 50%">
-		<form class="needs-validation" method="post" novalidate>
+		<form class="needs-validation" method="post" action="/user/user_register_cor_pro.do" novalidate>
+	        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+	        <input type="hidden" name="favorite" value="favorite_test_msg">
+	        <input type="hidden" name="active" value="active_test_msg">
+	        <input type="hidden" name="nickname" value="nickname_test_msg">
+	        <input type="hidden" name="tel" id="tel" value="">
+	        <input type="hidden" name="addr" value="addr_test_msg">
+	        <input type="hidden" name="profile" value="profile_test_msg">
+	        
 			<div class="styled__Box-sc-1etb7tu-1 cubPeM">
 				<h1>중개사 회원정보 입력</h1>
 				<h2>원픽 서비스 이용을 위해 아래 정보를 입력해주세요.</h2>
 				<div class="input-with-label__InputWrap-sc-1p3gkts-0 eVAGdp">
 					<label class="bDaqny">
-						<p class="label-text">아이디</p> <input type="text" name="email"
-						class="form-control kHDHPO" id="validationCustom01"
+						<p class="label-text">이메일</p> <input type="text" name="username"
+						class="form-control kHDHPO" id="username"
 						placeholder="이메일 주소 입력"
 						pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
 						<div class="valid-feedback">확인되었습니다</div>
 						<div class="invalid-feedback">이메일을 입력해주십시오.</div>
 					</label>
 				</div>
-				<div class="input-with-unit__InputWrap-sc-1e4qgti-0 eVAGdp">
-					<label class="bDaqny">
-						<p class="label-text">닉네임</p> <input type="text" name="nickname"
-						id="validationCustom02" placeholder="한글 또는 영문만 가능"
-						class="form-control kHDHPO" maxlength="10" required>
-						<div class="valid-feedback">확인되었습니다</div>
-						<div class="invalid-feedback">닉네임을 입력해주십시오.</div>
-					</label>
-				</div>
 				<div class="input-with-label__InputWrap-sc-1p3gkts-0 eVAGdp">
 					<label class="bDaqny">
 						<p class="label-text">비밀번호</p> <input type="password"
 						name="password" placeholder="비밀번호 입력" class="form-control kHDHPO"
-						id="validationCustom03" minlength="8" required>
+						id="password" minlength="8" required>
 						<div class="valid-feedback">확인되었습니다</div>
 						<div class="invalid-feedback">비밀번호를 입력해주십시오.</div>
 					</label>
 				</div>
 				<input autocomplete="off" type="password" name="passwordConfirm"
-					placeholder="비밀번호 확인" class="input__Input-am2s7t-0 kHDHPO" value="">
+					placeholder="비밀번호 확인" id="passwordConfirm" class="input__Input-am2s7t-0 kHDHPO" value="">
 				<div class="eVAGdp">
 				<laber class="bDaqny"/>				
 				</div>
 				<div class="input-with-unit__InputWrap-sc-1e4qgti-0 eVAGdp">
 					<label class="bDaqny">
+						<p class="label-text">대표자명</p> <input type="text" name="name"
+						id="name" placeholder="대표자명 입력"
+						class="form-control kHDHPO" maxlength="10" required>
+						<div class="valid-feedback">확인되었습니다</div>
+						<div class="invalid-feedback">대표자명을 입력해주십시오.</div>
+					</label>
+				</div>
+				<div class="input-with-unit__InputWrap-sc-1e4qgti-0 eVAGdp">
+					<label class="bDaqny">
+						<p class="label-text">중개사무소명</p> <input type="text" name="corname"
+						id="corname" placeholder="중개사무소명 입력"
+						class="form-control kHDHPO" maxlength="10" required>
+						<div class="valid-feedback">확인되었습니다</div>
+						<div class="invalid-feedback">중개사무소명을 입력해주십시오.</div>
+					</label>
+				</div>
+				
+				<div class="input-with-unit__InputWrap-sc-1e4qgti-0 eVAGdp">
+					<label class="bDaqny">
 						<p class="label-text">사업자등록번호</p> <input type="text" name="cornum"
-						id="validationCustom04" placeholder="-없이 숫자로만 입력해주세요"
+						id="cornum" placeholder="-없이 숫자로만 입력해주세요"
 						class="form-control kHDHPO" maxlength="15" minlength="15" required>
 						<div class="valid-feedback">확인되었습니다</div>
 						<div class="invalid-feedback">사업자등록번호를 입력해주십시오.</div>
 					</label>
 				</div>
+				
+				<!-- 
+				##### 주소 검색 api 추가할 것 #####
+				-->
+				
+				
+				
+				<!-- 
+				##### 프로필 이미지 추가할 것 #####
+				-->
+			
+				
 				<div class="row">
 				<div class="input-with-unit__InputWrap-sc-1e4qgti-0 eVAGdp col-md-3">
 					<label class="bDaqny">
-						<p class="label-text">연락처</p> <input type="text" name="cornum"
-						id="validationCustom05" placeholder="010"
+						<p class="label-text">연락처</p> <input type="text" name="tel01"
+						id="tel01" placeholder="010"
 						class="form-control telINPO" maxlength="3" required>
 					</label>
 				</div>
 				<div class="input-with-unit__InputWrap-sc-1e4qgti-0 eVAGdp col-md-3">
 					<label class="bDaqny">
-						<p class="label-text">&nbsp;</p> <input type="text" name="cornum"
-						id="validationCustom06" placeholder="010"
+						<p class="label-text">&nbsp;</p> <input type="text" name="tel02"
+						id="tel02" placeholder="010"
 						class="form-control telINPO" maxlength="4" required>
 					</label>
 				</div>
 				<div class="input-with-unit__InputWrap-sc-1e4qgti-0 eVAGdp col-md-3">
 					<label class="bDaqny">
-						<p class="label-text">&nbsp;</p> <input type="text" name="cornum"
-						id="validationCustom07" placeholder="010"
+						<p class="label-text">&nbsp;</p> <input type="text" name="tel03"
+						id="tel03" placeholder="010"
 						class="form-control telINPO" maxlength="4" required>
 					</label>
 					<label class="bDaqny">
 					<div class="valid-feedback">확인되었습니다</div>
 					<div class="invalid-feedback">연락처를 입력해주십시오.</div>
 					</label>
+
 				</div>
 				
 				<!-- 주소 확인할 것 !  -->
 				
 				
 				</div>
-				<button color="blue" class="button__Button-sc-153m1au-0 fiEZwu"
+				<button color="blue" id="btn_register" class="button__Button-sc-153m1au-0 fiEZwu"
 					style="margin-top: 32px;">
 					<span> 확인 </span>
 				</button>
 			</div>
+		</form>
 	</div>
 </div>
 
 
 <script>
-	(function() {
+	$(function() {
 		'use strict'
 		// Fetch all the forms we want to apply custom Bootstrap validation styles to
 		var forms = document.querySelectorAll('.needs-validation')
@@ -115,8 +147,49 @@
 			}, false)
 		})
 	})()
+	
+	
+    $(function (){
+       $('#password').on('change', function(){
+           $('#passwordConfirm').attr('pattern', escapeRegExp($(this).val())); // $&은 일치한 문자열
+           console.log($('#passwordConfirm').attr('pattern'));
+           console.log( escapeRegExp($('#passwordConfirm').attr('pattern')));
+           
+       });
+
+       function escapeRegExp(string) {
+            return string.replace(/[.*+?$^{}()|[\]\\]/g, '\\$&'); // $&은 일치한 문자열 전체를 의미
+       }
+   	});
+	
+	
+
 </script>
 
+<script>
+   var tel01 = null;
+   var tel02 = null;
+   var tel03 = null;
+
+   $(function() {
+      $("#tel01").on("blur", function() {
+         if ($("#tel01").val() == '') {
+            $("#tel01").val('010');
+         }
+         return false;
+      })
+   })
+
+   $(function() {
+      $("#tel03").on("blur", function() {
+         tel01 = $("#tel01").val();
+         tel02 = $("#tel02").val();
+         tel03 = $("#tel03").val();
+         $("#tel").val(tel01 + tel02 + tel03);
+         return false;
+      })
+   })
+</script>
 
 <!-- sub contents end -->
 

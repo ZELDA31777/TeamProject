@@ -36,16 +36,16 @@ public class UserController {
 	
 	@PostMapping("/user/user_register_pro.do")
 	public String user_register_pro(UserVO uvo,RedirectAttributes rttr) {
-		String inputPass = pwencoder.encode(uvo.getPasswd());
-		uvo.setPasswd(inputPass);
+		String inputPass = pwencoder.encode(uvo.getPassword());
+		uvo.setPassword(inputPass);
 		service.userRegister(uvo);
 		return "redirect:/";
 	}
 	
-	@PostMapping("/user/user_register_cor_pro")
+	@PostMapping("/user/user_register_cor_pro.do")
 	public String user_register_cor_pro(UserVO uvo, CorVO cvo, RedirectAttributes rttr) {
-		String inputPass = pwencoder.encode(uvo.getPasswd());
-		uvo.setPasswd(inputPass);
+		String inputPass = pwencoder.encode(uvo.getPassword());
+		uvo.setPassword(inputPass);
 		service.corRegister(uvo, cvo);
 		return "redirect:/";
 	}
