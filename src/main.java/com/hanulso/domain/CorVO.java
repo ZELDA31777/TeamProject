@@ -4,11 +4,12 @@ import lombok.Data;
 
 @Data
 public class CorVO {
-	private String email;
+	private String username;
 	private String corname;
 	private String cornum;
 	private String tel;
 	private String addr;
-	private String img;
+	private String profile;
+	private String name;
 	
 }

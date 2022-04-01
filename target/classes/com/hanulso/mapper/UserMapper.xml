@@ -7,18 +7,19 @@
 	
 
 	<insert id="user_insert">
-		insert into one_user (email, passwd, nickname, grade, favorite, active)
-		values(#{email},#{passwd},#{nickname},'ROLE_USER',#{favorite},#{active})
+		insert into one_user (username, password, nickname, grade, favorite, active)
+		values(#{username},#{password},#{nickname},'ROLE_USER',#{favorite},#{active})
 	</insert>
 	
+	
 	<insert id="cor_insert_1st">
-		insert into one_user (email, passwd, nickname, grade, favorite, active)
-		values(#{email},#{passwd},#{nickname},'ROLE_MEMBER',#{favorite},#{active})
+		insert into one_user (username, password, nickname, grade, favorite, active)
+		values(#{username},#{password},#{nickname},'ROLE_MEMBER',#{favorite},#{active})
 	</insert>
 	
 	<insert id="cor_insert_2nd">
-		insert into one_cor (email,corname,cornum,tel,addr,name)
-		values(#{email},#{corname},#{cornum},#{tel},#{addr},#{name})
+		insert into one_cor (username,corname,cornum,tel,addr,profile,name)
+		values(#{username},#{corname},#{cornum},#{tel},#{addr},#{profile},#{name})
 	</insert>
 
 </mapper>

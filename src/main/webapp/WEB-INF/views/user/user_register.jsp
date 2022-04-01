@@ -21,8 +21,8 @@
 				<h2>원픽 서비스 이용을 위해 아래 정보를 입력해주세요.</h2>
 				<div class="input-with-label__InputWrap-sc-1p3gkts-0 eVAGdp">
 					<label class="bDaqny">
-						<p class="label-text">이메일</p> <input type="text" name="email"
-						class="form-control kHDHPO" id="email"
+						<p class="label-text">이메일</p> <input type="text" name="username"
+						class="form-control kHDHPO" id="username"
 						placeholder="이메일 주소 입력"
 						pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
 						<div class="valid-feedback">확인되었습니다</div>
@@ -41,8 +41,8 @@
 				<div class="input-with-label__InputWrap-sc-1p3gkts-0 kYbOIJ">
 					<label class="input-with-label__Label-sc-1p3gkts-1 bDaqny">
 						<p class="label-text">비밀번호</p> <input type="password"
-						name="passwd" placeholder="비밀번호 입력" class="form-control kHDHPO"
-						id="passwd" minlength="8" required>
+						name="password" placeholder="비밀번호 입력" class="form-control kHDHPO"
+						id="password" minlength="8" required>
 						<div class="valid-feedback">확인되었습니다</div>
 						<div class="invalid-feedback">8자리 이상의 비밀번호를 입력해주십시오.</div>
 					</label>
@@ -81,7 +81,7 @@
    })()
   
     $(function (){
-        $('#passwd').on('change', function(){
+        $('#password').on('change', function(){
             $('#passwordConfirm').attr('pattern', escapeRegExp($(this).val())); // $&은 일치한 문자열
             console.log($('#passwordConfirm').attr('pattern'));
             console.log( escapeRegExp($('#passwordConfirm').attr('pattern')));
