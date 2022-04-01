@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.hanulso.domain.CorVO;
 import com.hanulso.domain.UserVO;
 import com.hanulso.service.UserService;
 
@@ -38,6 +39,14 @@ public class UserController {
 		String inputPass = pwencoder.encode(uvo.getPasswd());
 		uvo.setPasswd(inputPass);
 		service.userRegister(uvo);
+		return "redirect:/";
+	}
+	
+	@PostMapping("/user/user_register_cor_pro")
+	public String user_register_cor_pro(UserVO uvo, CorVO cvo, RedirectAttributes rttr) {
+		String inputPass = pwencoder.encode(uvo.getPasswd());
+		uvo.setPasswd(inputPass);
+		service.corRegister(uvo, cvo);
 		return "redirect:/";
 	}
 	

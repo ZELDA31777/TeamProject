@@ -10,5 +10,15 @@
 		insert into one_user (email, passwd, nickname, grade, favorite, active)
 		values(#{email},#{passwd},#{nickname},'ROLE_USER',#{favorite},#{active})
 	</insert>
+	
+	<insert id="cor_insert_1st">
+		insert into one_user (email, passwd, nickname, grade, favorite, active)
+		values(#{email},#{passwd},#{nickname},'ROLE_MEMBER',#{favorite},#{active})
+	</insert>
+	
+	<insert id="cor_insert_2nd">
+		insert into one_cor (email,corname,cornum,tel,addr,name)
+		values(#{email},#{corname},#{cornum},#{tel},#{addr},#{name})
+	</insert>
 
 </mapper>
