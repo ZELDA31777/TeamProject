@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.hanulso.domain.JusoVO;
+
 @Controller
 public class HomeController {
 
@@ -18,5 +20,10 @@ public class HomeController {
 	public String home(Locale locale, Model model) {
 		
 		return "index";
+	}
+	
+	@RequestMapping("/include/jusoPopup.do")
+	public void jusoPopup(JusoVO jusovo) {
+		
 	}
 }

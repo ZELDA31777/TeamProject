@@ -80,13 +80,142 @@
 </style>
 <!-- 양방향 슬라이더 끝 -->
 
+
+
+<!-- 마우스 오버 드롭다운 메뉴 css 시작 -->
+<style>
+.d1, .d2{
+	height: 100%;
+	width: 100%;
+	background-color: lawngreen;
+	position: relative;
+	
+}
+.d1btn, .d2btn {
+	border: 0;
+	height: 100%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.d1-content, .d2-content {
+	position: absolute;
+	visibility: hidden;
+	z-index: 1000;
+	background-color: #f1f1f1;
+	width: 50%;
+	top: 0px;
+	opacity: 0;
+}
+
+.d1-content .d1-link, .d2-content .d2-link {
+  color: black;
+  display: block;
+  padding: 0.8rem 1rem;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.d2-content {
+	position: absolute;
+	width: 100%;
+	left: 70%;
+}
+
+.d1-link:hover, .d2-link:hover {background-color: #6495ED;}
+
+.d1:hover .d1-content{
+	visibility: visible;
+	opacity: 1;
+	top: 100%;
+	transition: all 0.2s linear;
+}
+
+.d2:hover .d2-content {
+	visibility: visible;
+	opacity: 1;
+	left: 100%;
+	transition: all 0.2s linear;
+}
+
+/* map 영역 높이 계산 */
+#nav-tabContent {
+	height: calc(92.5vh - 1rem - 130px);
+}
+
+</style>
+<!-- 마우스 오버 드롭다운 메뉴 css 끝 -->
+
+
 <style>
 h4 { text-align: left; }
+
+/* header.jsp 의 로고 이미지 크기를 세로 기준으로 바꿔서 map 영역 높이 계산하기 쉽도록  */
+.navbar > .container-fluid > img { height: 7.5vh;}
+
+
 </style>
 
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-3" style="height:60px; background-color: red;">
+			<div class="col-3 p-0" style="height:60px; background-color: red;">
+				<!-- 지역 선택 시작 -->
+				<div class="d1">
+					<div class="d1btn">
+						<div class="align-self-center">지역 설정</div>
+					</div>
+					<div class="d1-content">
+						<div class="d1-link d2">
+							<div class="d2btn">
+								<div class="align-self-center">동구</div>
+							</div>
+							<div class="d2-content overflow-scroll" style="height: 30vh">
+								<div class="d2-link">가양1동</div>
+								<div class="d2-link">가양2동</div>
+								<div class="d2-link">대동</div>
+								<div class="d2-link">대청동</div>
+								<div class="d2-link">산내동</div>
+								<div class="d2-link">삼성동</div>
+								<div class="d2-link">성남동</div>
+								<div class="d2-link">신인동</div>
+								<div class="d2-link">용운동</div>
+								<div class="d2-link">용전동</div>
+								<div class="d2-link">자양동</div>
+								<div class="d2-link">중앙동</div>
+								<div class="d2-link">판암1동</div>
+								<div class="d2-link">판암2동</div>
+								<div class="d2-link">홍도동</div>
+								<div class="d2-link">효동</div>
+							</div>
+						</div>
+						<div class="d1-link d2">
+							<div class="d2btn">
+								<div class="align-self-center">중구</div>
+							</div>
+							<div class="d2-content overflow-scroll" style="height: 30vh">
+								<div class="d2-link">대사동</div>
+								<div class="d2-link">대흥동</div>
+								<div class="d2-link">목동</div>
+								<div class="d2-link">문창동</div>
+								<div class="d2-link">문화1동</div>
+								<div class="d2-link">문화2동</div>
+								<div class="d2-link">부사동</div>
+								<div class="d2-link">산성동</div>
+								<div class="d2-link">석교동</div>
+								<div class="d2-link">오류동</div>
+								<div class="d2-link">용두동</div>
+								<div class="d2-link">유천1동</div>
+								<div class="d2-link">유천2동</div>
+								<div class="d2-link">은행선화동</div>
+								<div class="d2-link">중천동</div>
+								<div class="d2-link">태평1동</div>
+								<div class="d2-link">태평2동</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- 지역 선택 끝 -->
 			</div>
 			<div class="col-9" style="background-color: green;">
 				<div class="row align-items-center h-100">
@@ -436,13 +565,13 @@ h4 { text-align: left; }
 	<div class="container-fluid" >
 		<div class="row">
 			<div class="col-3 p-0" >
-				<nav>
+				<nav style="height: 50px">
 					<div class="nav nav-tabs ps-3" id="nav-tab" role="tablist">
     					<button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">전체 방</button>
 						<button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">중개사무소</button>
 					</div>
 				</nav>
-				<div class="tab-content overflow-auto" id="nav-tabContent" style="height: calc(100vh - 211px);">
+				<div class="tab-content overflow-auto" id="nav-tabContent">
 					<div class="tab-pane fade show active h-100" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 						<!-- 지도에 표시되는 방 목록 시작-->
 						<div class="card w-100" >
@@ -534,6 +663,20 @@ h4 { text-align: left; }
 		</div>
 	</div>
 
+<!-- 마우스 오버 드롭다운 메뉴 script 시작 -->
+<script>
+	$(function(){
+		$("#selectGu").on("mouseover", function(){
+			$(this).trigger("click");
+		});
+		
+		
+	});
+</script>
+<!-- 마우스 오버 드롭다운 메뉴 script 끝 -->
+
+
+<!-- 양방향 슬라이더 script 시작 -->
 <script>
 	$(function(){
 		$("body").css("padding-bottom", "0");
@@ -597,10 +740,11 @@ h4 { text-align: left; }
 		}
 	});
 </script>
+<!-- 양방향 슬라이더 script 끝 -->
 
 <!-- 구글 지도 스크립트 시작 -->
 <script>
-	mapsApiKey = ; // 구글 맵 api key 입력
+	mapsApiKey = ''; // 구글 맵 api key 입력
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key="+mapsApiKey+"=initMap&v=weekly"
   async></script>

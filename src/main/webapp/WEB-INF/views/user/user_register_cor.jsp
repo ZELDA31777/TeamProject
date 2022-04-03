@@ -2,17 +2,26 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp"%>
 
-<noscript>
-	<div style="display: inline;">
-		<img height="1" width="1" style="border-style: none;" alt=""
-			src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/967706247/?value=1.00&amp;currency_code=KRW&amp;label=-DVwCMLN3FoQh424zQM&amp;guid=ON&amp;script=0" />
-	</div>
-</noscript>
+<style>
+.btn-bl {
+    color: #fff;
+    background: #186bb9;
+    border: 1px solid #186bb9;
+	display: inline-block;
+    height: 35px;
+    line-height: 34px;
+    min-width: 90px;
+    text-align: center;
+    padding: 0 10px;
+    vertical-align: middle;
+    font-size: 0.75rem;
+}
+</style>
 
 <!-- sub contents start -->
 <div class="container-fluid subcontent">
 	<div class="container" style="width: 50%">
-		<form class="needs-validation" method="post" action="/user/user_register_cor_pro.do" novalidate>
+		<form id="userForm" class="needs-validation" method="post" action="/user/user_register_cor_pro.do" novalidate>
 	        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 	        <input type="hidden" name="favorite" value="favorite_test_msg">
 	        <input type="hidden" name="active" value="active_test_msg">
@@ -40,13 +49,16 @@
 						name="password" placeholder="비밀번호 입력" class="form-control kHDHPO"
 						id="password" minlength="8" required>
 						<div class="valid-feedback">확인되었습니다</div>
-						<div class="invalid-feedback">비밀번호를 입력해주십시오.</div>
+						<div class="invalid-feedback">8자 이상의 비밀번호를 입력해주십시오.</div>
 					</label>
 				</div>
-				<input autocomplete="off" type="password" name="passwordConfirm"
-					placeholder="비밀번호 확인" id="passwordConfirm" class="input__Input-am2s7t-0 kHDHPO" value="">
 				<div class="eVAGdp">
-				<laber class="bDaqny"/>				
+					<laber class="bDaqny">
+						<input autocomplete="off" type="password" name="passwordConfirm"
+							placeholder="비밀번호 확인" id="passwordConfirm" class="form-control input__Input-am2s7t-0 kHDHPO" pattern="track51" required>
+						<div class="valid-feedback">비밀번호와 일치합니다.</div>
+						<div class="invalid-feedback">비밀번호와 일치하지 않습니다.</div>
+					</laber>
 				</div>
 				<div class="input-with-unit__InputWrap-sc-1e4qgti-0 eVAGdp">
 					<label class="bDaqny">
@@ -77,10 +89,29 @@
 					</label>
 				</div>
 				
-				<!-- 
-				##### 주소 검색 api 추가할 것 #####
-				-->
-				
+				<!-- 주소 검색 api 시작 -->
+				<div class="eVAGdp">
+					<div class="bDaqny">
+						<p class="label-text">중개사무소 위치</p>
+						<div class="row gy-3">
+							<div class="col-4">
+								<input type="text" class="kHDHPO w-100" id="addr01" readonly>
+							</div>
+							<div class="col-4">
+								<input type="text" class="kHDHPO w-100" id="addr02" readonly>
+							</div>
+							<div class="col-4">
+								<button class="btn-bl" type="button" onClick="goPopup()">주소 검색</button>
+							</div>
+							<div class="col-12">
+								<input type="text" class="form-control kHDHPO" id="addr03" required>
+								<div class="valid-feedback">확인되었습니다.</div>
+								<div class="invalid-feedback">주소를 입력해주세요.</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- 주소 검색 api 끝 -->
 				
 				
 				<!-- 
@@ -89,33 +120,32 @@
 			
 				
 				<div class="row">
-				<div class="input-with-unit__InputWrap-sc-1e4qgti-0 eVAGdp col-md-3">
+				<div class="input-with-unit__InputWrap-sc-1e4qgti-0 eVAGdp col-md-3 mb-0">
 					<label class="bDaqny">
 						<p class="label-text">연락처</p> <input type="text" name="tel01"
 						id="tel01" placeholder="010"
-						class="form-control telINPO" maxlength="3" required>
+						class="form-control telINPO" maxlength="3" pattern="[0-9]{2,3}" required>
 					</label>
 				</div>
-				<div class="input-with-unit__InputWrap-sc-1e4qgti-0 eVAGdp col-md-3">
+				<div class="input-with-unit__InputWrap-sc-1e4qgti-0 eVAGdp col-md-3 mb-0">
 					<label class="bDaqny">
 						<p class="label-text">&nbsp;</p> <input type="text" name="tel02"
-						id="tel02" placeholder="010"
-						class="form-control telINPO" maxlength="4" required>
+						id="tel02" class="form-control telINPO" maxlength="4" pattern="[0-9]{3,4}" required>
 					</label>
 				</div>
-				<div class="input-with-unit__InputWrap-sc-1e4qgti-0 eVAGdp col-md-3">
+				<div class="input-with-unit__InputWrap-sc-1e4qgti-0 eVAGdp col-md-3 mb-0">
 					<label class="bDaqny">
 						<p class="label-text">&nbsp;</p> <input type="text" name="tel03"
-						id="tel03" placeholder="010"
-						class="form-control telINPO" maxlength="4" required>
-					</label>
-					<label class="bDaqny">
-					<div class="valid-feedback">확인되었습니다</div>
-					<div class="invalid-feedback">연락처를 입력해주십시오.</div>
+						id="tel03" class="form-control telINPO" maxlength="4" pattern="[0-9]{4}" required>
 					</label>
 
 				</div>
-				
+				<div>
+					<label class="bDaqny">
+						<div class="valid-feedback" id="telValid">확인되었습니다</div>
+						<div class="invalid-feedback" id="telInvalid">연락처를 입력해주십시오.</div>
+					</label>
+				</div>
 				<!-- 주소 확인할 것 !  -->
 				
 				
@@ -129,7 +159,7 @@
 	</div>
 </div>
 
-
+<script src="/resources/js/juso_api.js"></script>
 <script>
 	$(function() {
 		'use strict'
@@ -143,10 +173,18 @@
 					event.preventDefault()
 					event.stopPropagation()
 				}
+				if(document.getElementById("tel01").validity.valid && document.getElementById("tel02").validity.valid && document.getElementById("tel03").validity.valid) {
+		    		  /* 전화번호 3개가 모두 올바르게 입력된 경우 */
+		    		  $("#telInvalid").css("display", "none");
+		    		  $("#telValid").css("display", "block");
+		    	  } else {
+		    		  $("#telValid").css("display", "none");
+		    		  $("#telInvalid").css("display", "block");
+		    	  }
 				form.classList.add('was-validated')
 			}, false)
 		})
-	})()
+	});
 	
 	
     $(function (){
@@ -178,9 +216,7 @@
          }
          return false;
       })
-   })
-
-   $(function() {
+      
       $("#tel03").on("blur", function() {
          tel01 = $("#tel01").val();
          tel02 = $("#tel02").val();
@@ -188,7 +224,21 @@
          $("#tel").val(tel01 + tel02 + tel03);
          return false;
       })
+      
+      $("#tel01, #tel02, #tel03").on("input", function() {
+    	  if ($("#userForm").hasClass("was-validated")) {
+	    	  if(document.getElementById("tel01").validity.valid && document.getElementById("tel02").validity.valid && document.getElementById("tel03").validity.valid) {
+	    		  /* 전화번호 3개가 모두 올바르게 입력된 경우 */
+	    		  $("#telInvalid").css("display", "none");
+	    		  $("#telValid").css("display", "block");
+	    	  } else {
+	    		  $("#telValid").css("display", "none");
+	    		  $("#telInvalid").css("display", "block");
+	    	  }
+    	  }
+      })
    })
+   
 </script>
 
 <!-- sub contents end -->
