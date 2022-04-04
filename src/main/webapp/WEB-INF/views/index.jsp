@@ -103,6 +103,12 @@
 </div>
 <!-- Carousel 끝 -->
 
+					<<sec:authorize access="isAuthenticated()">
+					<p><sec:authentication property="principal"/></p>
+					<p><sec:authentication property="principal.user"/></p>
+					<p><sec:authentication property="principal.user.cor.username"/></p>
+					</sec:authorize>
+
 
 <!-- 인기매물 시작 (수정) -->
 <div class="container-fluid">

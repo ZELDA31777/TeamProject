@@ -23,8 +23,8 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 		authentication.getAuthorities().forEach(authority ->{
 			grade.add(authority.getAuthority());
 		});
-		
-		if(grade.contains("ROLE_ADMIN")) {
+
+		if(grade.contains("ROLE_ADMIN") || grade.contains("ROLE_SUPER_ADMIN")) {
 			response.sendRedirect("/admin/manage/admin_cor_list.do");
 			return;
 		}

@@ -20,6 +20,10 @@ public class CustomUserDetailsService implements UserDetailsService{
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		UserVO uvo = mapper.user_select(username);
+		if(uvo.getGrade().contains("ROLE_MEMBER")) {
+			uvo.setCor(mapper.member_select(username));
+		}
+			
 		log.warn("userMapper : " + uvo);
 		return uvo == null ? null : new CustomUserDetails(uvo);
 	}

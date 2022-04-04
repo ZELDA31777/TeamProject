@@ -134,11 +134,19 @@
 </div> 
 <!-- 예시 끝 --> 
   
-<div align="right">
-<form>
-<button class="btn btn-primary" style="margin:5px;">선택회원 삭제</button>
-</form>
-</div>
+	<div class="container">
+		<div align="right">
+			<form name="adminRegisterJsp" action="/user/user_register_admin.do" method="get">
+				<button class="btn btn-primary" style="margin:5px;">새 관리자 등록</button>
+			</form>
+		</div>
+	
+		<div align="right">
+			<form>
+				<button class="btn btn-primary" style="margin:5px;">선택회원 삭제</button>
+			</form>
+		</div>
+	</div>
 
 <div class="paging" align="center" style="margin:2%;">
 	<a href=""><i class="fa  fa-angle-double-left"></i></a>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 
 <!-- 부트스트랩 합치기 -->
@@ -60,23 +61,46 @@
         <!-- 네비 목록 시작 -->
 				<div class="collapse navbar-collapse justify-content-end mynavbar" id="navbarsExample04">
 					<ul class="navbar-nav mb-2 mb-md-0">
-						<li class="nav-item"><a class="nav-link" href="/admin/manage/admin_cor_list.do">중개사 회원관리</a></li>
-						<li class="nav-item"><a class="nav-link" href="/admin/manage/admin_user_list.do">일반 회원관리</a></li>
-						<li class="nav-item"><a class="nav-link" href="/map/map_view.do">지도</a></li>
-						<li class="nav-item"><a class="nav-link" href="/favorite/looked_room.do">관심목록</a></li>
-						<li class="nav-item"><a class="nav-link" href="/alert/alert_list.do">알림</a></li>
-						<li class="nav-item"><a class="nav-link" href="/user/user_login.do">로그인</a>
-						<!-- 
-						<li class="nav-item"><a class="nav-link" href="">로그아웃</a>
-						 -->
+					
+						<sec:authorize access="hasAnyRole('ADMIN' , 'SUPER_ADMIN')">
+							<li class="nav-item"><a class="nav-link" href="/admin/manage/admin_cor_list.do">중개사 회원관리</a></li>
+							<li class="nav-item"><a class="nav-link" href="/admin/manage/admin_user_list.do">일반 회원관리</a></li>
+						</sec:authorize>
+						
+						<sec:authorize access="hasAnyRole('USER' , 'MEMBER')">
+							<li class="nav-item"><a class="nav-link" href="/map/map_view.do">지도</a></li>
+							<li class="nav-item"><a class="nav-link" href="/favorite/looked_room.do">관심목록</a></li>
+							<li class="nav-item"><a class="nav-link" href="/alert/alert_list.do">알림</a></li>
+						</sec:authorize>
+						
+						<sec:authorize access="isAnonymous()">
+							<li class="nav-item"><a class="nav-link" href="/map/map_view.do">지도</a></li>
+							<li class="nav-item"><a class="nav-link" href="/favorite/looked_room.do">관심목록</a></li>
+							<li class="nav-item"><a class="nav-link" href="/alert/alert_list.do">알림</a></li>
+							<li class="nav-item"><a class="nav-link" href="/user/user_login.do">로그인</a>
+						</sec:authorize>
+						
+						<sec:authorize access="isAuthenticated()">
+						<form name="lg" action="/user/user_logout.do" method="post">
+							<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
+							<li class="nav-item"><a class="nav-link" href="javascript:lgSend()" >로그아웃</a>
 						</li>
-						<li class="nav-item dropdown"><a
-							class="nav-link dropdown-toggle" href="#" id="dropdown04"
-							data-bs-toggle="dropdown" aria-expanded="false">회원가입</a>
-							<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown04">
-								<li><a class="dropdown-item" href="/user/user_register.do">일반회원</a></li>
-								<li><a class="dropdown-item" href="/user/user_register_cor.do">중개사 회원</a></li>
-							</ul></li>
+						</form>
+						</sec:authorize>
+						
+						
+						
+						<sec:authorize access="isAnonymous()">
+							<li class="nav-item dropdown"><a
+								class="nav-link dropdown-toggle" href="#" id="dropdown04"
+								data-bs-toggle="dropdown" aria-expanded="false">회원가입</a>
+								<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown04">
+									<li><a class="dropdown-item" href="/user/user_register.do">일반회원</a></li>
+									<li><a class="dropdown-item" href="/user/user_register_cor.do">중개사 회원</a></li>
+								</ul>
+							</li>
+						</sec:authorize>
+						
 					</ul>
 				</div>
         <!-- 네비 목록 끝 -->
@@ -86,3 +110,9 @@
 		<!-- /.navbar-collapse -->
 	</div>
 	<!-- /.container-fluid -->
+	
+	<script>
+		function lgSend(){
+			lg.submit();
+		}	
+	</script>
