@@ -135,11 +135,13 @@
 <!-- 예시 끝 --> 
   
 	<div class="container">
+	<sec:authorize access="hasRole('SUPER_ADMIN')">
 		<div align="right">
 			<form name="adminRegisterJsp" action="/user/user_register_admin.do" method="get">
 				<button class="btn btn-primary" style="margin:5px;">새 관리자 등록</button>
 			</form>
 		</div>
+	</sec:authorize>
 	
 		<div align="right">
 			<form>
