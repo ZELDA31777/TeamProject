@@ -18,6 +18,7 @@
 	}
 }
 </style>
+<script src="/resources/js/juso_api.js"></script>
 
 <!-- Custom styles for this template -->
 <link
@@ -90,102 +91,48 @@
 
 
 			<h4 class="cBaPiP" style="margin-top: 35px;">가격정보</h4>
-			<div class="iOHiXt" style="list-style: none;">
-				<li>
-					<div class="row"
-						style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid rgb(245, 245, 245);">
-						<div class="iehkos col-md-3">월세</div>
-						<div class="gEjpOz col-md-9">
-							<input name="rent" placeholder="월세" id="rent"
-								class="styled__PriceInput-sc-1xx7qac-2 ceburN" value="">
-							<p class="styled__Won-sc-1xx7qac-4 ceMnZE">
-								만원<span>(예 월세 50만원)</span>
-							</p>
-						</div>
-
-					</div>
-				</li>
-				<li>
-					<div class="row"
-						style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid rgb(245, 245, 245);">
-						<div class="iehkos col-md-3">보증금</div>
-						<div class="gEjpOz col-md-9">
-							<input name="deposit" placeholder="보증금" id="deposit"
-								class="styled__PriceInput-sc-1xx7qac-2 ceburN" value="">
-							<p class="styled__Won-sc-1xx7qac-4 ceMnZE">
-								만원<span>(예 보증금 1000만원)</span>
-							</p>
-						</div>
-
-					</div>
-				</li>
-				<li>
-					<div class="row"
-						style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid rgb(245, 245, 245);">
-						<div class="iehkos col-md-3">관리비</div>
-						<div class="gEjpOz col-md-9">
-							<div>
-								<input name="manage" placeholder="관리비" id="manage"
-									class="ceburN" value=""> <label><input
-									type="checkbox" id="managebox"> 없음</label>
-								<p>별도 금액으로 부과되는 항목</p>
-								<p class="gray-700">전기료, 수도료, 가스사용료</p>
-							</div>
-						</div>
-					</div>
-				</li>
-				<li>
-					<div class="row"
-						style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid rgb(245, 245, 245);">
-						<div class="iehkos col-md-3">
-							<p>한달</p>
-							<p>예상 주거비용</p>
-						</div>
-						<div class="gEjpOz col-md-9">
-							<p id="month">
-								<br>
-							</p>
-							<p class="gray-700">월세 + 관리비</p>
-							<p class="body-3 gray-700">별도 금액으로 부과되는 항목 제외</p>
-						</div>
-					</div>
-				</li>
-			</div>
-
-			<p id="scrollspyHeading2"></p>
-			<div class="fCMewi">
-				<h4 class="styled__Title-sc-16d1qhz-2 cBaPiP">상세정보</h4>
+			<form name="pr_write" action="/product/prouct_write_pro.do" method="post">
+				<input type="hidden" name="addr" id="addr" value="addr_test_msg">
 				<div class="iOHiXt" style="list-style: none;">
 					<li>
 						<div class="row"
 							style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid rgb(245, 245, 245);">
-							<div class="iehkos col-md-3">방종류</div>
+							<div class="iehkos col-md-3">월세</div>
 							<div class="gEjpOz col-md-9">
-								<td class="kYmWlH">
-									<ul class="gMKyVw" style="list-style: none;">
-										<li><label class="blvQKJ"><input type="radio"
-												id="roomType" value="원룸" name="roomType" checked="checked">
-												<p>원룸</p></label></li>
-										<li><label class="blvQKJ"><input type="radio"
-												id="roomType" value="오피스텔" name="roomType">
-												<p>오피스텔</p></label></li>
-									</ul>
-								</td>
+								<input name="rent" placeholder="월세" id="rent"
+									class="styled__PriceInput-sc-1xx7qac-2 ceburN" value="">
+								<p class="styled__Won-sc-1xx7qac-4 ceMnZE">
+									만원<span>(예 월세 50만원)</span>
+								</p>
 							</div>
+
 						</div>
 					</li>
 					<li>
 						<div class="row"
 							style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid rgb(245, 245, 245);">
-							<div class="iehkos col-md-3">해당층/건물층</div>
+							<div class="iehkos col-md-3">보증금</div>
 							<div class="gEjpOz col-md-9">
-								<div class="row">
-									<div class="col-md-6">
-										<%@ include file="../include/floor.jsp"%>
-									</div>
-									<div class="col-md-6">
-										<%@ include file="../include/floor2.jsp"%>
-									</div>
+								<input name="deposit" placeholder="보증금" id="deposit"
+									class="styled__PriceInput-sc-1xx7qac-2 ceburN" value="">
+								<p class="styled__Won-sc-1xx7qac-4 ceMnZE">
+									만원<span>(예 보증금 1000만원)</span>
+								</p>
+							</div>
+
+						</div>
+					</li>
+					<li>
+						<div class="row"
+							style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid rgb(245, 245, 245);">
+							<div class="iehkos col-md-3">관리비</div>
+							<div class="gEjpOz col-md-9">
+								<div>
+									<input name="manage" placeholder="관리비" id="manage"
+										class="ceburN" value=""> <label><input
+										type="checkbox" id="managebox"> 없음</label>
+									<p>별도 금액으로 부과되는 항목</p>
+									<p class="gray-700">전기료, 수도료, 가스사용료</p>
 								</div>
 							</div>
 						</div>
@@ -193,75 +140,183 @@
 					<li>
 						<div class="row"
 							style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid rgb(245, 245, 245);">
-
-
-							<div class="iehkos col-md-3">전용/공급면적</div>
-
-							<div class="gEjpOz flex col-md-9">
-								<p>11.9m² / 16.52m²</p>
+							<div class="iehkos col-md-3">
+								<p>한달</p>
+								<p>예상 주거비용</p>
+							</div>
+							<div class="gEjpOz col-md-9">
+								<p id="month">
+									<br>
+								</p>
+								<p class="gray-700">월세 + 관리비</p>
+								<p class="body-3 gray-700">별도 금액으로 부과되는 항목 제외</p>
 							</div>
 						</div>
 					</li>
 					<li>
 						<div class="row"
 							style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid rgb(245, 245, 245);">
-							<div class="iehkos col-md-3">방 수/욕실 수</div>
+							<div class="iehkos col-md-3">
+								<p>주소 검색</p>
+							</div>
 							<div class="gEjpOz col-md-9">
-							<td class="kYmWlH">
-									<ul class="gMKyVw" style="list-style: none; padding-bottom:10px;">
-										<li><label class="blvQKJ"><input type="radio"
-												id="room" value="1" name="room" checked="checked">
-												<p>1개</p></label></li>
-										<li><label class="blvQKJ"><input type="radio"
-												id="room" value="2" name="room">
-												<p>2개</p></label></li>
-										<li><label class="blvQKJ"><input type="radio"
-												id="room" value="3" name="room">
-												<p>3개</p></label></li>
-									</ul>
-									
-									<ul class="gMKyVw" style="list-style: none;">
-										<li><label class="blvQKJ"><input type="radio"
-												id="shower" value="1" name="shower" checked="checked">
-												<p>1개</p></label></li>
-										<li><label class="blvQKJ"><input type="radio"
-												id="shower" value="2" name="shower">
-												<p>2개</p></label></li>
-										<li><label class="blvQKJ"><input type="radio"
-												id="shower" value="3" name="shower">
-												<p>3개</p></label></li>
-									</ul>
-								</td>
-							
-							
+								<!-- 주소 검색 api 시작 -->
+								<div class="eVAGdp">
+									<div class="bDaqny">
+										<p class="label-text">방 위치</p>
+										<div class="row gy-3">
+											<div class="col-4">
+												<input type="text" class="kHDHPO w-100" id="addr01" readonly>
+											</div>
+											<div class="col-4">
+												<input type="text" class="kHDHPO w-100" id="addr02" readonly>
+											</div>
+											<div class="col-4">
+												<button class="btn-bl" type="button" onClick="goPopup()">주소
+													검색</button>
+											</div>
+											<div class="col-12">
+												<input type="text" class="form-control kHDHPO" id="addr03"
+													required>
+												<div class="valid-feedback">확인되었습니다.</div>
+												<div class="invalid-feedback">주소를 입력해주세요.</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- 주소 검색 api 끝 -->
 							</div>
 						</div>
 					</li>
-				</div>
-			</div>
-
-			<div class="fCMewi">
-				<p id="scrollspyHeading3"></p>
-				<h4 class="styled__Title-sc-16d1qhz-2 cBaPiP">옵션</h4>
-				<div class="iOHiXt" style="list-style: none;">
-
-					<p>이미지 첨부 영역</p>
 
 				</div>
-			</div>
-			<div class="fCMewi">
-				<p id="scrollspyHeading4"></p>
-				<h4 class="cBaPiP">상세설명</h4>
-				<div class="iOHiXt" style="list-style: none;">
-					<div class="styled__InfoWrap-sc-13shacj-0 jGAWeI">
-						<p class="title">대형풀옵션투룸동물가능</p>
-						<p class="styled__Memo-sc-13shacj-1 hhaHrn">가격도 착하게 월세 65만원입니다
-							!!! ㅎㅎ 잔여 1세대 남았습니다^^ 현재 공실입니다 관악구 지역 좋은방 많이 보유중입니다!! 제가 뛰어다니며
-							올리지 못한 방들도 아주 많습니다^^ 한반도하면 대한민국 대한민국 하면 한국에 중심 서울입니다 누구나 살고싶은 서울에
-							역세권입니다</p>
+
+				<p id="scrollspyHeading2"></p>
+				<div class="fCMewi">
+					<h4 class="styled__Title-sc-16d1qhz-2 cBaPiP">상세정보</h4>
+					<div class="iOHiXt" style="list-style: none;">
+						<li>
+							<div class="row"
+								style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid rgb(245, 245, 245);">
+								<div class="iehkos col-md-3">방종류</div>
+								<div class="gEjpOz col-md-9">
+									<td class="kYmWlH">
+										<ul class="gMKyVw" style="list-style: none;">
+											<li><label class="blvQKJ"><input type="radio"
+													id="roomType" value="0" name="roomType" checked="checked">
+													<p>원룸</p></label></li>
+											<li><label class="blvQKJ"><input type="radio"
+													id="roomType" value="1" name="roomType">
+													<p>오피스텔</p></label></li>
+										</ul>
+									</td>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="row"
+								style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid rgb(245, 245, 245);">
+								<div class="iehkos col-md-3">해당층/건물층</div>
+								<div class="gEjpOz col-md-9">
+									<div class="row">
+										<div class="col-md-6">
+											<%@ include file="../include/floor.jsp"%>
+										</div>
+										<div class="col-md-6">
+											<%@ include file="../include/floor2.jsp"%>
+										</div>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="row"
+								style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid rgb(245, 245, 245);">
+
+
+								<div class="iehkos col-md-3">면적</div>
+
+								<div class="gEjpOz flex col-md-9">
+									<input class="ceburN" type="text" id="cal1"
+										onkeyup="calculator(1);">평 - <input class="ceburN"
+										name="area" type="text" id="cal2" onkeyup="calculator(2);">m2
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="row"
+								style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid rgb(245, 245, 245);">
+								<div class="iehkos col-md-3">방 수/욕실 수</div>
+								<div class="gEjpOz col-md-9">
+									<td class="kYmWlH">
+										<ul class="gMKyVw"
+											style="list-style: none; padding-bottom: 10px;">
+											<li><label class="blvQKJ"><input type="radio"
+													id="room" value="1" name="room" checked="checked">
+													<p>1개</p></label></li>
+											<li><label class="blvQKJ"><input type="radio"
+													id="room" value="2" name="room">
+													<p>2개</p></label></li>
+											<li><label class="blvQKJ"><input type="radio"
+													id="room" value="3" name="room">
+													<p>3개</p></label></li>
+										</ul>
+
+										<ul class="gMKyVw" style="list-style: none;">
+											<li><label class="blvQKJ"><input type="radio"
+													id="shower" value="1" name="shower" checked="checked">
+													<p>1개</p></label></li>
+											<li><label class="blvQKJ"><input type="radio"
+													id="shower" value="2" name="shower">
+													<p>2개</p></label></li>
+											<li><label class="blvQKJ"><input type="radio"
+													id="shower" value="3" name="shower">
+													<p>3개</p></label></li>
+										</ul>
+									</td>
+
+
+								</div>
+							</div>
+						</li>
 					</div>
 				</div>
-			</div>
+
+				<div class="fCMewi">
+					<p id="scrollspyHeading3"></p>
+					<h4 class="styled__Title-sc-16d1qhz-2 cBaPiP">풀옵션</h4>
+					<div class="iOHiXt" style="list-style: none;">
+						<td class="kYmWlH">
+							<ul class="gMKyVw"
+								style="list-style: none; padding-bottom: 10px;">
+								<li><label class="blvQKJ"><input type="radio"
+										id="fulloption" value="0" name="fulloption" checked="checked">
+										<p>선택</p></label></li>
+								<li><label class="blvQKJ"><input type="radio"
+										id="fulloption" value="1" name="fulloption">
+										<p>미선택</p></label></li>
+							</ul>
+							<p class="styled__WarningText-sc-1xx7qac-8 dYdtIp">
+								<svg width="18" height="18" viewBox="0 0 25 25">
+									<g fill="none" fill-rule="evenodd">
+									<circle cx="12.6" cy="12.6" r="12.6" fill="#E6E7EA"></circle>
+									<path fill="#9C9EA3"
+										d="M12.596 18.9a1.05 1.05 0 1 1 0-2.1 1.05 1.05 0 0 1 0 2.1zm.014-3.498c-.888 0-1.05-7.629-1.05-8.402 0-.773.47-1.4 1.05-1.4.58 0 1.05.627 1.05 1.4 0 .773-.162 8.402-1.05 8.402z"></path></g></svg>
+								풀옵션 항목은 세탁기, 냉장고, 에어컨, 가스레인지 또는 인덕션입니다.
+							</p>
+						</td>
+					</div>
+				</div>
+				<div class="fCMewi">
+					<p id="scrollspyHeading4"></p>
+					<h4 class="cBaPiP">상세설명</h4>
+					<div class="iOHiXt" style="list-style: none;">
+						<div class="jGAWeI">
+							<textarea name="contents" style="width: -webkit-fill-available;"></textarea>
+						</div>
+					</div>
+				</div>
+			</form>
 		</div>
 		<div class="col-md-4" style="margin-top: 80px">
 			<div class="position-sticky" style="top: 7rem;">
@@ -299,7 +354,7 @@
 									<path fill-rule="evenodd" clip-rule="evenodd"
 										d="M8 2C8.51284 2 8.93551 2.38604 8.99327 2.88338L9 3V14.999L21 15C21.4734 15 21.8699 15.3289 21.9736 15.7707L21.9933 15.8834L22 16V21C22 21.5128 21.614 21.9355 21.1166 21.9933L21 22H3C2.48716 22 2.06449 21.614 2.00673 21.1166L2 21V3C2 2.48716 2.38604 2.06449 2.88338 2.00673L3 2H8ZM8.708 15.998L3.706 21H9V18.875C9 18.5989 9.22386 18.375 9.5 18.375C9.74546 18.375 9.94961 18.5519 9.99194 18.7851L10 18.875V21H12V18.875C12 18.5989 12.2239 18.375 12.5 18.375C12.7455 18.375 12.9496 18.5519 12.9919 18.7851L13 18.875V21H15V18.875C15 18.5989 15.2239 18.375 15.5 18.375C15.7455 18.375 15.9496 18.5519 15.9919 18.7851L16 18.875V21H18V18.875C18 18.5989 18.2239 18.375 18.5 18.375C18.7455 18.375 18.9496 18.5519 18.9919 18.7851L19 18.875V21H21V16L8.708 15.998ZM3 3H8V15.292L3 20.292V15H5.125L5.21488 14.9919C5.44812 14.9496 5.625 14.7455 5.625 14.5C5.625 14.2239 5.40114 14 5.125 14H3V12H5.125L5.21488 11.9919C5.44812 11.9496 5.625 11.7455 5.625 11.5C5.625 11.2239 5.40114 11 5.125 11H3V9H5.125L5.21488 8.99194C5.44812 8.94961 5.625 8.74546 5.625 8.5C5.625 8.22386 5.40114 8 5.125 8H3V6H5.125L5.21488 5.99194C5.44812 5.94961 5.625 5.74546 5.625 5.5C5.625 5.22386 5.40114 5 5.125 5H3V3Z"
 										fill="#222222"></path></svg>
-								<span>62.81㎡</span>
+								<span id="area2">0</span><span>㎡</span>
 							</div></li>
 						<li><div class="styled__Item-cvrpi1-9 fYSHvV left">
 								<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -307,9 +362,8 @@
 									<path fill-rule="evenodd" clip-rule="evenodd"
 										d="M16 1C16.5128 1 16.9355 1.38604 16.9933 1.88338L17 2V22C17 22.5128 16.614 22.9355 16.1166 22.9933L16 23H1C0.487164 23 0.0644928 22.614 0.00672773 22.1166L0 22V2C0 1.48716 0.38604 1.06449 0.883379 1.00673L1 1H16ZM8 2H1V22H8V2ZM9 2H16V22H9V2ZM19.7843 13.5886L19.8536 13.6464L21.25 15.043L22.6464 13.6464C22.82 13.4729 23.0894 13.4536 23.2843 13.5886L23.3536 13.6464C23.5271 13.82 23.5464 14.0894 23.4114 14.2843L23.3536 14.3536L21.25 16.4571L19.1464 14.3536C18.9512 14.1583 18.9512 13.8417 19.1464 13.6464C19.32 13.4729 19.5894 13.4536 19.7843 13.5886ZM23.3585 9.45146L21.25 7.28272L19.1415 9.45146L19.0846 9.52152C18.9524 9.71827 18.9755 9.98739 19.1515 10.1585L19.2215 10.2154C19.4183 10.3476 19.6874 10.3245 19.8585 10.1485L21.25 8.717L22.6415 10.1485L22.7099 10.2074C22.9029 10.3451 23.1725 10.3296 23.3485 10.1585C23.5465 9.966 23.551 9.64945 23.3585 9.45146Z"
 										fill="#222222"></path></svg>
-								<span id="totalfloor2">1층</span>
-								<span>/</span>
-								<span id="floor2">1층</span>
+								<span id="totalfloor2">1층</span> <span>/</span> <span
+									id="floor2">1층</span>
 							</div>
 							<div class="styled__Item-cvrpi1-9 fYSHvV">
 								<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -321,11 +375,15 @@
 							</div></li>
 						<li class="kRCkkj"><div>
 								<p class="title">방/욕실</p>
-								<p class="content"><span id="room2">1</span><span>개</span> / <span id="shower2">1</span>개</p>
+								<p class="content">
+									<span id="room2">1</span><span>개</span> / <span id="shower2">1</span>개
+								</p>
 							</div>
 							<div>
 								<p class="title">위치</p>
-								<p class="content">서울특별시 관악구 신림동</p>
+								<p class="content">
+									<span id="addrprint">위치 주소 값</span>
+								</p>
 							</div></li>
 					</ul>
 					<div class="styled__LessorWrap-cvrpi1-13 jVGbJb">
@@ -334,23 +392,10 @@
 						</div>
 					</div>
 					<div class="styled__BtnWrap-cvrpi1-15 brpHbd">
-						<button color="blue" class="button__Button-sc-153m1au-0 fiEZwu">
+						<button color="blue" class="fiEZwu" onClick="">
 							<span><span>연락처보기</span></span>
 						</button>
 						<div class="styled__FavoriteBtn-cvrpi1-16 ceYkeN">
-							<button class="styled__LikeBtn-jmubsw-1 ezZqwh">
-								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-									viewBox="0 0 24 24">
-									<g fill="none" fill-rule="evenodd">
-									<g stroke="#222" stroke-width="1.5">
-									<g>
-									<g>
-									<g>
-									<path
-										d="M12.945 3.518c2.096-2.028 5.423-2.028 7.518 0l.117.117c1.945 2.01 1.892 5.215-.117 7.16h0l-3.768 3.646-4.699 4.548-3.752-3.631-.016-.015-4.699-4.548c-2.009-1.945-2.061-5.15-.116-7.16l.116-.117h0c2.096-2.028 5.423-2.028 7.518 0l.949.92z"
-										transform="translate(-250 -216) translate(250 121) translate(0 92) translate(0 3)"></path></g></g></g></g></g></svg>
-								<span class="styled__CntText-jmubsw-2 iXjxft">2</span>
-							</button>
 						</div>
 					</div>
 				</div>
@@ -410,7 +455,6 @@
 		})
 	})
 
-	
 	$(function() {
 		$("#deposit").on("blur", function() {
 			deposit = $("#deposit").val();
@@ -424,7 +468,7 @@
 			manage = $("#manage").val();
 			manage = parseInt(manage);
 			$("#manage2").text(manage);
-			$("#month").text(rent+manage);
+			$("#month").text(rent + manage);
 			return false;
 		})
 	})
@@ -434,37 +478,66 @@
 		$("#roomType2").text(inputValue);
 		return false;
 	});
-	
-	$('input[name="room"]').change(function(){
-		var inputValue=$(this).val();
+
+	$('input[name="room"]').change(function() {
+		var inputValue = $(this).val();
 		$("#room2").text(inputValue);
 		return false;
 	})
-	
-	$('input[name="shower"]').change(function(){
-		var inputValue=$(this).val();
+
+	$('input[name="shower"]').change(function() {
+		var inputValue = $(this).val();
 		$("#shower2").text(inputValue);
 		return false;
 	})
-	
-	$(function(){
-		$("#totalfloor").on("change", function(){
+
+	$(function() {
+		$("#totalfloor").on("change", function() {
 			var floor = $("#totalfloor option:selected").text();
 			$("#totalfloor2").text(floor);
 			return false;
 		})
 	})
-	
-	$(function(){
-		$("#floor").on("change", function(){
+
+	$(function() {
+		$("#floor").on("change", function() {
 			var floor = $("#floor option:selected").text();
 			$("#floor2").text(floor);
 			return false;
 		})
 	})
+
+	$(function() {
+		$("#addr01").on("propertychange change keyup paste input", function() {
+			var inputValue = $("#addr").val(); // value
+			$("#addrprint").text(inputValue);
+		})
+	})
+
+	function calculator(chk) {
+		if (chk == 1) {
+			document.getElementById('cal2').value = parseFloat(document
+					.getElementById('cal1').value) * 3.3058;
+		} else {
+			document.getElementById('cal1').value = parseFloat(document
+					.getElementById('cal2').value) / 3.3058;
+		}
+	}
+
+	$(function() {
+		$("#cal2").on("propertychange change keyup paste input", function() {
+			var inputValue = $("#cal2").val(); // value
+			$("#area2").text(inputValue);
+		})
+	})
 	
+	function write(){
+		pr_write.submit();
+	}
 </script>
 <!-- 스크롤 스파이 navar 관련 script 끝 -->
+
+
 
 </body>
 

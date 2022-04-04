@@ -25,6 +25,7 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,jibunA
 		
 		$("#addr03").val(addr3);
 		$("#addr").val(roadFullAddr);
+		$("#addr01").change();
 	} else {
 		alert("대전광역시 지역만 입력가능합니다.");
 	}
