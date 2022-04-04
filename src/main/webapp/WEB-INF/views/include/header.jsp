@@ -60,10 +60,15 @@
         <!-- 네비 목록 시작 -->
 				<div class="collapse navbar-collapse justify-content-end mynavbar" id="navbarsExample04">
 					<ul class="navbar-nav mb-2 mb-md-0">
+						<li class="nav-item"><a class="nav-link" href="/admin/manage/admin_cor_list.do">중개사 회원관리</a></li>
+						<li class="nav-item"><a class="nav-link" href="/admin/manage/admin_user_list.do">일반 회원관리</a></li>
 						<li class="nav-item"><a class="nav-link" href="/map/map_view.do">지도</a></li>
 						<li class="nav-item"><a class="nav-link" href="/favorite/looked_room.do">관심목록</a></li>
 						<li class="nav-item"><a class="nav-link" href="/alert/alert_list.do">알림</a></li>
 						<li class="nav-item"><a class="nav-link" href="/user/user_login.do">로그인</a>
+						<!-- 
+						<li class="nav-item"><a class="nav-link" href="">로그아웃</a>
+						 -->
 						</li>
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#" id="dropdown04"
