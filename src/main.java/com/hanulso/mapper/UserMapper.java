@@ -11,5 +11,6 @@ public interface UserMapper {
 	public void cor_insert_1st(UserVO uvo);
 	public void cor_insert_2nd(CorVO uvo);
 	
+	public UserVO user_select(String username);
 	
 }

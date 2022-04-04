@@ -38,6 +38,71 @@
 						<div class="invalid-feedback">닉네임을 입력해주십시오.</div>
 					</label>
 				</div>
+				
+				<div class="input-with-unit__InputWrap-sc-1e4qgti-0 cgniMn">
+					<label class="input-with-label__Label-sc-1p3gkts-1 bDaqny">
+						<p class="label-text">관심지역설정</p> <input type="text" name="favorite"
+						id="favorite" placeholder="한글 또는 영문만 가능"
+						class="kHDHPO">
+					</label>
+									<!-- 지역 선택 시작 --> <!-- select 로 바꿀것 -->
+				<div class="d1">
+					<div class="d1btn">
+						<div class="align-self-center">지역 설정</div>
+					</div>
+					<div class="d1-content">
+						<div class="d1-link d2">
+							<div class="d2btn">
+								<div class="align-self-center">동구</div>
+							</div>
+							<div class="d2-content overflow-scroll" style="height: 30vh">
+								<div class="d2-link">가양1동</div>
+								<div class="d2-link">가양2동</div>
+								<div class="d2-link">대동</div>
+								<div class="d2-link">대청동</div>
+								<div class="d2-link">산내동</div>
+								<div class="d2-link">삼성동</div>
+								<div class="d2-link">성남동</div>
+								<div class="d2-link">신인동</div>
+								<div class="d2-link">용운동</div>
+								<div class="d2-link">용전동</div>
+								<div class="d2-link">자양동</div>
+								<div class="d2-link">중앙동</div>
+								<div class="d2-link">판암1동</div>
+								<div class="d2-link">판암2동</div>
+								<div class="d2-link">홍도동</div>
+								<div class="d2-link">효동</div>
+							</div>
+						</div>
+						<div class="d1-link d2">
+							<div class="d2btn">
+								<div class="align-self-center">중구</div>
+							</div>
+							<div class="d2-content overflow-scroll" style="height: 30vh">
+								<div class="d2-link">대사동</div>
+								<div class="d2-link">대흥동</div>
+								<div class="d2-link">목동</div>
+								<div class="d2-link">문창동</div>
+								<div class="d2-link">문화1동</div>
+								<div class="d2-link">문화2동</div>
+								<div class="d2-link">부사동</div>
+								<div class="d2-link">산성동</div>
+								<div class="d2-link">석교동</div>
+								<div class="d2-link">오류동</div>
+								<div class="d2-link">용두동</div>
+								<div class="d2-link">유천1동</div>
+								<div class="d2-link">유천2동</div>
+								<div class="d2-link">은행선화동</div>
+								<div class="d2-link">중천동</div>
+								<div class="d2-link">태평1동</div>
+								<div class="d2-link">태평2동</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- 지역 선택 끝 -->
+				</div>
+				
 				<div class="input-with-label__InputWrap-sc-1p3gkts-0 kYbOIJ">
 					<label class="input-with-label__Label-sc-1p3gkts-1 bDaqny">
 						<p class="label-text">비밀번호</p> <input type="password"

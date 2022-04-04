@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp"%>
 
-
 <noscript>
 	<div style="display: inline;">
 		<img height="1" width="1" style="border-style: none;" alt=""
@@ -13,15 +12,15 @@
 <!-- sub contents start -->
 <div class="container-fluid subcontent">
 	<div class="container" style="width: 50%">
-		<form class="needs-validation" method="post" action="/login" novalidate>
+		<form class="needs-validation" method="post" novalidate>
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 			<div class="styled__Box-sc-1etb7tu-1 cubPeM">
 				<h1>로그인</h1>
 				<h2>원픽 서비스 이용을 위해 로그인해주세요.</h2>
 				<div class="input-with-label__InputWrap-sc-1p3gkts-0 eVAGdp">
 					<label class="bDaqny">
-						<p class="label-text">이메일</p> 
-						<input type="text" name="username" class="form-control kHDHPO" id="validationCustom01"
+						<p class="label-text">아이디</p> 
+						<input type="text" name="userid" class="form-control kHDHPO" id="validationCustom01"
 						placeholder="이메일 주소 입력"
 						pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
 						required>
@@ -59,16 +58,14 @@
 					type="submit" style="margin-top: 32px;">
 					<span> 확인 </span>
 				</button>
-				
-				<!-- 카카오로그인 -->
-				<a class="p-2" href="https://kauth.kakao.com/oauth/authorize?client_id=ec529ddcb0a1e3f154fc6847679fe18a&redirect_uri=http://localhost:8123/user/kakaoLogin.do&response_type=code">
-				<img src="/resources/images/kakao_login_button.png"></a>
-				
 			</div>
 		</form>
 	</div>
 </div>
 
+<script>
+	
+</script>
 
 <script>
 	(function() {
