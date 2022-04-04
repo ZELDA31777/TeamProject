@@ -16,6 +16,7 @@
     vertical-align: middle;
     font-size: 0.75rem;
 }
+
 </style>
 
 <!-- sub contents start -->
@@ -27,7 +28,7 @@
 	        <input type="hidden" name="active" value="active_test_msg">
 	        <input type="hidden" name="nickname" value="nickname_test_msg">
 	        <input type="hidden" name="tel" id="tel" value="">
-	        <input type="hidden" name="addr" value="addr_test_msg">
+	        <input type="hidden" name="addr" id="addr" value="addr_test_msg">
 	        <input type="hidden" name="profile" value="profile_test_msg">
 	        
 			<div class="styled__Box-sc-1etb7tu-1 cubPeM">
@@ -47,9 +48,9 @@
 					<label class="bDaqny">
 						<p class="label-text">비밀번호</p> <input type="password"
 						name="password" placeholder="비밀번호 입력" class="form-control kHDHPO"
-						id="password" minlength="8" required>
+						id="password" minlength="8" pattern="[A-Za-z0-9]{8,}" required>
 						<div class="valid-feedback">확인되었습니다</div>
-						<div class="invalid-feedback">8자 이상의 비밀번호를 입력해주십시오.</div>
+						<div class="invalid-feedback">8자 이상의 영어 대소문자, 숫자로만 비밀번호를 입력해주십시오.</div>
 					</label>
 				</div>
 				<div class="eVAGdp">
@@ -83,7 +84,7 @@
 					<label class="bDaqny">
 						<p class="label-text">사업자등록번호</p> <input type="text" name="cornum"
 						id="cornum" placeholder="-없이 숫자로만 입력해주세요"
-						class="form-control kHDHPO" maxlength="15" minlength="15" required>
+						class="form-control kHDHPO" maxlength="15" minlength="15" pattern="[0-9]{15}" required>
 						<div class="valid-feedback">확인되었습니다</div>
 						<div class="invalid-feedback">사업자등록번호를 입력해주십시오.</div>
 					</label>
@@ -173,6 +174,8 @@
 					event.preventDefault()
 					event.stopPropagation()
 				}
+
+				
 				if(document.getElementById("tel01").validity.valid && document.getElementById("tel02").validity.valid && document.getElementById("tel03").validity.valid) {
 		    		  /* 전화번호 3개가 모두 올바르게 입력된 경우 */
 		    		  $("#telInvalid").css("display", "none");
@@ -185,19 +188,12 @@
 			}, false)
 		})
 	});
-	
+
 	
     $(function (){
-       $('#password').on('change', function(){
-           $('#passwordConfirm').attr('pattern', escapeRegExp($(this).val())); // $&은 일치한 문자열
-           console.log($('#passwordConfirm').attr('pattern'));
-           console.log( escapeRegExp($('#passwordConfirm').attr('pattern')));
-           
-       });
-
-       function escapeRegExp(string) {
-            return string.replace(/[.*+?$^{}()|[\]\\]/g, '\\$&'); // $&은 일치한 문자열 전체를 의미
-       }
+    	$('#password').on('change', function(){
+            $('#passwordConfirm').attr('pattern', $(this).val());
+        });
    	});
 	
 	

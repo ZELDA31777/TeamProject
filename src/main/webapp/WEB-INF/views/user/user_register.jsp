@@ -107,16 +107,16 @@
 					<label class="input-with-label__Label-sc-1p3gkts-1 bDaqny">
 						<p class="label-text">비밀번호</p> <input type="password"
 						name="password" placeholder="비밀번호 입력" class="form-control kHDHPO"
-						id="password" minlength="8" required>
+						id="password" minlength="8" pattern="[A-Za-z0-9]{8,}" required>
 						<div class="valid-feedback">확인되었습니다</div>
-						<div class="invalid-feedback">8자리 이상의 비밀번호를 입력해주십시오.</div>
+						<div class="invalid-feedback">8자 이상의 영어 대소문자, 숫자로만 비밀번호를 입력해주십시오.</div>
 					</label>
 				</div>
 				<input autocomplete="off" type="password" name="passwordConfirm"
 					placeholder="비밀번호 확인" class="form-control input__Input-am2s7t-0 kHDHPO" value=""
           id="passwordConfirm" pattern="track51" required>
-          <div class="valid-feedback">입력한 비밀번호와 일치합니다.</div>
-          <div class="invalid-feedback">입력한 비밀번호와 일치하지 않습니다.</div>
+	          <div class="valid-feedback">입력한 비밀번호와 일치합니다.</div>
+	          <div class="invalid-feedback">입력한 비밀번호와 일치하지 않습니다.</div>
 				<button color="blue" class="button__Button-sc-153m1au-0 fiEZwu"
 					style="margin-top: 32px;">
 					<span> 확인 </span>
@@ -147,10 +147,7 @@
   
     $(function (){
         $('#password').on('change', function(){
-            $('#passwordConfirm').attr('pattern', escapeRegExp($(this).val())); // $&은 일치한 문자열
-            console.log($('#passwordConfirm').attr('pattern'));
-            console.log( escapeRegExp($('#passwordConfirm').attr('pattern')));
-            
+            $('#passwordConfirm').attr('pattern', $(this).val());
         });
 
         function escapeRegExp(string) {
