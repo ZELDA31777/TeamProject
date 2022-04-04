@@ -976,14 +976,13 @@ body p.bold {
 .brpHbd>button {
 	flex: 1 1 0%;
 }
-
-.fiEZwu {
+.fiEZwu3 {
 	display: inline-flex;
 	-webkit-box-align: center;
 	align-items: center;
 	-webkit-box-pack: center;
 	justify-content: center;
-	min-width: -webkit-fill-available;
+	min-width: 160px;
 	padding: 0px 16px;
 	font-weight: 700;
 	vertical-align: middle;
@@ -995,6 +994,18 @@ body p.bold {
 	color: rgb(255, 255, 255);
 	height: 56px;
 	flex: 0 0 auto;
+}
+
+
+.fiEZwu3 > span {
+    height: 24px;
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.fiEZwu3 > span {
+    flex: 0 0 auto;
+    display: block;
 }
 
 .fiEZwu > span {

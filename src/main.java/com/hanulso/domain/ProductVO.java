@@ -19,8 +19,8 @@ public class ProductVO {
 	private String addr1;
 	private String addr2;
 	private String addr3;
-	private int lat;
-	private int lng;
+	private double lat;
+	private double lng;
 	private String picture;
 	private String thumbnail;
 	private String contents;
@@ -28,5 +28,5 @@ public class ProductVO {
 	private int readcnt;
 	private Date regdate;
 	private Date selldate;
-	private String email;
+	private String username;
 }

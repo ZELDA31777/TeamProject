@@ -16,16 +16,14 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,jibunA
 	// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
 	
 	if (siNm.includes("대전광역시")) {
-		$("#addr01").val(sggNm);
-		$("#addr02").val(emdNm);
-		
+		$("#addr1").val(sggNm);
+		$("#addr2").val(emdNm);
 		var addr3 = roadAddrPart1.substring(roadAddrPart1.indexOf(sggNm)+sggNm.length+1);
 		if (addrDetail != "") addr3 += ", " + addrDetail;
 		addr3 += " "+roadAddrPart2;
-		
-		$("#addr03").val(addr3);
+		$("#addr3").val(addr3);
 		$("#addr").val(roadFullAddr);
-		$("#addr01").change();
+		$("#addr").change();
 	} else {
 		alert("대전광역시 지역만 입력가능합니다.");
 	}
