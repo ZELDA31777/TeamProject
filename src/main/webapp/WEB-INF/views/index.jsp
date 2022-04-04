@@ -103,9 +103,11 @@
 </div>
 <!-- Carousel 끝 -->
 
-					<<sec:authorize access="isAuthenticated()">
+					<sec:authorize access="isAuthenticated()">
 					<p><sec:authentication property="principal"/></p>
 					<p><sec:authentication property="principal.user"/></p>
+					</sec:authorize>
+					<sec:authorize access="hasRole('MEMBER')">
 					<p><sec:authentication property="principal.user.cor.username"/></p>
 					</sec:authorize>
 
