@@ -983,7 +983,7 @@ body p.bold {
 	align-items: center;
 	-webkit-box-pack: center;
 	justify-content: center;
-	min-width: 80px;
+	min-width: -webkit-fill-available;
 	padding: 0px 16px;
 	font-weight: 700;
 	vertical-align: middle;
@@ -1297,4 +1297,27 @@ body p.bold {
     outline: none;
     appearance: none;
     width: 170px;
+}
+
+.btn-bl {
+    color: #fff;
+    background: #186bb9;
+    border: 1px solid #186bb9;
+	display: inline-block;
+    height: 35px;
+    line-height: 34px;
+    min-width: 90px;
+    text-align: center;
+    padding: 0 10px;
+    vertical-align: middle;
+    font-size: 0.75rem;
+}
+
+.dYdtIp {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    margin-left: auto;
+    color: rgb(136, 136, 136);
+    font-size: 14px;
 }
