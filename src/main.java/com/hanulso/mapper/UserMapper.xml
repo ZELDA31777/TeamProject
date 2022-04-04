@@ -4,11 +4,15 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
 <mapper namespace="com.hanulso.mapper.UserMapper">
-	
 
 	<insert id="user_insert">
 		insert into one_user (username, password, nickname, grade, favorite, active)
-		values(#{username},#{password},#{nickname},'ROLE_USER',#{favorite},#{active})
+		values(#{username},#{password},#{nickname},'ROLE_SUPER_ADMIN',#{favorite},#{active})
+	</insert>
+	
+	<insert id="admin_insert">
+		insert into one_user (username, password, nickname, grade, favorite, active)
+		values(#{username},#{password},#{nickname},'ROLE_ADMIN',#{favorite},#{active})
 	</insert>
 	
 	
@@ -25,5 +29,43 @@
 	<select id="user_select" resultType="com.hanulso.domain.UserVO">
 		select * from one_user where username=#{username}
 	</select>
+	
+	<select id="member_select" resultType="com.hanulso.domain.CorVO">
+		select * from one_cor where username=#{username}
+	</select>
+	
+<!-- 	
+	<resultMap type="com.hanulso.domain.UserVO" id="userMap">
+		<id property="username" column="username"/>
+		<result property="username" column="username"/>
+		<result property="password" column="password"/>
+		<result property="nickname" column="nickname"/>
+		<result property="grade" column="garde"/>
+		<result property="favorite" column="favorite"/>
+		<result property="active" column="active"/>
+		<collection property="cor" resultMap="corMap"/>
+	</resultMap>
+	
+	<resultMap type="com.hanulso.domain.CorVO" id="corMap">
+		<result property="username" column="username"/>
+		<result property="corname" column="corname"/>
+		<result property="cornum" column="cornum"/>
+		<result property="tel" column="tel"/>
+		<result property="addr" column="addr"/>
+		<result property="profile" column="profile"/>
+		<result property="name" column="name"/>
+	</resultMap>
+		
+	<select id="member_select" resultMap="userMap">
+		select u.username, password, nickname, grade, favorite, active, corname, cornum, tel, addr, profile, name 
+		from one_user u full outer join one_cor c 
+		on u.username = c.username 
+		where u.username=#{username}
+	</select>
+ -->
+ 	
+	
 
+	
 </mapper>
+

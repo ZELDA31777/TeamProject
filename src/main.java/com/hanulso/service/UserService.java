@@ -12,9 +12,11 @@ public interface UserService {
 	
 	public void corRegister(UserVO uvo, CorVO cvo);
 	
-	public UserVO userLogin(UserVO uvo);
+	public void adminRegister(UserVO uvo);
 	
+	
+	// 카카오 로그인 관련
 	public String getAccessToken(String authorize_code);
-	
 	public HashMap<String, Object> getUserInfo(String access_Token);
+	
 }

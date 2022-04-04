@@ -11,14 +11,20 @@
 
 	<!-- /include 안의 파일들을 security 제외 (jusoPopup.jsp에서 post 방식으로 데이터를 주고받기때문에 필요) -->
 
+	<!-- /include 안의 파일들을 security 제외 (jusoPopup.jsp에서 post 방식으로 데이터를 주고받기때문에 필요) -->
+	<security:http pattern="/include/**" security="none"/>
 	<security:http>
 		<security:form-login login-page="/user/user_login.do" authentication-success-handler-ref="CustomLoginSuccess"/>
 		<security:intercept-url pattern="/user/user_login.do" access="permitAll"/>
-		<security:intercept-url pattern="/admin/manage/admin_cor_list.do" access="hasRole('ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/admin/manage/admin_cor_list.do" access="hasAnyRole('ROLE_ADMIN , ROLE_SUPER_ADMIN')"/>
+		<security:intercept-url pattern="/user/user_insert_admin.do" access="hasRole('ROLE_SUPER_ADMIN')"/> 
 	<!-- 
 		[[[ 둘 이상 접근 권한 ]]] 
 		<security:intercept-url pattern="/adm/admin_manager" access="hasAnyRole({'ROLE_ADMIN','ROLE_MEMBER'})"/>
 	 -->
+	 
+		<!-- 로그아웃 -->
+		<security:logout logout-url="/user/user_logout.do" invalidate-session="true" logout-success-url="/"/>
 	</security:http>
 	
 

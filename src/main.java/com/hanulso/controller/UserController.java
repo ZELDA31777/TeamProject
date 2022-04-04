@@ -32,6 +32,11 @@ public class UserController {
 	@GetMapping("/user_login.do")
 	public void user_login_form() {}
 	
+	@PostMapping("/user/user_logout.do")
+	public String userLogout() {
+		return "redirect:/";
+	}
+
 	@ResponseBody
 	@RequestMapping(value="/kakaoLogin.do", method = RequestMethod.GET, produces = "application/json")
 	public String kakaoLogin(@RequestParam(value = "code", required = false) String code) throws Exception{
@@ -54,6 +59,9 @@ public class UserController {
 	@GetMapping("/user_register_cor.do")
 	public void user_register_cor() {}
 	
+	@GetMapping("/user_register_admin.do")
+	public void user_register_admin() {}
+	
 	@GetMapping("/user_choose.do")
 	public void user_choose() {}
 	
@@ -70,6 +78,14 @@ public class UserController {
 		String inputPass = pwencoder.encode(uvo.getPassword());
 		uvo.setPassword(inputPass);
 		service.corRegister(uvo, cvo);
+		return "redirect:/";
+	}
+	
+	@PostMapping("/user_register_admin_pro.do")
+	public String user_register_admin_pro(UserVO uvo, RedirectAttributes rttr) {
+		String inputPass = pwencoder.encode(uvo.getPassword());
+		uvo.setPassword(inputPass);
+		service.adminRegister(uvo);
 		return "redirect:/";
 	}
 	

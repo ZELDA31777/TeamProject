@@ -13,4 +13,6 @@ public class UserVO {
 	private String favorite;
 	private String active;
 	
+	private CorVO cor;
+	
 }

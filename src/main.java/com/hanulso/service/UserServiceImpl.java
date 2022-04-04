@@ -39,30 +39,9 @@ public class UserServiceImpl implements UserService {
 		mapper.cor_insert_2nd(cvo);
 	}
 	
-//	@Override
-//	public UserVO user_select(String username, String password) {
-//		Map<String, Object> paramMap = new HashMap<String, Object>();
-//		paramMap.put("username", username);
-//		paramMap.put("password", password);
-//		
-//		return sqlSeseion.se;
-//	}
-	
-	
 	@Override
-	public UserVO userLogin(UserVO uvo) {
-		UserVO returnVO = null;
-		try {
-			returnVO = mapper.user_select(uvo.getUsername());
-			System.out.println(uvo.getUsername());
-			System.out.println(uvo.getPassword());
-		} catch (Exception e) {
-			e.printStackTrace();
-			returnVO = null;
-		}
-		return returnVO;
-		
-//		return mapper.user_select(uvo.getUsername(), uvo.getPassword());
+	public void adminRegister(UserVO uvo) {
+		mapper.admin_insert(uvo);
 	}
 	
    //토큰발급

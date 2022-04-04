@@ -11,6 +11,9 @@ import org.springframework.security.core.userdetails.User;
 
 import com.hanulso.domain.UserVO;
 
+import lombok.Getter;
+
+@Getter
 public class CustomUserDetails extends User{
 	
 	private static final long serialVersionUID = 1L;
