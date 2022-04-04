@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!-- ##### cor_view.jsp로 병합 후 삭제 예정 ##### -->
+<!-- ##### product_wirte.jsp로 병합 후 삭제 예정 ##### -->
 
 <%@ include file="../include/header.jsp"%>
 <style>
@@ -459,6 +459,12 @@
 	$(function() {
 		$("#rent").on("blur", function() {
 			rent = $("#rent").val();
+			if (isNaN(rent)) {
+				$("#rent").val("");
+				$("#rent").focus();
+				alert("숫자만 입력해주세요.");
+				return false;
+			} else if (rent == "") rent = 0;
 			$("#rent2").text(rent);
 			rent = parseInt(rent);
 			return false;
@@ -468,6 +474,12 @@
 	$(function() {
 		$("#deposit").on("blur", function() {
 			deposit = $("#deposit").val();
+			if (isNaN(deposit)) {
+				$("#deposit").val("");
+				$("#deposit").focus();
+				alert("숫자만 입력해주세요.");
+				return false;
+			} else if (deposit == "") deposit = 0;
 			$("#deposit2").text(deposit);
 			deposit = parseInt(deposit);
 			return false;
@@ -476,6 +488,12 @@
 	$(function() {
 		$("#manage").on("propertychange change keyup paste input", function() {
 			manage = $("#manage").val();
+			if (isNaN(manage)) {
+				$("#manage").val("");
+				$("#manage").focus();
+				alert("숫자만 입력해주세요.");
+				return false;
+			} else if (manage == "") manage = 0;
 			manage = parseInt(manage);
 			$("#manage2").text(manage);
 			$("#month").text(rent + manage);
@@ -530,12 +548,18 @@
 	})
 
 	function calculator(chk) {
-		if (chk == 1) {
+		var cal1 = document.getElementById('cal1');
+		var cal2 = document.getElementById('cal2');
+		
+		if (chk == 1 && cal1.value != "" &&!isNaN(cal1.value)) {
 			document.getElementById('cal2').value = parseFloat(document
 					.getElementById('cal1').value) * 3.3058;
-		} else {
+		} else if (chk == 2 && cal2.value != "" && !isNaN(document.getElementById('cal2').value)){
 			document.getElementById('cal1').value = parseFloat(document
 					.getElementById('cal2').value) / 3.3058;
+		} else {
+			cal1.value = "";
+			cal2.value = "";
 		}
 	}
 
