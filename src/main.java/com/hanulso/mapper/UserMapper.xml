@@ -21,5 +21,9 @@
 		insert into one_cor (username,corname,cornum,tel,addr,profile,name)
 		values(#{username},#{corname},#{cornum},#{tel},#{addr},#{profile},#{name})
 	</insert>
+	
+	<select id="user_select" resultType="com.hanulso.domain.UserVO">
+		select * from one_user where username=#{username}
+	</select>
 
 </mapper>

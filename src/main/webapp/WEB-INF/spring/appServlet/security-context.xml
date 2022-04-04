@@ -5,17 +5,27 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>
+	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+	<bean id="CustomLoginSuccess" class="com.hanulso.security.CustomLoginSuccessHandler"/>
+	<bean id="CustomUserDetailsService" class="com.hanulso.security.CustomUserDetailsService"/>
 
 	<!-- /include 안의 파일들을 security 제외 (jusoPopup.jsp에서 post 방식으로 데이터를 주고받기때문에 필요) -->
-	<security:http pattern="/include/**" security="none"/>
 
 	<security:http>
-		<security:form-login/>
+		<security:form-login login-page="/user/user_login.do" authentication-success-handler-ref="CustomLoginSuccess"/>
+		<security:intercept-url pattern="/user/user_login.do" access="permitAll"/>
+		<security:intercept-url pattern="/admin/manage/admin_cor_list.do" access="hasRole('ROLE_ADMIN')"/>
+	<!-- 
+		[[[ 둘 이상 접근 권한 ]]] 
+		<security:intercept-url pattern="/adm/admin_manager" access="hasAnyRole({'ROLE_ADMIN','ROLE_MEMBER'})"/>
+	 -->
 	</security:http>
 	
 
 	<security:authentication-manager>
+		<security:authentication-provider user-service-ref="CustomUserDetailsService">
+			<security:password-encoder ref="bcryptPasswordEncoder"/>
+		</security:authentication-provider>
 	</security:authentication-manager>
 
 	<!-- 가장 기본적인 설정 -->
