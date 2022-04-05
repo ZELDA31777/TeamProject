@@ -30,4 +30,6 @@ public class ProductServiceImpl implements ProductService {
 	public List<ProductVO> product_view_list(String username) {
 		return mapper.product_view_list(username);
 	}
+	
+	
 }
