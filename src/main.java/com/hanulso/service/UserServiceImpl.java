@@ -29,6 +29,11 @@ public class UserServiceImpl implements UserService {
 	private UserMapper mapper;
 	
 	@Override
+	public int mailCheckUp(String username) {
+		return mapper.mailCheckUp(username);
+	}
+
+	@Override
 	public void userRegister(UserVO uvo) {
 		mapper.user_insert(uvo);
 	}

@@ -16,10 +16,12 @@
 	<security:http>
 		<security:form-login login-page="/user/user_login.do" authentication-success-handler-ref="CustomLoginSuccess"/>
 		<security:intercept-url pattern="/user/user_login.do" access="permitAll"/>
+		<security:intercept-url pattern="/user/user_register_cor_pro.do" access="permitAll"/>
 		<security:intercept-url pattern="/admin/manage/admin_cor_list.do" access="hasAnyRole('ROLE_ADMIN , ROLE_SUPER_ADMIN')"/>
-		<security:intercept-url pattern="/user/user_insert_admin.do" access="hasRole('ROLE_SUPER_ADMIN')"/> 
+		<security:intercept-url pattern="/user/user_insert_admin.do" access="hasRole('ROLE_SUPER_ADMIN')"/>
+		<security:csrf/> 
 	<!-- 
-		[[[ 둘 이상 접근 권한 ]]] 
+	"src/main/webapp/WEB-INF/spring/appServlet/security-context.xml"	[[[ 둘 이상 접근 권한 ]]] 
 		<security:intercept-url pattern="/adm/admin_manager" access="hasAnyRole({'ROLE_ADMIN','ROLE_MEMBER'})"/>
 	 -->
 	 
