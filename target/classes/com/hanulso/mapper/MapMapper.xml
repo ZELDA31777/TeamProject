@@ -7,4 +7,8 @@
 		select * from one_product
 	</select>
 
+	<select id="map_modal_view" resultType="com.hanulso.domain.ProductVO">
+		select * from one_product where pno = #{pno}
+	</select>
+
 </mapper>

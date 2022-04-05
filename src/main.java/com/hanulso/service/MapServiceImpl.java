@@ -11,17 +11,18 @@ import com.hanulso.mapper.MapMapper;
 import lombok.Setter;
 
 @Service
-public class MapServiceImpl implements MapService{
-	
+public class MapServiceImpl implements MapService {
+
 	@Setter(onMethod_ = @Autowired)
 	private MapMapper mapper;
-	
 
 	@Override
 	public List<ProductVO> map_view_list() {
 		return mapper.map_view_list();
 	}
-	
-	
 
+	@Override
+	public ProductVO map_modal_view(int pno) {
+		return mapper.map_modal_view(pno);
+	}
 }

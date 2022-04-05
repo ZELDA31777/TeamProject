@@ -158,62 +158,18 @@ h4 {
 .navbar>.container-fluid>img {
 	height: 7.5vh;
 }
-
-.modal {
-        text-align: center;
-}
- 
-@media screen and (min-width: 768px) { 
-        .modal:before {
-                display: inline-block;
-                vertical-align: middle;
-                content: " ";
-                height: 100%;
-        }
-}
- 
-.modal-dialog {
-        display: inline-block;
-        text-align: left;
-        vertical-align: middle;
-}
 </style>
 <!-- Modal -->
-<div class="modal fade" id="p_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog" style="max-width: fit-content;">
-		<div class="modal-content" style="width: 1200px">
-			<div class="modal-body">
-				<img src="/resources/images/logo_001.png"
-					style="width: 35%; border-radius: 70%; overflow: hidden;">
-				<table class="table table-striped">
-					<tr>
-						<th>대표명</th>
-						<td>@대표명</td>
-					</tr>
-					<tr>
-						<th>연락처</th>
-						<td>@연락처</td>
-					</tr>
-					<tr>
-						<th>이메일</th>
-						<td>@이메일</td>
-					</tr>
-					<tr>
-						<th>사무소명</th>
-						<td>@사무소명</td>
-					</tr>
-					<tr>
-						<th>사업번호</th>
-						<td>@사업번호</td>
-					</tr>
-					<tr>
-						<th>주소</th>
-						<td>@주소</td>
-					</tr>
-				</table>
+<div class="modal fade" id="exampleModal" tabindex="-1"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-xl">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">매물번호 {1223123}</h5>
 				<button type="button" class="btn-close" data-bs-dismiss="modal"
 					aria-label="Close"></button>
 			</div>
+			<div class="modal-body"></div>
 		</div>
 	</div>
 </div>
@@ -739,27 +695,35 @@ h4 {
 							<c:forEach var="list" items="${list}">
 								<div class="card-body">
 									<div class="row m-0 gx-3">
-
 										<div class="col-5"
 											style="background: blue; background-clip: content-box; height: calc(200px - 32px);">
 											<!-- 썸네일 이미지 출력 -->
-											<img src="/resources/images/logo_001.png"
+											<img class="product_view"
+												src="/resources/images/logo_001.png"
 												style="width: 100%; height: 100%;" data-bs-toggle="modal"
-												data-bs-target="#p_modal">
-
-
-
+												data-bs-target="#exampleModal"
+												href="/map/map_modal_view.do?pno=${list.pno }">
 										</div>
-										<div class="col-7"
-											style="background: aqua; background-clip: content-box;">
-
-											${list.pno}</div>
+										<div class="col-7">
+											<div class="iamnls">
+												<div class="fOVNCS">
+													<h1 class="kPmScS">보증금 / 월세
+														${list.deposit }/${list.rent }</h1>
+													<p class="fGfKPR">
+														<c:if test="${list.type eq 1}">오피스텔</c:if>
+														<c:if test="${list.type eq 0}">원룸</c:if>
+													</p>
+													<p class="fYtEsj">${list.floor }층,
+														${list.area }m², 관리비 ${list.manage }만</p>
+													<p class="fYtEsj">${list.contents }</p>
+												</div>
+												<div class="eCimNy"></div>
+											</div>
+										</div>
 									</div>
 								</div>
 							</c:forEach>
 						</c:if>
-
-
 					</div>
 
 					<!-- 페이징 시작 -->
@@ -795,21 +759,18 @@ h4 {
 								</p>
 								<p class="text-center fs-6">
 									이 지역에 안내 가능한 중개사무소가 없습니다.<br> 다른 지역으로 검색해보세요.
-									<p>
-								
-							</div>
+								<p>
 							</div>
 						</div>
-						<!-- 없을때 끝 -->
-						<!-- 지도에 표시되는 중개사무소 목록 끝 -->
 					</div>
+					<!-- 없을때 끝 -->
+					<!-- 지도에 표시되는 중개사무소 목록 끝 -->
 				</div>
 			</div>
-			<div id="map" class="col-9" style="background-color: yellow;">
-				
-			</div>
 		</div>
+		<div id="map" class="col-9" style="background-color: yellow;"></div>
 	</div>
+</div>
 
 <!-- 마우스 오버 드롭다운 메뉴 script 시작 -->
 <script>
@@ -888,15 +849,22 @@ h4 {
 		}
 	});
 </script>
+
+<script>
+	 $('.product_view').on('click', function(e){
+		  e.preventDefault();
+		  $('#exampleModal').modal('show').find('.modal-body').load($(this).attr('href'));
+		});
+</script>
 <!-- 양방향 슬라이더 script 끝 -->
 
 <!-- 구글 지도 스크립트 시작 -->
 <script>
 	mapsApiKey = ''; // 구글 맵 api key 입력
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key="+mapsApiKey+"=initMap&v=weekly"
-  async></script>
-									<script>
+<script src="https://maps.googleapis.com/maps/api/js?key="
+	+mapsApiKey+"=initMap&v=weekly " async></script>
+<script>
   function initMap() {
     const map = new google.maps.Map(document.getElementById("map"), {
       center: { lat: 36.32843039, lng: 127.40531874 },
@@ -904,10 +872,10 @@ h4 {
     });
   }
 </script>
-									<!-- 구글 지도 스크립트 끝 -->
-									<!-- sub contents end -->
-									<%--	
+<!-- 구글 지도 스크립트 끝 -->
+<!-- sub contents end -->
+<%--	
 	<%@ include file="../include/footer.jsp"%>
  --%>
-									</body>
-									</html>
+</body>
+</html>
