@@ -11,7 +11,7 @@
 	
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
  		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
-		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe"></property> 
+		<property name="jdbcUrl" value="jdbc:oracle:thin:@cdasat.mooo.com:1521:xe"></property> 
 		<property name="username" value="track51"></property>
 		<property name="password" value="1234"></property>
 	</bean>	
@@ -29,10 +29,10 @@
 	<context:component-scan base-package="com.hanulso.service"/>
 	
 	<bean id="mailSender"    class="org.springframework.mail.javamail.JavaMailSenderImpl">
-      <property name="host" value="smtp.naver.com" /> <!-- 메이서버 호스트 -->
-      <property name="port" value="465" /> <!-- 메이서버 포트번호 -->
-      <property name="username" value="3177link@naver.com" /> <!-- 자신의 이메일 아이디 -->
-      <property name="password" value="rlatjd123wls?!BA" /> <!-- 자신의 비밀번호 -->
+      <property name="host" value="smtp.gmail.com" /> <!-- 메이서버 호스트 -->
+      <property name="port" value="587" /> <!-- 메이서버 포트번호 -->
+      <property name="username" value="onepick.jsl51@gmail.com" /> <!-- 자신의 이메일 아이디 -->
+      <property name="password" value="jsl2424412" /> <!-- 자신의 비밀번호 -->
       <!-- 보안연결 SSL과 관련된 설정 -->
       <property name="javaMailProperties">
          <props>
