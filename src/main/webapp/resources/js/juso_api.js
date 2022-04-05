@@ -24,8 +24,31 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,jibunA
 		$("#addr3").val(addr3);
 		$("#addr").val(roadFullAddr);
 		$("#addr").change();
+		
+		
+		var googleGeocodeKey = "";
+		if (googleGeocodeKey == "") alert("구글 geocode api키를 juso_api.js에 입력해주세요.");
+		
+		
+		
+		var reqUrl = "https://maps.googleapis.com/maps/api/geocode/json?address="+encodeURIComponent(roadFullAddr)+"&language=ko&region=kr&key="+googleGeocodeKey;
+		
+		$.ajax({
+			url : reqUrl,
+			dataType : "json",
+		}).done(function(data){
+			console.log(data);
+			$("#lat").val(data.results[0].geometry.location.lat);
+			$("#lng").val(data.results[0].geometry.location.lng);
+			
+			
+		}).fail(function(jqXHR, textStatus){
+			console( "Request failed: " + textStatus );
+		});
+		
 	} else {
 		alert("대전광역시 지역만 입력가능합니다.");
 	}
+	
 }
 
