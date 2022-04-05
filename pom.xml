@@ -251,6 +251,7 @@
 	        <artifactId>ojdbc6</artifactId>
 	        <version>11.2.0.4</version>
 	    </dependency>
+	    
 
 
 		<!-- Test -->
@@ -277,6 +278,7 @@
 					<downloadJavadocs>true</downloadJavadocs>
 				</configuration>
 			</plugin>
+			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>

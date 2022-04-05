@@ -1,13 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
 <mapper namespace="com.hanulso.mapper.ProductMapper">
 
 	<insert id="product_insert">
 		<selectKey keyProperty="pno" order="BEFORE" resultType="int">
-			select ONE_PRODUCT_seq.nextval from dual
+			select ONE_PRODUCT_SEQ.nextval from dual
 		</selectKey>
-		insert into product (pno,type,deposit,rent,manage,area,floar,totalfloor,room,shower,addr1,addr2,addr3,lat,lng,picture,thumbnail,contents,fulloption,email)
-		values(#{pno},#{type},#{deposit},#{rent},#{manage},#{area},#{floar},#{totalfloor},#{room},#{shower},#{addr1},#{addr2},#{add3},#{lat},#{lan},#{picture},#{thumbnail},#{contents},#{fulloption},#{email})
+		insert into ONE_PRODUCT
+		(pno,type,deposit,rent,manage,area,floor,totalfloor,room,shower,addr1,addr2,addr3,lat,lng,picture,thumbnail,contents,fulloption,username)
+		values
+		(#{pno},#{type},#{deposit},#{rent},#{manage},#{area},#{floor},#{totalfloor},#{room},#{shower},#{addr1},#{addr2},#{addr3},#{lat},#{lng},#{picture},#{thumbnail},#{contents},#{fulloption},#{username})
 	</insert>
-
+	
+	<select id="product_view" resultType="com.hanulso.domain.ProductVO">
+		select * from one_product where
+		pno = #{pno}
+	</select>
+	
+	<select id="product_view_list" resultType="com.hanulso.domain.ProductVO">
+	<![CDATA[
+		select * from (select * from one_product where username=#{username} order by regdate
+		desc) where rownum < 4
+		]]>
+	</select>
+	
 </mapper>

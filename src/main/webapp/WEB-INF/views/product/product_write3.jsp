@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!-- ##### cor_view.jsp로 병합 후 삭제 예정 ##### -->
+<!-- ##### product_wirte.jsp로 병합 후 삭제 예정 ##### -->
 
 <%@ include file="../include/header.jsp"%>
 <style>
@@ -91,8 +91,16 @@
 
 
 			<h4 class="cBaPiP" style="margin-top: 35px;">가격정보</h4>
-			<form name="pr_write" action="/product/prouct_write_pro.do" method="post">
-				<input type="hidden" name="addr" id="addr" value="addr_test_msg">
+			<form name="pr_write" action="/product/product_write_pro.do" method="post">
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"> 
+					<input type="hidden" name="addr" id="addr" value="test"> 
+					<input type="hidden" name="lat" id="lat" value="0"> 
+					<input type="hidden" name="lng" id="lng" value="0"> 
+					<input type="hidden" name="picture" id="picture" value="picture"> 
+					<input type="hidden" name="thumbnail" id="thumbnail" value="thumbnail">
+				<input type="hidden" name="username" id="username" value="우리공인중개사">
+
+
 				<div class="iOHiXt" style="list-style: none;">
 					<li>
 						<div class="row"
@@ -166,17 +174,17 @@
 										<p class="label-text">방 위치</p>
 										<div class="row gy-3">
 											<div class="col-4">
-												<input type="text" class="kHDHPO w-100" id="addr01" readonly>
+												<input type="text" class="kHDHPO w-100" name="addr1" id="addr1" readonly>
 											</div>
 											<div class="col-4">
-												<input type="text" class="kHDHPO w-100" id="addr02" readonly>
+												<input type="text" class="kHDHPO w-100" name="addr2" id="addr2" readonly>
 											</div>
 											<div class="col-4">
 												<button class="btn-bl" type="button" onClick="goPopup()">주소
 													검색</button>
 											</div>
 											<div class="col-12">
-												<input type="text" class="form-control kHDHPO" id="addr03"
+												<input type="text" class="form-control kHDHPO" name="addr3" id="addr3"
 													required>
 												<div class="valid-feedback">확인되었습니다.</div>
 												<div class="invalid-feedback">주소를 입력해주세요.</div>
@@ -203,10 +211,10 @@
 									<td class="kYmWlH">
 										<ul class="gMKyVw" style="list-style: none;">
 											<li><label class="blvQKJ"><input type="radio"
-													id="roomType" value="0" name="roomType" checked="checked">
+													id="roomType" value="0" name="type" checked="checked">
 													<p>원룸</p></label></li>
 											<li><label class="blvQKJ"><input type="radio"
-													id="roomType" value="1" name="roomType">
+													id="roomType" value="1" name="type">
 													<p>오피스텔</p></label></li>
 										</ul>
 									</td>
@@ -316,7 +324,9 @@
 						</div>
 					</div>
 				</div>
+				
 			</form>
+			
 		</div>
 		<div class="col-md-4" style="margin-top: 80px">
 			<div class="position-sticky" style="top: 7rem;">
@@ -346,7 +356,7 @@
 									<path fill-rule="evenodd" clip-rule="evenodd"
 										d="M11.4845 1.12518L11.5941 1.19559L20.5941 7.8423C20.8175 8.00727 20.9607 8.25644 20.993 8.52876L21 8.64671L21.0007 13.4264C21.9338 14.484 22.5 15.8731 22.5 17.3944C22.5 20.7081 19.8137 23.3944 16.5 23.3944C14.7234 23.3944 13.1272 22.6223 12.0286 21.3953L2 21.3944C1.48716 21.3944 1.06449 21.0084 1.00673 20.511L1 20.3944V8.64671C1 8.36902 1.11533 8.10576 1.31519 7.91798L1.40592 7.8423L10.4059 1.19559C10.7237 0.960882 11.1459 0.937411 11.4845 1.12518ZM16.5 12.3944C13.7386 12.3944 11.5 14.633 11.5 17.3944C11.5 20.1558 13.7386 22.3944 16.5 22.3944C19.2614 22.3944 21.5 20.1558 21.5 17.3944C21.5 14.633 19.2614 12.3944 16.5 12.3944ZM16.9919 17.3045C16.9496 17.0713 16.7455 16.8944 16.5 16.8944C16.2239 16.8944 16 17.1183 16 17.3944V20.1944L16.0081 20.2843C16.0504 20.5175 16.2545 20.6944 16.5 20.6944C16.7761 20.6944 17 20.4705 17 20.1944V17.3944L16.9919 17.3045ZM11 2L2 8.64671V20.3944L11.303 20.3948C10.7923 19.5122 10.5 18.4874 10.5 17.3944C10.5 14.0807 13.1863 11.3944 16.5 11.3944C17.8066 11.3944 19.0156 11.812 20.0009 12.5211L20 8.64671L11 2ZM17.2 15.0944C17.2 14.7078 16.8866 14.3944 16.5 14.3944C16.1134 14.3944 15.8 14.7078 15.8 15.0944C15.8 15.481 16.1134 15.7944 16.5 15.7944C16.8866 15.7944 17.2 15.481 17.2 15.0944Z"
 										fill="#222222"></path></svg>
-								<span id="roomType2"></span>
+								<span id="roomType2">원룸</span>
 							</div>
 							<div class="styled__Item-cvrpi1-9 fYSHvV">
 								<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -382,7 +392,9 @@
 							<div>
 								<p class="title">위치</p>
 								<p class="content">
-									<span id="addrprint">위치 주소 값</span>
+									<span id="addrprint1">위치 주소 값</span>
+									<span id="addrprint2"></span>
+									<span id="addrprint3"></span>
 								</p>
 							</div></li>
 					</ul>
@@ -392,11 +404,10 @@
 						</div>
 					</div>
 					<div class="styled__BtnWrap-cvrpi1-15 brpHbd">
-						<button color="blue" class="fiEZwu" onClick="">
-							<span><span>연락처보기</span></span>
+						<button type="button" color="blue" class="fiEZwu" onClick="javascript:write_()">
+							<span><span>매물 등록</span></span>
 						</button>
-						<div class="styled__FavoriteBtn-cvrpi1-16 ceYkeN">
-						</div>
+						<div class="styled__FavoriteBtn-cvrpi1-16 ceYkeN"></div>
 					</div>
 				</div>
 			</div>
@@ -408,7 +419,6 @@
 
 <!-- 스크롤 스파이 navar 관련 script 시작 -->
 <script>
-	$("#roomType2").text($('input[name="roomType"]').val());
 	$(function() {
 		$('body').css('position', 'relative').attr('data-bs-spy', 'scroll')
 				.attr('data-bs-target', '#navbar-example').attr(
@@ -420,7 +430,7 @@
 
 		$(window).scroll(function() {
 			var height = $(document).scrollTop();
-			console.log($('#height_img').height());
+			
 			if (height >= $('#height_img').height()) {
 				$('#navbar-example').css('top', '0px');
 			} else {
@@ -433,11 +443,13 @@
 	$(document).ready(function() {
 		$("#managebox").change(function() {
 			if ($("#managebox").is(":checked")) {
-				$("#manage").val("0");
+				$("#manage").val(0);
+				$("#manage").change();
 				$("#manage2").text("없음");
 				$("#manage").prop("readonly", true);
 			} else {
-				$("#manage").val("0");
+				$("#manage").val(0);
+				$("#manage").change();
 				$("#manage").prop("readonly", false);
 			}
 		});
@@ -449,6 +461,13 @@
 	$(function() {
 		$("#rent").on("blur", function() {
 			rent = $("#rent").val();
+			if (isNaN(rent)) {
+				$("#rent").val("");
+				$("#rent").focus();
+				alert("숫자만 입력해주세요.");
+				return false;
+			} else if (rent == "") 
+				rent = 0;
 			$("#rent2").text(rent);
 			rent = parseInt(rent);
 			return false;
@@ -458,6 +477,12 @@
 	$(function() {
 		$("#deposit").on("blur", function() {
 			deposit = $("#deposit").val();
+			if (isNaN(deposit)) {
+				$("#deposit").val("");
+				$("#deposit").focus();
+				alert("숫자만 입력해주세요.");
+				return false;
+			} else if (deposit == "") deposit = 0;
 			$("#deposit2").text(deposit);
 			deposit = parseInt(deposit);
 			return false;
@@ -466,6 +491,12 @@
 	$(function() {
 		$("#manage").on("propertychange change keyup paste input", function() {
 			manage = $("#manage").val();
+			if (isNaN(manage)) {
+				$("#manage").val("");
+				$("#manage").focus();
+				alert("숫자만 입력해주세요.");
+				return false;
+			} else if (manage == "") manage = 0;
 			manage = parseInt(manage);
 			$("#manage2").text(manage);
 			$("#month").text(rent + manage);
@@ -473,9 +504,13 @@
 		})
 	})
 
-	$('input[name="roomType"]').change(function() {
+	$('input[name="type"]').change(function() {
 		var inputValue = $(this).val(); // value
-		$("#roomType2").text(inputValue);
+		if (inputValue == 0) {
+			$("#roomType2").text('원룸');
+		} else if (inputValue == 1) {
+			$("#roomType2").text('오피스텔');
+		}
 		return false;
 	});
 
@@ -508,19 +543,26 @@
 	})
 
 	$(function() {
-		$("#addr01").on("propertychange change keyup paste input", function() {
-			var inputValue = $("#addr").val(); // value
-			$("#addrprint").text(inputValue);
+		$("#addr").on("propertychange change keyup paste input", function() {
+			$("#addrprint1").text($("#addr1").val());
+			$("#addrprint2").text($("#addr2").val());
+			$("#addrprint3").text($("#addr3").val());
 		})
 	})
 
 	function calculator(chk) {
-		if (chk == 1) {
+		var cal1 = document.getElementById('cal1');
+		var cal2 = document.getElementById('cal2');
+		
+		if (chk == 1 && cal1.value != "" &&!isNaN(cal1.value)) {
 			document.getElementById('cal2').value = parseFloat(document
 					.getElementById('cal1').value) * 3.3058;
-		} else {
+		} else if (chk == 2 && cal2.value != "" && !isNaN(document.getElementById('cal2').value)){
 			document.getElementById('cal1').value = parseFloat(document
 					.getElementById('cal2').value) / 3.3058;
+		} else {
+			cal1.value = "";
+			cal2.value = "";
 		}
 	}
 
@@ -530,8 +572,8 @@
 			$("#area2").text(inputValue);
 		})
 	})
-	
-	function write(){
+
+	function write_() {
 		pr_write.submit();
 	}
 </script>

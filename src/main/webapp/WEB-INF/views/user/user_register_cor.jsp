@@ -96,16 +96,16 @@
 						<p class="label-text">중개사무소 위치</p>
 						<div class="row gy-3">
 							<div class="col-4">
-								<input type="text" class="kHDHPO w-100" id="addr01" readonly>
+								<input type="text" class="kHDHPO w-100" id="addr1" readonly>
 							</div>
 							<div class="col-4">
-								<input type="text" class="kHDHPO w-100" id="addr02" readonly>
+								<input type="text" class="kHDHPO w-100" id="addr2" readonly>
 							</div>
 							<div class="col-4">
 								<button class="btn-bl" type="button" onClick="goPopup()">주소 검색</button>
 							</div>
 							<div class="col-12">
-								<input type="text" class="form-control kHDHPO" id="addr03" required>
+								<input type="text" class="form-control kHDHPO" id="addr3" required>
 								<div class="valid-feedback">확인되었습니다.</div>
 								<div class="invalid-feedback">주소를 입력해주세요.</div>
 							</div>
