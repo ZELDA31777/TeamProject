@@ -39,67 +39,95 @@
 					</label>
 				</div>
 				
+				<!-- 본div클래스를 mystyle.css에 없어서 강제조정함 -->
 				<div class="input-with-unit__InputWrap-sc-1e4qgti-0 cgniMn">
 					<label class="input-with-label__Label-sc-1p3gkts-1 bDaqny">
-						<p class="label-text">관심지역설정</p> <input type="text" name="favorite"
-						id="favorite" placeholder="한글 또는 영문만 가능"
-						class="kHDHPO">
+						<p class="label-text">관심지역설정</p>
 					</label>
-									<!-- 지역 선택 시작 --> <!-- select 로 바꿀것 -->
-				<div class="d1">
-					<div class="d1btn">
-						<div class="align-self-center">지역 설정</div>
+					<!-- 동구 -->
+					<div>
+					<div class="dropdown" style="width: 35%;  float:left;">
+						<button class="btn btn-light" type="button"
+							id="gu_01" data-bs-toggle="dropdown"
+							aria-expanded="false" style="width: 80%;">동구</button>
+						<ul class="dropdown-menu" aria-labelledby="gu_01" style="width:450px">
+							<li>
+								<div style="margin:5%;">
+								<table class="table_center">
+								<tr>
+								<td class="cell_padding"><input class="dong-fav" type="checkbox" value="가양1동">가양1동</td>
+								<td class="cell_padding"><input class="dong-fav" type="checkbox" value="가양2동">가양2동</td>
+								<td class="cell_padding"><input class="dong-fav" type="checkbox" value="대동">대동</td>
+								<td class="cell_padding"><input class="dong-fav" type="checkbox" value="대청동">대청동</td>
+								</tr>
+								<tr>
+								<td class="cell_padding"><input class="dong-fav" type="checkbox" value="산내동">산내동</td>
+								<td class="cell_padding"><input class="dong-fav" type="checkbox" value="삼성동">삼성동</td>
+								<td class="cell_padding"><input class="dong-fav" type="checkbox" value="성남동">성남동</td>
+								<td class="cell_padding"><input class="dong-fav" type="checkbox" value="신인동">신인동</td>
+								</tr>
+								<tr>
+								<td class="cell_padding"><input class="dong-fav" type="checkbox" value="용운동">용운동</td>
+								<td class="cell_padding"><input class="dong-fav" type="checkbox" value="용전동">용전동</td>
+								<td class="cell_padding"><input class="dong-fav" type="checkbox" value="자양동">자양동</td>
+								<td class="cell_padding"><input class="dong-fav" type="checkbox" value="중앙동">중앙동</td>
+								</tr>
+								<tr>
+								<td class="cell_padding"><input class="dong-fav" type="checkbox" value="판암1동">판암1동</td>
+								<td class="cell_padding"><input class="dong-fav" type="checkbox" value="판암2동">판암2동</td>
+								<td class="cell_padding"><input class="dong-fav" type="checkbox" value="홍도동">홍도동</td>
+								<td class="cell_padding"><input class="dong-fav" type="checkbox" value="효동">효동</td>
+								</tr>
+								<tr>
+								<td class="cell_padding" colspan="4"><input class="dong-check-all" type="checkbox">전체선택</td>
+								</tr>
+								</table>									
+								</div>
+							</li>
+						</ul>
 					</div>
-					<div class="d1-content">
-						<div class="d1-link d2">
-							<div class="d2btn">
-								<div class="align-self-center">동구</div>
-							</div>
-							<div class="d2-content overflow-scroll" style="height: 30vh">
-								<div class="d2-link">가양1동</div>
-								<div class="d2-link">가양2동</div>
-								<div class="d2-link">대동</div>
-								<div class="d2-link">대청동</div>
-								<div class="d2-link">산내동</div>
-								<div class="d2-link">삼성동</div>
-								<div class="d2-link">성남동</div>
-								<div class="d2-link">신인동</div>
-								<div class="d2-link">용운동</div>
-								<div class="d2-link">용전동</div>
-								<div class="d2-link">자양동</div>
-								<div class="d2-link">중앙동</div>
-								<div class="d2-link">판암1동</div>
-								<div class="d2-link">판암2동</div>
-								<div class="d2-link">홍도동</div>
-								<div class="d2-link">효동</div>
-							</div>
-						</div>
-						<div class="d1-link d2">
-							<div class="d2btn">
-								<div class="align-self-center">중구</div>
-							</div>
-							<div class="d2-content overflow-scroll" style="height: 30vh">
-								<div class="d2-link">대사동</div>
-								<div class="d2-link">대흥동</div>
-								<div class="d2-link">목동</div>
-								<div class="d2-link">문창동</div>
-								<div class="d2-link">문화1동</div>
-								<div class="d2-link">문화2동</div>
-								<div class="d2-link">부사동</div>
-								<div class="d2-link">산성동</div>
-								<div class="d2-link">석교동</div>
-								<div class="d2-link">오류동</div>
-								<div class="d2-link">용두동</div>
-								<div class="d2-link">유천1동</div>
-								<div class="d2-link">유천2동</div>
-								<div class="d2-link">은행선화동</div>
-								<div class="d2-link">중천동</div>
-								<div class="d2-link">태평1동</div>
-								<div class="d2-link">태평2동</div>
-							</div>
-						</div>
+					<!-- 중구 -->
+					<div class="dropdown" style="width: 35%; float:left;">
+						<button class="btn btn-light" type="button"
+							id="gu_02" data-bs-toggle="dropdown"
+							aria-expanded="false" style="width: 80%; ">중구</button>
+						<ul class="dropdown-menu" aria-labelledby="gu_02" style="width:450px">
+							<li>
+								<div style="margin:5%;">
+								<table class="table_center">
+								<tr>
+								<td class="cell_padding"><input class="jung-fav" type="checkbox" value="대사동">대사동</td>
+								<td class="cell_padding"><input class="jung-fav" type="checkbox" value="대흥동">대흥동</td>
+								<td class="cell_padding"><input class="jung-fav" type="checkbox" value="목동">목동</td>
+								<td class="cell_padding"><input class="jung-fav" type="checkbox" value="문창동">문창동</td>
+								</tr>
+								<tr>
+								<td class="cell_padding"><input class="jung-fav" type="checkbox" value="문화1동">문화1동</td>
+								<td class="cell_padding"><input class="jung-fav" type="checkbox" value="문화2동">문화2동</td>
+								<td class="cell_padding"><input class="jung-fav" type="checkbox" value="부사동">부사동</td>
+								<td class="cell_padding"><input class="jung-fav" type="checkbox" value="산성동">산성동</td>
+								</tr>
+								<tr>
+								<td class="cell_padding"><input class="jung-fav" type="checkbox" value="석교동">석교동</td>
+								<td class="cell_padding"><input class="jung-fav" type="checkbox" value="오류동">오류동</td>
+								<td class="cell_padding"><input class="jung-fav" type="checkbox" value="용두동">용두동</td>
+								<td class="cell_padding"><input class="jung-fav" type="checkbox" value="유천1동">유천1동</td>
+								</tr>
+								<tr>
+								<td class="cell_padding"><input class="jung-fav" type="checkbox" value="유천2동">유천2동</td>
+								<td class="cell_padding"><input class="jung-fav" type="checkbox" value="은행선화동">은행선화동</td>
+								<td class="cell_padding"><input class="jung-fav" type="checkbox" value="중천동">중천동</td>
+								<td class="cell_padding"><input class="jung-fav" type="checkbox" value="태평1동"">태평1동</td>
+								</tr>
+								<tr>
+								<td colspan="4" class="cell_padding"><input class="jung-check-all" type="checkbox">전체선택</td>
+								</tr>
+								</table>									
+								</div>
+							</li>
+						</ul>
 					</div>
-				</div>
+					</div>
 				<!-- 지역 선택 끝 -->
 				</div>
 				
@@ -126,6 +154,19 @@
 	</div>
 </div>
 
+<script>
+	$( document ).ready( function() {
+	  $( '.jung-check-all' ).click( function() {
+	    $( '.jung-fav' ).prop( 'checked', this.checked );
+	  });
+	});
+	
+	$( document ).ready( function() {
+		$( '.dong-check-all' ).click( function() {
+		  $( '.dong-fav' ).prop( 'checked', this.checked );
+		});
+	});
+</script>
 
 <script>
    (function() {

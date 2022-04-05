@@ -1355,3 +1355,16 @@ body p.bold {
     height: 28px;
 }
 
+.cell_padding {
+padding : 10px;
+}
+
+.table_center {
+display : table;
+margin-left : auto;
+margin-right : auto;
+
+}
+
+
+
