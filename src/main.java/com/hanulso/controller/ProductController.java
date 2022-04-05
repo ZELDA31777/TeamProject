@@ -20,7 +20,9 @@ public class ProductController {
 	
 	@GetMapping("/product_view.do")
 	public void product_view(@RequestParam("pno") int pno, Model model ) {
-		model.addAttribute("pvo", service.product_view(pno));
+		ProductVO pvo = service.product_view(pno);
+		model.addAttribute("pvo", pvo);
+		model.addAttribute("pList", service.product_view_list(pvo.getUsername()));
 	}
 	
 	@GetMapping("/product_write_backUp.do")

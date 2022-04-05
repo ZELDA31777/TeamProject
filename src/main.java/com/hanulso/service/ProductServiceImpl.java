@@ -1,5 +1,7 @@
 package com.hanulso.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,4 +26,8 @@ public class ProductServiceImpl implements ProductService {
 		return mapper.product_view(pno);
 	}
 	
+	@Override
+	public List<ProductVO> product_view_list(String username) {
+		return mapper.product_view_list(username);
+	}
 }
