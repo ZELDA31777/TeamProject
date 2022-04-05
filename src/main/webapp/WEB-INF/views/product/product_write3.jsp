@@ -430,7 +430,7 @@
 
 		$(window).scroll(function() {
 			var height = $(document).scrollTop();
-			console.log($('#height_img').height());
+			
 			if (height >= $('#height_img').height()) {
 				$('#navbar-example').css('top', '0px');
 			} else {
@@ -443,11 +443,13 @@
 	$(document).ready(function() {
 		$("#managebox").change(function() {
 			if ($("#managebox").is(":checked")) {
-				$("#manage").val("0");
+				$("#manage").val(0);
+				$("#manage").change();
 				$("#manage2").text("없음");
 				$("#manage").prop("readonly", true);
 			} else {
-				$("#manage").val("0");
+				$("#manage").val(0);
+				$("#manage").change();
 				$("#manage").prop("readonly", false);
 			}
 		});
