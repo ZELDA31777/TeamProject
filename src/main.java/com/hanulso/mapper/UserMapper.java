@@ -5,6 +5,8 @@ import com.hanulso.domain.CorVO;
 
 public interface UserMapper {
 	
+	public int mailCheckUp(String username);
+	
 	public void user_insert(UserVO uvo);
 	
 	public void admin_insert(UserVO uvo);
