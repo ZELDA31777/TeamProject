@@ -1365,3 +1365,59 @@ body p.bold {
 	-o-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
 }
+
+.map_modal_info {
+	width: fit-contents;
+	padding: 32px;
+	background: rgb(255, 255, 255);
+	box-shadow: rgb(0 0 0/ 10%) 0px 10px 20px;
+	border: 1px solid rgb(223, 223, 223);
+	border-radius: 2px;
+}
+
+.iamnls {
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding-left: 20px;
+}
+
+.fOVNCS {
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+}
+
+.kPmScS {
+    color: rgb(34, 34, 34);
+    font-size: 18px;
+    font-weight: 700;
+    height: 27px;
+    margin-bottom: 4px;
+    line-height: 27px;
+}
+
+.fGfKPR {
+    color: rgb(34, 34, 34);
+    font-size: 13px;
+    font-weight: 400;
+    margin-bottom: 8px;
+    line-height: 19px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.fYtEsj {
+    color: rgb(34, 34, 34);
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 20px;
+    width: 212px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+

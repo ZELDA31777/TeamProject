@@ -8,4 +8,6 @@ public interface MapService {
 	
 	public List<ProductVO> map_view_list();
 
+	public ProductVO map_modal_view(int pno);
+	
 }
