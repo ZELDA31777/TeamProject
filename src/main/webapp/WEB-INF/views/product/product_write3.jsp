@@ -88,6 +88,37 @@
 				</ul>
 			</nav>
 			<!-- 스크롤 스파이 navar 끝 -->
+			
+			<!-- 이미지 업로드 시작 -->
+			<h4 class="styled__Title-sc-16d1qhz-2 cBaPiP">사진 올리기</h4>
+			<div class="iOHiXt" style="list-style: none;">
+				<li>
+					<div class="row" style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid rgb(245, 245, 245);">
+						<div class="iehkos col-md-3">필수 사진</div>
+						<div class="gEjpOz col-md-9">
+							<input type="file" class="form-control w-75" id="thumbnailFile" name="thumbnailFile">
+							<p class="styled__Won-sc-1xx7qac-4 ceMnZE">
+								<span>매물을 대표할 사진입니다. 반드시 올려주세요.</span>
+							</p>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="row" style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid rgb(245, 245, 245);">
+						<div class="iehkos col-md-3">추가 사진</div>
+						<div class="gEjpOz col-md-9" id="pictureDiv">
+							<p class="styled__Won-sc-1xx7qac-4 ceMnZE">
+								<span>매물의 또 다른 사진입니다. 추가 버튼을 눌러 첨부할 이미지 수 를 변경할 수 있습니다.</span>
+							</p>
+							<div class="position-relative"><input type="file" class="form-control w-75 d-inline-block" id="pictureFile" name="pictureFile"><button class="btn btn-outline-success position-absolute end-0 me-3" id="picturePlus"><i class="fa-solid fa-plus"></i></button></div>
+							<div class="position-relative mt-3"><input type="file" class="form-control w-75 d-inline-block" name="pictureFile"><button class="btn btn-outline-danger position-absolute end-0 me-3" name="pictureDel" type="button" onClick="picDel(this);"><i class="fa-solid fa-minus"></i></button></div>
+							<div class="position-relative mt-3"><input type="file" class="form-control w-75 d-inline-block" name="pictureFile"><button class="btn btn-outline-danger position-absolute end-0 me-3" name="pictureDel" type="button" onClick="picDel(this);"><i class="fa-solid fa-minus"></i></button></div>
+						</div>
+					</div>
+				</li>
+			</div>
+			
+			<!-- 이미지 업로드 끝 -->
 
 
 			<h4 class="cBaPiP" style="margin-top: 35px;">가격정보</h4>
@@ -579,7 +610,21 @@
 </script>
 <!-- 스크롤 스파이 navar 관련 script 끝 -->
 
+<!-- 사진 파일 업로드 추가 및 삭제 삭제 -->
+<script>
+	function picDel(btn) {
+		btn.closest("div").remove();
+	}
+	
+	$(function() {		
+		$("#picturePlus").on("click", function(){
+			$("#pictureDiv").append('<div class="position-relative mt-3"><input type="file" class="form-control w-75 d-inline-block" name="pictureFile"><button class="btn btn-outline-danger position-absolute end-0 me-3" name="pictureDel" type="button" onClick="picDel(this);"><i class="fa-solid fa-minus"></i></button></div>');
+			return false;
+		});
 
+	});
+</script>
+<!-- 사진 파일 업로드 추가 및 삭제 끝 -->
 
 </body>
 
