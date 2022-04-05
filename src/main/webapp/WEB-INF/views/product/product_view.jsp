@@ -138,7 +138,10 @@
 						<div class="row"
 							style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid rgb(245, 245, 245);">
 							<div class="iehkos col-md-3">방종류</div>
-							<div class="gEjpOz col-md-9"><c:if test="${pvo.type eq 1}">오피스텔</c:if><c:if test="${pvo.type eq 0}">원룸</c:if></div>
+							<div class="gEjpOz col-md-9">
+								<c:if test="${pvo.type eq 1}">오피스텔</c:if>
+								<c:if test="${pvo.type eq 0}">원룸</c:if>
+							</div>
 						</div>
 					</li>
 					<li>
@@ -158,7 +161,16 @@
 							<div class="iehkos col-md-3">전용/공급면적</div>
 
 							<div class="gEjpOz flex col-md-9">
-								<p>${pvo.area }</p>
+								<label>${pvo.area }</label>
+								<button width="56" height="28"
+									class="klhTP">
+									<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+										xmlns="http://www.w3.org/2000/svg" style="flex: 0 0 auto;">
+										<path fill-rule="evenodd" clip-rule="evenodd"
+											d="M15.9516 8.1744C14.9224 7.11154 13.5092 6.5 12 6.5C9.15079 6.5 6.80759 8.66652 6.52795 11.442L5.60355 10.5178L5.53431 10.4599C5.33944 10.3249 5.07001 10.3442 4.89645 10.5178C4.70118 10.713 4.70118 11.0296 4.89645 11.2249L7.01777 13.3462L9.13909 11.2249L9.19694 11.1556C9.33194 10.9608 9.31265 10.6913 9.13909 10.5178L9.06984 10.4599C8.87497 10.3249 8.60555 10.3442 8.43198 10.5178L7.53828 11.4104C7.82708 9.20371 9.71458 7.5 12 7.5C13.2356 7.5 14.3905 7.99976 15.2332 8.87003C15.4538 9.09785 15.6499 9.34827 15.818 9.61696C15.9645 9.85106 16.273 9.92211 16.5071 9.77565C16.7412 9.62919 16.8122 9.32068 16.6658 9.08658C16.4604 8.75834 16.2209 8.45254 15.9516 8.1744ZM14.8787 12.7751L17 10.6538L19.1213 12.7751C19.3166 12.9704 19.3166 13.287 19.1213 13.4822C18.9478 13.6558 18.6783 13.6751 18.4835 13.5401L18.4142 13.4822L17.4898 12.5578C17.2103 15.3334 14.867 17.5 12.0178 17.5C10.5085 17.5 9.09538 16.8885 8.06621 15.8256C7.79688 15.5475 7.55736 15.2417 7.35201 14.9134C7.20555 14.6793 7.27659 14.3708 7.5107 14.2244C7.7448 14.0779 8.05331 14.1489 8.19977 14.383C8.36787 14.6517 8.56401 14.9022 8.78461 15.13C9.62729 16.0002 10.7821 16.5 12.0178 16.5C14.3036 16.5 16.1914 14.7956 16.4797 12.5884L15.5858 13.4822C15.4122 13.6558 15.1428 13.6751 14.9479 13.5401L14.8787 13.4822C14.7051 13.3087 14.6858 13.0392 14.8208 12.8444L14.8787 12.7751Z"
+											fill="#222222"></path></svg>
+									<span><span>평</span></span>
+								</button>
 							</div>
 						</div>
 					</li>
@@ -176,13 +188,15 @@
 				<p id="scrollspyHeading3"></p>
 				<h4 class="styled__Title-sc-16d1qhz-2 cBaPiP">옵션</h4>
 				<div class="iOHiXt" style="list-style: none;">
-				<c:if test="${pvo.fulloption eq 0 }">
-					<p><img src="/resources/images/o_100.png"></p>
-				</c:if>
-				<c:if test="${pvo.fulloption eq 1 }">
-					<p>이 방의 옵션은 중개사무소에게 문의 바랍니다.</p>
-				</c:if>
-				
+					<c:if test="${pvo.fulloption eq 0 }">
+						<p>
+							<img src="/resources/images/o_100.png">
+						</p>
+					</c:if>
+					<c:if test="${pvo.fulloption eq 1 }">
+						<p>이 방의 옵션은 중개사무소에게 문의 바랍니다.</p>
+					</c:if>
+
 				</div>
 			</div>
 			<div class="fCMewi">
@@ -201,99 +215,42 @@
 				<div class="iOHiXt" style="list-style: none;">
 					<div class="jcFemG">
 						<ul class="kKQMSn">
-							<li class="gAcyGl"><div class="hObDcQ">
-									<div class="gSwvZY">
-										<button class="eBlbuF">
-											<!-- 좋아요 버튼 include 화 -->
-											<%@ include file="../include/interest_img.jsp"%>
+							<c:forEach var="list" items="${pList }">
+								<li class="gAcyGl"><div class="hObDcQ">
+										<div class="gSwvZY">
+											<button class="eBlbuF">
+												<!-- 좋아요 버튼 include 화 -->
+												<%@ include file="../include/interest_img.jsp"%>
 
-										</button>
-									</div>
-									<div class="styled__ImgWrap-sc-14w4no0-0 hkMQhb">
-										<div class="styled__Image-ami2sx-0 gMnRzx">
-
-											<!-- 중개사의 다른 매물에 대한 이미지 -->
-
-											<img src="/resources/images/ex_000.png" width="60"
-												height="60" alt="" draggable="false" loading="lazy"
-												style="width: 100%; height: 100%;">
-											<div class="styled__Cover-ami2sx-1 dZAvTS cover"></div>
+											</button>
 										</div>
-									</div>
-									<!-- 중개사의 다른 매물에 대한 정보 -->
+										<div class="styled__ImgWrap-sc-14w4no0-0 hkMQhb">
+											<div class="styled__Image-ami2sx-0 gMnRzx">
 
-									<div class="bSKZAI">
-										<p class="hybbHD">투룸</p>
-										<p class="styled__Price-n321y7-2 bYNMgs">월세 1000/60</p>
-										<p class="styled__Desc-n321y7-3 eHtuHa">반지층, 42.97m², 관리비
-											6만</p>
-										<p class="styled__Desc-n321y7-3 eHtuHa">7호선 신대방삼거리역 도보 5분도
-											안걸리는 원룸 아닙니다 투룸에 이 가격 위치 채광까지 갖춘 문의 정말 많이오는 실매물</p>
-										<div class="styled__TagWrap-n321y7-4 guJBBw"></div>
-									</div>
-								</div></li>
-							<li class="gAcyGl"><div class="hObDcQ">
-									<div class="gSwvZY">
-										<button class="eBlbuF">
-											<!-- 좋아요 버튼 include 화 -->
-											<%@ include file="../include/interest_img.jsp"%>
+												<!-- 중개사의 다른 매물에 대한 이미지 -->
 
-										</button>
-									</div>
-									<div class="styled__ImgWrap-sc-14w4no0-0 hkMQhb">
-										<div class="styled__Image-ami2sx-0 gMnRzx">
-
-											<!-- 중개사의 다른 매물에 대한 이미지 -->
-
-											<img src="/resources/images/ex_000.png" width="60"
-												height="60" alt="" draggable="false" loading="lazy"
-												style="width: 100%; height: 100%;">
-											<div class="styled__Cover-ami2sx-1 dZAvTS cover"></div>
+												<img src="/resources/images/ex_000.png" width="60"
+													height="60" alt="" draggable="false" loading="lazy"
+													style="width: 100%; height: 100%;">
+												<div class="styled__Cover-ami2sx-1 dZAvTS cover"></div>
+											</div>
 										</div>
-									</div>
-									<!-- 중개사의 다른 매물에 대한 정보 -->
+										<!-- 중개사의 다른 매물에 대한 정보 -->
 
-									<div class="bSKZAI">
-										<p class="hybbHD">투룸</p>
-										<p class="styled__Price-n321y7-2 bYNMgs">월세 1000/60</p>
-										<p class="styled__Desc-n321y7-3 eHtuHa">반지층, 42.97m², 관리비
-											6만</p>
-										<p class="styled__Desc-n321y7-3 eHtuHa">7호선 신대방삼거리역 도보 5분도
-											안걸리는 원룸 아닙니다 투룸에 이 가격 위치 채광까지 갖춘 문의 정말 많이오는 실매물</p>
-										<div class="styled__TagWrap-n321y7-4 guJBBw"></div>
-									</div>
-								</div></li>
-							<li class="gAcyGl"><div class="hObDcQ">
-									<div class="gSwvZY">
-										<button class="eBlbuF">
-											<!-- 좋아요 버튼 include 화 -->
-											<%@ include file="../include/interest_img.jsp"%>
-
-										</button>
-									</div>
-									<div class="styled__ImgWrap-sc-14w4no0-0 hkMQhb">
-										<div class="styled__Image-ami2sx-0 gMnRzx">
-
-											<!-- 중개사의 다른 매물에 대한 이미지 -->
-
-											<img src="/resources/images/ex_000.png" width="60"
-												height="60" alt="" draggable="false" loading="lazy"
-												style="width: 100%; height: 100%;">
-											<div class="styled__Cover-ami2sx-1 dZAvTS cover"></div>
+										<div class="bSKZAI">
+											<p class="hybbHD">
+												<c:if test="${list.type eq 0 }">원룸</c:if>
+												<c:if test="${list.type eq 1 }">오피스텔</c:if>
+											</p>
+											<p class="styled__Price-n321y7-2 bYNMgs">보증금/월세
+												${list.deposit }/${list.rent }</p>
+											<p class="styled__Desc-n321y7-3 eHtuHa">${list.floor },
+												${list.area }m², 관리비 ${list.manage }만</p>
+											<p class="styled__Desc-n321y7-3 eHtuHa">${list.contents }</p>
+											<div class="styled__TagWrap-n321y7-4 guJBBw"></div>
 										</div>
-									</div>
-									<!-- 중개사의 다른 매물에 대한 정보 -->
-
-									<div class="bSKZAI">
-										<p class="hybbHD">투룸</p>
-										<p class="styled__Price-n321y7-2 bYNMgs">월세 1000/60</p>
-										<p class="styled__Desc-n321y7-3 eHtuHa">반지층, 42.97m², 관리비
-											6만</p>
-										<p class="styled__Desc-n321y7-3 eHtuHa">7호선 신대방삼거리역 도보 5분도
-											안걸리는 원룸 아닙니다 투룸에 이 가격 위치 채광까지 갖춘 문의 정말 많이오는 실매물</p>
-										<div class="styled__TagWrap-n321y7-4 guJBBw"></div>
-									</div>
-								</div></li>
+									</div></li>
+							</c:forEach>
 
 
 						</ul>
@@ -329,7 +286,8 @@
 									<path fill-rule="evenodd" clip-rule="evenodd"
 										d="M11.4845 1.12518L11.5941 1.19559L20.5941 7.8423C20.8175 8.00727 20.9607 8.25644 20.993 8.52876L21 8.64671L21.0007 13.4264C21.9338 14.484 22.5 15.8731 22.5 17.3944C22.5 20.7081 19.8137 23.3944 16.5 23.3944C14.7234 23.3944 13.1272 22.6223 12.0286 21.3953L2 21.3944C1.48716 21.3944 1.06449 21.0084 1.00673 20.511L1 20.3944V8.64671C1 8.36902 1.11533 8.10576 1.31519 7.91798L1.40592 7.8423L10.4059 1.19559C10.7237 0.960882 11.1459 0.937411 11.4845 1.12518ZM16.5 12.3944C13.7386 12.3944 11.5 14.633 11.5 17.3944C11.5 20.1558 13.7386 22.3944 16.5 22.3944C19.2614 22.3944 21.5 20.1558 21.5 17.3944C21.5 14.633 19.2614 12.3944 16.5 12.3944ZM16.9919 17.3045C16.9496 17.0713 16.7455 16.8944 16.5 16.8944C16.2239 16.8944 16 17.1183 16 17.3944V20.1944L16.0081 20.2843C16.0504 20.5175 16.2545 20.6944 16.5 20.6944C16.7761 20.6944 17 20.4705 17 20.1944V17.3944L16.9919 17.3045ZM11 2L2 8.64671V20.3944L11.303 20.3948C10.7923 19.5122 10.5 18.4874 10.5 17.3944C10.5 14.0807 13.1863 11.3944 16.5 11.3944C17.8066 11.3944 19.0156 11.812 20.0009 12.5211L20 8.64671L11 2ZM17.2 15.0944C17.2 14.7078 16.8866 14.3944 16.5 14.3944C16.1134 14.3944 15.8 14.7078 15.8 15.0944C15.8 15.481 16.1134 15.7944 16.5 15.7944C16.8866 15.7944 17.2 15.481 17.2 15.0944Z"
 										fill="#222222"></path></svg>
-								<span><c:if test="${pvo.type eq 1}">오피스텔</c:if><c:if test="${pvo.type eq 0}">원룸</c:if></span>
+								<span><c:if test="${pvo.type eq 1}">오피스텔</c:if>
+									<c:if test="${pvo.type eq 0}">원룸</c:if></span>
 							</div>
 							<div class="styled__Item-cvrpi1-9 fYSHvV">
 								<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -357,11 +315,11 @@
 							</div></li>
 						<li class="kRCkkj"><div>
 								<p class="title">방/욕실</p>
-								<p class="content">${pvo.room }개 / ${pvo.shower }개</p>
+								<p class="content">${pvo.room }개/ ${pvo.shower }개</p>
 							</div>
 							<div>
 								<p class="title">위치</p>
-								<p class="content">${pvo.addr1 } ${pvo.addr2 } ${pvo.addr3 }</p>
+								<p class="content">${pvo.addr1 }${pvo.addr2 } ${pvo.addr3 }</p>
 							</div></li>
 					</ul>
 					<div class="styled__LessorWrap-cvrpi1-13 jVGbJb">

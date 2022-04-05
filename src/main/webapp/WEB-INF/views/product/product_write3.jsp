@@ -98,7 +98,7 @@
 					<input type="hidden" name="lng" id="lng" value="0"> 
 					<input type="hidden" name="picture" id="picture" value="picture"> 
 					<input type="hidden" name="thumbnail" id="thumbnail" value="thumbnail">
-				<input type="hidden" name="username" id="username" value="username">
+				<input type="hidden" name="username" id="username" value="우리공인중개사">
 
 
 				<div class="iOHiXt" style="list-style: none;">
@@ -464,7 +464,8 @@
 				$("#rent").focus();
 				alert("숫자만 입력해주세요.");
 				return false;
-			} else if (rent == "") rent = 0;
+			} else if (rent == "") 
+				rent = 0;
 			$("#rent2").text(rent);
 			rent = parseInt(rent);
 			return false;
