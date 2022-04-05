@@ -158,13 +158,31 @@ h4 {
 .navbar>.container-fluid>img {
 	height: 7.5vh;
 }
+
+.modal {
+        text-align: center;
+}
+ 
+@media screen and (min-width: 768px) { 
+        .modal:before {
+                display: inline-block;
+                vertical-align: middle;
+                content: " ";
+                height: 100%;
+        }
+}
+ 
+.modal-dialog {
+        display: inline-block;
+        text-align: left;
+        vertical-align: middle;
+}
 </style>
 <!-- Modal -->
-<div class="modal fade" id="p_modal" tabindex="-1"
-	aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
+<div class="modal fade" id="p_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" style="max-width: fit-content;">
 		<div class="modal-content" style="width: 1200px">
-			<div class="modal-body" align="center">
+			<div class="modal-body">
 				<img src="/resources/images/logo_001.png"
 					style="width: 35%; border-radius: 70%; overflow: hidden;">
 				<table class="table table-striped">
