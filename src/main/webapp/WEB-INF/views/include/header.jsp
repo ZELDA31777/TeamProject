@@ -64,6 +64,8 @@
 					<ul class="navbar-nav mb-2 mb-md-0">
 					
 						<sec:authorize access="hasAnyRole('ADMIN' , 'SUPER_ADMIN')">
+							<li class="nav-item"><a class="nav-link" href="">가이드 & Tip</a></li>
+							<li class="nav-item"><a class="nav-link" href="">공지사항</a></li>
 							<li class="nav-item"><a class="nav-link" href="/admin/manage/admin_cor_list.do">중개사 회원관리</a></li>
 							<li class="nav-item"><a class="nav-link" href="/admin/manage/admin_user_list.do">일반 회원관리</a></li>
 						</sec:authorize>
