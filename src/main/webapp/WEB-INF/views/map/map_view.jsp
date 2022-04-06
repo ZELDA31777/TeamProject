@@ -685,9 +685,9 @@ h4 {
 					<!-- 지도에 표시되는 방 목록 시작-->
 
 
-					<div class="card w-100">
-						<c:if test="${!empty list}">
-							<c:forEach var="list" items="${list}">
+					<c:if test="${!empty list}">
+						<c:forEach var="list" items="${list}">
+							<div class="card w-100">
 								<div class="card-body">
 									<div class="row m-0 gx-3">
 										<div class="col-5"
@@ -717,9 +717,9 @@ h4 {
 										</div>
 									</div>
 								</div>
-							</c:forEach>
-						</c:if>
-					</div>
+							</div>
+						</c:forEach>
+					</c:if>
 
 					<!-- 페이징 시작 -->
 					<nav aria-label="Page navigation example">
@@ -858,11 +858,7 @@ h4 {
 <!-- 양방향 슬라이더 script 끝 -->
 
 <!-- 구글 지도 스크립트 시작 -->
-<script>
-	mapsApiKey = ''; // 구글 맵 api key 입력
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key="
-	+mapsApiKey+"=initMap&v=weekly " async></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPxvrQTmFrf14CPepU3kV_wb8wIpwrwSs&callback=initMap&v=weekly " async></script>
 <script>
   function initMap() {
     const map = new google.maps.Map(document.getElementById("map"), {
