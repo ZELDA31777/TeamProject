@@ -1,11 +1,13 @@
 package com.hanulso.mapper;
 
-import com.hanulso.domain.UserVO;
+import org.apache.ibatis.annotations.Param;
+
 import com.hanulso.domain.CorVO;
+import com.hanulso.domain.UserVO;
 
 public interface UserMapper {
 	
-	public int mailCheckUp(String username);
+	public void mailCheckUp(@Param("username") String username, @Param("password") String password);
 	
 	public void user_insert(UserVO uvo);
 	

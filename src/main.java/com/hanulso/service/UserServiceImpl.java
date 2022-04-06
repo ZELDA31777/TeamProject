@@ -29,8 +29,8 @@ public class UserServiceImpl implements UserService {
 	private UserMapper mapper;
 	
 	@Override
-	public int mailCheckUp(String username) {
-		return mapper.mailCheckUp(username);
+	public void mailCheckUp(String username, String password) {
+		mapper.mailCheckUp(username, password);
 	}
 
 	@Override

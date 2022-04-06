@@ -4,22 +4,14 @@
 
 <!-- sub contents start -->
 
-	<form name="mailForm" action="/user/mailCheck_pro.do" method="post">
-	<input type="hidden" name="${_csrf.parameterName }" value=${_csrf.token }>
-	<input type="hidden" name="username" value=${userVO.username }>
-	<label>${userVO.username }</label>
-	<input type="hidden" name="password" value=${userVO.password }>
-	<input type="hidden" name="nickname" value=${userVO.nickname }>
-	<input type="hidden" name="grade" value=${userVO.grade }>
-	<input type="hidden" name="favorite" value=${userVO.favorite }>
-	<input type="hidden" name="active" value=${userVO.active }>
+	<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
+	<input type="hidden" name="username" value="${userVO.username}">
 	<div class="container">
-		<h1>이메일 인증</h1>
-		<p>회원가입을 위해 이메일 인증을 진행합니다.</p>
-		<p>이메일 인증을 진행해주세요.</p>
-		<button>인증하기</button>
+		<h1>메일 확인</h1>
+		<p>메일을 확인해 주세요.</p>
+		<p>이메일 인증을 진행하면 원픽 서비스들을 이용하실 수 있습니다.</p>
+		<p>이메일 : ${userVO.username }</p>
 	</div>
-	</form>
 
 <!-- sub contents end -->
 

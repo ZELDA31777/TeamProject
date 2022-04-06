@@ -24,8 +24,7 @@ margin-right : auto;
 	<div class="container" style="width: 50%">
 		<form class="needs-validation" method="post" action="user_register_pro.do" novalidate >
 		        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-		        <input type="hidden" name="favorite" value="favorite_test_msg">
-		        <input type="hidden" name="active" value="active_test_msg">
+		        <input type="hidden" name="active" value="non_active">
 			<div class="styled__Box-sc-1etb7tu-1 cubPeM">
 				<h1>회원정보 입력</h1>
 				<h2>원픽 서비스 이용을 위해 아래 정보를 입력해주세요.</h2>
@@ -65,28 +64,28 @@ margin-right : auto;
 								<div style="margin:5%;">
 								<table class="table_center">
 								<tr>
-								<td class="cell_padding"><input class="dong-fav" type="checkbox" value="가양1동">가양1동</td>
-								<td class="cell_padding"><input class="dong-fav" type="checkbox" value="가양2동">가양2동</td>
-								<td class="cell_padding"><input class="dong-fav" type="checkbox" value="대동">대동</td>
-								<td class="cell_padding"><input class="dong-fav" type="checkbox" value="대청동">대청동</td>
+								<td class="cell_padding"><input class="dong-fav" type="checkbox" name="favorite" value="가양1동">가양1동</td>
+								<td class="cell_padding"><input class="dong-fav" type="checkbox" name="favorite" value="가양2동">가양2동</td>
+								<td class="cell_padding"><input class="dong-fav" type="checkbox" name="favorite" value="대동">대동</td>
+								<td class="cell_padding"><input class="dong-fav" type="checkbox" name="favorite" value="대청동">대청동</td>
 								</tr>
 								<tr>
-								<td class="cell_padding"><input class="dong-fav" type="checkbox" value="산내동">산내동</td>
-								<td class="cell_padding"><input class="dong-fav" type="checkbox" value="삼성동">삼성동</td>
-								<td class="cell_padding"><input class="dong-fav" type="checkbox" value="성남동">성남동</td>
-								<td class="cell_padding"><input class="dong-fav" type="checkbox" value="신인동">신인동</td>
+								<td class="cell_padding"><input class="dong-fav" type="checkbox" name="favorite" value="산내동">산내동</td>
+								<td class="cell_padding"><input class="dong-fav" type="checkbox" name="favorite" value="삼성동">삼성동</td>
+								<td class="cell_padding"><input class="dong-fav" type="checkbox" name="favorite" value="성남동">성남동</td>
+								<td class="cell_padding"><input class="dong-fav" type="checkbox" name="favorite" value="신인동">신인동</td>
 								</tr>
 								<tr>
-								<td class="cell_padding"><input class="dong-fav" type="checkbox" value="용운동">용운동</td>
-								<td class="cell_padding"><input class="dong-fav" type="checkbox" value="용전동">용전동</td>
-								<td class="cell_padding"><input class="dong-fav" type="checkbox" value="자양동">자양동</td>
-								<td class="cell_padding"><input class="dong-fav" type="checkbox" value="중앙동">중앙동</td>
+								<td class="cell_padding"><input class="dong-fav" type="checkbox" name="favorite" value="용운동">용운동</td>
+								<td class="cell_padding"><input class="dong-fav" type="checkbox" name="favorite" value="용전동">용전동</td>
+								<td class="cell_padding"><input class="dong-fav" type="checkbox" name="favorite" value="자양동">자양동</td>
+								<td class="cell_padding"><input class="dong-fav" type="checkbox" name="favorite" value="중앙동">중앙동</td>
 								</tr>
 								<tr>
-								<td class="cell_padding"><input class="dong-fav" type="checkbox" value="판암1동">판암1동</td>
-								<td class="cell_padding"><input class="dong-fav" type="checkbox" value="판암2동">판암2동</td>
-								<td class="cell_padding"><input class="dong-fav" type="checkbox" value="홍도동">홍도동</td>
-								<td class="cell_padding"><input class="dong-fav" type="checkbox" value="효동">효동</td>
+								<td class="cell_padding"><input class="dong-fav" type="checkbox" name="favorite" value="판암1동">판암1동</td>
+								<td class="cell_padding"><input class="dong-fav" type="checkbox" name="favorite" value="판암2동">판암2동</td>
+								<td class="cell_padding"><input class="dong-fav" type="checkbox" name="favorite" value="홍도동">홍도동</td>
+								<td class="cell_padding"><input class="dong-fav" type="checkbox" name="favorite" value="효동">효동</td>
 								</tr>
 								<tr>
 								<td class="cell_padding" colspan="4"><input class="dong-check-all" type="checkbox">전체선택</td>
@@ -106,28 +105,28 @@ margin-right : auto;
 								<div style="margin:5%;">
 								<table class="table_center">
 								<tr>
-								<td class="cell_padding"><input class="jung-fav" type="checkbox" value="대사동">대사동</td>
-								<td class="cell_padding"><input class="jung-fav" type="checkbox" value="대흥동">대흥동</td>
-								<td class="cell_padding"><input class="jung-fav" type="checkbox" value="목동">목동</td>
-								<td class="cell_padding"><input class="jung-fav" type="checkbox" value="문창동">문창동</td>
+								<td class="cell_padding"><input class="jung-fav" type="checkbox" name="favorite" value="대사동">대사동</td>
+								<td class="cell_padding"><input class="jung-fav" type="checkbox" name="favorite" value="대흥동">대흥동</td>
+								<td class="cell_padding"><input class="jung-fav" type="checkbox" name="favorite" value="목동">목동</td>
+								<td class="cell_padding"><input class="jung-fav" type="checkbox" name="favorite" value="문창동">문창동</td>
 								</tr>
 								<tr>
-								<td class="cell_padding"><input class="jung-fav" type="checkbox" value="문화1동">문화1동</td>
-								<td class="cell_padding"><input class="jung-fav" type="checkbox" value="문화2동">문화2동</td>
-								<td class="cell_padding"><input class="jung-fav" type="checkbox" value="부사동">부사동</td>
-								<td class="cell_padding"><input class="jung-fav" type="checkbox" value="산성동">산성동</td>
+								<td class="cell_padding"><input class="jung-fav" type="checkbox" name="favorite" value="문화1동">문화1동</td>
+								<td class="cell_padding"><input class="jung-fav" type="checkbox" name="favorite" value="문화2동">문화2동</td>
+								<td class="cell_padding"><input class="jung-fav" type="checkbox" name="favorite" value="부사동">부사동</td>
+								<td class="cell_padding"><input class="jung-fav" type="checkbox" name="favorite" value="산성동">산성동</td>
 								</tr>
 								<tr>
-								<td class="cell_padding"><input class="jung-fav" type="checkbox" value="석교동">석교동</td>
-								<td class="cell_padding"><input class="jung-fav" type="checkbox" value="오류동">오류동</td>
-								<td class="cell_padding"><input class="jung-fav" type="checkbox" value="용두동">용두동</td>
-								<td class="cell_padding"><input class="jung-fav" type="checkbox" value="유천1동">유천1동</td>
+								<td class="cell_padding"><input class="jung-fav" type="checkbox" name="favorite" value="석교동">석교동</td>
+								<td class="cell_padding"><input class="jung-fav" type="checkbox" name="favorite" value="오류동">오류동</td>
+								<td class="cell_padding"><input class="jung-fav" type="checkbox" name="favorite" value="용두동">용두동</td>
+								<td class="cell_padding"><input class="jung-fav" type="checkbox" name="favorite" value="유천1동">유천1동</td>
 								</tr>
 								<tr>
-								<td class="cell_padding"><input class="jung-fav" type="checkbox" value="유천2동">유천2동</td>
-								<td class="cell_padding"><input class="jung-fav" type="checkbox" value="은행선화동">은행선화동</td>
-								<td class="cell_padding"><input class="jung-fav" type="checkbox" value="중천동">중천동</td>
-								<td class="cell_padding"><input class="jung-fav" type="checkbox" value="태평1동"">태평1동</td>
+								<td class="cell_padding"><input class="jung-fav" type="checkbox" name="favorite" value="유천2동">유천2동</td>
+								<td class="cell_padding"><input class="jung-fav" type="checkbox" name="favorite" value="은행선화동">은행선화동</td>
+								<td class="cell_padding"><input class="jung-fav" type="checkbox" name="favorite" value="중천동">중천동</td>
+								<td class="cell_padding"><input class="jung-fav" type="checkbox" name="favorite" value="태평1동">태평1동</td>
 								</tr>
 								<tr>
 								<td colspan="4" class="cell_padding"><input class="jung-check-all" type="checkbox">전체선택</td>
@@ -194,7 +193,7 @@ margin-right : auto;
             form.classList.add('was-validated')
          }, false)
       })
-   })()
+   })
   
     $(function (){
         $('#password').on('change', function(){
@@ -205,6 +204,7 @@ margin-right : auto;
              return string.replace(/[.*+?$^{}()|[\]\\]/g, '\\$&'); // $&은 일치한 문자열 전체를 의미
         }
     });
+   
 </script>
 
 

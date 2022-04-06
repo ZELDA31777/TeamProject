@@ -6,9 +6,9 @@
 <mapper namespace="com.hanulso.mapper.UserMapper">
 
 	<update id="mailCheckUp">
-		update one_user set active = 'active' where username = #{username}
+		update one_user set active = 'active' where username = #{username} and password = #{password}
 	</update>
-
+	
 	<insert id="user_insert">
 		insert into one_user (username, password, nickname, grade, favorite, active)
 		values(#{username},#{password},#{nickname},'ROLE_USER',#{favorite},#{active})
