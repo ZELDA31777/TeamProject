@@ -155,13 +155,10 @@ h4 {
 }
 
 /* header.jsp 의 로고 이미지 크기를 세로 기준으로 바꿔서 map 영역 높이 계산하기 쉽도록  */
-.navbar>.container-fluid>img {
-	height: 7.5vh;
-}
 </style>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1"
-	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	aria-labelledby="exampleModalLabel" aria-hidden="true" >
 	<div class="modal-dialog modal-xl">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -584,8 +581,6 @@ h4 {
 													style="width: 8%">옥탑방</label>
 											</div>
 										</div>
-
-
 										<div class="border-bottom"
 											style="border-bottom: 1px; margin: 20px;">
 											<h4>방수</h4>
@@ -789,6 +784,8 @@ h4 {
 <script>
 	$(function(){
 		$("body").css("padding-bottom", "0");
+		$("body").css("overflow", "hidden");
+		
 		$("#manage").on("input", function(){
 			$("#manage_value").html($(this).val());
 		});
@@ -855,6 +852,8 @@ h4 {
 		  e.preventDefault();
 		  $('#exampleModal').modal('show').find('.modal-body').load($(this).attr('href'));
 		});
+	 
+	 
 </script>
 <!-- 양방향 슬라이더 script 끝 -->
 
