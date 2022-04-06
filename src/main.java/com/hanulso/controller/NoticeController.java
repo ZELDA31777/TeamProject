@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.hanulso.domain.Criteria;
 import com.hanulso.domain.KnowledgeVO;
+import com.hanulso.domain.PageVO;
 import com.hanulso.service.NoticeService;
 
 import lombok.Setter;
@@ -23,14 +25,16 @@ public class NoticeController {
 	private NoticeService service;
 	
 	@GetMapping("/notice_list.do")
-	public String notice_list(Model model) {
-		List<KnowledgeVO> list = service.notice_list();
+	public String notice_list(Criteria cri, Model model) {
+		List<KnowledgeVO> list = service.notice_list(cri);
+		int total = service.getTotalCount(cri);
 		model.addAttribute("list",list);
+		model.addAttribute("pageMaker", new PageVO(cri, total));
 		return "/notice/notice_list";
 	}
 	
 	@GetMapping("/notice_write.do")
-	public void notice_write() {}
+	public void notice_write_form() {}
 	
 	@PostMapping("/notice_write_pro.do")
 	public String notice_write(KnowledgeVO vo) {

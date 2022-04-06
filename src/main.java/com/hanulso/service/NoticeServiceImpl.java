@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hanulso.domain.Criteria;
 import com.hanulso.domain.KnowledgeVO;
 import com.hanulso.mapper.NoticeMapper;
 
@@ -18,10 +19,10 @@ public class NoticeServiceImpl implements NoticeService{
 	@Setter(onMethod_ = @Autowired)
 	private NoticeMapper mapper;
 	
-	@Override
-	public List<KnowledgeVO> notice_list() {
-		return mapper.notice_list();
-	}
+//	@Override
+//	public List<KnowledgeVO> notice_list() {
+//		return mapper.notice_list();
+//	}
 	
 	@Override
 	public void notice_write(KnowledgeVO vo) {
@@ -42,6 +43,16 @@ public class NoticeServiceImpl implements NoticeService{
 	@Override
 	public void notice_modify(KnowledgeVO vo) {
 		mapper.notice_modify(vo);
+	}
+	
+	@Override
+	public int getTotalCount(Criteria cri) {
+		return mapper.getTotalCount(cri);
+	}
+	
+	@Override
+	public List<KnowledgeVO> notice_list(Criteria cri) {
+		return mapper.notice_list(cri);
 	}
 	
 }
