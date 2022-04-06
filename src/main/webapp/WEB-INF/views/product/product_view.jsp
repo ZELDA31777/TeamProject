@@ -162,8 +162,7 @@
 
 							<div class="gEjpOz flex col-md-9">
 								<label>${pvo.area }</label>
-								<button width="56" height="28"
-									class="klhTP">
+								<button width="56" height="28" class="klhTP">
 									<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
 										xmlns="http://www.w3.org/2000/svg" style="flex: 0 0 auto;">
 										<path fill-rule="evenodd" clip-rule="evenodd"
@@ -286,8 +285,8 @@
 									<path fill-rule="evenodd" clip-rule="evenodd"
 										d="M11.4845 1.12518L11.5941 1.19559L20.5941 7.8423C20.8175 8.00727 20.9607 8.25644 20.993 8.52876L21 8.64671L21.0007 13.4264C21.9338 14.484 22.5 15.8731 22.5 17.3944C22.5 20.7081 19.8137 23.3944 16.5 23.3944C14.7234 23.3944 13.1272 22.6223 12.0286 21.3953L2 21.3944C1.48716 21.3944 1.06449 21.0084 1.00673 20.511L1 20.3944V8.64671C1 8.36902 1.11533 8.10576 1.31519 7.91798L1.40592 7.8423L10.4059 1.19559C10.7237 0.960882 11.1459 0.937411 11.4845 1.12518ZM16.5 12.3944C13.7386 12.3944 11.5 14.633 11.5 17.3944C11.5 20.1558 13.7386 22.3944 16.5 22.3944C19.2614 22.3944 21.5 20.1558 21.5 17.3944C21.5 14.633 19.2614 12.3944 16.5 12.3944ZM16.9919 17.3045C16.9496 17.0713 16.7455 16.8944 16.5 16.8944C16.2239 16.8944 16 17.1183 16 17.3944V20.1944L16.0081 20.2843C16.0504 20.5175 16.2545 20.6944 16.5 20.6944C16.7761 20.6944 17 20.4705 17 20.1944V17.3944L16.9919 17.3045ZM11 2L2 8.64671V20.3944L11.303 20.3948C10.7923 19.5122 10.5 18.4874 10.5 17.3944C10.5 14.0807 13.1863 11.3944 16.5 11.3944C17.8066 11.3944 19.0156 11.812 20.0009 12.5211L20 8.64671L11 2ZM17.2 15.0944C17.2 14.7078 16.8866 14.3944 16.5 14.3944C16.1134 14.3944 15.8 14.7078 15.8 15.0944C15.8 15.481 16.1134 15.7944 16.5 15.7944C16.8866 15.7944 17.2 15.481 17.2 15.0944Z"
 										fill="#222222"></path></svg>
-								<span><c:if test="${pvo.type eq 1}">오피스텔</c:if>
-									<c:if test="${pvo.type eq 0}">원룸</c:if></span>
+								<span><c:if test="${pvo.type eq 1}">오피스텔</c:if> <c:if
+										test="${pvo.type eq 0}">원룸</c:if></span>
 							</div>
 							<div class="styled__Item-cvrpi1-9 fYSHvV">
 								<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -315,11 +314,11 @@
 							</div></li>
 						<li class="kRCkkj"><div>
 								<p class="title">방/욕실</p>
-								<p class="content">${pvo.room }개/ ${pvo.shower }개</p>
+								<p class="content">${pvo.room }개/${pvo.shower }개</p>
 							</div>
 							<div>
 								<p class="title">위치</p>
-								<p class="content">${pvo.addr1 }${pvo.addr2 } ${pvo.addr3 }</p>
+								<p class="content">${pvo.addr1 }${pvo.addr2 }${pvo.addr3 }</p>
 							</div></li>
 					</ul>
 					<div class="styled__LessorWrap-cvrpi1-13 jVGbJb">
@@ -327,25 +326,73 @@
 							<p>우리공인중개사사무소</p>
 						</div>
 					</div>
-					<div class="styled__BtnWrap-cvrpi1-15 brpHbd">
-						<button color="blue" class="button__Button-sc-153m1au-0 fiEZwu3">
+
+					<sec:authorize access="isAnonymous()">
+						<c:set var="testvalue" value="없습니다." />
+						<label>${testvalue }</label>
+					</sec:authorize>
+
+
+					<sec:authorize access="isAuthenticated()">
+						<c:set var="testvalue">
+							<sec:authentication property="principal.user.username" />
+						</c:set>
+						<label>${testvalue } </label>
+					</sec:authorize>
+
+					<div class="styled__BtnWrap-cvrpi1-15 brpHbd row">
+						<button color="blue" class="fiEZwu3 col-md-10">
 							<span><span>연락처보기</span></span>
 						</button>
-						<div class="styled__FavoriteBtn-cvrpi1-16 ceYkeN">
-							<button class="styled__LikeBtn-jmubsw-1 ezZqwh">
-								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-									viewBox="0 0 24 24">
-									<g fill="none" fill-rule="evenodd">
-									<g stroke="#222" stroke-width="1.5">
-									<g>
-									<g>
-									<g>
-									<path
-										d="M12.945 3.518c2.096-2.028 5.423-2.028 7.518 0l.117.117c1.945 2.01 1.892 5.215-.117 7.16h0l-3.768 3.646-4.699 4.548-3.752-3.631-.016-.015-4.699-4.548c-2.009-1.945-2.061-5.15-.116-7.16l.116-.117h0c2.096-2.028 5.423-2.028 7.518 0l.949.92z"
-										transform="translate(-250 -216) translate(250 121) translate(0 92) translate(0 3)"></path></g></g></g></g></g></svg>
-								<span class="styled__CntText-jmubsw-2 iXjxft">2</span>
-							</button>
+
+						<div class="col-md-2">
+							<div>${username }</div>
+							<c:choose>
+								<%-- 로그인 상태일때 - 하트 클릭 되게 --%>
+								<c:when test="${not empty sessionScope.nick}">
+									<c:choose>
+										<c:when test="${empty tmp.hno}">
+											<%-- 빈 하트일때 --%>
+											<span> <a idx="${tmp.no }" href="javascript:"
+												class="heart-click heart_icon${tmp.no }"><svg
+														xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+														fill="currentColor" class="bi bi-suit-heart"
+														viewBox="0 0 16 16">
+                                  <path
+															d="M8 6.236l-.894-1.789c-.222-.443-.607-1.08-1.152-1.595C5.418 2.345 4.776 2 4 2 2.324 2 1 3.326 1 4.92c0 1.211.554 2.066 1.868 3.37.337.334.721.695 1.146 1.093C5.122 10.423 6.5 11.717 8 13.447c1.5-1.73 2.878-3.024 3.986-4.064.425-.398.81-.76 1.146-1.093C14.446 6.986 15 6.131 15 4.92 15 3.326 13.676 2 12 2c-.777 0-1.418.345-1.954.852-.545.515-.93 1.152-1.152 1.595L8 6.236zm.392 8.292a.513.513 0 0 1-.784 0c-1.601-1.902-3.05-3.262-4.243-4.381C1.3 8.208 0 6.989 0 4.92 0 2.755 1.79 1 4 1c1.6 0 2.719 1.05 3.404 2.008.26.365.458.716.596.992a7.55 7.55 0 0 1 .596-.992C9.281 2.049 10.4 1 12 1c2.21 0 4 1.755 4 3.92 0 2.069-1.3 3.288-3.365 5.227-1.193 1.12-2.642 2.48-4.243 4.38z" />
+                                </svg></a>
+											</span>
+										</c:when>
+										<c:otherwise>
+											<%-- 꽉찬 하트일때 --%>
+											<span> <a idx="${tmp.no }" href="javascript:"
+												class="heart-click heart_icon${tmp.no }"><svg
+														xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+														fill="currentColor" class="bi bi-suit-heart-fill"
+														viewBox="0 0 16 16">
+                                  <path
+															d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z" />
+                                </svg></a>
+											</span>
+										</c:otherwise>
+									</c:choose>
+								</c:when>
+								<%-- 로그인 상태가 아닐때  - 하트클릭 안되게 --%>
+								<c:otherwise>
+									<span> <a href="javascript:" class="heart-notlogin">
+											<svg class="heart3" xmlns="http://www.w3.org/2000/svg"
+												width="16" height="16" fill="currentColor"
+												class="bi bi-suit-heart" viewBox="0 0 16 16">
+                          <path
+													d="M8 6.236l-.894-1.789c-.222-.443-.607-1.08-1.152-1.595C5.418 2.345 4.776 2 4 2 2.324 2 1 3.326 1 4.92c0 1.211.554 2.066 1.868 3.37.337.334.721.695 1.146 1.093C5.122 10.423 6.5 11.717 8 13.447c1.5-1.73 2.878-3.024 3.986-4.064.425-.398.81-.76 1.146-1.093C14.446 6.986 15 6.131 15 4.92 15 3.326 13.676 2 12 2c-.777 0-1.418.345-1.954.852-.545.515-.93 1.152-1.152 1.595L8 6.236zm.392 8.292a.513.513 0 0 1-.784 0c-1.601-1.902-3.05-3.262-4.243-4.381C1.3 8.208 0 6.989 0 4.92 0 2.755 1.79 1 4 1c1.6 0 2.719 1.05 3.404 2.008.26.365.458.716.596.992a7.55 7.55 0 0 1 .596-.992C9.281 2.049 10.4 1 12 1c2.21 0 4 1.755 4 3.92 0 2.069-1.3 3.288-3.365 5.227-1.193 1.12-2.642 2.48-4.243 4.38z" />
+                        </svg>
+									</a>
+									</span>
+								</c:otherwise>
+							</c:choose>
+							<span id="heart${tmp.no }">${tmp.heart }</span>
 						</div>
+
 					</div>
 				</div>
 			</div>
@@ -357,6 +404,7 @@
 
 <!-- 스크롤 스파이 navar 관련 script 시작 -->
 <script>
+
 	$(function() {
 		$('body').css('position', 'relative').attr('data-bs-spy', 'scroll')
 				.attr('data-bs-target', '#navbar-example').attr(
@@ -378,6 +426,152 @@
 
 	});
 </script>
+<script>
+	$(document).ready(function() {
+
+		GetList(1);
+		/* 카드가 나타나는 애니메이션
+		$(document).ready(function() {
+		    $(window).scroll( function(){
+		        $('.thumb').each( function(i){
+
+		            var bottom_of_element = $(this).offset().top + $(this).outerHeight();
+		            var bottom_of_window = $(window).scrollTop() + $(window).height();
+
+		            if( bottom_of_window > bottom_of_element ){
+		                $(this).animate({'opacity':'1','margin-bottom':'0px'},1000);
+		            }
+
+		        }); 
+		    });
+		});
+		 */
+
+		// 게시물 이미지를 클릭했을 때 실행된다
+		// 해당 게시물을 hit+1하는 함수를 호출한다.
+		$(document).on('click', '.card-img', function() {
+			// 게시물 번호(no)를 idx로 전달받아 저장합니다.
+			let no = $(this).attr('idx');
+
+			console.log(no + "에 hit + 1을 함");
+
+			// hit+1하고 그 값을 불러온다.
+			$.ajax({
+				url : 'picture_view.do',
+				type : 'get',
+				data : {
+					no : no
+				},
+				success : function(to) {
+					let hit = to.hit;
+
+					$('#m_hit' + no).text(hit);
+					$('#hit' + no).text(hit);
+
+				},
+				error : function() {
+					alert('서버 에러');
+				}
+			});
+		});
+
+	});
+</script>
+<script>
+	//로그인 한 상태에서 하트를 클릭했을 때 (로그인한 상태인 하트의 <a></a> class명: heart-click)
+	$(".heart-click")
+			.click(
+					function() {
+
+						// 게시물 번호(no)를 idx로 전달받아 저장합니다.
+						let no = $(this).attr('idx');
+						console.log("heart-click");
+
+						// 빈하트를 눌렀을때
+						if ($(this).children('svg').attr('class') == "bi bi-suit-heart") {
+							console.log("빈하트 클릭" + no);
+
+							$.ajax({
+								url : 'saveHeart.do',
+								type : 'get',
+								data : {
+									no : no,
+								},
+								success : function(pto) {
+									//페이지 새로고침
+									//document.location.reload(true);
+
+									let heart = pto.heart;
+
+									// 페이지, 모달창에 하트수 갱신
+									$('#m_heart' + no).text(heart);
+									$('#heart' + no).text(heart);
+
+									console.log("하트추가 성공");
+								},
+								error : function() {
+									alert('서버 에러');
+								}
+							});
+							console.log("꽉찬하트로 바껴라!");
+
+							// 꽉찬하트로 바꾸기
+							$(this)
+									.html(
+											"<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-suit-heart-fill' viewBox='0 0 16 16'><path d='M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z'/></svg>");
+							$('.heart_icon' + no)
+									.html(
+											"<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-suit-heart-fill' viewBox='0 0 16 16'><path d='M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z'/></svg>");
+
+							// 꽉찬 하트를 눌렀을 때
+						} else if ($(this).children('svg').attr('class') == "bi bi-suit-heart-fill") {
+							console.log("꽉찬하트 클릭" + no);
+
+							$.ajax({
+								url : 'removeHeart.do',
+								type : 'get',
+								data : {
+									no : no,
+								},
+								success : function(pto) {
+									//페이지 새로고침
+									//document.location.reload(true);
+
+									let heart = pto.heart;
+									// 페이지, 모달창에 하트수 갱신
+									$('#m_heart' + no).text(heart);
+									$('#heart' + no).text(heart);
+
+									console.log("하트삭제 성공");
+								},
+								error : function() {
+									alert('서버 에러');
+								}
+							});
+							console.log("빈하트로 바껴라!");
+
+							// 빈하트로 바꾸기
+							$(this)
+									.html(
+											'<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-suit-heart" viewBox="0 0 16 16"><path d="M8 6.236l-.894-1.789c-.222-.443-.607-1.08-1.152-1.595C5.418 2.345 4.776 2 4 2 2.324 2 1 3.326 1 4.92c0 1.211.554 2.066 1.868 3.37.337.334.721.695 1.146 1.093C5.122 10.423 6.5 11.717 8 13.447c1.5-1.73 2.878-3.024 3.986-4.064.425-.398.81-.76 1.146-1.093C14.446 6.986 15 6.131 15 4.92 15 3.326 13.676 2 12 2c-.777 0-1.418.345-1.954.852-.545.515-.93 1.152-1.152 1.595L8 6.236zm.392 8.292a.513.513 0 0 1-.784 0c-1.601-1.902-3.05-3.262-4.243-4.381C1.3 8.208 0 6.989 0 4.92 0 2.755 1.79 1 4 1c1.6 0 2.719 1.05 3.404 2.008.26.365.458.716.596.992a7.55 7.55 0 0 1 .596-.992C9.281 2.049 10.4 1 12 1c2.21 0 4 1.755 4 3.92 0 2.069-1.3 3.288-3.365 5.227-1.193 1.12-2.642 2.48-4.243 4.38z" /></svg>');
+
+							$('.heart_icon' + no)
+									.html(
+											'<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-suit-heart" viewBox="0 0 16 16"><path d="M8 6.236l-.894-1.789c-.222-.443-.607-1.08-1.152-1.595C5.418 2.345 4.776 2 4 2 2.324 2 1 3.326 1 4.92c0 1.211.554 2.066 1.868 3.37.337.334.721.695 1.146 1.093C5.122 10.423 6.5 11.717 8 13.447c1.5-1.73 2.878-3.024 3.986-4.064.425-.398.81-.76 1.146-1.093C14.446 6.986 15 6.131 15 4.92 15 3.326 13.676 2 12 2c-.777 0-1.418.345-1.954.852-.545.515-.93 1.152-1.152 1.595L8 6.236zm.392 8.292a.513.513 0 0 1-.784 0c-1.601-1.902-3.05-3.262-4.243-4.381C1.3 8.208 0 6.989 0 4.92 0 2.755 1.79 1 4 1c1.6 0 2.719 1.05 3.404 2.008.26.365.458.716.596.992a7.55 7.55 0 0 1 .596-.992C9.281 2.049 10.4 1 12 1c2.21 0 4 1.755 4 3.92 0 2.069-1.3 3.288-3.365 5.227-1.193 1.12-2.642 2.48-4.243 4.38z" /></svg>');
+						}
+
+					});
+
+	// 로그인 안한 상태에서 하트를 클릭하면 로그인해야한다는 알림창이 뜹니다.
+	// (로그인한 상태인 하트의 <a></a> class명: heart-notlogin)
+
+	$(".heart-notlogin").unbind('click');
+	$(".heart-notlogin ").click(function() {
+		alert('로그인 하셔야 하트를 누를수 있습니다!');
+		location.href = "/user/user_login.do";
+	});
+</script>
+
 <!-- 스크롤 스파이 navar 관련 script 끝 -->
 
 </body>
