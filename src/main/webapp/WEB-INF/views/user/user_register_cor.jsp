@@ -22,18 +22,34 @@
 <!-- sub contents start -->
 <div class="container-fluid subcontent">
 	<div class="container" style="width: 50%">
-		<form id="userForm" class="needs-validation" method="post" action="/user/user_register_cor_pro.do" novalidate>
+		<form id="userForm" class="needs-validation" method="post" action="/user/user_register_cor_pro.do" enctype="multipart/form-data" novalidate>
 	        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 	        <input type="hidden" name="favorite" value="favorite_test_msg">
 	        <input type="hidden" name="active" value="active_test_msg">
 	        <input type="hidden" name="nickname" value="nickname_test_msg">
 	        <input type="hidden" name="tel" id="tel" value="">
 	        <input type="hidden" name="addr" id="addr" value="addr_test_msg">
-	        <input type="hidden" name="profile" value="profile_test_msg">
+	        <input type="hidden" name="lat" id="lat" value="0"> 
+			<input type="hidden" name="lng" id="lng" value="0"> 
 	        
 			<div class="styled__Box-sc-1etb7tu-1 cubPeM">
 				<h1>중개사 회원정보 입력</h1>
 				<h2>원픽 서비스 이용을 위해 아래 정보를 입력해주세요.</h2>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="input-with-label__InputWrap-sc-1p3gkts-0 eVAGdp">
+							<label class="bDaqny">
+								<p class="label-text">대표 사진</p> 
+								<input type="file" name="pimg" class="form-control kHDHPO w-100" id="pimg" required accept="image/*" onchange="selectFile(this)">
+								<div class="valid-feedback">확인되었습니다</div>
+								<div class="invalid-feedback">대표 사진을 등록해주십시오.</div>
+							</label>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<img id="imgPreview" class="w-100" src="/resources/images/logo_002_opacity.png">
+					</div>
+				</div>
 				<div class="input-with-label__InputWrap-sc-1p3gkts-0 eVAGdp">
 					<label class="bDaqny">
 						<p class="label-text">이메일</p> <input type="text" name="username"
@@ -200,6 +216,7 @@
 
 </script>
 
+<!--  전화번호 관련 스크립트 시작 -->
 <script>
    var tel01 = null;
    var tel02 = null;
@@ -236,18 +253,49 @@
    })
    
 </script>
+<!-- 전화번호 관련 스크립트 끝 -->
+
+<!-- 사진 파일 등록 스크립트 시작 -->
+<script>
+	function selectFile(element) {
+		img_ = document.getElementById("imgPreview");
+		toReset = false;
+		const file = element.files[0];
+		
+		if (file == undefined || file == null) {
+			toReset = true;
+		} else if (!file.type) {
+			alert("Error : file.type porperty does not appear to be supported on this browser.");
+			element.value = "";
+			toReset = true;
+		} else if (!file.type.startsWith("image/")) {
+			alert("Error : the selected file does not appear to be an image.");
+			element.value = "";
+			toReset = true;
+		}
+	
+		if (toReset) {
+			
+			img_.src = "/resources/images/logo_002_opacity.png";
+			
+			return false;
+		}
+	
+		// 이미지 파일을 읽어 data:image~~~~~ 형태로 뿌려줌
+		// 아직 서버에 업로드 된건 아님
+		const reader = new FileReader();
+		reader.addEventListener('load', e => {
+			img_.src = e.target.result;
+		});
+		reader.readAsDataURL(file);
+	}
+</script>
+<!-- 사진 파일 등록 스크립트 끝 -->
 
 <!-- sub contents end -->
 
 <%@ include file="../include/footer.jsp"%>
 
-<!-- jquery를 기반으로 로드함 -->
-<!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<!-- 모든 컴파일된 플러그인을 포함합니다 (아래), 원하지 않는다면 필요한 각각의 파일을 포함하세요 -->
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 </body>
 

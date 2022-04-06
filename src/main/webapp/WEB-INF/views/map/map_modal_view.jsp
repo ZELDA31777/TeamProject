@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,22 +29,22 @@
 				<div class="carousel-inner">
 					<div class="carousel-item active" data-bs-interval="10000">
 						<div class="image-box">
-							<img src="/resources/images/ex_000.png"
+							<img src="/upload/${pvo.thumbnail }"
 								class="d-block image-thumbnail" alt="...">
 						</div>
 					</div>
+					
+				<!-- picture에 기록된 사진 출력 시작 -->
+				<c:forEach var="pic" items="${picList}">
 					<div class="carousel-item " data-bs-interval="2000">
 						<div class="image-box">
-							<img src="/resources/images/ex_001.png"
+							<img src="/upload/${pic }"
 								class="d-block image-thumbnail" alt="...">
 						</div>
 					</div>
-					<div class="carousel-item">
-						<div class="image-box">
-							<img src="/resources/images/ex_001.png"
-								class="d-block image-thumbnail" alt="...">
-						</div>
-					</div>
+				</c:forEach>
+				<!-- picture에 기록된 사진 출력 끝 -->
+					
 				</div>
 				<button class="carousel-control-prev" type="button"
 					data-bs-target="#carouselExampleInterval" data-bs-slide="prev">

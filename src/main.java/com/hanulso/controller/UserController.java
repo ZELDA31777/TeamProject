@@ -1,6 +1,10 @@
 package com.hanulso.controller;
 
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.UUID;
 
 import javax.mail.internet.MimeMessage;
 
@@ -9,13 +13,13 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hanulso.domain.CorVO;
@@ -133,15 +137,52 @@ public class UserController {
 	}
 	
 	@PostMapping("/user_register_cor_pro.do")
-	public String user_register_cor_pro(UserVO uvo, CorVO cvo, RedirectAttributes rttr) {
+	public String user_register_cor_pro(UserVO uvo, CorVO cvo, MultipartFile pimg ,RedirectAttributes rttr) {
 		String inputPass = pwencoder.encode(uvo.getPassword());
 		uvo.setPassword(inputPass);
+		
+		/* 파일업로드 시작 */
+		String uploadFolder = "C:\\upload";
+		String folderPath = getFolder();
+		File uploadPath = new File(uploadFolder, folderPath);
+		if (!uploadPath.exists()) {
+			uploadPath.mkdirs();
+		}
+		
+		try {
+			if (!pimg.isEmpty()) { // 업로드 된 파일이 있을때에만
+				String uploadFileName = UUID.randomUUID().toString() /* 중복 처리 */
+						+"_"+pimg.getOriginalFilename().substring(pimg.getOriginalFilename().lastIndexOf("\\")+1); // 모든 경로까지 저장되는 ie 브라우저용 처리
+				
+				File saveFile = new File(uploadPath, uploadFileName);
+				pimg.transferTo(saveFile);
+				
+				String savePath = folderPath+File.separator+uploadFileName;
+				
+				
+				cvo.setProfile(savePath);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		/* 파일업로드 끝 */
+		
 		service.corRegister(uvo, cvo);
 //		mailCheck(uvo);
 //		// 회원가입과 동시에 active 위한 메일 발송
 //		return "/user/mailCheck_Request";
-		return "/";
+		return "redirect:/";
 	}
+	
+	
+	// 날짜로 년도/월/일 로 경로 생성
+	public String getFolder() {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = new Date(); // 오늘날짜
+		return sdf.format(date).replace("-", File.separator); // File.separator : 윈도우의 경우 "//"
+	}
+	
 	
 	@PostMapping("/user_register_admin_pro.do")
 	public String user_register_admin_pro(UserVO uvo, RedirectAttributes rttr) {

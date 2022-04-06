@@ -694,7 +694,7 @@ h4 {
 											style="background: blue; background-clip: content-box; height: calc(200px - 32px);">
 											<!-- 썸네일 이미지 출력 -->
 											<img class="product_view"
-												src="/resources/images/logo_001.png"
+												src="/upload/${list.thumbnail }"
 												style="width: 100%; height: 100%;" data-bs-toggle="modal"
 												data-bs-target="#exampleModal"
 												href="/map/map_modal_view.do?pno=${list.pno }">
@@ -858,7 +858,7 @@ h4 {
 <!-- 양방향 슬라이더 script 끝 -->
 
 <!-- 구글 지도 스크립트 시작 -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPxvrQTmFrf14CPepU3kV_wb8wIpwrwSs&callback=initMap&v=weekly " async></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap&v=weekly " async></script>
 <script>
   function initMap() {
     const map = new google.maps.Map(document.getElementById("map"), {

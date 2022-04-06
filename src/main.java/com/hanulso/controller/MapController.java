@@ -29,5 +29,6 @@ public class MapController {
 	public void map_modal_view (@RequestParam("pno") int pno, Model model) {
 		ProductVO pvo = service.map_modal_view(pno);
 		model.addAttribute("pvo", pvo);
+		model.addAttribute("picList", pvo.getPicture().split("/"));
 	}
 }

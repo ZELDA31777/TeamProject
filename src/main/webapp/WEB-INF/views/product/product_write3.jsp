@@ -31,7 +31,7 @@
 	<div class="row mb-2">
 		<div class="col-md-6 align-self-center">
 			<div class="img_wrap" id="height_img">
-				<img src="/resources/images/m_011.jpg">
+				<img src="/resources/images/logo_002_opacity.png">
 			</div>
 		</div>
 
@@ -43,22 +43,22 @@
 			<div class="row mb-2">
 				<div class="col-md-6 py-2 px-2">
 					<div class="img_wrap">
-						<img src="/resources/images/m_011.jpg" style="width: 100%">
+						<img src="/resources/images/logo_002_opacity.png" style="width: 100%">
 					</div>
 				</div>
 				<div class="col-md-6 py-2 px-2">
 					<div class="img_wrap">
-						<img src="/resources/images/m_011.jpg" style="width: 100%">
+						<img src="/resources/images/logo_002_opacity.png" style="width: 100%">
 					</div>
 				</div>
 				<div class="col-md-6 py-2 px-2">
 					<div class="img_wrap">
-						<img src="/resources/images/m_011.jpg" style="width: 100%">
+						<img src="/resources/images/logo_002_opacity.png" style="width: 100%">
 					</div>
 				</div>
 				<div class="col-md-6 py-2 px-2">
 					<div class="img_wrap">
-						<img src="/resources/images/m_011.jpg" style="width: 100%">
+						<img src="/resources/images/logo_002_opacity.png" style="width: 100%">
 					</div>
 				</div>
 			</div>
@@ -89,49 +89,50 @@
 			</nav>
 			<!-- 스크롤 스파이 navar 끝 -->
 			
-			<!-- 이미지 업로드 시작 -->
-			<h4 class="styled__Title-sc-16d1qhz-2 cBaPiP">사진 올리기</h4>
-			<div class="iOHiXt" style="list-style: none;">
-				<li>
-					<div class="row" style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid rgb(245, 245, 245);">
-						<div class="iehkos col-md-3">필수 사진</div>
-						<div class="gEjpOz col-md-9">
-							<input type="file" class="form-control w-75" id="thumbnailFile" name="thumbnailFile">
-							<p class="styled__Won-sc-1xx7qac-4 ceMnZE">
-								<span>매물을 대표할 사진입니다. 반드시 올려주세요.</span>
-							</p>
-						</div>
-					</div>
-				</li>
-				<li>
-					<div class="row" style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid rgb(245, 245, 245);">
-						<div class="iehkos col-md-3">추가 사진</div>
-						<div class="gEjpOz col-md-9" id="pictureDiv">
-							<p class="styled__Won-sc-1xx7qac-4 ceMnZE">
-								<span>매물의 또 다른 사진입니다. 추가 버튼을 눌러 첨부할 이미지 수 를 변경할 수 있습니다.</span>
-							</p>
-							<div class="position-relative"><input type="file" class="form-control w-75 d-inline-block" id="pictureFile" name="pictureFile"><button class="btn btn-outline-success position-absolute end-0 me-3" id="picturePlus"><i class="fa-solid fa-plus"></i></button></div>
-							<div class="position-relative mt-3"><input type="file" class="form-control w-75 d-inline-block" name="pictureFile"><button class="btn btn-outline-danger position-absolute end-0 me-3" name="pictureDel" type="button" onClick="picDel(this);"><i class="fa-solid fa-minus"></i></button></div>
-							<div class="position-relative mt-3"><input type="file" class="form-control w-75 d-inline-block" name="pictureFile"><button class="btn btn-outline-danger position-absolute end-0 me-3" name="pictureDel" type="button" onClick="picDel(this);"><i class="fa-solid fa-minus"></i></button></div>
-						</div>
-					</div>
-				</li>
-			</div>
 			
-			<!-- 이미지 업로드 끝 -->
 
 
-			<h4 class="cBaPiP" style="margin-top: 35px;">가격정보</h4>
-			<form name="pr_write" action="/product/product_write_pro.do" method="post">
-				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"> 
-					<input type="hidden" name="addr" id="addr" value="test"> 
-					<input type="hidden" name="lat" id="lat" value="0"> 
-					<input type="hidden" name="lng" id="lng" value="0"> 
-					<input type="hidden" name="picture" id="picture" value="picture"> 
-					<input type="hidden" name="thumbnail" id="thumbnail" value="thumbnail">
+			<form name="pr_write" action="/product/product_write_pro.do" method="post" enctype="multipart/form-data">
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+				<input type="hidden" name="addr" id="addr" value="test"> 
+				<input type="hidden" name="lat" id="lat" value="0"> 
+				<input type="hidden" name="lng" id="lng" value="0"> 
 				<input type="hidden" name="username" id="username" value="우리공인중개사">
-
-
+				
+				<!-- 이미지 업로드 시작 -->
+				
+				<h4 class="styled__Title-sc-16d1qhz-2 cBaPiP">사진 올리기</h4>
+				<div class="iOHiXt" style="list-style: none;">
+					<li>
+						<div class="row" style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid rgb(245, 245, 245);">
+							<div class="iehkos col-md-3">필수 사진</div>
+							<div class="gEjpOz col-md-9">
+								<input type="file" class="form-control w-75" id="thumbnailFile" name="pictureFile" accept="image/*" onchange="selectFile(this);" data-idx="0">
+								<p class="styled__Won-sc-1xx7qac-4 ceMnZE">
+									<span>매물을 대표할 사진입니다. 반드시 올려주세요.</span>
+								</p>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="row" style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid rgb(245, 245, 245);">
+							<div class="iehkos col-md-3">추가 사진</div>
+							<div class="gEjpOz col-md-9" id="pictureDiv">
+								<p class="styled__Won-sc-1xx7qac-4 ceMnZE">
+									<span>매물의 또 다른 사진입니다. 추가 버튼을 눌러 첨부할 이미지 수 를 변경할 수 있습니다.</span>
+								</p>
+								<div class="position-relative"><input type="file" class="form-control w-75 d-inline-block" name="pictureFile" accept="image/*" onchange="selectFile(this)" data-idx="1"><button class="btn btn-outline-success position-absolute end-0 me-3" id="picturePlus" type="button"><i class="fa-solid fa-plus"></i></button></div>
+								<div class="position-relative mt-3"><input type="file" class="form-control w-75 d-inline-block" name="pictureFile" accept="image/*" onchange="selectFile(this)" data-idx="2"></div>
+								<div class="position-relative mt-3"><input type="file" class="form-control w-75 d-inline-block" name="pictureFile" accept="image/*" onchange="selectFile(this)" data-idx="3"></div>
+								<div class="position-relative mt-3"><input type="file" class="form-control w-75 d-inline-block" name="pictureFile" accept="image/*" onchange="selectFile(this)" data-idx="4"></div>
+							</div>
+						</div>
+					</li>
+				</div>
+				
+				<!-- 이미지 업로드 끝 -->
+				
+				<h4 class="cBaPiP" style="margin-top: 35px;">가격정보</h4>
 				<div class="iOHiXt" style="list-style: none;">
 					<li>
 						<div class="row"
@@ -612,17 +613,59 @@
 
 <!-- 사진 파일 업로드 추가 및 삭제 삭제 -->
 <script>
+
+	// - 버튼을 눌러서 파일 선택 창 삭제
 	function picDel(btn) {
-		btn.closest("div").remove();
+		var cl_div = btn.closest("div");
+		cl_div.remove();
+	}
+
+	
+	// 파일 선택 시 동작
+	function selectFile(element) {
+		img_wrap_list = document.getElementsByClassName("img_wrap");
+		toReset = false;
+		const file = element.files[0];
+
+		
+		console.log("selectFile",file);
+
+		if (file == undefined || file == null) {
+			toReset = true;
+		} else if (!file.type) {
+			alert("Error : file.type porperty does not appear to be supported on this browser.");
+			element.value = "";
+			toReset = true;
+		} else if (!file.type.startsWith("image/")) {
+			alert("Error : the selected file does not appear to be an image.");
+			element.value = "";
+			toReset = true;
+		}
+
+		if (toReset) {
+			if (element.dataset.idx <= 4) {
+				img_wrap_list[element.dataset.idx].firstElementChild.src = "/resources/images/logo_002_opacity.png";
+			}
+			return false;
+		}
+
+		// 이미지 파일을 읽어 data:image~~~~~ 형태로 뿌려줌
+		// 아직 서버에 업로드 된건 아님
+		const reader = new FileReader();
+		reader.addEventListener('load', e => {
+			if (element.dataset.idx <= 4) {
+				img_wrap_list[element.dataset.idx].firstElementChild.src = e.target.result;
+			}
+		});
+		reader.readAsDataURL(file);
 	}
 	
-	$(function() {		
-		$("#picturePlus").on("click", function(){
-			$("#pictureDiv").append('<div class="position-relative mt-3"><input type="file" class="form-control w-75 d-inline-block" name="pictureFile"><button class="btn btn-outline-danger position-absolute end-0 me-3" name="pictureDel" type="button" onClick="picDel(this);"><i class="fa-solid fa-minus"></i></button></div>');
-			return false;
-		});
 
+	// + 버튼 누를 시 파일 업로드 추가
+	$("#picturePlus").on("click", function(){
+		$("#pictureDiv").append('<div class="position-relative mt-3"><input type="file" class="form-control w-75 d-inline-block" name="pictureFile" accept="image/*" onchange="selectFile(this)"><button class="btn btn-outline-danger position-absolute end-0 me-3" name="pictureDel" type="button" onClick="picDel(this);"><i class="fa-solid fa-minus"></i></button></div>');
 	});
+	
 </script>
 <!-- 사진 파일 업로드 추가 및 삭제 끝 -->
 
