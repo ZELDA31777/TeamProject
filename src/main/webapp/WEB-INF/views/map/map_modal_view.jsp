@@ -5,17 +5,65 @@
 <head>
 <meta charset="UTF-8">
 </head>
+<style>
+.image-box {
+	width: 100%;
+	height: 500px;
+	overflow: hidden;
+	margin: 0 auto;
+}
+
+.image-thumbnail {
+	width: 100%;
+	height:100%;
+	object-fit: cover;
+}
+</style>
 <body>
 
 	<div class="row">
+		<div class="col-md-8">
+			<div id="carouselExampleInterval" class="carousel slide"
+				data-bs-ride="carousel">
+				<div class="carousel-inner">
+					<div class="carousel-item active" data-bs-interval="10000">
+						<div class="image-box">
+							<img src="/resources/images/ex_000.png"
+								class="d-block image-thumbnail" alt="...">
+						</div>
+					</div>
+					<div class="carousel-item " data-bs-interval="2000">
+						<div class="image-box">
+							<img src="/resources/images/ex_001.png"
+								class="d-block image-thumbnail" alt="...">
+						</div>
+					</div>
+					<div class="carousel-item">
+						<div class="image-box">
+							<img src="/resources/images/ex_001.png"
+								class="d-block image-thumbnail" alt="...">
+						</div>
+					</div>
+				</div>
+				<button class="carousel-control-prev" type="button"
+					data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Previous</span>
+				</button>
+				<button class="carousel-control-next" type="button"
+					data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Next</span>
+				</button>
+			</div>
 
-		<div class="col-md-8"></div>
+		</div>
 
 		<div class="col-md-4">
 			<div class="map_modal_info">
 				<div class="biKwOB">
 					<div>
-						<div class="dtGkBV">매물번호${pvo.pno} </div>
+						<div class="dtGkBV">매물번호${pvo.pno}</div>
 					</div>
 					<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
 						xmlns="http://www.w3.org/2000/svg" style="flex: 0 0 auto;">
@@ -99,11 +147,10 @@
 			</div>
 		</div>
 	</div>
-<script>
-function view_(){
-	location.href="/product/product_view.do?pno=${pvo.pno}";
-}
-
-</script>
+	<script>
+		function view_() {
+			location.href = "/product/product_view.do?pno=${pvo.pno}";
+		}
+	</script>
 </body>
 </html>
