@@ -1,7 +1,6 @@
 package com.hanulso.controller;
 
 import java.util.HashMap;
-import java.util.Random;
 
 import javax.mail.internet.MimeMessage;
 
@@ -23,11 +22,13 @@ import com.hanulso.domain.CorVO;
 import com.hanulso.domain.UserVO;
 import com.hanulso.service.UserService;
 
+import lombok.Setter;
+
 @Controller
 @RequestMapping("/user/*")
 public class UserController {
 
-	@Autowired
+	@Setter(onMethod_ = @Autowired)
 	private UserService service;
 	
 	@Autowired
@@ -44,16 +45,20 @@ public class UserController {
 		return "redirect:/";
 	}
 	
+	@GetMapping("/mailCheck_Request")
+	public void mailCheckRequestForm() {
+		
+	}
+	
 	@GetMapping("/mailCheck.do")
 	public void mailCheckForm(UserVO uvo) {
 		System.out.println(uvo);
-		System.out.println("메일체크");
+		System.out.println("mailCheck.do 실행 확인");
 	}
-	
-	// 메일 체크
-	@PostMapping("/mailCheck_pro.do")
-	public String mailCheck(UserVO uvo,Model model) {
-		System.out.println("프로");
+
+	// active 위한 메일 발송
+	public void mailCheck(UserVO uvo) {
+		System.out.println("mailCheck_pro.do 실행 확인");
 		System.out.println(uvo);
 		/* 이메일 보내기 */
 		String setFrom = "onepick.jsl51@gmail.com";
@@ -61,13 +66,7 @@ public class UserController {
 		System.out.println(uvo.getUsername());
 		String title = "회원가입 인증 이메일 입니다.";
 		String contents = "<h1>[이메일 인증]</h1><br><p>아래 링크를 클릭하시면 이메일 인증이 완료됩니다.</p>"
-                + "<a href='http://localhost:8123/user/mailCheckUp.do?username="+uvo.getUsername()+"&active="+uvo.getActive()+"'>이메일 인증 확인</a>";
-		
-		// active 난수생성 해서 DB에 넣을때
-		// 난수값 서로 비교해주고 acitve 에다가 넣어주기
-		
-		Random random = new Random();
-		int num = random.nextInt(888888)+111111;
+                + "<a href='http://localhost:8123/user/mailCheck_done.do?username="+uvo.getUsername()+"&active_key="+uvo.getPassword()+"'>이메일 인증 확인</a>";
 		
 		try {
 			MimeMessage message = mailSender.createMimeMessage();
@@ -81,16 +80,13 @@ public class UserController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-		
-		return "redirect:/mailCheckUp.do";
 	}
 	
-	@GetMapping("/mailCheckUp.do")
-	public String mailCheckUp(UserVO uvo) {
-		service.mailCheckUp(uvo.getUsername());
-		System.out.println("확인");
-		return "redirect:/";
+	// 이메일 인증이 완료 된 회원이 active 가능
+	@GetMapping("/mailCheck_done.do")
+	public void mailCheckUp(@RequestParam("username") String username, @RequestParam("active_key") String password) {
+		service.mailCheckUp(username, password);
+		System.out.println("mailCheckUp.do 실행 확인");
 	}
 	
 	// 카카오 관련
@@ -129,9 +125,11 @@ public class UserController {
 		service.userRegister(uvo);
 		
 		System.out.println(uvo);
-		System.out.println("레지스터프로");
-		
-		return "/user/mailCheck";
+		System.out.println("회원가입  with notActive");
+//		mailCheck(uvo);
+//		// 회원가입과 동시에 active 위한 메일 발송
+//		return "/user/mailCheck_Request";
+		return "/";
 	}
 	
 	@PostMapping("/user_register_cor_pro.do")
@@ -139,7 +137,10 @@ public class UserController {
 		String inputPass = pwencoder.encode(uvo.getPassword());
 		uvo.setPassword(inputPass);
 		service.corRegister(uvo, cvo);
-		return "redirect:/";
+//		mailCheck(uvo);
+//		// 회원가입과 동시에 active 위한 메일 발송
+//		return "/user/mailCheck_Request";
+		return "/";
 	}
 	
 	@PostMapping("/user_register_admin_pro.do")
@@ -147,7 +148,10 @@ public class UserController {
 		String inputPass = pwencoder.encode(uvo.getPassword());
 		uvo.setPassword(inputPass);
 		service.adminRegister(uvo);
-		return "redirect:/";
+//		mailCheck(uvo);
+//		// 회원가입과 동시에 active 위한 메일 발송
+//		return "/user/mailCheck_Request";
+		return "/";
 	}
 	
 }

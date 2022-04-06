@@ -7,7 +7,7 @@ import com.hanulso.domain.UserVO;
 
 public interface UserService {
 	
-	public int mailCheckUp(String username);
+	public void mailCheckUp(String username, String password);
 	
 	public void userRegister(UserVO uvo);
 	
