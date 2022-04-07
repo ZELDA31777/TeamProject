@@ -41,7 +41,7 @@
 	<select id="notice_list" resultType="com.hanulso.domain.KnowledgeVO">
 		<![CDATA[
 			select * from (
-			select /*+ index_desc(one_admin_notice, one_admin_notice_no) */ rownum rn, notice_no, notice_title, notice_content, notice_regdate
+			select /*+ index_desc(one_admin_notice one_admin_notice_no) */ rownum rn, notice_no, notice_title, notice_content, notice_regdate
 			from one_admin_notice
 			where
 		]]>	
@@ -58,9 +58,7 @@
 		<![CDATA[
 		select count(*) from one_admin_notice where 
 		]]>
-		
 		<include refid="criteria"></include>	
-		
 		<![CDATA[	
 		notice_no > 0
 		]]>
