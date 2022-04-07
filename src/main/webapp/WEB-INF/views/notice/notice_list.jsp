@@ -106,6 +106,8 @@
 			</select> <input type="text" name="keyword" class="form-control txtform">
 			<button class="btn btn-light">검색</button>
 		</form>
+		<a href="/notice/notice_list.do"><button class="btn btn-light write">목록으로</button></a>
+			
 	</div>
 
 </div>
