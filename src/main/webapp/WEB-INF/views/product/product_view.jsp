@@ -30,36 +30,29 @@
 	<div class="row mb-2">
 		<div class="col-md-6 align-self-center">
 			<div class="img_wrap" id="height_img">
-				<img src="/resources/images/m_011.jpg">
+				<img src="/upload/${pvo.thumbnail }">
 			</div>
 		</div>
 
 		<div class="col-md-6 align-self-center" style="position: relative;">
 			<div class="gSwvZYY">
-				<button type="button" class="btn btn-secondary eBlbuFF">사진
-					모두 보기</button>
+				<button type="button" class="btn btn-secondary eBlbuFF">사진 모두 보기</button>
 			</div>
 			<div class="row mb-2">
+			<!-- 사진 출력 시작 -->
+			<c:forEach var="i" begin="0" end="3" >
 				<div class="col-md-6 py-2 px-2">
 					<div class="img_wrap">
-						<img src="/resources/images/m_011.jpg" style="width: 100%">
+						<img src='
+						<c:choose>
+							<c:when test="${i < picListLength}">/upload/${picList[i] }</c:when>
+							<c:otherwise>/resources/images/logo_002_opacity.png</c:otherwise>
+						</c:choose>
+						' style="width: 100%">
 					</div>
 				</div>
-				<div class="col-md-6 py-2 px-2">
-					<div class="img_wrap">
-						<img src="/resources/images/m_011.jpg" style="width: 100%">
-					</div>
-				</div>
-				<div class="col-md-6 py-2 px-2">
-					<div class="img_wrap">
-						<img src="/resources/images/m_011.jpg" style="width: 100%">
-					</div>
-				</div>
-				<div class="col-md-6 py-2 px-2">
-					<div class="img_wrap">
-						<img src="/resources/images/m_011.jpg" style="width: 100%">
-					</div>
-				</div>
+			</c:forEach>
+			<!-- 사진 출력 끝 -->
 			</div>
 		</div>
 	</div>
@@ -426,9 +419,10 @@
 
 	});
 </script>
+<!-- 스크롤 스파이 navar 관련 script 끝 -->
+
 <script>
 	$(document).ready(function() {
-
 		GetList(1);
 		/* 카드가 나타나는 애니메이션
 		$(document).ready(function() {
@@ -571,8 +565,6 @@
 		location.href = "/user/user_login.do";
 	});
 </script>
-
-<!-- 스크롤 스파이 navar 관련 script 끝 -->
 
 </body>
 

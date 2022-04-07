@@ -29,6 +29,12 @@ public class ProductController {
 		ProductVO pvo = service.product_view(pno);
 		model.addAttribute("pvo", pvo);
 		model.addAttribute("pList", service.product_view_list(pvo.getUsername()));
+		
+		// 사진파일 리스트 (썸네일 제외)
+		// jsp파일에서 경로를 /upload/{picList의 하나} 형태로 사용
+		String[] picList = pvo.getPicture().split("/");
+		model.addAttribute("picList", picList);
+		model.addAttribute("picListLength", picList.length);
 	}
 	
 	@GetMapping("/product_write_backUp.do")
