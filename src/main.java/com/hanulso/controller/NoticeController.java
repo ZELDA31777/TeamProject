@@ -16,7 +16,9 @@ import com.hanulso.domain.PageVO;
 import com.hanulso.service.NoticeService;
 
 import lombok.Setter;
+import lombok.extern.log4j.Log4j;
 
+@Log4j
 @Controller
 @RequestMapping("/notice/*")
 public class NoticeController {

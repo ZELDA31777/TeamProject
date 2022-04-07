@@ -2,9 +2,12 @@ package com.hanulso.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Mapper;
+
 import com.hanulso.domain.Criteria;
 import com.hanulso.domain.KnowledgeVO;
 
+@Mapper
 public interface NoticeMapper {
 
 	//public List<KnowledgeVO> notice_list();

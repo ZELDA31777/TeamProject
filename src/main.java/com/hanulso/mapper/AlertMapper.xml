@@ -3,9 +3,7 @@
 <mapper namespace="com.hanulso.mapper.AlertMapper">
 
 	<select id="notice_list" resultType="com.hanulso.domain.KnowledgeVO">
-	<![CDATA[
-		select * from (select * from one_admin_notice) where rownum <=20 order by notice_no desc
-	]]>
+		select * from one_admin_notice order by notice_no desc
 	</select>
 
 </mapper>
