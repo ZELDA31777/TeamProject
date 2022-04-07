@@ -36,23 +36,26 @@
 
 		<div class="col-md-6 align-self-center" style="position: relative;">
 			<div class="gSwvZYY">
-				<button type="button" class="btn btn-secondary eBlbuFF">사진 모두 보기</button>
+				<button type="button" class="btn btn-secondary eBlbuFF">사진
+					모두 보기</button>
 			</div>
 			<div class="row mb-2">
-			<!-- 사진 출력 시작 -->
-			<c:forEach var="i" begin="0" end="3" >
-				<div class="col-md-6 py-2 px-2">
-					<div class="img_wrap">
-						<img src='
+				<!-- 사진 출력 시작 -->
+				<c:forEach var="i" begin="0" end="3">
+					<div class="col-md-6 py-2 px-2">
+						<div class="img_wrap">
+							<img
+								src='
 						<c:choose>
 							<c:when test="${i < picListLength}">/upload/${picList[i] }</c:when>
 							<c:otherwise>/resources/images/logo_002_opacity.png</c:otherwise>
 						</c:choose>
-						' style="width: 100%">
+						'
+								style="width: 100%">
+						</div>
 					</div>
-				</div>
-			</c:forEach>
-			<!-- 사진 출력 끝 -->
+				</c:forEach>
+				<!-- 사진 출력 끝 -->
 			</div>
 		</div>
 	</div>
@@ -251,6 +254,21 @@
 			</div>
 
 
+			<!-- 비로그인 상태의 정보를 받아옴 -->
+			<sec:authorize access="isAnonymous()">
+				<c:set var="username" value="" />
+			</sec:authorize>
+			<!-- 비로그인 상태의 정보를 받아옴 종료 -->
+
+			<!-- 현재 로그인 한 유저의 정보를 받아옴 -->
+			<sec:authorize access="isAuthenticated()">
+				<c:set var="username">
+					<sec:authentication property="principal.user.username" />
+				</c:set>
+				<input type="hidden" id="username1" name="username1" value="${username}">
+			</sec:authorize>
+			<!-- 현재 로그인 한 유저의 정보를 받아옴 종료 -->
+			
 
 		</div>
 		<div class="col-md-4" style="margin-top: 80px">
@@ -320,70 +338,15 @@
 						</div>
 					</div>
 
-					<sec:authorize access="isAnonymous()">
-						<c:set var="testvalue" value="없습니다." />
-						<label>${testvalue }</label>
-					</sec:authorize>
-
-
-					<sec:authorize access="isAuthenticated()">
-						<c:set var="testvalue">
-							<sec:authentication property="principal.user.username" />
-						</c:set>
-						<label>${testvalue } </label>
-					</sec:authorize>
-
 					<div class="styled__BtnWrap-cvrpi1-15 brpHbd row">
 						<button color="blue" class="fiEZwu3 col-md-10">
 							<span><span>연락처보기</span></span>
 						</button>
 
 						<div class="col-md-2">
-							<div>${username }</div>
-							<c:choose>
-								<%-- 로그인 상태일때 - 하트 클릭 되게 --%>
-								<c:when test="${not empty sessionScope.nick}">
-									<c:choose>
-										<c:when test="${empty tmp.hno}">
-											<%-- 빈 하트일때 --%>
-											<span> <a idx="${tmp.no }" href="javascript:"
-												class="heart-click heart_icon${tmp.no }"><svg
-														xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-														fill="currentColor" class="bi bi-suit-heart"
-														viewBox="0 0 16 16">
-                                  <path
-															d="M8 6.236l-.894-1.789c-.222-.443-.607-1.08-1.152-1.595C5.418 2.345 4.776 2 4 2 2.324 2 1 3.326 1 4.92c0 1.211.554 2.066 1.868 3.37.337.334.721.695 1.146 1.093C5.122 10.423 6.5 11.717 8 13.447c1.5-1.73 2.878-3.024 3.986-4.064.425-.398.81-.76 1.146-1.093C14.446 6.986 15 6.131 15 4.92 15 3.326 13.676 2 12 2c-.777 0-1.418.345-1.954.852-.545.515-.93 1.152-1.152 1.595L8 6.236zm.392 8.292a.513.513 0 0 1-.784 0c-1.601-1.902-3.05-3.262-4.243-4.381C1.3 8.208 0 6.989 0 4.92 0 2.755 1.79 1 4 1c1.6 0 2.719 1.05 3.404 2.008.26.365.458.716.596.992a7.55 7.55 0 0 1 .596-.992C9.281 2.049 10.4 1 12 1c2.21 0 4 1.755 4 3.92 0 2.069-1.3 3.288-3.365 5.227-1.193 1.12-2.642 2.48-4.243 4.38z" />
-                                </svg></a>
-											</span>
-										</c:when>
-										<c:otherwise>
-											<%-- 꽉찬 하트일때 --%>
-											<span> <a idx="${tmp.no }" href="javascript:"
-												class="heart-click heart_icon${tmp.no }"><svg
-														xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-														fill="currentColor" class="bi bi-suit-heart-fill"
-														viewBox="0 0 16 16">
-                                  <path
-															d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z" />
-                                </svg></a>
-											</span>
-										</c:otherwise>
-									</c:choose>
-								</c:when>
-								<%-- 로그인 상태가 아닐때  - 하트클릭 안되게 --%>
-								<c:otherwise>
-									<span> <a href="javascript:" class="heart-notlogin">
-											<svg class="heart3" xmlns="http://www.w3.org/2000/svg"
-												width="16" height="16" fill="currentColor"
-												class="bi bi-suit-heart" viewBox="0 0 16 16">
-                          <path
-													d="M8 6.236l-.894-1.789c-.222-.443-.607-1.08-1.152-1.595C5.418 2.345 4.776 2 4 2 2.324 2 1 3.326 1 4.92c0 1.211.554 2.066 1.868 3.37.337.334.721.695 1.146 1.093C5.122 10.423 6.5 11.717 8 13.447c1.5-1.73 2.878-3.024 3.986-4.064.425-.398.81-.76 1.146-1.093C14.446 6.986 15 6.131 15 4.92 15 3.326 13.676 2 12 2c-.777 0-1.418.345-1.954.852-.545.515-.93 1.152-1.152 1.595L8 6.236zm.392 8.292a.513.513 0 0 1-.784 0c-1.601-1.902-3.05-3.262-4.243-4.381C1.3 8.208 0 6.989 0 4.92 0 2.755 1.79 1 4 1c1.6 0 2.719 1.05 3.404 2.008.26.365.458.716.596.992a7.55 7.55 0 0 1 .596-.992C9.281 2.049 10.4 1 12 1c2.21 0 4 1.755 4 3.92 0 2.069-1.3 3.288-3.365 5.227-1.193 1.12-2.642 2.48-4.243 4.38z" />
-                        </svg>
-									</a>
-									</span>
-								</c:otherwise>
-							</c:choose>
-							<span id="heart${tmp.no }">${tmp.heart }</span>
+							<a class="text-dark heart"> <img id="heart"
+								src="/resources/icon/heart.svg">
+							</a>
 						</div>
 
 					</div>
@@ -397,7 +360,6 @@
 
 <!-- 스크롤 스파이 navar 관련 script 시작 -->
 <script>
-
 	$(function() {
 		$('body').css('position', 'relative').attr('data-bs-spy', 'scroll')
 				.attr('data-bs-target', '#navbar-example').attr(
@@ -420,151 +382,59 @@
 	});
 </script>
 <!-- 스크롤 스파이 navar 관련 script 끝 -->
-
 <script>
-	$(document).ready(function() {
-		GetList(1);
-		/* 카드가 나타나는 애니메이션
-		$(document).ready(function() {
-		    $(window).scroll( function(){
-		        $('.thumb').each( function(i){
+    $(document).ready(function () {
+		
+    	var csrfHeaderName = "${_csrf.headerName}";
+        var csrfTokenValue = "${_csrf.token}";
+        //스프링 시큐리티을 이용한다면 csrf 토큰을 같이 전송하도록 해야 한다
+    	
+         $(document).ajaxSend(function(e, xhr, options) {
+               xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+            })
+	// 좋아요가 있는지 확인한 값을 heartval에 저장
+			var heartval = 0;
+        
+        
+        if(${!empty fvo.heart}){
+			heartval = 1;
+        }
+        
+	// heartval이 1이면 좋아요가 이미 되있는것이므로 heart-fill.svg를 출력하는 코드
+        if(heartval>0) {
+            console.log(heartval);
+            $("#heart").prop("src", "/resources/icon/heart-fill.svg");
+            $(".heart").prop('name',heartval)
+        }
+        else {
+            console.log(heartval);
+            $("#heart").prop("src", "/resources/icon/heart.svg");
+            $(".heart").prop('name',heartval)
+        }
 
-		            var bottom_of_element = $(this).offset().top + $(this).outerHeight();
-		            var bottom_of_window = $(window).scrollTop() + $(window).height();
-
-		            if( bottom_of_window > bottom_of_element ){
-		                $(this).animate({'opacity':'1','margin-bottom':'0px'},1000);
-		            }
-
-		        }); 
-		    });
-		});
-		 */
-
-		// 게시물 이미지를 클릭했을 때 실행된다
-		// 해당 게시물을 hit+1하는 함수를 호출한다.
-		$(document).on('click', '.card-img', function() {
-			// 게시물 번호(no)를 idx로 전달받아 저장합니다.
-			let no = $(this).attr('idx');
-
-			console.log(no + "에 hit + 1을 함");
-
-			// hit+1하고 그 값을 불러온다.
-			$.ajax({
-				url : 'picture_view.do',
-				type : 'get',
-				data : {
-					no : no
-				},
-				success : function(to) {
-					let hit = to.hit;
-
-					$('#m_hit' + no).text(hit);
-					$('#hit' + no).text(hit);
-
-				},
-				error : function() {
-					alert('서버 에러');
-				}
-			});
-		});
-
-	});
+	// 좋아요 버튼을 클릭 시 실행되는 코드
+        $(".heart").on("click", function () {
+            var that = $(".heart");
+	    $.ajax({
+	    	url :'/favorite/saveHeart',
+	        type :'POST',
+	        data : {'pno':${pvo.pno},'username': $("#username1").val() },
+	    	success : function(data){
+	    		that.prop('name',data);
+	        	if(data==1) {
+	            	     $('#heart').prop("src","/resources/icon/heart-fill.svg");
+	        	} else {
+                    	     $('#heart').prop("src","/resources/icon/heart.svg");
+	        	}
+             	},
+             	error : function(data){
+             		alert("로그인 이후에 이용해주시기 바랍니다.")
+             	}
+	    });
+        });
+    });
 </script>
-<script>
-	//로그인 한 상태에서 하트를 클릭했을 때 (로그인한 상태인 하트의 <a></a> class명: heart-click)
-	$(".heart-click")
-			.click(
-					function() {
 
-						// 게시물 번호(no)를 idx로 전달받아 저장합니다.
-						let no = $(this).attr('idx');
-						console.log("heart-click");
-
-						// 빈하트를 눌렀을때
-						if ($(this).children('svg').attr('class') == "bi bi-suit-heart") {
-							console.log("빈하트 클릭" + no);
-
-							$.ajax({
-								url : 'saveHeart.do',
-								type : 'get',
-								data : {
-									no : no,
-								},
-								success : function(pto) {
-									//페이지 새로고침
-									//document.location.reload(true);
-
-									let heart = pto.heart;
-
-									// 페이지, 모달창에 하트수 갱신
-									$('#m_heart' + no).text(heart);
-									$('#heart' + no).text(heart);
-
-									console.log("하트추가 성공");
-								},
-								error : function() {
-									alert('서버 에러');
-								}
-							});
-							console.log("꽉찬하트로 바껴라!");
-
-							// 꽉찬하트로 바꾸기
-							$(this)
-									.html(
-											"<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-suit-heart-fill' viewBox='0 0 16 16'><path d='M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z'/></svg>");
-							$('.heart_icon' + no)
-									.html(
-											"<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-suit-heart-fill' viewBox='0 0 16 16'><path d='M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z'/></svg>");
-
-							// 꽉찬 하트를 눌렀을 때
-						} else if ($(this).children('svg').attr('class') == "bi bi-suit-heart-fill") {
-							console.log("꽉찬하트 클릭" + no);
-
-							$.ajax({
-								url : 'removeHeart.do',
-								type : 'get',
-								data : {
-									no : no,
-								},
-								success : function(pto) {
-									//페이지 새로고침
-									//document.location.reload(true);
-
-									let heart = pto.heart;
-									// 페이지, 모달창에 하트수 갱신
-									$('#m_heart' + no).text(heart);
-									$('#heart' + no).text(heart);
-
-									console.log("하트삭제 성공");
-								},
-								error : function() {
-									alert('서버 에러');
-								}
-							});
-							console.log("빈하트로 바껴라!");
-
-							// 빈하트로 바꾸기
-							$(this)
-									.html(
-											'<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-suit-heart" viewBox="0 0 16 16"><path d="M8 6.236l-.894-1.789c-.222-.443-.607-1.08-1.152-1.595C5.418 2.345 4.776 2 4 2 2.324 2 1 3.326 1 4.92c0 1.211.554 2.066 1.868 3.37.337.334.721.695 1.146 1.093C5.122 10.423 6.5 11.717 8 13.447c1.5-1.73 2.878-3.024 3.986-4.064.425-.398.81-.76 1.146-1.093C14.446 6.986 15 6.131 15 4.92 15 3.326 13.676 2 12 2c-.777 0-1.418.345-1.954.852-.545.515-.93 1.152-1.152 1.595L8 6.236zm.392 8.292a.513.513 0 0 1-.784 0c-1.601-1.902-3.05-3.262-4.243-4.381C1.3 8.208 0 6.989 0 4.92 0 2.755 1.79 1 4 1c1.6 0 2.719 1.05 3.404 2.008.26.365.458.716.596.992a7.55 7.55 0 0 1 .596-.992C9.281 2.049 10.4 1 12 1c2.21 0 4 1.755 4 3.92 0 2.069-1.3 3.288-3.365 5.227-1.193 1.12-2.642 2.48-4.243 4.38z" /></svg>');
-
-							$('.heart_icon' + no)
-									.html(
-											'<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-suit-heart" viewBox="0 0 16 16"><path d="M8 6.236l-.894-1.789c-.222-.443-.607-1.08-1.152-1.595C5.418 2.345 4.776 2 4 2 2.324 2 1 3.326 1 4.92c0 1.211.554 2.066 1.868 3.37.337.334.721.695 1.146 1.093C5.122 10.423 6.5 11.717 8 13.447c1.5-1.73 2.878-3.024 3.986-4.064.425-.398.81-.76 1.146-1.093C14.446 6.986 15 6.131 15 4.92 15 3.326 13.676 2 12 2c-.777 0-1.418.345-1.954.852-.545.515-.93 1.152-1.152 1.595L8 6.236zm.392 8.292a.513.513 0 0 1-.784 0c-1.601-1.902-3.05-3.262-4.243-4.381C1.3 8.208 0 6.989 0 4.92 0 2.755 1.79 1 4 1c1.6 0 2.719 1.05 3.404 2.008.26.365.458.716.596.992a7.55 7.55 0 0 1 .596-.992C9.281 2.049 10.4 1 12 1c2.21 0 4 1.755 4 3.92 0 2.069-1.3 3.288-3.365 5.227-1.193 1.12-2.642 2.48-4.243 4.38z" /></svg>');
-						}
-
-					});
-
-	// 로그인 안한 상태에서 하트를 클릭하면 로그인해야한다는 알림창이 뜹니다.
-	// (로그인한 상태인 하트의 <a></a> class명: heart-notlogin)
-
-	$(".heart-notlogin").unbind('click');
-	$(".heart-notlogin ").click(function() {
-		alert('로그인 하셔야 하트를 누를수 있습니다!');
-		location.href = "/user/user_login.do";
-	});
-</script>
 
 </body>
 

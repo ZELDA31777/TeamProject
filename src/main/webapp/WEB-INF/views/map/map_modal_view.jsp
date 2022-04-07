@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/security/tags"
+	prefix="sec"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +19,7 @@
 
 .image-thumbnail {
 	width: 100%;
-	height:100%;
+	height: 100%;
 	object-fit: cover;
 }
 </style>
@@ -33,18 +36,18 @@
 								class="d-block image-thumbnail" alt="...">
 						</div>
 					</div>
-					
-				<!-- picture에 기록된 사진 출력 시작 -->
-				<c:forEach var="pic" items="${picList}">
-					<div class="carousel-item " data-bs-interval="2000">
-						<div class="image-box">
-							<img src="/upload/${pic }"
-								class="d-block image-thumbnail" alt="...">
+
+					<!-- picture에 기록된 사진 출력 시작 -->
+					<c:forEach var="pic" items="${picList}">
+						<div class="carousel-item " data-bs-interval="2000">
+							<div class="image-box">
+								<img src="/upload/${pic }" class="d-block image-thumbnail"
+									alt="...">
+							</div>
 						</div>
-					</div>
-				</c:forEach>
-				<!-- picture에 기록된 사진 출력 끝 -->
-					
+					</c:forEach>
+					<!-- picture에 기록된 사진 출력 끝 -->
+
 				</div>
 				<button class="carousel-control-prev" type="button"
 					data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
@@ -57,8 +60,21 @@
 					<span class="visually-hidden">Next</span>
 				</button>
 			</div>
-
 		</div>
+
+		<!-- 비로그인 상태의 정보를 받아옴 -->
+		<sec:authorize access="isAnonymous()">
+			<c:set var="username" value="" />
+		</sec:authorize>
+		<!-- 비로그인 상태의 정보를 받아옴 종료 -->
+
+		<!-- 현재 로그인 한 유저의 정보를 받아옴 -->
+		<sec:authorize access="isAuthenticated()">
+			<c:set var="username">
+				<sec:authentication property="principal.user.username" />
+			</c:set>
+		</sec:authorize>
+		<!-- 현재 로그인 한 유저의 정보를 받아옴 종료 -->
 
 		<div class="col-md-4">
 			<div class="map_modal_info">
@@ -126,9 +142,15 @@
 					</div>
 				</div>
 				<div class="styled__BtnWrap-cvrpi1-15 brpHbd">
-					<button color="blue" class="fiEZwu3" onClick="javascript:view_()">
-						<span><span>상세보기</span></span>
-					</button>
+					<form name="test" method="post" action="/product/product_view.do">
+						<input type="hidden" name="pno" value="${pvo.pno }"> <input
+							type="hidden" name="username" value="${username }"> <input
+							type="hidden" name="${_csrf.parameterName}"
+							value="${_csrf.token}">
+						<button color="blue" class="fiEZwu3">
+							<span><span>상세보기</span></span>
+						</button>
+					</form>
 					<div class="styled__FavoriteBtn-cvrpi1-16 ceYkeN">
 						<button class="styled__LikeBtn-jmubsw-1 ezZqwh">
 							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -148,10 +170,5 @@
 			</div>
 		</div>
 	</div>
-	<script>
-		function view_() {
-			location.href = "/product/product_view.do?pno=${pvo.pno}";
-		}
-	</script>
 </body>
 </html>
