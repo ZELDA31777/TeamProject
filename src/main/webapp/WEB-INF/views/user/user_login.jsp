@@ -62,7 +62,7 @@
 				
 				<!-- 카카오로그인 -->
 				<a class="p-2" href="https://kauth.kakao.com/oauth/authorize?client_id=ec529ddcb0a1e3f154fc6847679fe18a&redirect_uri=http://localhost:8123/user/kakaoLogin.do&response_type=code">
-				<img src="/resources/images/kakao_login_button.png"></a>
+				<img src="/resources/images/kakao_login.png"></a>
 				
 			</div>
 		</form>

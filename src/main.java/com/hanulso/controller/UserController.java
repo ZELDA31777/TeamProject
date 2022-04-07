@@ -169,10 +169,9 @@ public class UserController {
 		/* 파일업로드 끝 */
 		
 		service.corRegister(uvo, cvo);
-//		mailCheck(uvo);
-//		// 회원가입과 동시에 active 위한 메일 발송
-//		return "/user/mailCheck_Request";
-		return "redirect:/";
+		mailCheck(uvo);
+		// 회원가입과 동시에 active 위한 메일 발송
+		return "/user/mailCheck_Request";
 	}
 	
 	
@@ -193,6 +192,16 @@ public class UserController {
 //		// 회원가입과 동시에 active 위한 메일 발송
 //		return "/user/mailCheck_Request";
 		return "/";
+	}
+	
+	@GetMapping("/user_modify.do")
+	public void user_modify() {
+		
+	}
+	
+	@GetMapping("/user_modify_cor.do")
+	public void user_modify_cor() {
+		
 	}
 	
 }
