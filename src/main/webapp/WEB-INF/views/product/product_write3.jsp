@@ -97,7 +97,13 @@
 				<input type="hidden" name="addr" id="addr" value="test"> 
 				<input type="hidden" name="lat" id="lat" value="0"> 
 				<input type="hidden" name="lng" id="lng" value="0"> 
-				<input type="hidden" name="username" id="username" value="우리공인중개사">
+				<c:set var="username">
+					<sec:authorize access="hasRole('ROLE_MEMBER')">
+						<sec:authentication property="principal.user.username"/>
+					</sec:authorize>
+				</c:set>
+				
+				<input type="hidden" name="username" id="username" value="${username }">
 				
 				<!-- 이미지 업로드 시작 -->
 				

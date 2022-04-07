@@ -99,8 +99,8 @@
 				<div class="input-with-unit__InputWrap-sc-1e4qgti-0 eVAGdp">
 					<label class="bDaqny">
 						<p class="label-text">사업자등록번호</p> <input type="text" name="cornum"
-						id="cornum" placeholder="-없이 숫자로만 입력해주세요"
-						class="form-control kHDHPO" maxlength="15" minlength="15" pattern="[0-9]{15}" required>
+						id="cornum" placeholder="-를 포함하여 입력해주세요"
+						class="form-control kHDHPO" maxlength="12" minlength="12" pattern="[0-9]{3}-[0-9]{2}-[0-9]{5}" required>
 						<div class="valid-feedback">확인되었습니다</div>
 						<div class="invalid-feedback">사업자등록번호를 입력해주십시오.</div>
 					</label>
@@ -234,7 +234,7 @@
          tel01 = $("#tel01").val();
          tel02 = $("#tel02").val();
          tel03 = $("#tel03").val();
-         $("#tel").val(tel01 + tel02 + tel03);
+         $("#tel").val(tel01 +"-"+ tel02 +"-"+ tel03);
          return false;
       })
       

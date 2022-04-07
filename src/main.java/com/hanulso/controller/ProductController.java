@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,6 +44,7 @@ public class ProductController {
 	@GetMapping("/product_write.do")
 	public void product_write() {}
 	
+	@PreAuthorize("hasRole('ROLE_MEMBER')") // 동작 안함...
 	@GetMapping("/product_write3.do")
 	public void product_write3() {}
 	

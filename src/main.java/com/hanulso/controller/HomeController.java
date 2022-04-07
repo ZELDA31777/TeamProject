@@ -26,4 +26,8 @@ public class HomeController {
 	public void jusoPopup(JusoVO jusovo) {
 		
 	}
+	
+	// 해당 페이지에 접근 권한이 없을경우 표시
+	@RequestMapping("/no_auth")
+	public void no_auth() {}
 }
