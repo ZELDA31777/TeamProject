@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hanulso.domain.ProductSearchConditionVO;
 import com.hanulso.domain.ProductVO;
 import com.hanulso.mapper.MapMapper;
 
@@ -24,5 +25,10 @@ public class MapServiceImpl implements MapService {
 	@Override
 	public ProductVO map_modal_view(int pno) {
 		return mapper.map_modal_view(pno);
+	}
+	
+	@Override
+	public List<ProductVO> getList(ProductSearchConditionVO pscvo) {
+		return mapper.getList(pscvo);
 	}
 }

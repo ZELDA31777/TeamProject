@@ -173,6 +173,7 @@ h4 {
 
 
 <div class="container-fluid">
+<form id="searchConditionForm">
 	<div class="row">
 		<div class="col-3 p-0" style="height: 60px; background-color: red;">
 			<!-- 지역 선택 시작 -->
@@ -248,14 +249,14 @@ h4 {
 									<h6>중복선택이 가능합니다.</h6>
 
 									<div class="form-check">
-										<input class="form-check-input" type="checkbox" value=""
-											id="flexCheckDefault" checked> <label
-											class="form-check-label" for="flexCheckDefault"> 원룸 </label>
+										<input class="form-check-input" type="checkbox" value="0"
+											id="type0" name="type" checked> <label
+											class="form-check-label" for="type0"> 원룸 </label>
 									</div>
 									<div class="form-check">
-										<input class="form-check-input" type="checkbox" value=""
-											id="flexCheckChecked" checked> <label
-											class="form-check-label" for="flexCheckChecked"> 오피스텔
+										<input class="form-check-input" type="checkbox" value="1"
+											id="type1" name="type" checked> <label
+											class="form-check-label" for="type1"> 오피스텔
 										</label>
 									</div>
 								</div>
@@ -303,8 +304,8 @@ h4 {
 
 									<div class="slider">
 										<input type="range" class="input-range" id="input-left"
-											min="1" max="100" value="1" /> <input type="range"
-											class="input-range" id="input-right" min="1" max="100"
+											min="1" max="100" value="1" name="manage" /> <input type="range"
+											class="input-range" id="input-right" name="manage" min="1" max="100"
 											value="100" />
 										<div class="track">
 											<div class="range"></div>
@@ -664,6 +665,7 @@ h4 {
 
 		</div>
 	</div>
+</form>
 </div>
 <div class="container-fluid">
 	<div class="row">
@@ -684,7 +686,7 @@ h4 {
 					role="tabpanel" aria-labelledby="nav-home-tab">
 					<!-- 지도에 표시되는 방 목록 시작-->
 
-
+<%--
 					<c:if test="${!empty list}">
 						<c:forEach var="list" items="${list}">
 							<div class="card w-100">
@@ -720,7 +722,7 @@ h4 {
 							</div>
 						</c:forEach>
 					</c:if>
-
+ --%>
 					<!-- 페이징 시작 -->
 					<nav aria-label="Page navigation example">
 						<ul class="pagination justify-content-center">
@@ -766,19 +768,6 @@ h4 {
 		<div id="map" class="col-9" style="background-color: yellow;"></div>
 	</div>
 </div>
-
-<!-- 마우스 오버 드롭다운 메뉴 script 시작 -->
-<script>
-	$(function(){
-		$("#selectGu").on("mouseover", function(){
-			$(this).trigger("click");
-		});
-		
-		
-	});
-</script>
-<!-- 마우스 오버 드롭다운 메뉴 script 끝 -->
-
 
 <!-- 양방향 슬라이더 script 시작 -->
 <script>
@@ -857,16 +846,96 @@ h4 {
 </script>
 <!-- 양방향 슬라이더 script 끝 -->
 
+
+<!-- 지도 검색 조건 script 시작 -->
+<script>
+	function getList() {
+		const header = "${_csrf.headerName}";
+	    const token = "${_csrf.token}";
+
+	    var list = [];
+
+	    var typeList = [];
+	    $("input[name='type']:checked").each(function(i){
+		    typeList.push($(this).val());
+		});
+
+//$('#searchConditionForm').serialize()
+		$.ajax({
+			type: 'post',
+			url: '/map/getList.do',
+			data: JSON.stringify({"type":typeList}), 
+			datatype: 'json',
+			contentType: "application/json; charset=utf-8",
+			beforeSend: function(xhr) {
+				xhr.setRequestHeader(header, token);
+			},
+			success: function(result, status, xhr) {
+				list = result;
+				var htmlStr = "";
+				console.log("list", list);
+				for (var i=0; i<list.length; i++) {
+					htmlStr += `<div class="card w-100">
+						<div class="card-body">
+						<div class="row m-0 gx-3">
+							<div class="col-5"
+								style="background: blue; background-clip: content-box; height: calc(200px - 32px);">
+								<!-- 썸네일 이미지 출력 -->
+								<img class="product_view"
+									src="/upload/`+list[i].thumbnail+`"
+									style="width: 100%; height: 100%;" data-bs-toggle="modal"
+									data-bs-target="#exampleModal"
+									href="/map/map_modal_view.do?pno=`+list[i].pno+`">
+							</div>
+							<div class="col-7">
+								<div class="iamnls">
+									<div class="fOVNCS">
+										<h1 class="kPmScS">보증금 / 월세
+											`+list[i].deposit+`/`+list[i].rent+`</h1>
+										<p class="fGfKPR">
+											`+(list[i].type==1?"오피스텔":"원룸")+`
+										</p>
+										<p class="fYtEsj">`+list[i].floor+`층,
+											`+list[i].area+`m², 관리비`+list[i].manage+`만</p>
+										<p class="fYtEsj">`+list[i].contents+`</p>
+									</div>
+									<div class="eCimNy"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>`;
+				}
+				
+				
+				$("#nav-home").html(htmlStr);
+				
+			},
+			error: function(xhr, status, err) {
+				console.log(xhr, status, err);
+			}
+		});
+	}
+
+	$("input").on("change", getList);
+</script>
+<!-- 지도 검색 조건 script 끝 -->
+
+
+
 <!-- 구글 지도 스크립트 시작 -->
-<script src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap&v=weekly " async></script>
 <script>
   function initMap() {
     const map = new google.maps.Map(document.getElementById("map"), {
       center: { lat: 36.32843039, lng: 127.40531874 },
-      zoom: 17,
+      // latLngBounds: {north: northLat, south: southLat, west: westLng, east: eastLng}, 
+      zoom: 10,
     });
+
+    getList();
   }
 </script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPxvrQTmFrf14CPepU3kV_wb8wIpwrwSs&callback=initMap&v=weekly " async></script>
 <!-- 구글 지도 스크립트 끝 -->
 <!-- sub contents end -->
 <%--	

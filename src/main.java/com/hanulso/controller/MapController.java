@@ -3,13 +3,13 @@ package com.hanulso.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
-import com.hanulso.domain.ProductVO;
+import com.hanulso.domain.*;
 import com.hanulso.service.MapService;
 
 @Controller
@@ -30,5 +30,15 @@ public class MapController {
 		ProductVO pvo = service.map_modal_view(pno);
 		model.addAttribute("pvo", pvo);
 		model.addAttribute("picList", pvo.getPicture().split("/"));
+	}
+	
+	@PostMapping(value="/getList.do", 
+			produces = {org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE}) // json 형식으로 결과값 반한
+	public ResponseEntity<List<ProductVO>> getList(Criteria cri, @RequestParam("type[]") int[] type) {
+		ProductSearchConditionVO pscvo = new ProductSearchConditionVO();
+		pscvo.setType(type);
+		System.out.println("---- pscvo ----");
+		System.out.println(pscvo);
+		return new ResponseEntity<List<ProductVO>>(service.getList(pscvo), HttpStatus.OK);
 	}
 }

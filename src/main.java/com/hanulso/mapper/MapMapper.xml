@@ -10,5 +10,23 @@
 	<select id="map_modal_view" resultType="com.hanulso.domain.ProductVO">
 		select * from one_product where pno = #{pno}
 	</select>
+	
+	
+	<select id="getList" resultType="com.hanulso.domain.ProductVO">
+		select * from one_product
+		<where>
+			<if test="type != null">
+				<foreach item="item" collection="type" open="type in (" separator="," close=")" >
+					#{item}
+				</foreach>
+			</if>
+			<if test="manage != null">
+				and 
+				<foreach item="item" collection="manage" open="manage in (" separator="," close=")">
+					#{item}
+				</foreach>
+			</if>
+		</where>
+	</select>
 
 </mapper>

@@ -11,7 +11,7 @@
 
 	<!-- /include 안의 파일들을 security 제외 (jusoPopup.jsp에서 post 방식으로 데이터를 주고받기때문에 필요) -->
 	<security:http pattern="/include/**" security="none"/>
-	<security:http>
+	<security:http use-expressions="true">
 		<security:form-login login-page="/user/user_login.do" authentication-success-handler-ref="CustomLoginSuccess"/>
 		<security:intercept-url pattern="/user/user_login.do" access="permitAll"/>
 		<security:intercept-url pattern="/admin/manage/admin_cor_list.do" access="hasAnyRole('ROLE_ADMIN , ROLE_SUPER_ADMIN')"/>
