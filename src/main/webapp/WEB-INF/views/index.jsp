@@ -20,6 +20,22 @@
 .index_subtitle {
    font-size: 1.1rem;
 }
+
+.pcl {
+	padding: 2%;
+}
+
+.qstyle {
+	color: blue;
+	font-size: 22px;
+	font-weight: bold;
+	font-style: italic;
+	letter-spacing: 0.25rem;
+	padding-right: 10px
+}
+.naityousize {
+	font-size: 15px;
+}
 </style>
 <link href="/resources/css/carousel.css" rel="stylesheet">
 
@@ -249,58 +265,191 @@
          </div>
       </div>
       <div class="row">
-
-         <div class="col-3">
-            <div class="d-flex justify-content-center">
-               <div class="card my-3 d-inline-block" style="width: 15rem;">
-                  <div class="card-body">
-                     <h5 class="card-title">FAQ 제목</h5>
-                     <p
-                        class="card-text border-top border-secondary border-1 pt-3 pb-5 my-3">
-                        FAQ 내용 원픽 허위매물 예방 5계명</p>
-                  </div>
-               </div>
-            </div>
+	
+		<div class="pcl">
+		<div class="row">
+         <div class="col-6">
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+  			<div class="accordion-item">
+    		<h2 class="accordion-header" id="flush-heading01">
+    		  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse01" aria-expanded="false" aria-controls="flush-collapseOne">
+       			 <p class="qstyle">Q</p><p>원픽은 어떤 서비스인가요?</p>
+     		 </button>
+    		</h2>
+   			 <div id="flush-collapse01" class="accordion-collapse collapse" aria-labelledby="flush-heading01" data-bs-parent="#accordionFlushExample">
+     		 <div class="accordion-body">
+     		 	<p class="qstyle">A</p>
+     		 	<p class="naityousize">'원픽'에서 살고 싶은 집을 만나보세요.<br>
+     		 	▶ 유학생들을 위한 일본어 안내 서비스<br>
+     		 	▶ 지도로 쉽게 알수있는 매물의 위치 !<br>
+				▶ 지역별 전월세 평균가 !
+     		 	</p>
+     		 </div>
+    		</div>
+  			</div>
+			</div>
          </div>
 
-         <div class="col-3">
-            <div class="d-flex justify-content-center">
-               <div class="card my-3 d-inline-block" style="width: 15rem;">
-                  <div class="card-body">
-                     <h5 class="card-title">FAQ 제목</h5>
-                     <p
-                        class="card-text border-top border-secondary border-1 pt-3 pb-5 my-3">
-                        FAQ 내용 원픽 허위매물 예방 5계명</p>
-                  </div>
-               </div>
-            </div>
+         <div class="col-6">
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+  			<div class="accordion-item">
+    		<h2 class="accordion-header" id="flush-heading02">
+    		  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse02" aria-expanded="false" aria-controls="flush-collapseOne">
+       			 <p class="qstyle">Q</p><p>계약 과정은 어떻게 되나요?</p>
+     		 </button>
+    		</h2>
+   			 <div id="flush-collapse02" class="accordion-collapse collapse" aria-labelledby="flush-heading02" data-bs-parent="#accordionFlushExample">
+     		 <div class="accordion-body">
+     		 	<p class="qstyle">A</p>
+     		 	<p class="naityousize">
+     		 	(1) 원픽에서 원하는 매물을 고른다.<br>
+				(2) 해당 매물의 중개사에게 연락하여 일정을 정한다.<br>
+				(3) 직접 매물 방문후 중개사와 계약을 진행한다.
+     		 	</p>
+     		 </div>
+    		</div>
+  			</div>
+			</div>
          </div>
-
-         <div class="col-3">
-            <div class="d-flex justify-content-center">
-               <div class="card my-3 d-inline-block" style="width: 15rem;">
-                  <div class="card-body">
-                     <h5 class="card-title">FAQ 제목</h5>
-                     <p
-                        class="card-text border-top border-secondary border-1 pt-3 pb-5 my-3">
-                        FAQ 내용 원픽 허위매물 예방 5계명</p>
-                  </div>
-               </div>
-            </div>
-         </div>
+        </div> 
+        </div> 
          
-         <div class="col-3">
-            <div class="d-flex justify-content-center">
-               <div class="card my-3 d-inline-block" style="width: 15rem;">
-                  <div class="card-body">
-                     <h5 class="card-title">FAQ 제목</h5>
-                     <p
-                        class="card-text border-top border-secondary border-1 pt-3 pb-5 my-3">
-                        FAQ 내용 원픽 허위매물 예방 5계명</p>
-                  </div>
-               </div>
-            </div>
+        <div class="pcl">
+		<div class="row"> 
+         <div class="col-6">
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+  			<div class="accordion-item">
+    		<h2 class="accordion-header" id="flush-heading03">
+    		  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse03" aria-expanded="false" aria-controls="flush-collapseOne">
+       			 <p class="qstyle">Q</p><p>회원가입을 하면 어떤 점이 좋나요?</p>
+     		 </button>
+    		</h2>
+   			 <div id="flush-collapse03" class="accordion-collapse collapse" aria-labelledby="flush-heading03" data-bs-parent="#accordionFlushExample">
+     		 <div class="accordion-body">
+     		 	<p class="qstyle">A</p>
+     		 	<p class="naityousize">
+     		 	원픽 회원가입후 로그인을 하시면<br>
+				▶원하는 매물을 저장할수 있는'관심매물'기능 !<br>
+				▶관심지역의 새 등록매물을 알림창을 통해 확인 가능합니다 !
+     		 	</p>
+     		 </div>
+    		</div>
+  			</div>
+			</div>
          </div>
+
+         <div class="col-6">
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+  			<div class="accordion-item">
+    		<h2 class="accordion-header" id="flush-heading04">
+    		  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse04" aria-expanded="false" aria-controls="flush-collapseOne">
+       			 <p class="qstyle">Q</p><p>회원탈퇴는 어떻게 하나요?</p>
+     		 </button>
+    		</h2>
+   			 <div id="flush-collapse04" class="accordion-collapse collapse" aria-labelledby="flush-heading04" data-bs-parent="#accordionFlushExample">
+     		 <div class="accordion-body">
+     		 	<p class="qstyle">A</p>
+     		 	<p class="naityousize">
+     		 	아직모름~
+     		 	</p>
+     		 </div>
+    		</div>
+  			</div>
+			</div>
+         </div>
+        </div>
+        </div> 
+        
+        <div class="pcl">
+		<div class="row">
+          <div class="col-6">
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+  			<div class="accordion-item">
+    		<h2 class="accordion-header" id="flush-heading05">
+    		  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse05" aria-expanded="false" aria-controls="flush-collapseOne">
+       			 <p class="qstyle">Q</p><p>원픽에 등록된 방은 믿을수 있나요?</p>
+     		 </button>
+    		</h2>
+   			 <div id="flush-collapse05" class="accordion-collapse collapse" aria-labelledby="flush-heading05" data-bs-parent="#accordionFlushExample">
+     		 <div class="accordion-body">
+     		 	<p class="qstyle">A</p>
+     		 	<p class="naityousize">
+     		 	원픽은 사용자 분들에게 믿을 수 있는 정보를 제공하는 것을 최우선으로 합니다.<br>
+				▶ 지도에 정확한 매물의 위치를 표시하여 매물의 위치를 쉽게 파악할수 있습니다.<br>
+				▶ 또한 지속적인 허위매물 관리를 통해 사용자 분들이 허위정보로 인한 불편함을 느끼지 않도록 노력하고 있습니다.
+     		 	</p>
+     		 </div>
+    		</div>
+  			</div>
+			</div>
+         </div>
+
+         <div class="col-6">
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+  			<div class="accordion-item">
+    		<h2 class="accordion-header" id="flush-heading06">
+    		  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse06" aria-expanded="false" aria-controls="flush-collapseOne">
+       			 <p class="qstyle">Q</p><p>원픽의 회원중개사들은 어떻게 관리되고 있나요?</p>
+     		 </button>
+    		</h2>
+   			 <div id="flush-collapse06" class="accordion-collapse collapse" aria-labelledby="flush-heading06" data-bs-parent="#accordionFlushExample">
+     		 <div class="accordion-body">
+     		 	<p class="qstyle">A</p>
+     		 	<p class="naityousize">
+     		 	원픽의 회원중개자들은 가입시 사업자번호와 중개사사진을 등록하여 믿을수 있는 중개사 회원들로 이루어져있습니다.
+     		 	</p>
+     		 </div>
+    		</div>
+  			</div>
+			</div>
+         </div>
+        </div>
+        </div> 
+         
+        <div class="pcl">
+		<div class="row">
+         <div class="col-6">
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+  			<div class="accordion-item">
+    		<h2 class="accordion-header" id="flush-heading07">
+    		  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse07" aria-expanded="false" aria-controls="flush-collapseOne">
+       			 <p class="qstyle">Q</p><p>믿을수 있는 중개사는 어떤 중개사인가요?</p>
+     		 </button>
+    		</h2>
+   			 <div id="flush-collapse07" class="accordion-collapse collapse" aria-labelledby="flush-heading07" data-bs-parent="#accordionFlushExample">
+     		 <div class="accordion-body">
+     		 	<p class="qstyle">A</p>
+     		 	<p class="naityousize">
+     		 	해당 중개사와 거래한 회원만 작성할 수 있는 이용자 후기를 통해 중개사의 평판확인이 가능합니다.
+     		 	</p>
+     		 </div>
+    		</div>
+  			</div>
+			</div>
+         </div>
+
+         <div class="col-6">
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+  			<div class="accordion-item">
+    		<h2 class="accordion-header" id="flush-heading08">
+    		  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse08" aria-expanded="false" aria-controls="flush-collapseOne">
+       			 <p class="qstyle">Q</p><p>이사는 어떻게 하나요?</p>
+     		 </button>
+    		</h2>
+   			 <div id="flush-collapse08" class="accordion-collapse collapse" aria-labelledby="flush-heading08" data-bs-parent="#accordionFlushExample">
+     		 <div class="accordion-body">
+     		 	<p class="qstyle">A</p>
+     		 	<p class="naityousize">
+     		 	1인 가구기준 대부분의 이사는 용달 한대로 옮길수 있습니다.<br>
+				원픽의 이사도우미 회원 기능을 위해 더욱 열심히 하겠습니다. 
+     		 	</p>
+     		 </div>
+    		</div>
+  			</div>
+			</div>
+         </div>
+        </div>
+        </div>
 
       </div>
    </div>
