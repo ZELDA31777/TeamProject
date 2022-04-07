@@ -268,11 +268,11 @@
 	
 		<div class="pcl">
 		<div class="row">
-         <div class="col-6">
+		  <div class="col-6">
             <div class="accordion accordion-flush" id="accordionFlushExample">
   			<div class="accordion-item">
     		<h2 class="accordion-header" id="flush-heading01">
-    		  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse01" aria-expanded="false" aria-controls="flush-collapseOne">
+    		  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse01" aria-expanded="false" aria-controls="flush-collapse01">
        			 <p class="qstyle">Q</p><p>원픽은 어떤 서비스인가요?</p>
      		 </button>
     		</h2>
@@ -289,12 +289,12 @@
   			</div>
 			</div>
          </div>
-
+		
          <div class="col-6">
             <div class="accordion accordion-flush" id="accordionFlushExample">
   			<div class="accordion-item">
     		<h2 class="accordion-header" id="flush-heading02">
-    		  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse02" aria-expanded="false" aria-controls="flush-collapseOne">
+    		  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse02" aria-expanded="false" aria-controls="flush-collapse02">
        			 <p class="qstyle">Q</p><p>계약 과정은 어떻게 되나요?</p>
      		 </button>
     		</h2>
@@ -320,7 +320,7 @@
             <div class="accordion accordion-flush" id="accordionFlushExample">
   			<div class="accordion-item">
     		<h2 class="accordion-header" id="flush-heading03">
-    		  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse03" aria-expanded="false" aria-controls="flush-collapseOne">
+    		  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse03" aria-expanded="false" aria-controls="flush-collapse03">
        			 <p class="qstyle">Q</p><p>회원가입을 하면 어떤 점이 좋나요?</p>
      		 </button>
     		</h2>
@@ -342,7 +342,7 @@
             <div class="accordion accordion-flush" id="accordionFlushExample">
   			<div class="accordion-item">
     		<h2 class="accordion-header" id="flush-heading04">
-    		  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse04" aria-expanded="false" aria-controls="flush-collapseOne">
+    		  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse04" aria-expanded="false" aria-controls="flush-collapse04">
        			 <p class="qstyle">Q</p><p>회원탈퇴는 어떻게 하나요?</p>
      		 </button>
     		</h2>
@@ -366,7 +366,7 @@
             <div class="accordion accordion-flush" id="accordionFlushExample">
   			<div class="accordion-item">
     		<h2 class="accordion-header" id="flush-heading05">
-    		  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse05" aria-expanded="false" aria-controls="flush-collapseOne">
+    		  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse05" aria-expanded="false" aria-controls="flush-collapse05">
        			 <p class="qstyle">Q</p><p>원픽에 등록된 방은 믿을수 있나요?</p>
      		 </button>
     		</h2>
@@ -388,7 +388,7 @@
             <div class="accordion accordion-flush" id="accordionFlushExample">
   			<div class="accordion-item">
     		<h2 class="accordion-header" id="flush-heading06">
-    		  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse06" aria-expanded="false" aria-controls="flush-collapseOne">
+    		  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse06" aria-expanded="false" aria-controls="flush-collapse06">
        			 <p class="qstyle">Q</p><p>원픽의 회원중개사들은 어떻게 관리되고 있나요?</p>
      		 </button>
     		</h2>
@@ -412,7 +412,7 @@
             <div class="accordion accordion-flush" id="accordionFlushExample">
   			<div class="accordion-item">
     		<h2 class="accordion-header" id="flush-heading07">
-    		  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse07" aria-expanded="false" aria-controls="flush-collapseOne">
+    		  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse07" aria-expanded="false" aria-controls="flush-collapse07">
        			 <p class="qstyle">Q</p><p>믿을수 있는 중개사는 어떤 중개사인가요?</p>
      		 </button>
     		</h2>
@@ -432,7 +432,7 @@
             <div class="accordion accordion-flush" id="accordionFlushExample">
   			<div class="accordion-item">
     		<h2 class="accordion-header" id="flush-heading08">
-    		  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse08" aria-expanded="false" aria-controls="flush-collapseOne">
+    		  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse08" aria-expanded="false" aria-controls="flush-collapse08">
        			 <p class="qstyle">Q</p><p>이사는 어떻게 하나요?</p>
      		 </button>
     		</h2>

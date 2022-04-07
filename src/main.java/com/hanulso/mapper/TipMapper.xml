@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapper namespace="com.hanulso.mapper.TipMapper">
+  
+  	<sql id="criteria">
+  		<choose>
+  		<when test = "type == 'T'.toString()">
+  			tip_title like '%'||#{keyword}||'%' and
+  		</when>
+  		<when test = "type == 'C'.toString()">
+  			tip_content like '%'||#{keyword}||'%' and
+  		</when>
+		</choose>
+	</sql>
+  
+	<insert id="tip_write">
+	<selectKey keyProperty="tip_no" order="BEFORE" resultType="int">
+		select tip_seq.nextval from dual
+	</selectKey>
+		insert into one_admin_tip (tip_no, tip_title, tip_content) 
+		values(#{tip_no},#{tip_title},#{tip_content})
+	</insert>
+  
+	<select id="tip_view" resultType="com.hanulso.domain.KnowledgeVO">
+  		select * from one_admin_tip where tip_no = #{tip_no}
+	</select>
+  
+	<delete id="tip_delete">
+  		delete from one_admin_tip where tip_no = #{tip_no}
+	</delete>
+  
+	<update id="tip_modify">
+		update one_admin_tip set tip_title = #{tip_title}, tip_content = #{tip_content} 
+		where tip_no = #{tip_no}
+	</update>
+  
+	<select id="tip_list" resultType="com.hanulso.domain.KnowledgeVO">
+		<![CDATA[
+			select * from (
+			select /*+ index_desc(one_admin_tip one_admin_tip_no) */ rownum rn, tip_no, tip_title, tip_content, tip_regdate
+			from one_admin_tip
+			where
+		]]>	
+		
+		<include refid="criteria"></include>
+		
+		<![CDATA[
+			rownum <= #{pageNum} * #{amount} order by tip_no desc
+			)where rn > (#{pageNum}-1) * #{amount} 
+		]]>
+	</select>
+	
+	<select id="getTotalCount" resultType="int">
+		<![CDATA[
+		select count(*) from one_admin_tip where 
+		]]>
+		<include refid="criteria"></include>	
+		<![CDATA[	
+		tip_no > 0
+		]]>
+	</select> 
+  
+</mapper>

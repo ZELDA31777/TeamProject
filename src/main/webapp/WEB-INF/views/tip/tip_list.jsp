@@ -22,19 +22,23 @@
 
 
 <div class="sub_title">
-	<h2>공지사항</h2>
+	<h2>Guide & Tip</h2>
 </div>
 
 <div class="container">
 
+	<div class="write">
+		<a href="/tip/tip_write.do"><button class="btn btn-light write">작성</button></a>
+	</div>
+	
 	<div
 		class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white">
-		<a href="/"
-			class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
+		<a href="/tip/tip_list.do" class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
 			<svg class="bi me-2" width="30" height="24">
 				</svg> <span class="fs-5 fw-semibold"><strong class="mb-1">총
 					게시글 ${pageMaker.total}</strong></span>
 		</a>
+
 		<div class="row">
 			<div class="col-md-2">번호</div>
 			<div class="col-md-8">제목</div>
@@ -49,21 +53,20 @@
 
 				<div
 					class="list-group list-group-flush border-bottom scrollarea row">
-					<a href="/notice/notice_view.do?notice_no=${list.notice_no}"
+					<a href="/tip/tip_view.do?tip_no=${list.tip_no}"
 						class="list-group-item list-group-item-action py-3 lh-tight"
 						aria-current="true">
-						<div
-							class="d-flex w-100 align-items-center justify-content-between">
+						<div class="d-flex w-100 align-items-center justify-content-between">
 							<div class="col-md-2">
 								<div class="col-md-2">
 									<strong class="mb-1">${num}</strong>
 								</div>
 								<div class="col-md-8">
-									<small><fmt:formatDate value="${list.notice_regdate}"
+									<small><fmt:formatDate value="${list.tip_regdate}"
 											pattern="yyyy-MM-dd" /></small>
 								</div>
 
-								<div class="col-10 mb-1 small">${list.notice_title}</div>
+								<div class="col-10 mb-1 small">${list.tip_title}</div>
 
 							</div>
 						</div>
@@ -96,7 +99,7 @@
 
 	<div align="center">
 		<form name="searchForm" id="searchForm" method="get"
-			action="/notice/notice_list.do">
+			action="/tip/tip_list.do">
 			<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
 			<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
 			<select class="form-select selform" name="type">
@@ -106,13 +109,13 @@
 			</select> <input type="text" name="keyword" class="form-control txtform">
 			<button class="btn btn-light">검색</button>
 		</form>
-		<a href="/notice/notice_list.do"><button class="btn btn-light write">목록으로</button></a>
+		<a href="/tip/tip_list.do"><button class="btn btn-light write">목록으로</button></a>
 			
 	</div>
 
 </div>
 
-<form id="actionForm" action="/notice/notice_list.do" method="get">
+<form id="actionForm" action="/tip/tip_list.do" method="get">
 	<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
 	<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
 	<input type="hidden" name="type" value="${pageMaker.cri.type}">
