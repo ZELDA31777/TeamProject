@@ -24,7 +24,7 @@ margin-right : auto;
 	<div class="container" style="width: 50%">
 		<form class="needs-validation" method="post" action="user_register_pro.do" novalidate >
 		        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-		        <input type="hidden" name="active" value="non_active">
+		        <input type="hidden" name="active" value="active">
 			<div class="styled__Box-sc-1etb7tu-1 cubPeM">
 				<h1>회원정보 입력</h1>
 				<h2>원픽 서비스 이용을 위해 아래 정보를 입력해주세요.</h2>

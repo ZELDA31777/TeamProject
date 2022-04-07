@@ -64,6 +64,16 @@
 				<div class="collapse navbar-collapse justify-content-end mynavbar" id="navbarsExample04">
 					<ul class="navbar-nav mb-2 mb-md-0">
 					
+						<sec:authorize access="isAuthenticated()">
+							<c:set var="username">
+								<sec:authentication property="principal.user.username" />
+							</c:set>		
+							<c:set var="nickname">
+					               <sec:authentication property="principal.user.nickname" />
+					        </c:set>				
+						</sec:authorize>
+					
+					
 						<sec:authorize access="hasAnyRole('ADMIN' , 'SUPER_ADMIN')">
 							<li class="nav-item"><a class="nav-link" href="">가이드 & Tip</a></li>
 							<li class="nav-item"><a class="nav-link" href="/notice/notice_list.do">공지사항</a></li>
@@ -71,28 +81,71 @@
 							<li class="nav-item"><a class="nav-link" href="/admin/manage/admin_user_list.do">일반 회원관리</a></li>
 						</sec:authorize>
 						
-						<sec:authorize access="hasAnyRole('USER' , 'MEMBER')">
+						
+						<sec:authorize access="hasRole('USER')">
 							<li class="nav-item"><a class="nav-link" href="/map/map_view.do">지도</a></li>
-							<li class="nav-item"><a class="nav-link" href="/favorite/looked_room.do">관심목록</a></li>
-							<li class="nav-item"><a class="nav-link" href="/alert/alert_list.do">알림</a></li>
+							<li class="nav-item"><a class="nav-link" href="/favorite/looked_room.do?usernaem=${username }">관심목록</a></li>
+							<li class="nav-item"><a class="nav-link" href="/alert/alert_list.do?usernaem=${username }">알림</a></li>
+						</sec:authorize>
+						
+						<sec:authorize access="hasRole('MEMBER')">
+					        <li class="nav-item"><a class="nav-link" href="/map/map_view.do">지도</a></li>
+							<li class="nav-item"><a class="nav-link" href="/coroperation/cor_view.do?username=${username }">내 매물관리</a></li>
+							<li class="nav-item"><a class="nav-link" href="/alert/alert_list.do?usernaem=${username }">알림</a></li>
 						</sec:authorize>
 						
 						<sec:authorize access="isAnonymous()">
 							<li class="nav-item"><a class="nav-link" href="/map/map_view.do">지도</a></li>
-							<li class="nav-item"><a class="nav-link" href="/favorite/looked_room.do">관심목록</a></li>
-							<li class="nav-item"><a class="nav-link" href="/alert/alert_list.do">알림</a></li>
+							<li class="nav-item"><a class="nav-link" href="/favorite/looked_room.do?usernaem=${username }">관심목록</a></li>
+							<li class="nav-item"><a class="nav-link" href="/alert/alert_list.do?usernaem=${username }">알림</a></li>
 							<li class="nav-item"><a class="nav-link" href="/user/user_login.do">로그인</a>
 						</sec:authorize>
 						
-						<sec:authorize access="isAuthenticated()">
-						<form name="lg" action="/user/user_logout.do" method="post">
-							<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
-							<li class="nav-item"><a class="nav-link" href="javascript:lgSend()" >로그아웃</a>
-						</li>
-						</form>
+						<sec:authorize access="hasAnyRole('USER' , 'ADMIN' , 'SUPER_ADMIN')">
+							<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="dropdown04" 
+							data-bs-toggle="dropdown" aria-expanded="false">${nickname }</a>
+								<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown04">
+									<li><a class="dropdown-item" href="/user/user_modify.do">닉네임변경</a></li>
+									<li>
+										<sec:authorize access="isAuthenticated()">
+											<form name="lg" action="/user/user_logout.do" method="post">
+												<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
+												<li class="nav-item">
+													<a class="dropdown-item nav-link" href="javascript:lgSend()" >로그아웃</a>
+												</li>
+											</form>
+										</sec:authorize>
+									</li>
+								</ul>
+							</li>
 						</sec:authorize>
 						
-						
+						<sec:authorize access="hasRole('MEMBER')">
+					         <!-- 현재 로그인 한 유저의 정보를 받아옴 -->
+					            <c:set var="name">
+					               <sec:authentication property="principal.user.cor.name" />
+					            </c:set>
+					         <!-- 현재 로그인 한 유저의 정보를 받아옴 종료 -->
+							
+							<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="dropdown04" 
+							data-bs-toggle="dropdown" aria-expanded="false">${name }</a>
+								<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown04">
+									<li><a class="dropdown-item" href="/user/user_modify_cor.do">중개사정보수정</a></li>
+									<li>
+										<sec:authorize access="isAuthenticated()">
+											<form name="lg" action="/user/user_logout.do" method="post">
+												<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
+												<li class="nav-item">
+													<a class="dropdown-item nav-link" href="javascript:lgSend()" >로그아웃</a>
+												</li>
+											</form>
+										</sec:authorize>
+									</li>
+								</ul>
+							</li>
+						</sec:authorize>
 						
 						<sec:authorize access="isAnonymous()">
 							<li class="nav-item dropdown"><a

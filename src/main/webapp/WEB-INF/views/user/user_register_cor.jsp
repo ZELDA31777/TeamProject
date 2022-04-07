@@ -25,7 +25,7 @@
 		<form id="userForm" class="needs-validation" method="post" action="/user/user_register_cor_pro.do" enctype="multipart/form-data" novalidate>
 	        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 	        <input type="hidden" name="favorite" value="favorite_test_msg">
-	        <input type="hidden" name="active" value="active_test_msg">
+	        <input type="hidden" name="active" value="non_active">
 	        <input type="hidden" name="nickname" value="nickname_test_msg">
 	        <input type="hidden" name="tel" id="tel" value="">
 	        <input type="hidden" name="addr" id="addr" value="addr_test_msg">

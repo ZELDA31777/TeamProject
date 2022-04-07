@@ -1,6 +1,6 @@
 package com.hanulso.domain;
 
-import java.util.List;
+import java.util.Date;
 
 import lombok.Data;
 
@@ -12,6 +12,8 @@ public class UserVO {
 	private String grade;
 	private String favorite;
 	private String active;
+	private Date regdate;
+	private Date lastdate;
 	
 	private CorVO cor;
 	
