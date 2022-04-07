@@ -15,6 +15,8 @@ public interface UserService {
 	
 	public void adminRegister(UserVO uvo);
 	
+	public CorVO member_select(String username);
+	
 	
 	// 카카오 로그인 관련
 	public String getAccessToken(String authorize_code);

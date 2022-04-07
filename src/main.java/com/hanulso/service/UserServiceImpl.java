@@ -49,6 +49,13 @@ public class UserServiceImpl implements UserService {
 		mapper.admin_insert(uvo);
 	}
 	
+	
+	@Override
+	public CorVO member_select(String username) {
+		return mapper.member_select(username);
+	}
+	
+	
    //토큰발급
    public String getAccessToken (String authorize_code) {
       String access_Token = "";

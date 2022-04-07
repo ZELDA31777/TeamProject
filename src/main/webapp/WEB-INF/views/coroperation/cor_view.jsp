@@ -1,15 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-  <!-- ##### cor_view.jsp로 병합 후 삭제 예정 ##### -->  
 <%@ include file="../include/header.jsp"%>
-
-<noscript>
-	<div style="display: inline;">
-		<img height="1" width="1" style="border-style: none;" alt=""
-			src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/967706247/?value=1.00&amp;currency_code=KRW&amp;label=-DVwCMLN3FoQh424zQM&amp;guid=ON&amp;script=0" />
-	</div>
-</noscript>
-
 
 <style>
 .box {
@@ -49,7 +40,7 @@
 	<div name="profile" class="styled__Wrap-sc-11kevv2-0 iEoaqL">
 		<div size="80" class="styled__Profile-sc-1rwobri-0 fYBZkD">
 			<img
-				src="https://dabang-prod-profile-image.s3.amazonaws.com/ff3f3e017af8a55846b3589ad629bbab"
+				src="/upload/${cvo.profile}"
 				alt="" draggable="false">
 		</div>
 		<div type="messenger"
@@ -72,28 +63,28 @@
 					transform="translate(5 3.5)"></path></g></g></svg>
 			<p>간편문의를 사용하는 중개사무소입니다.</p>
 		</div>
-		<p class="styled__AgentName-sc-11kevv2-2 kZxOhb">뉴스마트공인중개사사무소</p>
+		<p class="styled__AgentName-sc-11kevv2-2 kZxOhb">${cvo.corname }</p>
 	</div>
 	<div class="container" style="width: 80%">
 		<ul class="styled__Ul-y3tp2k-0 uJPcK">
 			<li><p class="styled__Name-y3tp2k-1 exSEvD">중개사무소명</p>
-				<div class="styled__Value-y3tp2k-2 dxmkoB">뉴스마트공인중개사사무소</div></li>
+				<div class="styled__Value-y3tp2k-2 dxmkoB">${cvo.corname }</div></li>
 			<li><p class="styled__Name-y3tp2k-1 exSEvD">대표자명</p>
-				<div class="styled__Value-y3tp2k-2 dxmkoB">박주원</div></li>
+				<div class="styled__Value-y3tp2k-2 dxmkoB">${cvo.name }</div></li>
 			<li><p class="styled__Name-y3tp2k-1 exSEvD">전화번호</p>
-				<div class="styled__Value-y3tp2k-2 POjih">031-421-8849</div></li>
+				<div class="styled__Value-y3tp2k-2 POjih">${cvo.tel }(-는 어떻게?)</div></li>
 			<li><p class="styled__Name-y3tp2k-1 exSEvD">사업자등록번호</p>
-				<div class="styled__Value-y3tp2k-2 dxmkoB">673-69-00498</div></li>
+				<div class="styled__Value-y3tp2k-2 dxmkoB">${cvo.cornum }</div></li>
 			<li><p class="styled__Name-y3tp2k-1 exSEvD">중개등록번호</p>
-				<div class="styled__Value-y3tp2k-2 dxmkoB">41173-2021-00097</div></li>
+				<div class="styled__Value-y3tp2k-2 dxmkoB">41173-2021-00097(?)</div></li>
 			<li><p class="styled__Name-y3tp2k-1 exSEvD">다방가입일</p>
-				<div class="styled__Value-y3tp2k-2 dxmkoB">2021년 09월 02일</div></li>
+				<div class="styled__Value-y3tp2k-2 dxmkoB">2021년 09월 02일(가입일 x)</div></li>
 			<li><p class="styled__Name-y3tp2k-1 exSEvD">거래완료된 방</p>
-				<div class="styled__Value-y3tp2k-2 dxmkoB">10개의 방</div></li>
+				<div class="styled__Value-y3tp2k-2 dxmkoB">10개의 방(나중에 추가)</div></li>
 			<li style="width: 66.6%;"><p
 					class="styled__Name-y3tp2k-1 exSEvD">주소</p>
 				<div class="styled__Value-y3tp2k-2 dxmkoB" style="flex-grow: 1;">
-					경기도 안양시 동안구 인덕원로 35-10 1층 2호(관양동)
+					${cvo.addr }
 					<button class="styled__CopyBtn-y3tp2k-4 klmVxc">
 						<svg width="12" height="14" viewBox="0 0 12 14">
 							<g fill="#979797" fill-rule="nonzero">
@@ -106,7 +97,7 @@
 	<div name="room" class="container dWqXbC" style="width: 80%">
 		<div class="styled__TabWrap-sc-1j5nm8l-1 bKTJew">
 			<p class="styled__Tab-sc-1j5nm8l-2 gYpPYH">
-				이 부동산의 방<span>(6)</span>
+				이 부동산의 방<span>(6)-(나중에추가)-</span>
 			</p>
 		</div>
 		<ul class="styled__CardWrap-sc-144mdah-1 cNzXuD">
