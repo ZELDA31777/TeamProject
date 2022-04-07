@@ -86,20 +86,20 @@
 						
 						<sec:authorize access="hasRole('USER')">
 							<li class="nav-item"><a class="nav-link" href="/map/map_view.do">지도</a></li>
-							<li class="nav-item"><a class="nav-link" href="/favorite/looked_room.do?usernaem=${username }">관심목록</a></li>
-							<li class="nav-item"><a class="nav-link" href="/alert/alert_list.do?usernaem=${username }">알림</a></li>
+							<li class="nav-item"><a class="nav-link" href="/favorite/looked_room.do?username=${username }">관심목록</a></li>
+							<li class="nav-item"><a class="nav-link" href="/alert/alert_list.do?username=${username }">알림</a></li>
 						</sec:authorize>
 						
 						<sec:authorize access="hasRole('MEMBER')">
 					        <li class="nav-item"><a class="nav-link" href="/map/map_view.do">지도</a></li>
 							<li class="nav-item"><a class="nav-link" href="/coroperation/cor_view.do?username=${username }">내 매물관리</a></li>
-							<li class="nav-item"><a class="nav-link" href="/alert/alert_list.do?usernaem=${username }">알림</a></li>
+							<li class="nav-item"><a class="nav-link" href="/alert/alert_list.do?username=${username }">알림</a></li>
 						</sec:authorize>
 						
 						<sec:authorize access="isAnonymous()">
 							<li class="nav-item"><a class="nav-link" href="/map/map_view.do">지도</a></li>
-							<li class="nav-item"><a class="nav-link" href="/favorite/looked_room.do?usernaem=${username }">관심목록</a></li>
-							<li class="nav-item"><a class="nav-link" href="/alert/alert_list.do?usernaem=${username }">알림</a></li>
+							<li class="nav-item"><a class="nav-link" href="/favorite/looked_room_non.do">관심목록</a></li>
+							<li class="nav-item"><a class="nav-link" href="/alert/alert_list.do">알림</a></li>
 							<li class="nav-item"><a class="nav-link" href="/user/user_login.do">로그인</a>
 						</sec:authorize>
 						

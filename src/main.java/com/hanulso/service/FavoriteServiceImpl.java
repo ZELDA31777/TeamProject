@@ -1,5 +1,7 @@
 package com.hanulso.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,7 +47,10 @@ public class FavoriteServiceImpl implements FavoriteService {
 		return result;
 	}
 	
-	
+	@Override
+	public List<ProductVO> favorite_list(String username) {
+		return  mapper.favorite_list(username);
+	}
 	
 	
 }

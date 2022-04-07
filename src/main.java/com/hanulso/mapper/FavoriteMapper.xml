@@ -3,8 +3,8 @@
 <mapper namespace="com.hanulso.mapper.FavoriteMapper">
 
 	<select id="favorite_list"
-		resultType="com.hanulso.domain.FavoriteVO">
-		select * from one_favorite where username=#{username}
+		resultType="com.hanulso.domain.ProductVO">
+		select p.* from one_product p, one_favorite f where p.pno = f.pno and f.username=#{username}
 	</select>
 
 	<insert id="insertHeart">
