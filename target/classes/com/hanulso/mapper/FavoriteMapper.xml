@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hanulso.mapper.FavoriteMapper">
+
+	<select id="favorite_list"
+		resultType="com.hanulso.domain.FavoriteVO">
+		select * from one_favorite where username=#{username}
+	</select>
+
+	<insert id="insertHeart">
+		<selectKey keyProperty="idx" order="BEFORE" resultType="int">
+			select one_favorite_seq.nextval from dual
+		</selectKey>
+		insert into one_favorite
+		(idx,pno,username,heart)
+		values(#{idx},#{pno},#{username},1)
+	</insert>
+
+	<select id="findHeart"
+		resultType="com.hanulso.domain.FavoriteVO">
+		select * from one_favorite where pno=#{pno} and
+		username=#{username}
+	</select>
+
+	<delete id="deleteHeart">
+		delete from one_favorite where pno=#{pno} and username=#{username}
+	</delete>
+
+	<select id="likecheck"
+		resultType="com.hanulso.domain.FavoriteVO">
+		select * from one_favorite where pno=#{pno} and
+		username=#{username}
+	</select>
+
+
+
+
+
+
+
+
+
+
+</mapper>
