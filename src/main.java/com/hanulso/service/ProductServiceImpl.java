@@ -27,6 +27,11 @@ public class ProductServiceImpl implements ProductService {
 	}
 	
 	@Override
+	public ProductVO product_select(String username) {
+		return mapper.product_view(username);
+	}
+	
+	@Override
 	public List<ProductVO> product_view_list(String username) {
 		return mapper.product_view_list(username);
 	}

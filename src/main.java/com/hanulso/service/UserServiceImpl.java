@@ -49,6 +49,10 @@ public class UserServiceImpl implements UserService {
 		mapper.admin_insert(uvo);
 	}
 	
+	@Override
+	public UserVO user_select(String username) {
+		return mapper.user_select(username);
+	}
 	
 	@Override
 	public CorVO member_select(String username) {

@@ -25,4 +25,8 @@
 		]]>
 	</select>
 	
+	<select id="product_select" resultType="com.hanulso.domain.ProductVO">
+		select * from one_product where username=#{username}
+	</select>
+	
 </mapper>
