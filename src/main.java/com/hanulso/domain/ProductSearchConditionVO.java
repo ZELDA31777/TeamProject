@@ -29,4 +29,6 @@ public class ProductSearchConditionVO {
 	private Date[] regdate;
 	private Date[] selldate;
 	private String[] username;
+	
+	private String dong;
 }
