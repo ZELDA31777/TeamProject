@@ -8,10 +8,11 @@
 	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
 	<bean id="CustomLoginSuccess" class="com.hanulso.security.CustomLoginSuccessHandler"/>
 	<bean id="CustomUserDetailsService" class="com.hanulso.security.CustomUserDetailsService"/>
+	<bean id="CustomDeniedHandler" class="com.hanulso.security.CustomAccessDeniedHandler"/>
 
 	<!-- /include 안의 파일들을 security 제외 (jusoPopup.jsp에서 post 방식으로 데이터를 주고받기때문에 필요) -->
 	<security:http pattern="/include/**" security="none"/>
-	<security:http>
+	<security:http use-expressions="true" >
 		<security:form-login login-page="/user/user_login.do" authentication-success-handler-ref="CustomLoginSuccess"/>
 		<security:intercept-url pattern="/user/user_login.do" access="permitAll"/>
 		<security:intercept-url pattern="/admin/manage/admin_cor_list.do" access="hasAnyRole('ROLE_ADMIN , ROLE_SUPER_ADMIN')"/>
@@ -19,7 +20,7 @@
 		<security:intercept-url pattern="/product/product_write3.do" access="hasRole('ROLE_MEMBER')"/>
 		<security:intercept-url pattern="/product/product_write_pro.do" access="hasRole('ROLE_MEMBER')"/>
 		
-		<security:access-denied-handler error-page="/no_auth.do"/>
+		<security:access-denied-handler ref="CustomDeniedHandler" />
 		
 		<!-- 로그아웃 -->
 		<security:logout logout-url="/user/user_logout.do" invalidate-session="true" logout-success-url="/"/>
@@ -35,6 +36,6 @@
 	<!-- 가장 기본적인 설정 -->
 	
 	<!-- @PreAuthorize 어노테이션 사용가능하게 -->	
-	<security:global-method-security pre-post-annotations="enabled"/>
+	<security:global-method-security pre-post-annotations="enabled" secured-annotations="enabled"/>
 
 </beans>
