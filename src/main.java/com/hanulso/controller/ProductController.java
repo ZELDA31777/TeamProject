@@ -53,7 +53,6 @@ public class ProductController {
 	public void product_write() {
 	}
 
-	@PreAuthorize("hasRole('ROLE_MEMBER')") // 동작 안함...
 	@GetMapping("/product_write3.do")
 	public void product_write3() {
 	}

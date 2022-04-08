@@ -14,8 +14,11 @@ public interface UserService {
 	public void corRegister(UserVO uvo, CorVO cvo);
 	
 	public void adminRegister(UserVO uvo);
+
+	public UserVO user_select(String username);
 	
 	public CorVO member_select(String username);
+	
 	
 	
 	// 카카오 로그인 관련

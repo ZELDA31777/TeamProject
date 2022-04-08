@@ -10,6 +10,8 @@ public interface ProductService {
 	
 	public ProductVO product_view(int pno);
 	
+	public ProductVO product_select(String username);
+	
 	public List<ProductVO> product_view_list(String username);
 
 }

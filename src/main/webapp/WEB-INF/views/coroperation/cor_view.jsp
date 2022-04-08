@@ -32,11 +32,6 @@
 
 	<!-- %가 앞에붙은것은 뽑아올것 -->
 
-	<br>
-	<div class="box" style="text-align: center">
-		<img img class="profile" src="/resources/images/o_000.png">
-	</div>
-	<br>
 	<div name="profile" class="styled__Wrap-sc-11kevv2-0 iEoaqL">
 		<div size="80" class="styled__Profile-sc-1rwobri-0 fYBZkD">
 			<img
@@ -72,13 +67,17 @@
 			<li><p class="styled__Name-y3tp2k-1 exSEvD">대표자명</p>
 				<div class="styled__Value-y3tp2k-2 dxmkoB">${cvo.name }</div></li>
 			<li><p class="styled__Name-y3tp2k-1 exSEvD">전화번호</p>
-				<div class="styled__Value-y3tp2k-2 POjih">${cvo.tel }(-는 어떻게?)</div></li>
+				<div class="styled__Value-y3tp2k-2 POjih">${cvo.tel }</div></li>
 			<li><p class="styled__Name-y3tp2k-1 exSEvD">사업자등록번호</p>
 				<div class="styled__Value-y3tp2k-2 dxmkoB">${cvo.cornum }</div></li>
-			<li><p class="styled__Name-y3tp2k-1 exSEvD">중개등록번호</p>
-				<div class="styled__Value-y3tp2k-2 dxmkoB">41173-2021-00097(?)</div></li>
 			<li><p class="styled__Name-y3tp2k-1 exSEvD">다방가입일</p>
-				<div class="styled__Value-y3tp2k-2 dxmkoB">2021년 09월 02일(가입일 x)</div></li>
+				<div class="styled__Value-y3tp2k-2 dxmkoB">
+					<fmt:formatDate pattern="yyyy-MM-dd" value="${uvo.regdate}"/>
+				</div></li>
+			<li><p class="styled__Name-y3tp2k-1 exSEvD">최근접속일</p>
+				<div class="styled__Value-y3tp2k-2 dxmkoB">
+					<fmt:formatDate pattern="yyyy-MM-dd" value="${uvo.lastdate}"/>
+				</div></li>
 			<li><p class="styled__Name-y3tp2k-1 exSEvD">거래완료된 방</p>
 				<div class="styled__Value-y3tp2k-2 dxmkoB">10개의 방(나중에 추가)</div></li>
 			<li style="width: 66.6%;"><p
@@ -94,13 +93,22 @@
 				</div></li>
 		</ul>
 	</div>
+	
+	<!-- 글쓰기 나중에 위치 수정 -->
+	<a href="/product/product_write3.do">글쓰기</a>
+	
+	
 	<div name="room" class="container dWqXbC" style="width: 80%">
 		<div class="styled__TabWrap-sc-1j5nm8l-1 bKTJew">
 			<p class="styled__Tab-sc-1j5nm8l-2 gYpPYH">
-				이 부동산의 방<span>(6)-(나중에추가)-</span>
+				이 부동산의 방<span>(6)</span>
 			</p>
 		</div>
+		
+		<!-- 이 부동산의 방 -->
 		<ul class="styled__CardWrap-sc-144mdah-1 cNzXuD">
+		<c:if test="${!empty pList }">
+		<c:forEach var="pList" items="${pList }">
 			<li><div class="styled__CardWrap-sc-1e0j1a1-0 hObDcQ">
 					<div class="styled__LikeWrap-sc-1e0j1a1-3 gSwvZY">
 						<button class="styled__LikeBtn-jmubsw-1 eBlbuF">
@@ -140,182 +148,29 @@
 							class="styled__ImgWrap-sc-14w4no0-0 hkMQhb">
 							<div class="styled__Image-ami2sx-0 gMnRzx">
 								<img
-									src="https://d1774jszgerdmk.cloudfront.net/512/3ce3d1e9-7fd9-40da-97aa-2158d4d96847"
+									src="/upload/${pList.thumbnail }"
 									width="60" height="60" alt="매물 사진" draggable="false"
 									loading="lazy" style="width: 100%; height: 100%;">
 								<div class="styled__Cover-ami2sx-1 dZAvTS cover"></div>
 							</div>
 						</div>
 						<div class="styled__InfoWrap-sc-1e0j1a1-7 VkltZ">
-							<p class="styled__RoomType-sc-1e0j1a1-8 dENvCl">쓰리룸 이상</p>
-							<h1 class="styled__Price-sc-1e0j1a1-9 iJlOig">전세 2억2900</h1>
-							<p class="styled__Desc-sc-1e0j1a1-10 jFvIUQ">2층, 51.15m², 관리비
-								10만</p>
-							<p class="styled__Desc-sc-1e0j1a1-10 jFvIUQ">의왕 역세권의 신축빌라 전세</p>
+							<p class="styled__RoomType-sc-1e0j1a1-8 dENvCl">
+								<c:if test="${pList.type eq 0 }">원룸</c:if>
+								<c:if test="${pList.type eq 1 }">오피스텔</c:if>
+								</p>
+							<h1 class="styled__Price-sc-1e0j1a1-9 iJlOig">월세 : ${pList.rent } 보증금 : ${pList.deposit }</h1>
+							<p class="styled__Desc-sc-1e0j1a1-10 jFvIUQ">${pList.floor }층, 면적 : ${pList.area }m², 관리비 : ${pList.manage }만</p>
+							<p class="styled__Desc-sc-1e0j1a1-10 jFvIUQ">${pList.contents }</p>
 							<div class="styled__TagWrap-sc-1e0j1a1-11 hRcMAS"></div>
 						</div></a>
-				</div></li>
-			<li><div class="styled__CardWrap-sc-1e0j1a1-0 hObDcQ">
-					<div class="styled__LikeWrap-sc-1e0j1a1-3 gSwvZY">
-						<button class="styled__LikeBtn-jmubsw-1 eBlbuF">
-							<svg xmlns="http://www.w3.org/2000/svg"
-								xmlns:xlink="http://www.w3.org/1999/xlink" width="24"
-								height="24" viewBox="0 0 24 24">
-								<defs>
-								<filter id="ut3h4tqe8a" width="137.5%" height="145.9%"
-									x="-18.7%" y="-22.1%" filterUnits="objectBoundingBox">
-								<feMorphology in="SourceAlpha" operator="dilate" radius="0.75"
-									result="shadowSpreadOuter1"></feMorphology>
-								<feOffset in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
-								<feMorphology in="SourceAlpha" radius="1" result="shadowInner"></feMorphology>
-								<feOffset in="shadowInner" result="shadowInner"></feOffset>
-								<feComposite in="shadowOffsetOuter1" in2="shadowInner"
-									operator="out" result="shadowOffsetOuter1"></feComposite>
-								<feGaussianBlur in="shadowOffsetOuter1"
-									result="shadowBlurOuter1" stdDeviation="1"></feGaussianBlur>
-								<feColorMatrix in="shadowBlurOuter1"
-									values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"></feColorMatrix></filter>
-								<path id="327ed5yu1b"
-									d="M12.945 3.518c2.096-2.028 5.423-2.028 7.518 0l.117.117c1.945 2.01 1.892 5.215-.117 7.16l-3.768 3.646-4.699 4.548-3.752-3.631-.016-.015-4.699-4.548c-2.009-1.945-2.061-5.15-.116-7.16l.116-.117c2.096-2.028 5.423-2.028 7.518 0l.949.92z"></path></defs>
-								<g fill="none" fill-rule="evenodd">
-								<g>
-								<g>
-								<g>
-								<g
-									transform="translate(-445 -1074) translate(0 1040) translate(445 30) translate(0 4)">
-								<use fill="#000" filter="url(#ut3h4tqe8a)"
-									xlink:href="#327ed5yu1b"></use>
-								<use stroke="#FFF" stroke-width="1.5" xlink:href="#327ed5yu1b"></use></g></g></g></g></g></svg>
-						</button>
-					</div>
-					<a href="/room/62398d804f277457cb7ef7d4" target="_blank"
-						rel="noopener noreferrer"
-						class="styled__DetailLink-sc-1e0j1a1-1 bwyaas"><div
-							class="styled__ImgWrap-sc-14w4no0-0 hkMQhb">
-							<div class="styled__Image-ami2sx-0 gMnRzx">
-								<img
-									src="https://d1774jszgerdmk.cloudfront.net/512/82d546fa-e9ef-4dd8-b845-66cf4ba8c5fe"
-									width="60" height="60" alt="매물 사진" draggable="false"
-									loading="lazy" style="width: 100%; height: 100%;">
-								<div class="styled__Cover-ami2sx-1 dZAvTS cover"></div>
-							</div>
-						</div>
-						<div class="styled__InfoWrap-sc-1e0j1a1-7 VkltZ">
-							<p class="styled__RoomType-sc-1e0j1a1-8 dENvCl">투룸</p>
-							<h1 class="styled__Price-sc-1e0j1a1-9 iJlOig">전세 1억2000</h1>
-							<p class="styled__Desc-sc-1e0j1a1-10 jFvIUQ">3층, 33.5m²</p>
-							<p class="styled__Desc-sc-1e0j1a1-10 jFvIUQ">보증금이 낮은 물건입니다.</p>
-							<div class="styled__TagWrap-sc-1e0j1a1-11 hRcMAS"></div>
-						</div></a>
-				</div></li>
-			<li><div class="styled__CardWrap-sc-1e0j1a1-0 hObDcQ">
-					<div class="styled__LikeWrap-sc-1e0j1a1-3 gSwvZY">
-						<button class="styled__LikeBtn-jmubsw-1 eBlbuF">
-							<svg xmlns="http://www.w3.org/2000/svg"
-								xmlns:xlink="http://www.w3.org/1999/xlink" width="24"
-								height="24" viewBox="0 0 24 24">
-								<defs>
-								<filter id="ut3h4tqe8a" width="137.5%" height="145.9%"
-									x="-18.7%" y="-22.1%" filterUnits="objectBoundingBox">
-								<feMorphology in="SourceAlpha" operator="dilate" radius="0.75"
-									result="shadowSpreadOuter1"></feMorphology>
-								<feOffset in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
-								<feMorphology in="SourceAlpha" radius="1" result="shadowInner"></feMorphology>
-								<feOffset in="shadowInner" result="shadowInner"></feOffset>
-								<feComposite in="shadowOffsetOuter1" in2="shadowInner"
-									operator="out" result="shadowOffsetOuter1"></feComposite>
-								<feGaussianBlur in="shadowOffsetOuter1"
-									result="shadowBlurOuter1" stdDeviation="1"></feGaussianBlur>
-								<feColorMatrix in="shadowBlurOuter1"
-									values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"></feColorMatrix></filter>
-								<path id="327ed5yu1b"
-									d="M12.945 3.518c2.096-2.028 5.423-2.028 7.518 0l.117.117c1.945 2.01 1.892 5.215-.117 7.16l-3.768 3.646-4.699 4.548-3.752-3.631-.016-.015-4.699-4.548c-2.009-1.945-2.061-5.15-.116-7.16l.116-.117c2.096-2.028 5.423-2.028 7.518 0l.949.92z"></path></defs>
-								<g fill="none" fill-rule="evenodd">
-								<g>
-								<g>
-								<g>
-								<g
-									transform="translate(-445 -1074) translate(0 1040) translate(445 30) translate(0 4)">
-								<use fill="#000" filter="url(#ut3h4tqe8a)"
-									xlink:href="#327ed5yu1b"></use>
-								<use stroke="#FFF" stroke-width="1.5" xlink:href="#327ed5yu1b"></use></g></g></g></g></g></svg>
-						</button>
-					</div>
-					<a href="/room/62398d5f59e96956dfb98978" target="_blank"
-						rel="noopener noreferrer"
-						class="styled__DetailLink-sc-1e0j1a1-1 bwyaas"><div
-							class="styled__ImgWrap-sc-14w4no0-0 hkMQhb">
-							<div class="styled__Image-ami2sx-0 gMnRzx">
-								<img
-									src="https://d1774jszgerdmk.cloudfront.net/512/747e5e74-efc3-49ea-aec2-de1f3b60bd2d"
-									width="60" height="60" alt="매물 사진" draggable="false"
-									loading="lazy" style="width: 100%; height: 100%;">
-								<div class="styled__Cover-ami2sx-1 dZAvTS cover"></div>
-							</div>
-						</div>
-						<div class="styled__InfoWrap-sc-1e0j1a1-7 VkltZ">
-							<p class="styled__RoomType-sc-1e0j1a1-8 dENvCl">원룸</p>
-							<h1 class="styled__Price-sc-1e0j1a1-9 iJlOig">전세 8000</h1>
-							<p class="styled__Desc-sc-1e0j1a1-10 jFvIUQ">고층, 24m²</p>
-							<p class="styled__Desc-sc-1e0j1a1-10 jFvIUQ">인덕원역에서 가까워요</p>
-							<div class="styled__TagWrap-sc-1e0j1a1-11 hRcMAS"></div>
-						</div></a>
-				</div></li>
-			<li><div class="styled__CardWrap-sc-1e0j1a1-0 hObDcQ">
-					<div class="styled__LikeWrap-sc-1e0j1a1-3 gSwvZY">
-						<button class="styled__LikeBtn-jmubsw-1 eBlbuF">
-							<svg xmlns="http://www.w3.org/2000/svg"
-								xmlns:xlink="http://www.w3.org/1999/xlink" width="24"
-								height="24" viewBox="0 0 24 24">
-								<defs>
-								<filter id="ut3h4tqe8a" width="137.5%" height="145.9%"
-									x="-18.7%" y="-22.1%" filterUnits="objectBoundingBox">
-								<feMorphology in="SourceAlpha" operator="dilate" radius="0.75"
-									result="shadowSpreadOuter1"></feMorphology>
-								<feOffset in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
-								<feMorphology in="SourceAlpha" radius="1" result="shadowInner"></feMorphology>
-								<feOffset in="shadowInner" result="shadowInner"></feOffset>
-								<feComposite in="shadowOffsetOuter1" in2="shadowInner"
-									operator="out" result="shadowOffsetOuter1"></feComposite>
-								<feGaussianBlur in="shadowOffsetOuter1"
-									result="shadowBlurOuter1" stdDeviation="1"></feGaussianBlur>
-								<feColorMatrix in="shadowBlurOuter1"
-									values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"></feColorMatrix></filter>
-								<path id="327ed5yu1b"
-									d="M12.945 3.518c2.096-2.028 5.423-2.028 7.518 0l.117.117c1.945 2.01 1.892 5.215-.117 7.16l-3.768 3.646-4.699 4.548-3.752-3.631-.016-.015-4.699-4.548c-2.009-1.945-2.061-5.15-.116-7.16l.116-.117c2.096-2.028 5.423-2.028 7.518 0l.949.92z"></path></defs>
-								<g fill="none" fill-rule="evenodd">
-								<g>
-								<g>
-								<g>
-								<g
-									transform="translate(-445 -1074) translate(0 1040) translate(445 30) translate(0 4)">
-								<use fill="#000" filter="url(#ut3h4tqe8a)"
-									xlink:href="#327ed5yu1b"></use>
-								<use stroke="#FFF" stroke-width="1.5" xlink:href="#327ed5yu1b"></use></g></g></g></g></g></svg>
-						</button>
-					</div>
-					<a href="/room/62398d77400ada609ea08591" target="_blank"
-						rel="noopener noreferrer"
-						class="styled__DetailLink-sc-1e0j1a1-1 bwyaas"><div
-							class="styled__ImgWrap-sc-14w4no0-0 hkMQhb">
-							<div class="styled__Image-ami2sx-0 gMnRzx">
-								<img
-									src="https://d1774jszgerdmk.cloudfront.net/512/b4c17c71-297f-4341-aabe-7de8b67c9bfa"
-									width="60" height="60" alt="매물 사진" draggable="false"
-									loading="lazy" style="width: 100%; height: 100%;">
-								<div class="styled__Cover-ami2sx-1 dZAvTS cover"></div>
-							</div>
-						</div>
-						<div class="styled__InfoWrap-sc-1e0j1a1-7 VkltZ">
-							<p class="styled__RoomType-sc-1e0j1a1-8 dENvCl">투룸</p>
-							<h1 class="styled__Price-sc-1e0j1a1-9 iJlOig">전세 2억5000</h1>
-							<p class="styled__Desc-sc-1e0j1a1-10 jFvIUQ">6층, 36.36m², 관리비
-								10만</p>
-							<p class="styled__Desc-sc-1e0j1a1-10 jFvIUQ">신축 풀옵션 전세</p>
-							<div class="styled__TagWrap-sc-1e0j1a1-11 hRcMAS"></div>
-						</div></a>
-				</div></li>
+				</div>
+			</li>
+		</c:forEach>
+		</c:if>
 		</ul>
+		
+		<!-- 페이징처리 -->
 		<div class="styled__PaginWrap-sc-1u1e15y-0 eOczmr">
 			<ul class="styled__PageList-sc-1u1e15y-1 ifxIZu">
 				<li><button disabled=""
@@ -335,8 +190,9 @@
 					</button></li>
 			</ul>
 		</div>
+		
 	</div>
-
+<!-- 
 	<div class="tbl">
 		<div class="row">
 			<h4 align="center">이 부동산의 방(%카운트)</h4>
@@ -369,7 +225,7 @@
 
 		</div>
 	</div>
-
+ -->
 	<!-- sub contents end -->
 
 	<%@ include file="../include/footer.jsp"%>

@@ -61,46 +61,42 @@
 
    <div class="carousel-inner">
       <div class="carousel-item active">
-         <img src="/resources/images/imsi_01.png">
+         <img src="/resources/images/main_carousel/main_001.png">
          <div class="carousel-caption text-end">
-            <h1>One more for good measure.</h1>
-            <p>Some representative placeholder content for the third slide
-               of this carousel.</p>
+            <h1>사람과 집을 연결하고</h1>
+            <p>고객에게 투명하고, 편리한, 합리적인 경험을 제공하는 더 나은 삶의 방식을 만듭니다</p>
             <p>
-               <a class="btn btn-lg btn-primary" href="#">Browse gallery</a>
+               <a class="btn btn-lg btn-primary" href="#">원픽</a>
             </p>
          </div>
       </div>
       <div class="carousel-item">
-         <img src="/resources/images/imsi_02.png">
+         <img src="/resources/images/main_carousel/main_002.png">
          <div class="carousel-caption text-start">
-            <h1>Example headline.</h1>
-            <p>Some representative placeholder content for the first slide
-               of the carousel.</p>
+            <h1>우리는</h1>
+            <p>세상에 없던 부동산 서비스를 만들어갑니다.</p>
             <p>
-               <a class="btn btn-lg btn-primary" href="#">Sign up today</a>
+               <a class="btn btn-lg btn-primary" href="#">원룸</a>
             </p>
          </div>
       </div>
       <div class="carousel-item">
-         <img src="/resources/images/imsi_01.png">
+         <img src="/resources/images/main_carousel/main_003.png">
          <div class="carousel-caption text-end">
-            <h1>One more for good measure.</h1>
-            <p>Some representative placeholder content for the third slide
-               of this carousel.</p>
+            <h1>도전적인 자세로</h1>
+            <p>변화를 이끄는 사람들이 원픽을 만들어 갑니다.</p>
             <p>
-               <a class="btn btn-lg btn-primary" href="#">Browse gallery</a>
+               <a class="btn btn-lg btn-primary" href="#">오피스텔</a>
             </p>
          </div>
       </div>
       <div class="carousel-item">
-         <img src="/resources/images/imsi_02.png">
+         <img src="/resources/images/main_carousel/main_004.png">
          <div class="carousel-caption text-start">
-            <h1>Example headline.</h1>
-            <p>Some representative placeholder content for the first slide
-               of the carousel.</p>
+            <h1>글로벌한 문화를</h1>
+            <p>만들어가는 원픽이 되어 우리를 찾는 고객에게 만족할 수 있는 서비스를 제공합니다.</p>
             <p>
-               <a class="btn btn-lg btn-primary" href="#">Sign up today</a>
+               <a class="btn btn-lg btn-primary" href="#">내 입맛대로</a>
             </p>
          </div>
       </div>
@@ -118,15 +114,6 @@
    </button>
 </div>
 <!-- Carousel 끝 -->
-
-					<sec:authorize access="isAuthenticated()">
-					<p><sec:authentication property="principal"/></p>
-					<p><sec:authentication property="principal.user"/></p>
-					</sec:authorize>
-					<sec:authorize access="hasRole('MEMBER')">
-					<p><sec:authentication property="principal.user.cor.username"/></p>
-					</sec:authorize>
-
 
 <!-- 인기매물 시작 (수정) -->
 <div class="container-fluid">
@@ -268,11 +255,11 @@
 	
 		<div class="pcl">
 		<div class="row">
-		  <div class="col-6">
+         <div class="col-6">
             <div class="accordion accordion-flush" id="accordionFlushExample">
   			<div class="accordion-item">
     		<h2 class="accordion-header" id="flush-heading01">
-    		  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse01" aria-expanded="false" aria-controls="flush-collapse01">
+    		  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse01" aria-expanded="false" aria-controls="flush-collapseOne">
        			 <p class="qstyle">Q</p><p>원픽은 어떤 서비스인가요?</p>
      		 </button>
     		</h2>
@@ -289,12 +276,12 @@
   			</div>
 			</div>
          </div>
-		
+
          <div class="col-6">
             <div class="accordion accordion-flush" id="accordionFlushExample">
   			<div class="accordion-item">
     		<h2 class="accordion-header" id="flush-heading02">
-    		  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse02" aria-expanded="false" aria-controls="flush-collapse02">
+    		  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse02" aria-expanded="false" aria-controls="flush-collapseOne">
        			 <p class="qstyle">Q</p><p>계약 과정은 어떻게 되나요?</p>
      		 </button>
     		</h2>
@@ -320,7 +307,7 @@
             <div class="accordion accordion-flush" id="accordionFlushExample">
   			<div class="accordion-item">
     		<h2 class="accordion-header" id="flush-heading03">
-    		  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse03" aria-expanded="false" aria-controls="flush-collapse03">
+    		  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse03" aria-expanded="false" aria-controls="flush-collapseOne">
        			 <p class="qstyle">Q</p><p>회원가입을 하면 어떤 점이 좋나요?</p>
      		 </button>
     		</h2>
@@ -342,7 +329,7 @@
             <div class="accordion accordion-flush" id="accordionFlushExample">
   			<div class="accordion-item">
     		<h2 class="accordion-header" id="flush-heading04">
-    		  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse04" aria-expanded="false" aria-controls="flush-collapse04">
+    		  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse04" aria-expanded="false" aria-controls="flush-collapseOne">
        			 <p class="qstyle">Q</p><p>회원탈퇴는 어떻게 하나요?</p>
      		 </button>
     		</h2>
@@ -366,7 +353,7 @@
             <div class="accordion accordion-flush" id="accordionFlushExample">
   			<div class="accordion-item">
     		<h2 class="accordion-header" id="flush-heading05">
-    		  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse05" aria-expanded="false" aria-controls="flush-collapse05">
+    		  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse05" aria-expanded="false" aria-controls="flush-collapseOne">
        			 <p class="qstyle">Q</p><p>원픽에 등록된 방은 믿을수 있나요?</p>
      		 </button>
     		</h2>
@@ -388,7 +375,7 @@
             <div class="accordion accordion-flush" id="accordionFlushExample">
   			<div class="accordion-item">
     		<h2 class="accordion-header" id="flush-heading06">
-    		  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse06" aria-expanded="false" aria-controls="flush-collapse06">
+    		  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse06" aria-expanded="false" aria-controls="flush-collapseOne">
        			 <p class="qstyle">Q</p><p>원픽의 회원중개사들은 어떻게 관리되고 있나요?</p>
      		 </button>
     		</h2>
@@ -412,7 +399,7 @@
             <div class="accordion accordion-flush" id="accordionFlushExample">
   			<div class="accordion-item">
     		<h2 class="accordion-header" id="flush-heading07">
-    		  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse07" aria-expanded="false" aria-controls="flush-collapse07">
+    		  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse07" aria-expanded="false" aria-controls="flush-collapseOne">
        			 <p class="qstyle">Q</p><p>믿을수 있는 중개사는 어떤 중개사인가요?</p>
      		 </button>
     		</h2>
@@ -432,7 +419,7 @@
             <div class="accordion accordion-flush" id="accordionFlushExample">
   			<div class="accordion-item">
     		<h2 class="accordion-header" id="flush-heading08">
-    		  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse08" aria-expanded="false" aria-controls="flush-collapse08">
+    		  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse08" aria-expanded="false" aria-controls="flush-collapseOne">
        			 <p class="qstyle">Q</p><p>이사는 어떻게 하나요?</p>
      		 </button>
     		</h2>
