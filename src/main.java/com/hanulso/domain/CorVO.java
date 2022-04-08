@@ -12,4 +12,7 @@ public class CorVO {
 	private String profile;
 	private String name;
 	
+	private double lat;
+	private double lng;
+	
 }

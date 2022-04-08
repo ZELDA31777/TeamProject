@@ -26,7 +26,7 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,jibunA
 		$("#addr").change();
 		
 		
-		var googleGeocodeKey = "";
+		var googleGeocodeKey = "AIzaSyCPxvrQTmFrf14CPepU3kV_wb8wIpwrwSs";
 		if (googleGeocodeKey == "") alert("구글 geocode api키를 juso_api.js에 입력해주세요.");
 		
 		

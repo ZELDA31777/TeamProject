@@ -21,7 +21,7 @@
 	<select id="product_view_list" resultType="com.hanulso.domain.ProductVO">
 	<![CDATA[
 		select * from (select * from one_product where username=#{username} order by regdate
-		desc) where rownum < 4
+		desc) where rownum < 21
 		]]>
 	</select>
 	
