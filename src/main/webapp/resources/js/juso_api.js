@@ -23,7 +23,7 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,jibunA
 		addr3 += " "+roadAddrPart2;
 		$("#addr3").val(addr3);
 		$("#addr").val(roadFullAddr);
-		$("#addr").triger("change");
+		$("#addr").trigger("change");
 		
 		
 		var googleGeocodeKey = "AIzaSyCPxvrQTmFrf14CPepU3kV_wb8wIpwrwSs";
