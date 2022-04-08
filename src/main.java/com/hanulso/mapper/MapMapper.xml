@@ -15,16 +15,25 @@
 	<select id="getList" resultType="com.hanulso.domain.ProductVO">
 		select * from one_product
 		<where>
-			<if test="type != null">
-				<foreach item="item" collection="type" open="type in (" separator="," close=")" >
+			<!-- 방종류 -->
+			<choose>
+				<when test="type != null">
+					<foreach item="item" collection="type" open="type in (" separator="," close=")" >
+						#{item}
+					</foreach>
+				</when>
+				<otherwise>1=0</otherwise>
+			</choose>
+			
+			<if test="manage != null">
+				and 
+				<foreach item="item" collection="manage" open="manage between" separator="and">
 					#{item}
 				</foreach>
 			</if>
-			<if test="manage != null">
-				and 
-				<foreach item="item" collection="manage" open="manage in (" separator="," close=")">
-					#{item}
-				</foreach>
+			
+			<if test="dong != null">
+				and addr2=#{dong}
 			</if>
 		</where>
 	</select>

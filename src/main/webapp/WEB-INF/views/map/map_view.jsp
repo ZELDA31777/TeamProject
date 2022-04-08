@@ -8,7 +8,6 @@
 .slider {
 	width: 100%;
 	height: 100%;
-	padding: 1.5rem;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
@@ -17,9 +16,7 @@
 }
 
 .input-range {
-	width: calc(100% - 2rem);
 	top: 1rem;
-	left: 1rem;
 	position: absolute;
 	border: none;
 	pointer-events: none;
@@ -187,8 +184,7 @@ h4 {
 							<div class="align-self-center">동구</div>
 						</div>
 						<div class="d2-content overflow-scroll" style="height: 30vh">
-							<div class="d2-link">가양1동</div>
-							<div class="d2-link">가양2동</div>
+							<div class="d2-link">가양동</div>
 							<div class="d2-link">대동</div>
 							<div class="d2-link">대청동</div>
 							<div class="d2-link">산내동</div>
@@ -199,8 +195,7 @@ h4 {
 							<div class="d2-link">용전동</div>
 							<div class="d2-link">자양동</div>
 							<div class="d2-link">중앙동</div>
-							<div class="d2-link">판암1동</div>
-							<div class="d2-link">판암2동</div>
+							<div class="d2-link">판암동</div>
 							<div class="d2-link">홍도동</div>
 							<div class="d2-link">효동</div>
 						</div>
@@ -214,19 +209,16 @@ h4 {
 							<div class="d2-link">대흥동</div>
 							<div class="d2-link">목동</div>
 							<div class="d2-link">문창동</div>
-							<div class="d2-link">문화1동</div>
-							<div class="d2-link">문화2동</div>
+							<div class="d2-link">문화동</div>
 							<div class="d2-link">부사동</div>
 							<div class="d2-link">산성동</div>
 							<div class="d2-link">석교동</div>
 							<div class="d2-link">오류동</div>
 							<div class="d2-link">용두동</div>
-							<div class="d2-link">유천1동</div>
-							<div class="d2-link">유천2동</div>
-							<div class="d2-link">은행선화동</div>
+							<div class="d2-link">유천동</div>
+							<div class="d2-link">은행동</div>
 							<div class="d2-link">중천동</div>
-							<div class="d2-link">태평1동</div>
-							<div class="d2-link">태평2동</div>
+							<div class="d2-link">태평동</div>
 						</div>
 					</div>
 				</div>
@@ -304,8 +296,8 @@ h4 {
 
 									<div class="slider">
 										<input type="range" class="input-range" id="input-left"
-											min="1" max="100" value="1" name="manage" /> <input type="range"
-											class="input-range" id="input-right" name="manage" min="1" max="100"
+											min="0" max="100" value="0" name="manage" /> <input type="range"
+											class="input-range" id="input-right" name="manage" min="0" max="100"
 											value="100" />
 										<div class="track">
 											<div class="range"></div>
@@ -359,7 +351,7 @@ h4 {
 										<div class="col-4" style="padding: 10px;">
 											<h4>층수</h4>
 											<input class="form-check-input" type="checkbox" value=""
-												id="flexCheckChecked" checked> <label
+												id="flexCheckChecked" name="all" checked> <label
 												class="form-check-label" for="flexCheckChecked"
 												style="width: 35%">전체</label> <input
 												class="form-check-input" type="checkbox" value=""
@@ -686,43 +678,6 @@ h4 {
 					role="tabpanel" aria-labelledby="nav-home-tab">
 					<!-- 지도에 표시되는 방 목록 시작-->
 
-<%--
-					<c:if test="${!empty list}">
-						<c:forEach var="list" items="${list}">
-							<div class="card w-100">
-								<div class="card-body">
-									<div class="row m-0 gx-3">
-										<div class="col-5"
-											style="background: blue; background-clip: content-box; height: calc(200px - 32px);">
-											<!-- 썸네일 이미지 출력 -->
-											<img class="product_view"
-												src="/upload/${list.thumbnail }"
-												style="width: 100%; height: 100%;" data-bs-toggle="modal"
-												data-bs-target="#exampleModal"
-												href="/map/map_modal_view.do?pno=${list.pno }">
-										</div>
-										<div class="col-7">
-											<div class="iamnls">
-												<div class="fOVNCS">
-													<h1 class="kPmScS">보증금 / 월세
-														${list.deposit }/${list.rent }</h1>
-													<p class="fGfKPR">
-														<c:if test="${list.type eq 1}">오피스텔</c:if>
-														<c:if test="${list.type eq 0}">원룸</c:if>
-													</p>
-													<p class="fYtEsj">${list.floor }층,
-														${list.area }m², 관리비 ${list.manage }만</p>
-													<p class="fYtEsj">${list.contents }</p>
-												</div>
-												<div class="eCimNy"></div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</c:forEach>
-					</c:if>
- --%>
 					<!-- 페이징 시작 -->
 					<nav aria-label="Page navigation example">
 						<ul class="pagination justify-content-center">
@@ -775,9 +730,6 @@ h4 {
 		$("body").css("padding-bottom", "0");
 		$("body").css("overflow", "hidden");
 		
-		$("#manage").on("input", function(){
-			$("#manage_value").html($(this).val());
-		});
 	});
 
 	$(function (){
@@ -821,8 +773,8 @@ h4 {
 
 		  const percent = ((+_this.value - +min) / (+max - +min)) * 100;
 
-		  thumbRight.style.right = (100 - percent)+"%";
-		  range.style.right = (100 - percent)+"%";
+		  thumbRight.style.right = (100-percent)+"%";
+		  range.style.right = (100-percent)+"%";
 
 		  console.log("left : ",thumbLeft.style.left);
 			console.log("right : ", thumbRight.style.right);
@@ -831,80 +783,104 @@ h4 {
 		if (inputLeft && inputRight) {
 		  inputLeft.addEventListener("input", setLeftValue);
 		  inputRight.addEventListener("input", setRightValue);
-		  console.log("적용");
 		}
 	});
-</script>
-
-<script>
-	 $('.product_view').on('click', function(e){
-		  e.preventDefault();
-		  $('#exampleModal').modal('show').find('.modal-body').load($(this).attr('href'));
-		});
-	 
-	 
 </script>
 <!-- 양방향 슬라이더 script 끝 -->
 
 
+<script>
+// 매물 사진 클릭시 매물 정보 모달 열림
+	function openModal(addr){
+		$('#exampleModal').modal('show').find('.modal-body').load(addr);
+	}
+
+// 마커가 점프하게
+	function jumpMarker(idx) {
+		console.log("start");
+		markList[idx].setAnimation(google.maps.Animation.BOUNCE);
+	}
+	
+// 마커가 점프를 멈추게
+	function stopMarker(idx) {
+		console.log("stop");
+		markList[idx].setAnimation(null);
+	}
+</script>
+
+
+
 <!-- 지도 검색 조건 script 시작 -->
 <script>
-	function getList() {
+	function getList(dong) {
 		const header = "${_csrf.headerName}";
 	    const token = "${_csrf.token}";
 
 	    var list = [];
 
-	    var typeList = [];
-	    $("input[name='type']:checked").each(function(i){
-		    typeList.push($(this).val());
-		});
-
-//$('#searchConditionForm').serialize()
 		$.ajax({
 			type: 'post',
 			url: '/map/getList.do',
-			data: JSON.stringify({"type":typeList}), 
+			data: $('#searchConditionForm').serialize()+(dong?"&dong="+dong:""),
 			datatype: 'json',
-			contentType: "application/json; charset=utf-8",
+			//contentType: "application/json; charset=utf-8",
 			beforeSend: function(xhr) {
 				xhr.setRequestHeader(header, token);
 			},
 			success: function(result, status, xhr) {
 				list = result;
 				var htmlStr = "";
-				console.log("list", list);
+
+				for (var i=0; i<markList.length; i++) markList[i].setMap(null);
+
+				markList = [];
+				
 				for (var i=0; i<list.length; i++) {
 					htmlStr += `<div class="card w-100">
 						<div class="card-body">
-						<div class="row m-0 gx-3">
-							<div class="col-5"
-								style="background: blue; background-clip: content-box; height: calc(200px - 32px);">
-								<!-- 썸네일 이미지 출력 -->
-								<img class="product_view"
-									src="/upload/`+list[i].thumbnail+`"
-									style="width: 100%; height: 100%;" data-bs-toggle="modal"
-									data-bs-target="#exampleModal"
-									href="/map/map_modal_view.do?pno=`+list[i].pno+`">
-							</div>
-							<div class="col-7">
-								<div class="iamnls">
-									<div class="fOVNCS">
-										<h1 class="kPmScS">보증금 / 월세
-											`+list[i].deposit+`/`+list[i].rent+`</h1>
-										<p class="fGfKPR">
-											`+(list[i].type==1?"오피스텔":"원룸")+`
-										</p>
-										<p class="fYtEsj">`+list[i].floor+`층,
-											`+list[i].area+`m², 관리비`+list[i].manage+`만</p>
-										<p class="fYtEsj">`+list[i].contents+`</p>
+							<div class="row m-0 gx-3">
+								<div class="col-5"
+									style="background: blue; background-clip: content-box; height: calc(200px - 32px);">
+									<!-- 썸네일 이미지 출력 -->
+									<img class="product_view"
+										src="/upload/`+list[i].thumbnail+`"
+										style="width: 100%; height: 100%;" data-bs-toggle="modal"
+										data-bs-target="#exampleModal" data-idx=`+i+`
+										href="/map/map_modal_view.do?pno=`+list[i].pno+`"
+										onclick="openModal(this.getAttribute('href'));"
+										onmouseover="jumpMarker(this.dataset.idx);"
+										onmouseout="stopMarker(this.dataset.idx);">
+								</div>
+								<div class="col-7">
+									<div class="iamnls">
+										<div class="fOVNCS">
+											<h1 class="kPmScS">보증금 / 월세
+												`+list[i].deposit+`/`+list[i].rent+`</h1>
+											<p class="fGfKPR">
+												`+(list[i].type==1?"오피스텔":"원룸")+`
+											</p>
+											<p class="fYtEsj">`+list[i].floor+`층,
+												`+list[i].area+`m², 관리비`+list[i].manage+`만</p>
+											<p class="fYtEsj">`+list[i].contents+`</p>
+										</div>
+										<div class="eCimNy"></div>
 									</div>
-									<div class="eCimNy"></div>
 								</div>
 							</div>
 						</div>
-					</div>
-				</div>`;
+					</div>`;
+
+					const marker = new google.maps.Marker({
+						position: {lat:list[i].lat, lng:list[i].lng},
+						map: map,
+						zIndex: list[i].pno,
+					});
+
+					marker.addListener("click", () => {
+						openModal("/map/map_modal_view.do?pno="+marker.getZIndex());
+					});
+
+					markList.push(marker);
 				}
 				
 				
@@ -917,7 +893,8 @@ h4 {
 		});
 	}
 
-	$("input").on("change", getList);
+	$("input").on("change", function (){getList(null);}); // 조건 선택이 바뀔 때마다 매물 목록을 가져옴
+	$(".d2-link").on("click", function (){getList($(this).html())}); // 지역 설정에서 동 클릭시 매물 목록을 가져옴
 </script>
 <!-- 지도 검색 조건 script 끝 -->
 
@@ -925,17 +902,19 @@ h4 {
 
 <!-- 구글 지도 스크립트 시작 -->
 <script>
+	let map;
+	let markList = [];
   function initMap() {
-    const map = new google.maps.Map(document.getElementById("map"), {
-      center: { lat: 36.32843039, lng: 127.40531874 },
+    map = new google.maps.Map(document.getElementById("map"), {
+      center: { lat: 36.32843039, lng: 127.40531874 }, // 처음 로딩시 보여지는 중심점
       // latLngBounds: {north: northLat, south: southLat, west: westLng, east: eastLng}, 
-      zoom: 10,
+      zoom: 13, // 클수록 확대
     });
 
-    getList();
+    getList(null);
   }
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPxvrQTmFrf14CPepU3kV_wb8wIpwrwSs&callback=initMap&v=weekly " async></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPxvrQTmFrf14CPepU3kV_wb8wIpwrwSs&callback=initMap&v=weekly" async></script>
 <!-- 구글 지도 스크립트 끝 -->
 <!-- sub contents end -->
 <%--	
