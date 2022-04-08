@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hanulso.mapper.AdminMapper">
+	
+	<sql id="criteria">
+  		<choose>
+  		<when test = "type == 'N'.toString()">
+  			c.name like '%'||#{keyword}||'%' and
+  		</when>
+  		<when test = "type == 'A'.toString()">
+  			c.addr like '%'||#{keyword}||'%' and
+  		</when>
+		</choose>
+	</sql>
+
+	<select id="coruser_list_date" resultType="com.hanulso.domain.CorInfoVO">
+		<![CDATA[
+		select * from (
+		select /*+ index_desc(one_user one_username) */ rownum rn, u.username, c.corname, c.cornum, c.tel, c.addr, c.profile, c.name, u.active, u.regdate, p.pno, p.picture, p.regdate pr  
+		from one_product p, one_cor c, one_user u 
+		where 
+		]]>
+		<include refid="criteria"></include>
+		<![CDATA[
+		p.username=c.username and c.username=u.username and rownum <= #{pageNum} * #{amount} order by u.regdate desc
+		)where rn > (#{pageNum}-1) * #{amount}
+		]]>
+	</select>
+	
+	<select id="coruser_list_name" resultType="com.hanulso.domain.CorInfoVO">
+		<![CDATA[
+		select * from (
+		select /*+ index_desc(one_user one_username) */ rownum rn, u.username, c.corname, c.cornum, c.tel, c.addr, c.profile, c.name, u.active, u.regdate, p.pno, p.picture, p.regdate pr  
+		from one_product p, one_cor c, one_user u 
+		where 
+		]]>
+		<include refid="criteria"></include>
+		<![CDATA[
+		p.username=c.username and c.username=u.username and rownum <= #{pageNum} * #{amount} order by c.corname
+		)where rn > (#{pageNum}-1) * #{amount}
+		]]>
+	</select>
+	
+	<select id="getTotalCount" resultType="int">
+		select count(*) from one_cor
+	</select> 
+	
+</mapper>

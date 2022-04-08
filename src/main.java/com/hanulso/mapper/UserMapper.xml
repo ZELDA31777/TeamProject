@@ -26,8 +26,8 @@
 	</insert>
 	
 	<insert id="cor_insert_2nd">
-		insert into one_cor (username,corname,cornum,tel,addr,profile,name)
-		values(#{username},#{corname},#{cornum},#{tel},#{addr},#{profile},#{name})
+		insert into one_cor (username,corname,cornum,tel,addr,profile,name,lng,lat)
+		values(#{username},#{corname},#{cornum},#{tel},#{addr},#{profile},#{name},#{lng},#{lat})
 	</insert>
 	
 	<select id="user_select" resultType="com.hanulso.domain.UserVO">

@@ -17,7 +17,7 @@
 </div>
 </div> 
 
-<p style="font-size:0.8em; margin:2%;">총가입자: @명</p>
+<p style="font-size:0.8em; margin:2%;">총가입자:${pageMaker.total}명</p>
 
 <div class="row" style="border-bottom:1px solid gray; margin-bottom:50px;">
   <div class="col-md-2" style="text-align: left; margin:auto;">
@@ -36,6 +36,9 @@
     <p style="font-size:0.8em;">회원관리</p>
   </div>
 </div>  
+
+<c:if test="${!empty r_list}">
+<c:forEach var="r_list" items="${r_list}">
 
 <div class="row" style="border-bottom:1px solid gray;">
   <div class="col-md-2">
@@ -80,9 +83,8 @@
 </div>
   
   </div>
-    
   <div class="col-md-2" style="text-align: left; margin:auto;">
-  <a href="">@부동산명</a>
+  <a href="#">${r_list.corname}</a>
   <!-- 클릭시 중개사 뷰 페이지 -->
   </div>
   
@@ -130,6 +132,8 @@
   </div>
 				
 </div>
+</c:forEach>
+</c:if>
 
 <div class="paging" align="center" style="margin:2%;">
 	<a href=""><i class="fa  fa-angle-double-left"></i></a>
