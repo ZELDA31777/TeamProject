@@ -7,9 +7,14 @@ import com.hanulso.domain.UserVO;
 
 public interface UserService {
 	
+	public int user_check(String username);
+	
 	public void mailCheckUp(String username, String password);
 	
 	public void userRegister(UserVO uvo);
+	
+	// 카카오 유저 회원가입
+	public void kakaoUserRegister(UserVO uvo);
 	
 	public void corRegister(UserVO uvo, CorVO cvo);
 	

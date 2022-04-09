@@ -111,12 +111,19 @@
 									<li><a class="dropdown-item" href="/user/user_modify.do">닉네임변경</a></li>
 									<li>
 										<sec:authorize access="isAuthenticated()">
-											<form name="lg" action="/user/user_logout.do" method="post">
-												<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
+											<c:if test="${empty kakao}">
+												<form name="lg" action="/user/user_logout.do" method="post">
+													<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
+													<li class="nav-item">
+														<a class="dropdown-item nav-link" href="javascript:lgSend()" >로그아웃</a>
+													</li>
+												</form>
+											</c:if>
+											<c:if test="${!empty kakao}">
 												<li class="nav-item">
-													<a class="dropdown-item nav-link" href="javascript:lgSend()" >로그아웃</a>
+													<a href="https://kauth.kakao.com/oauth/logout?client_id=ec529ddcb0a1e3f154fc6847679fe18a&logout_redirect_uri=http://localhost:8123/user/user_login.do">카카오 로그아웃</a>
 												</li>
-											</form>
+											</c:if>
 										</sec:authorize>
 									</li>
 								</ul>

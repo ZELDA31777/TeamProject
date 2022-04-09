@@ -29,13 +29,25 @@ public class UserServiceImpl implements UserService {
 	private UserMapper mapper;
 	
 	@Override
+	public int user_check(String username) {
+		return mapper.user_check(username);
+	}
+	
+	@Override
 	public void mailCheckUp(String username, String password) {
 		mapper.mailCheckUp(username, password);
 	}
 
+	// 일반 유저 회원가입
 	@Override
 	public void userRegister(UserVO uvo) {
 		mapper.user_insert(uvo);
+	}
+	
+	// 카카오 유저 회원가입
+	@Override
+	public void kakaoUserRegister(UserVO uvo) {
+		mapper.kakao_user_insert(uvo);
 	}
 	
 	@Override

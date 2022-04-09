@@ -5,67 +5,76 @@
 
 <mapper namespace="com.hanulso.mapper.UserMapper">
 
-   <update id="mailCheckUp">
-      update one_user set active = 'active' where username = #{username} and password = #{password}
-   </update>
-   
-   <insert id="user_insert">
-      insert into one_user (username, password, nickname, grade, favorite, active)
-      values(#{username},#{password},#{nickname},'ROLE_USER',#{favorite},#{active})
-   </insert>
-   
-   <insert id="admin_insert">
-      insert into one_user (username, password, nickname, grade, favorite, active)
-      values(#{username},#{password},#{nickname},'ROLE_ADMIN',#{favorite},#{active})
-   </insert>
-   
-   
-   <insert id="cor_insert_1st">
-      insert into one_user (username, password, nickname, grade, favorite, active)
-      values(#{username},#{password},#{nickname},'ROLE_MEMBER',#{favorite},#{active})
-   </insert>
-   
-   <insert id="cor_insert_2nd">
-      insert into one_cor (username,corname,cornum,tel,addr,profile,name,lat,lng)
-      values(#{username},#{corname},#{cornum},#{tel},#{addr},#{profile},#{name},#{lat},#{lng})
-   </insert>
-   
-   <select id="user_select" resultType="com.hanulso.domain.UserVO">
-      select * from one_user where username=#{username}
-   </select>
-   
-   <select id="member_select" resultType="com.hanulso.domain.CorVO">
-      select * from one_cor where username=#{username}
-   </select>
-   
-<!--    
-   <resultMap type="com.hanulso.domain.UserVO" id="userMap">
-      <id property="username" column="username"/>
-      <result property="username" column="username"/>
-      <result property="password" column="password"/>
-      <result property="nickname" column="nickname"/>
-      <result property="grade" column="garde"/>
-      <result property="favorite" column="favorite"/>
-      <result property="active" column="active"/>
-      <collection property="cor" resultMap="corMap"/>
-   </resultMap>
-   
-   <resultMap type="com.hanulso.domain.CorVO" id="corMap">
-      <result property="username" column="username"/>
-      <result property="corname" column="corname"/>
-      <result property="cornum" column="cornum"/>
-      <result property="tel" column="tel"/>
-      <result property="addr" column="addr"/>
-      <result property="profile" column="profile"/>
-      <result property="name" column="name"/>
-   </resultMap>
-      
-   <select id="member_select" resultMap="userMap">
-      select u.username, password, nickname, grade, favorite, active, corname, cornum, tel, addr, profile, name 
-      from one_user u full outer join one_cor c 
-      on u.username = c.username 
-      where u.username=#{username}
-   </select>
+	<update id="mailCheckUp">
+		update one_user set active = 'active' where username = #{username} and password = #{password}
+	</update>
+	
+	<select id="user_check" resultType="int">
+		select count(*) from one_user where username=#{username}
+	</select>
+	
+	<insert id="user_insert">
+		insert into one_user (username, password, nickname, grade, favorite, active)
+		values(#{username},#{password},#{nickname},'ROLE_USER',#{favorite},#{active})
+	</insert>
+	
+	<insert id="kakao_user_insert">
+		insert into one_user (username, password, nickname, grade, favorite, active, kCheck)
+		values(#{username},#{password},#{nickname},'ROLE_USER',#{favorite},#{active},#{kCheck})
+	</insert>
+	
+	<insert id="admin_insert">
+		insert into one_user (username, password, nickname, grade, favorite, active)
+		values(#{username},#{password},#{nickname},'ROLE_ADMIN',#{favorite},#{active})
+	</insert>
+	
+	
+	<insert id="cor_insert_1st">
+		insert into one_user (username, password, nickname, grade, favorite, active)
+		values(#{username},#{password},#{nickname},'ROLE_MEMBER',#{favorite},#{active})
+	</insert>
+	
+	<insert id="cor_insert_2nd">
+		insert into one_cor (username,corname,cornum,tel,addr,profile,name,lat,lng)
+		values(#{username},#{corname},#{cornum},#{tel},#{addr},#{profile},#{name},#{lat},#{lng})
+	</insert>
+	
+	<select id="user_select" resultType="com.hanulso.domain.UserVO">
+		select * from one_user where username=#{username}
+	</select>
+	
+	<select id="member_select" resultType="com.hanulso.domain.CorVO">
+		select * from one_cor where username=#{username}
+	</select>
+	
+<!-- 	
+	<resultMap type="com.hanulso.domain.UserVO" id="userMap">
+		<id property="username" column="username"/>
+		<result property="username" column="username"/>
+		<result property="password" column="password"/>
+		<result property="nickname" column="nickname"/>
+		<result property="grade" column="garde"/>
+		<result property="favorite" column="favorite"/>
+		<result property="active" column="active"/>
+		<collection property="cor" resultMap="corMap"/>
+	</resultMap>
+	
+	<resultMap type="com.hanulso.domain.CorVO" id="corMap">
+		<result property="username" column="username"/>
+		<result property="corname" column="corname"/>
+		<result property="cornum" column="cornum"/>
+		<result property="tel" column="tel"/>
+		<result property="addr" column="addr"/>
+		<result property="profile" column="profile"/>
+		<result property="name" column="name"/>
+	</resultMap>
+		
+	<select id="member_select" resultMap="userMap">
+		select u.username, password, nickname, grade, favorite, active, corname, cornum, tel, addr, profile, name 
+		from one_user u full outer join one_cor c 
+		on u.username = c.username 
+		where u.username=#{username}
+	</select>
  -->
     
    
