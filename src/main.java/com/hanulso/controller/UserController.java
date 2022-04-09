@@ -93,23 +93,6 @@ public class UserController {
 		System.out.println("mailCheckUp.do 실행 확인");
 	}
 	
-	// 카카오 관련
-	@ResponseBody
-	@RequestMapping(value="/kakaoLogin.do", method = RequestMethod.GET, produces = "application/json")
-	public String kakaoLogin(@RequestParam(value = "code", required = false) String code) throws Exception{
-		System.out.println("#########" + code);
-		
-		String access_Token = service.getAccessToken(code);
-		System.out.println("###access_Token#### : " + access_Token);
-		
-		HashMap<String, Object> userInfo = service.getUserInfo(access_Token);
-		System.out.println("###access_Token### : " + access_Token);
-		System.out.println("###nickname### : " + userInfo.get("nickname"));
-		System.out.println("###email### : " + userInfo.get("email"));
-		
-		return "redirect:/";
-	}
-	
 	@GetMapping("/user_register.do")
 	public void user_register() {}
 	

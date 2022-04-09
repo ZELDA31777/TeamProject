@@ -60,9 +60,7 @@
 					<span> 확인 </span>
 				</button>
 				
-				<!-- 카카오로그인 -->
-				
-				<a class="p-2" href="https://kauth.kakao.com/oauth/authorize?client_id=ec529ddcb0a1e3f154fc6847679fe18a&redirect_uri=http://localhost:8123/user/kakaoLogin.do&response_type=code">
+				<a class="p-2" href="https://kauth.kakao.com/oauth/authorize?client_id=ec529ddcb0a1e3f154fc6847679fe18a&redirect_uri=http://localhost:8123/kakaoLogin&response_type=code">
 				<img src="/resources/icon/kakao_login_large_wide.png"></a>
 				
 			</div>
@@ -70,6 +68,38 @@
 	</div>
 </div>
 
+	<!-- 카카오로그인 -->
+	<c:if test="${!empty uvo}">
+		<form action="/login" method="post" id="kakaoLogin">
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+			<input type="hidden" value="${uvo.username}" name="username">
+			<input type="hidden" value="${kakaoPassword}" name="password">
+		</form>
+	</c:if>
+	
+	<sec:authorize access="isAuthenticated()">
+		<form action="/user/user_logout.do" method="post" id="kakaoLogout">
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+			<input type="hidden" value="<sec:authentication property='principal.user.username'/>" id="kakao">
+		</form>
+	</sec:authorize>
+	
+	<c:if test="${!empty uvo}">
+		<script>
+		   alert("카카오로 로그인 되었습니다");
+		   $("#kakaoLogin").submit();
+		</script>
+	</c:if>
+	
+	<sec:authorize access="isAuthenticated()">
+		<script>
+			alert("카카오 로그아웃");
+			$("#kakaoLogout").submit();
+		</script>
+	</sec:authorize>
+
+	<!-- 카카오 -->
+	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 
 <script>
 	(function() {
