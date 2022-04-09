@@ -11,7 +11,7 @@ public class ProductSearchConditionVO {
 	private int[] deposit;
 	private int[] rent;
 	private int[] manage;
-	private double[] area;
+	private int[] area;
 	private int[] floor;
 	private int[] totalfloor;
 	private int[] room;

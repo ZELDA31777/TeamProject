@@ -13,15 +13,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.hanulso.domain.ProductSearchConditionVO;
 import com.hanulso.domain.ProductVO;
 import com.hanulso.service.MapService;
 
+import lombok.extern.log4j.Log4j;
+
 @Controller
 @RequestMapping("/map/*")
+@Log4j
 public class MapController {
 	
 	@Autowired
@@ -52,11 +53,16 @@ public class MapController {
 		// type 
 		// 체크를 모두 해제한 경우에는 null로 받으므로 예외처리
 		pscvo.setType( ((values=request.getParameterValues("type")) != null)?Arrays.stream(values).mapToInt(Integer::parseInt).toArray():null);
+		pscvo.setDeposit( Arrays.stream(request.getParameterValues("deposit")).mapToInt(Integer::parseInt).toArray());
+		pscvo.setRent( Arrays.stream(request.getParameterValues("rent")).mapToInt(Integer::parseInt).toArray());
 		pscvo.setManage( Arrays.stream(request.getParameterValues("manage")).mapToInt(Integer::parseInt).toArray());
+		pscvo.setArea( Arrays.stream(request.getParameterValues("area")).mapToInt(Integer::parseInt).toArray());
 		
 		// 지역 설정에서 동을 선택
 		pscvo.setDong(request.getParameter("dong"));
 		
+		
+		log.info(pscvo);
 		return service.getList(pscvo);
 	}
 }

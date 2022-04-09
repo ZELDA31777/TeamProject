@@ -3,80 +3,6 @@
 <%@ include file="../include/header.jsp"%>
 <!-- sub contents start -->
 
-<!-- 양방향 슬라이더 css 시작 -->
-<style>
-.slider {
-	width: 100%;
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
-	align-items: center;
-	position: relative;
-}
-
-.input-range {
-	top: 1rem;
-	position: absolute;
-	border: none;
-	pointer-events: none;
-	z-index: 10;
-	appearance: none;
-	opacity: 0.5;
-}
-
-.input-range:first-child {
-	top: 1rem;
-}
-
-.input-range::-webkit-slider-thumb {
-	pointer-events: all;
-	/* appearance, background-color는 지워도 됨 */
-	appearance: none;
-	background-color: red;
-	width: 1.5rem;
-	height: 1.5rem;
-}
-
-.track {
-	position: relative;
-	margin-top: 5rem;
-	width: 100%;
-	height: 0.5rem;
-	background-color: #bdc3c7;
-	border-radius: 0.5rem;
-}
-
-.range {
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	background-color: Aqua;
-	border-radius: 0.5rem;
-}
-
-.thumb {
-	position: absolute;
-	top: 0;
-	transform: translateY(-0.25rem);
-	width: 1rem;
-	height: 1rem;
-	background-color: blue;
-	border-radius: 50%;
-}
-
-.left {
-	left: 0;
-}
-
-.right {
-	right: 0;
-}
-</style>
-<!-- 양방향 슬라이더 끝 -->
-
 
 
 <!-- 마우스 오버 드롭다운 메뉴 css 시작 -->
@@ -151,15 +77,22 @@ h4 {
 	text-align: left;
 }
 
-/* header.jsp 의 로고 이미지 크기를 세로 기준으로 바꿔서 map 영역 높이 계산하기 쉽도록  */
 </style>
+
+
+<!-- 양방향 슬라이더 nouislider 시작 -->
+<link href="/resources/css/nouislider.min.css" rel="stylesheet">
+<script src="/resources/js/nouislider.js"></script>
+<script src="/resources/js/wNumb.min.js"></script>
+<!-- 양방향 슬라이더 nouislider 끝 -->
+
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1"
 	aria-labelledby="exampleModalLabel" aria-hidden="true" >
 	<div class="modal-dialog modal-xl">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">매물번호 {1223123}</h5>
+				<h5 class="modal-title" id="exampleModalLabel">(여기엔 무엇을 출력해야할까? 매물정보는 x)</h5>
 				<button type="button" class="btn-close" data-bs-dismiss="modal"
 					aria-label="Close"></button>
 			</div>
@@ -261,19 +194,22 @@ h4 {
 					<div class="dropdown" style="float: left; width: 15%;">
 						<button class="btn btn-light" type="button"
 							id="dropdownMenuButton1" data-bs-toggle="dropdown"
-							aria-expanded="false" style="width: 80%;">월세</button>
+							aria-expanded="false" style="width: 80%;">보증금/월세</button>
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 							<li>
 								<div style="padding: 20px;">
 
 									<h4>가격</h4>
 
-									<label for="customRange3" class="form-label">보증금</label> <input
-										type="range" class="form-range" min="0" max="5" step="0.5"
-										id="customRange3"> <label for="customRange3"
-										class="form-label">월세</label> <input type="range"
-										class="form-range" min="0" max="5" step="0.5"
-										id="customRange3">
+									<div class="form-label">보증금</div>
+									<div class="slider" data-min="0" data-max="1000" data-name="deposit" data-step="50"></div>
+									<input type="number" name="deposit" min="0" max="1000" value="0" step="50" data-idx="0" pattern="\d*">
+									<input type="number" name="deposit" min="0" max="1000" value="1000" step="50" data-idx="1" pattern="\d*">
+									
+									<div class="form-label">월세</div>
+									<div class="slider" data-min="5" data-max="100" data-name="rent" data-step="5"></div>
+									<input type="number" name="rent" min="5" max="100" value="0" step="5" data-idx="0" pattern="\d*">
+									<input type="number" name="rent" min="5" max="100" value="100" step="5" data-idx="1" pattern="\d*">
 
 								</div>
 							</li>
@@ -291,20 +227,9 @@ h4 {
 								<div style="padding: 20px;">
 
 									<h4>관리비</h4>
-									<span id="manage_value"></span> <input type="range"
-										class="form-range" min="0" max="5" step="0.5" id="manage">
-
-									<div class="slider">
-										<input type="range" class="input-range" id="input-left"
-											min="0" max="100" value="0" name="manage" /> <input type="range"
-											class="input-range" id="input-right" name="manage" min="0" max="100"
-											value="100" />
-										<div class="track">
-											<div class="range"></div>
-											<div class="thumb left"></div>
-											<div class="thumb right"></div>
-										</div>
-									</div>
+									<div class="slider" data-min="0" data-max="20" data-name="manage" data-step="1"></div>
+									<input type="number" name="manage" min="0" max="20" value="0" step="1" data-idx="0" pattern="\d*">
+									<input type="number" name="manage" min="0" max="20" value="20" step="1" data-idx="1" pattern="\d*">
 
 									<button type="button" class="btn btn-light"
 										style="float: right;">조건 삭제</button>
@@ -325,9 +250,10 @@ h4 {
 								<div style="padding: 20px;">
 
 									<h4>방크기</h4>
-
-									<input type="range" class="form-range" min="0" max="5"
-										step="0.5" id="customRange3">
+									<div class="slider" data-min="5" data-max="50" data-name="area" data-step="5"></div>
+									<input type="number" name="area" min="5" max="50" value="5" step="5" data-idx="0" pattern="\d*">
+									<input type="number" name="area" min="5" max="50" value="50" step="5" data-idx="1" pattern="\d*">
+									
 
 									<button type="button" class="btn btn-light"
 										style="float: right;">조건 삭제</button>
@@ -351,7 +277,7 @@ h4 {
 										<div class="col-4" style="padding: 10px;">
 											<h4>층수</h4>
 											<input class="form-check-input" type="checkbox" value=""
-												id="flexCheckChecked" name="all" checked> <label
+												id="flexCheckChecked" checked> <label
 												class="form-check-label" for="flexCheckChecked"
 												style="width: 35%">전체</label> <input
 												class="form-check-input" type="checkbox" value=""
@@ -469,7 +395,7 @@ h4 {
 							</li>
 						</ul>
 					</div>
-
+<%--
 					<div class="dropdown" style="float: right; width: 4%;">
 						<button class="btn btn-light" type="button"
 							id="dropdownMenuButton1" data-bs-toggle="dropdown"
@@ -645,7 +571,7 @@ h4 {
 						</ul>
 
 					</div>
-
+ --%>
 					<!-- 필터 메뉴 끝 -->
 
 
@@ -724,69 +650,6 @@ h4 {
 	</div>
 </div>
 
-<!-- 양방향 슬라이더 script 시작 -->
-<script>
-	$(function(){
-		$("body").css("padding-bottom", "0");
-		$("body").css("overflow", "hidden");
-		
-	});
-
-	$(function (){
-		const inputLeft = document.getElementById("input-left");
-		const inputRight = document.getElementById("input-right");
-
-		const thumbLeft = document.querySelector(".thumb.left");
-		const thumbRight = document.querySelector(".thumb.right");
-
-		const range = document.querySelector(".range");
-
-		console.log(inputLeft);
-		console.log(inputRight);
-		console.log(thumbLeft);
-		console.log(thumbRight);
-		console.log(range);
-		
-		const setLeftValue = e => {
-		  const _this = e.target;
-		  const { value, min, max } = _this;
-
-		  if (+inputRight.value - +value < 10) {
-		    _this.value = +inputRight.value - 10;
-		  }
-
-		  const percent = ((+_this.value - +min) / (+max - +min)) * 100;
-
-		  thumbLeft.style.left = percent+"%";
-		  range.style.left = percent+"%";
-			console.log("left : ",thumbLeft.style.left);
-			console.log("right : ", thumbRight.style.right);
-		};
-
-		const setRightValue = e => {
-		  const _this = e.target;
-		  const { value, min, max } = _this;
-
-		  if (+value - +inputLeft.value < 10) {
-		    _this.value = +inputLeft.value + 10;
-		  }
-
-		  const percent = ((+_this.value - +min) / (+max - +min)) * 100;
-
-		  thumbRight.style.right = (100-percent)+"%";
-		  range.style.right = (100-percent)+"%";
-
-		  console.log("left : ",thumbLeft.style.left);
-			console.log("right : ", thumbRight.style.right);
-		};
-
-		if (inputLeft && inputRight) {
-		  inputLeft.addEventListener("input", setLeftValue);
-		  inputRight.addEventListener("input", setRightValue);
-		}
-	});
-</script>
-<!-- 양방향 슬라이더 script 끝 -->
 
 
 <script>
@@ -795,17 +658,70 @@ h4 {
 		$('#exampleModal').modal('show').find('.modal-body').load(addr);
 	}
 
+
+	var ztmp;
 // 마커가 점프하게
 	function jumpMarker(idx) {
-		console.log("start");
 		markList[idx].setAnimation(google.maps.Animation.BOUNCE);
+		ztmp = markList[idx].getZIndex();
+		markList[idx].setZIndex(1234567890);
 	}
 	
 // 마커가 점프를 멈추게
 	function stopMarker(idx) {
-		console.log("stop");
 		markList[idx].setAnimation(null);
+		markList[idx].setZIndex(ztmp);
 	}
+
+// 양방향 슬라이더
+	$(function (){
+		/* 각 슬라이더 옵션에 대해 */
+		$(".slider").each(function(idx, slider) {
+			minVal = parseInt(slider.dataset.min);
+			maxVal = parseInt(slider.dataset.max);
+			stepVal = parseInt(slider.dataset.step);
+			
+			
+			noUiSlider.create(slider, {
+				start: [ minVal, maxVal],
+				step: stepVal,
+				connect: true,
+				range: {
+					'min':[minVal],
+					'max':[maxVal]
+				},
+				format: wNumb({
+					decimal: 0
+				})
+				
+			});
+			// slider.dataset.name를 변수로 만들어 두면 모든 on에 대하여 같은 값으로 묶임
+			slider.noUiSlider.on("update", function (values, handle){
+				$("input[name='"+slider.dataset.name+"']")[handle].value = parseInt(values[handle]);
+			});
+	
+			$("input[name='"+slider.dataset.name+"']").on("change", function(){
+				var inNumIdx = $("input[name='"+slider.dataset.name+"']").index($(this));
+				if (inNumIdx) {
+					leftVal = $("input[name='"+slider.dataset.name+"']")[0].value;
+					if ($(this).val() - leftVal < slider.dataset.step) {
+						$(this).val(leftVal+slider.dataset.step);
+					}
+					else slider.noUiSlider.set([null, $(this).val()]);
+				} else {
+					rightVal = $("input[name='"+slider.dataset.name+"']")[1].value;
+					if (rightVal - $(this).val() < slider.dataset.step) {
+						$(this).val(rightVal-slider.dataset.step);
+					}
+					else slider.noUiSlider.set([$(this).val(), null]);
+				}
+			});
+	
+			slider.noUiSlider.on("set", function (){
+				getList(null);
+			});
+		});
+	});
 </script>
 
 
@@ -917,7 +833,7 @@ h4 {
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPxvrQTmFrf14CPepU3kV_wb8wIpwrwSs&callback=initMap&v=weekly" async></script>
 <!-- 구글 지도 스크립트 끝 -->
 <!-- sub contents end -->
-<%--	
+<%--
 	<%@ include file="../include/footer.jsp"%>
  --%>
 </body>

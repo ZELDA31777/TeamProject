@@ -25,12 +25,36 @@
 				<otherwise>1=0</otherwise>
 			</choose>
 			
+			<if test="deposit != null">
+				and
+				<foreach item="item" collection="deposit" open="deposit between" separator="and">
+					#{item}
+				</foreach>
+			</if>
+			
+			
+			<if test="rent != null">
+				and
+				<foreach item="item" collection="rent" open="rent between" separator="and">
+					#{item}
+				</foreach>
+			</if>
+			
 			<if test="manage != null">
 				and 
 				<foreach item="item" collection="manage" open="manage between" separator="and">
 					#{item}
 				</foreach>
 			</if>
+			
+			
+			<if test="area != null">
+				and
+				<foreach item="item" collection="area" open="area between" separator="and">
+					#{item}
+				</foreach>
+			</if>
+			
 			
 			<if test="dong != null">
 				and addr2=#{dong}
