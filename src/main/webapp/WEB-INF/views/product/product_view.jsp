@@ -199,59 +199,68 @@
 				<h4 class="cBaPiP">상세설명</h4>
 				<div class="iOHiXt" style="list-style: none;">
 					<div class="styled__InfoWrap-sc-13shacj-0 jGAWeI">
-						<p class="title">대형풀옵션투룸동물가능</p>
+						<p class="title">${pvo.addr1} ${pvo.addr2} ${pvo.addr3 }</p>
 						<p class="styled__Memo-sc-13shacj-1 hhaHrn">${pvo.contents }</p>
 					</div>
 				</div>
 			</div>
+			
 			<div class="fCMewi">
 				<p id="scrollspyHeading5"></p>
 				<h4 class="cBaPiP">이 중개사무소의 다른 방</h4>
+				
 				<div class="iOHiXt" style="list-style: none;">
 					<div class="jcFemG">
-						<ul class="kKQMSn">
+					
+						<div class="row">
 							<c:forEach var="list" items="${pList }">
-								<li class="gAcyGl"><div class="hObDcQ">
-										<div class="gSwvZY">
-											<button class="eBlbuF">
-												<!-- 좋아요 버튼 include 화 -->
-												<%@ include file="../include/interest_img.jsp"%>
+								<div class="col-md-4">
+								
+									
+										<div class="hObDcQ">
+											<div class="gSwvZY">
+												<button class="eBlbuF">
+													<!-- 좋아요 버튼 include 화 -->
+													<%@ include file="../include/interest_img.jsp"%>
+			
+												</button>
+											</div>
+													
+											<div class="styled__ImgWrap-sc-14w4no0-0 hkMQhb">
+												<div class="styled__Image-ami2sx-0 gMnRzx">
+		
+													<!-- 중개사의 다른 매물에 대한 이미지 -->
+		
+													<img src="/upload/${list.thumbnail }" width="60"
+														height="60" alt="" draggable="false" loading="lazy"
+														style="width: 100%; height: 100%;">
+													<div class="styled__Cover-ami2sx-1 dZAvTS cover"></div>
+												</div>
+											</div>
+													<!-- 중개사의 다른 매물에 대한 정보 -->
 
-											</button>
-										</div>
-										<div class="styled__ImgWrap-sc-14w4no0-0 hkMQhb">
-											<div class="styled__Image-ami2sx-0 gMnRzx">
-
-												<!-- 중개사의 다른 매물에 대한 이미지 -->
-
-												<img src="/resources/images/ex_000.png" width="60"
-													height="60" alt="" draggable="false" loading="lazy"
-													style="width: 100%; height: 100%;">
-												<div class="styled__Cover-ami2sx-1 dZAvTS cover"></div>
+											<div class="bSKZAI">
+												<p class="hybbHD">
+													<c:if test="${list.type eq 0 }">원룸</c:if>
+													<c:if test="${list.type eq 1 }">오피스텔</c:if>
+												</p>
+												<p class="styled__Price-n321y7-2 bYNMgs">보증금/월세
+													${list.deposit }/${list.rent }</p>
+												<p class="styled__Desc-n321y7-3 eHtuHa">${list.floor },
+													${list.area }m², 관리비 ${list.manage }만</p>
+												<p class="styled__Desc-n321y7-3 eHtuHa">${list.contents }</p>
+												<div class="styled__TagWrap-n321y7-4 guJBBw"></div>
 											</div>
 										</div>
-										<!-- 중개사의 다른 매물에 대한 정보 -->
-
-										<div class="bSKZAI">
-											<p class="hybbHD">
-												<c:if test="${list.type eq 0 }">원룸</c:if>
-												<c:if test="${list.type eq 1 }">오피스텔</c:if>
-											</p>
-											<p class="styled__Price-n321y7-2 bYNMgs">보증금/월세
-												${list.deposit }/${list.rent }</p>
-											<p class="styled__Desc-n321y7-3 eHtuHa">${list.floor },
-												${list.area }m², 관리비 ${list.manage }만</p>
-											<p class="styled__Desc-n321y7-3 eHtuHa">${list.contents }</p>
-											<div class="styled__TagWrap-n321y7-4 guJBBw"></div>
-										</div>
-									</div></li>
+									
+								</div>
 							</c:forEach>
-
-
-						</ul>
+						</div>
+						
 					</div>
 				</div>
 			</div>
+				
 
 
 			<!-- 비로그인 상태의 정보를 받아옴 -->
@@ -271,6 +280,7 @@
 			
 
 		</div>
+		
 		<div class="col-md-4" style="margin-top: 80px">
 			<div class="position-sticky" style="top: 7rem;">
 				<div class="jtcdhj">
@@ -329,32 +339,36 @@
 							</div>
 							<div>
 								<p class="title">위치</p>
-								<p class="content">${pvo.addr1 }${pvo.addr2 }${pvo.addr3 }</p>
+								<p class="content">${pvo.addr1 } ${pvo.addr2 } ${pvo.addr3 }</p>
 							</div></li>
 					</ul>
 					<div class="styled__LessorWrap-cvrpi1-13 jVGbJb">
 						<div class="styled__Name-cvrpi1-14 jueGPM">
-							<p>우리공인중개사사무소</p>
+							<p>${cvo.corname }</p>
 						</div>
 					</div>
 
 					<div class="styled__BtnWrap-cvrpi1-15 brpHbd row">
-						<button color="blue" class="fiEZwu3 col-md-10">
-							<span><span>연락처보기</span></span>
-						</button>
-
-						<div class="col-md-2">
-							<a class="text-dark heart"> <img id="heart"
-								src="/resources/icon/heart.svg">
-							</a>
-						</div>
-
+						<form name="cor_view_read" action="/coroperation/cor_view.do">
+							<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
+							<input type="hidden" name="username" value="${cvo.username}">
+							<button color="blue" class="fiEZwu3 col-md-10">
+								<span><span>연락처보기</span></span>
+							</button>
+	
+							<div class="col-md-2">
+								<a class="text-dark heart"> <img id="heart"
+									src="/resources/icon/heart.svg">
+								</a>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </main>
+
 
 <%@ include file="../include/footer.jsp"%>
 
@@ -396,7 +410,7 @@
 			var heartval = 0;
         
         
-        if(${!empty fvo.heart}){
+        if(${!empty fvo and !empty fvo.heart}){
 			heartval = 1;
         }
         
