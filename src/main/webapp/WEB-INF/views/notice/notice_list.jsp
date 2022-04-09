@@ -1,25 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp"%>
-<style>
-.write {
-	float: right;
-	margin-bottom: 2%;
-}
-
-.selform {
-	width: 10%;
-	display: inline-block;
-	vertical-align: middle;
-}
-
-.txtform {
-	width: 20%;
-	display: inline-block;
-	vertical-align: middle;
-}
-</style>
-
 
 <div class="sub_title">
 	<h2>공지사항</h2>
@@ -27,14 +8,17 @@
 
 <div class="container">
 
-	<div
-		class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white">
-		<a href="/"
+	<a href="/notice/notice_write.do"><button class="btn btn-light" style="width:10%; float:right">글쓰기</button></a>
+	<div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white">
+		<a href="/notice/notice_list.do"
 			class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
 			<svg class="bi me-2" width="30" height="24">
 				</svg> <span class="fs-5 fw-semibold"><strong class="mb-1">총
 					게시글 ${pageMaker.total}</strong></span>
 		</a>
+		
+		
+		
 		<div class="row">
 			<div class="col-md-2">번호</div>
 			<div class="col-md-8">제목</div>
@@ -52,8 +36,7 @@
 					<a href="/notice/notice_view.do?notice_no=${list.notice_no}"
 						class="list-group-item list-group-item-action py-3 lh-tight"
 						aria-current="true">
-						<div
-							class="d-flex w-100 align-items-center justify-content-between">
+						<div class="d-flex w-100 align-items-center justify-content-between">
 							<div class="col-md-2">
 								<div class="col-md-2">
 									<strong class="mb-1">${num}</strong>
@@ -106,8 +89,6 @@
 			</select> <input type="text" name="keyword" class="form-control txtform">
 			<button class="btn btn-light">검색</button>
 		</form>
-		<a href="/notice/notice_list.do"><button class="btn btn-light write">목록으로</button></a>
-			
 	</div>
 
 </div>

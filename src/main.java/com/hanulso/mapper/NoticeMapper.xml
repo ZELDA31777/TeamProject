@@ -21,8 +21,8 @@
 	<selectKey keyProperty="notice_no" order="BEFORE" resultType="int">
 		select notice_seq.nextval from dual
 	</selectKey>
-		insert into one_admin_notice (notice_no, notice_title, notice_content) 
-		values(#{notice_no},#{notice_title},#{notice_content})
+		insert into one_admin_notice (notice_no, notice_title, notice_content, username) 
+		values(#{notice_no},#{notice_title},#{notice_content},#{username})
 	</insert>
   
 	<select id="notice_view" resultType="com.hanulso.domain.KnowledgeVO">
@@ -34,7 +34,7 @@
 	</delete>
   
 	<update id="notice_modify">
-		update one_admin_notice set notice_title = #{notice_title}, notice_content = #{notice_content} 
+		update one_admin_notice set notice_title = #{notice_title}, notice_content = #{notice_content}, username = #{username}
 		where notice_no = #{notice_no}
 	</update>
   

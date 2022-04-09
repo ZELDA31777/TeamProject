@@ -1,9 +1,12 @@
 package com.hanulso.domain;
 
+import java.util.Date;
+import java.util.List;
+
 import lombok.Data;
 
 @Data
-public class CorVO {
+public class CorInfoVO {
 	private String username;
 	private String corname;
 	private String cornum;
@@ -11,7 +14,7 @@ public class CorVO {
 	private String addr;
 	private String profile;
 	private String name;
-	private double lng;
-	private double lat;
+	private String active;
+	private Date regdate;
 	
 }

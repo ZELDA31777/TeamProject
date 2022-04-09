@@ -17,5 +17,7 @@ public class KnowledgeVO {
 	private String notice_content;	//공지사항 내용
 	private Date notice_regdate;	//공지사항 날자
 	
+	private String username;
+	
 
 }

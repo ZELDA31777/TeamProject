@@ -76,9 +76,8 @@
 		where u.username=#{username}
 	</select>
  -->
- 	
-	
+    
+   
 
-	
+   
 </mapper>
-

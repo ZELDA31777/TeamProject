@@ -6,10 +6,16 @@
 		<h2>공지사항 수정</h2>
 	</div>
 
+	<c:set var="username">
+	<sec:authentication property="principal.user.username"/>
+	</c:set>
+
 	<div class="container">
 	<form name="notice" method="post" action="/notice/notice_modify_pro.do">
 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 	<input type="hidden" name="notice_no" value="${vo.notice_no}">
+	<input type="hidden" name="username" value="${username}">
+	
 	  <div>
 		<table class="table">
 			<colgroup>
