@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.hanulso.domain.CorInfoVO;
 import com.hanulso.domain.Criteria;
+import com.hanulso.domain.UserVO;
 import com.hanulso.mapper.AdminMapper;
 
 import lombok.Setter;
@@ -18,18 +19,23 @@ public class AdminServiceImpl implements AdminService {
 	private AdminMapper mapper;
 	
 	@Override
-	public List<CorInfoVO> coruser_list_date(Criteria cri) {
-		return mapper.coruser_list_date(cri);
+	public List<CorInfoVO> coruser_list(Criteria cri) {
+		return mapper.coruser_list(cri);
 	}
-	
-	@Override
-	public List<CorInfoVO> coruser_list_name(Criteria cri) {
-		return mapper.coruser_list_name(cri);
-	}
-	
+
 	@Override
 	public int getTotalCount(Criteria cri) {
 		return mapper.getTotalCount(cri);
+	}
+	
+	@Override
+	public List<UserVO> user_list(Criteria cri) {
+		return mapper.user_list(cri);
+	}
+	
+	@Override
+	public int userTotalCount(Criteria cri) {
+		return mapper.userTotalCount(cri);
 	}
 
 }

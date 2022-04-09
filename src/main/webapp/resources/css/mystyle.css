@@ -1420,3 +1420,20 @@ body p.bold {
     overflow: hidden;
 }
 
+.write {
+	float: right;
+	margin-bottom: 2%;
+}
+
+.selform {
+	width: 10%;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.txtform {
+	width: 20%;
+	display: inline-block;
+	vertical-align: middle;
+}
+

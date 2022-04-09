@@ -16,7 +16,5 @@ public class CorInfoVO {
 	private String name;
 	private String active;
 	private Date regdate;
-	private int pno;
-	private String picture;
-	private Date pr; //매물 등록날자
+	
 }

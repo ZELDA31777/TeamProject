@@ -2,47 +2,75 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.hanulso.mapper.AdminMapper">
 	
-	<sql id="criteria">
+	<sql id="cor_criteria">
   		<choose>
   		<when test = "type == 'N'.toString()">
-  			c.name like '%'||#{keyword}||'%' and
+  			c.corname like '%'||#{keyword}||'%' and
   		</when>
   		<when test = "type == 'A'.toString()">
   			c.addr like '%'||#{keyword}||'%' and
   		</when>
 		</choose>
 	</sql>
+	
+	<sql id="user_criteria">
+  		<choose>
+  		<when test = "type == 'N'.toString()">
+  			nickname like '%'||#{keyword}||'%' and
+  		</when>
+  		<when test = "type == 'U'.toString()">
+  			username like '%'||#{keyword}||'%' and
+  		</when>
+		</choose>
+	</sql>
 
-	<select id="coruser_list_date" resultType="com.hanulso.domain.CorInfoVO">
+	<select id="coruser_list" resultType="com.hanulso.domain.CorInfoVO">
 		<![CDATA[
 		select * from (
-		select /*+ index_desc(one_user one_username) */ rownum rn, u.username, c.corname, c.cornum, c.tel, c.addr, c.profile, c.name, u.active, u.regdate, p.pno, p.picture, p.regdate pr  
-		from one_product p, one_cor c, one_user u 
+		select /*+ index_desc(one_user one_username) */ rownum rn, u.username, c.corname, c.cornum, c.tel, c.addr, c.profile, c.name, u.active, u.regdate  
+		from one_cor c, one_user u 
 		where 
 		]]>
-		<include refid="criteria"></include>
+		<include refid="cor_criteria"></include>
 		<![CDATA[
-		p.username=c.username and c.username=u.username and rownum <= #{pageNum} * #{amount} order by u.regdate desc
+		c.username=u.username and rownum <= #{pageNum} * #{amount} order by u.regdate desc
 		)where rn > (#{pageNum}-1) * #{amount}
 		]]>
 	</select>
 	
-	<select id="coruser_list_name" resultType="com.hanulso.domain.CorInfoVO">
-		<![CDATA[
-		select * from (
-		select /*+ index_desc(one_user one_username) */ rownum rn, u.username, c.corname, c.cornum, c.tel, c.addr, c.profile, c.name, u.active, u.regdate, p.pno, p.picture, p.regdate pr  
-		from one_product p, one_cor c, one_user u 
-		where 
-		]]>
-		<include refid="criteria"></include>
-		<![CDATA[
-		p.username=c.username and c.username=u.username and rownum <= #{pageNum} * #{amount} order by c.corname
-		)where rn > (#{pageNum}-1) * #{amount}
-		]]>
-	</select>
 	
 	<select id="getTotalCount" resultType="int">
 		select count(*) from one_cor
-	</select> 
+		<where>
+	  		<choose>
+	  		<when test = "type == 'N'.toString()">
+	  			corname like '%'||#{keyword}||'%'
+	  		</when>
+	  		<when test = "type == 'A'.toString()">
+	  			addr like '%'||#{keyword}||'%'
+	  		</when>
+			</choose>
+		</where>
+	</select>
+	
+	<select id="user_list" resultType="com.hanulso.domain.UserVO">
+		<![CDATA[
+		select * from (
+		select /*+ index_desc(one_user one_username) */ rownum rn, username, nickname, active, regdate
+		from one_user 
+		where 
+		]]>
+		<include refid="user_criteria"></include>
+		<![CDATA[
+		grade = 'ROLE_USER' and rownum <= #{pageNum} * #{amount} order by regdate desc
+		)where rn > (#{pageNum}-1) * #{amount}
+		]]>
+	</select>	 
+	
+	<select id="userTotalCount" resultType="int">
+		select count(*) from one_user where
+		<include refid="user_criteria"></include>
+		grade = 'ROLE_USER'
+	</select>
 	
 </mapper>

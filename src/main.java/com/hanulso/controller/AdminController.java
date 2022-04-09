@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.hanulso.domain.CorInfoVO;
 import com.hanulso.domain.Criteria;
 import com.hanulso.domain.PageVO;
+import com.hanulso.domain.UserVO;
 import com.hanulso.service.AdminService;
 
 @Controller
@@ -23,15 +24,19 @@ public class AdminController {
 	private AdminService service;
 	
 	@GetMapping("/manage/admin_user_list.do")
-	public void user_list() {}
+	public String user_list(Criteria cri, Model model) {
+		List<UserVO> list = service.user_list(cri);
+		int total = service.userTotalCount(cri);
+		model.addAttribute("list", list);
+		model.addAttribute("pageMaker",new PageVO(cri, total));
+		return "/admin/manage/admin_user_list";
+	}
 	
 	@GetMapping("/manage/admin_cor_list.do")
 	public String cor_list(Criteria cri, Model model) {
-		List<CorInfoVO> r_list = service.coruser_list_date(cri);
-		List<CorInfoVO> n_list = service.coruser_list_name(cri);
+		List<CorInfoVO> list = service.coruser_list(cri);
 		int total = service.getTotalCount(cri);
-		model.addAttribute("r_list", r_list);
-		model.addAttribute("n_list", n_list);
+		model.addAttribute("list", list);
 		model.addAttribute("pageMaker", new PageVO(cri, total));
 		return "/admin/manage/admin_cor_list";
 	}

@@ -14,8 +14,4 @@ public class CorVO {
 	private double lng;
 	private double lat;
 	
-	
-	private double lat;
-	private double lng;
-	
 }
