@@ -90,12 +90,12 @@
 							<path d="M1 4v9h7V4H1zM0 3h9v11H0V3z"></path>
 							<path d="M4 1v.987H3V0h9v11h-1.988v-1H11V1z"></path></g></svg>
 					</button>
-				</div></li>
+				</div>
+			</li>
 		</ul>
 	</div>
 	
-	<!-- 글쓰기 나중에 위치 수정 -->
-	<a href="/product/product_write3.do">글쓰기</a>
+
 	
 	
 	<div name="room" class="container dWqXbC" style="width: 80%">
@@ -142,10 +142,10 @@
 								<use stroke="#FFF" stroke-width="1.5" xlink:href="#327ed5yu1b"></use></g></g></g></g></g></svg>
 						</button>
 					</div>
-					<a href="/room/62398d69d8639356df43402d" target="_blank"
-						rel="noopener noreferrer"
-						class="styled__DetailLink-sc-1e0j1a1-1 bwyaas"><div
-							class="styled__ImgWrap-sc-14w4no0-0 hkMQhb">
+					<div onClick="pSend(this)" 
+						 data-pno="${pList.pno}"
+						class="styled__DetailLink-sc-1e0j1a1-1 bwyaas">
+						<div class="styled__ImgWrap-sc-14w4no0-0 hkMQhb">
 							<div class="styled__Image-ami2sx-0 gMnRzx">
 								<img
 									src="/upload/${pList.thumbnail }"
@@ -163,70 +163,52 @@
 							<p class="styled__Desc-sc-1e0j1a1-10 jFvIUQ">${pList.floor }층, 면적 : ${pList.area }m², 관리비 : ${pList.manage }만</p>
 							<p class="styled__Desc-sc-1e0j1a1-10 jFvIUQ">${pList.contents }</p>
 							<div class="styled__TagWrap-sc-1e0j1a1-11 hRcMAS"></div>
-						</div></a>
+						</div>
+					</div>
 				</div>
 			</li>
 		</c:forEach>
 		</c:if>
 		</ul>
 		
-		<!-- 페이징처리 -->
-		<div class="styled__PaginWrap-sc-1u1e15y-0 eOczmr">
-			<ul class="styled__PageList-sc-1u1e15y-1 ifxIZu">
-				<li><button disabled=""
-						class="styled__PrevBtn-sc-1u1e15y-2 eLgHxX">
-						<svg width="6" height="10" viewBox="0 0 11 18" fill="none"
-							xmlns="http://www.w3.org/2000/svg">
-							<path fill-rule="evenodd" clip-rule="evenodd"
-								d="M10.5602 1.24526C10.9218 1.6627 10.8765 2.29424 10.4591 2.65585L2.67429 9.3995L10.4592 16.1442C10.8766 16.5059 10.9218 17.1374 10.5601 17.5548C10.1985 17.9722 9.56696 18.0174 9.14954 17.6558L0.877752 10.4892C0.877261 10.4888 0.87677 10.4884 0.87628 10.4879C0.572129 10.2253 0.366516 9.84033 0.366516 9.39987C0.366516 8.95905 0.572413 8.57424 0.875606 8.31157L0.875641 8.31154L9.1496 1.14417C9.56704 0.782557 10.1986 0.827816 10.5602 1.24526Z"></path></svg>
-					</button></li>
-				<li><button class="styled__NumBtn-sc-1u1e15y-4 ivCMso">1</button></li>
-				<li><button disabled=""
-						class="styled__NextBtn-sc-1u1e15y-3 iuEjBU">
-						<svg width="6" height="10" viewBox="0 0 11 18" fill="none"
-							xmlns="http://www.w3.org/2000/svg">
-							<path fill-rule="evenodd" clip-rule="evenodd"
-								d="M0.61122 1.24521C0.972858 0.82779 1.60441 0.782572 2.02182 1.14421L10.2947 8.31157C10.5972 8.57365 10.8038 8.95796 10.8038 9.39947C10.8038 9.84097 10.5972 10.2253 10.2947 10.4874L2.02188 17.6558C1.60449 18.0174 0.972938 17.9723 0.611269 17.5549C0.249601 17.1375 0.294771 16.5059 0.712161 16.1443L8.49606 9.3995L0.712217 2.65581C0.294801 2.29417 0.249583 1.66262 0.61122 1.24521ZM8.9847 8.97609L8.98504 8.9758L8.98511 8.97574C8.98497 8.97586 8.98484 8.97597 8.9847 8.97609Z"></path></svg>
-					</button></li>
-			</ul>
-		</div>
+		
+		<!-- 중개사 로그인 시에만 매물등록 가능 -->
+		<sec:authorize access="hasRole('MEMBER')">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-10">
+					</div>
+					<div class="col-md-2">
+						<a href="/product/product_write3.do">매물등록</a>
+					</div>
+				</div>
+			</div>
+		</sec:authorize>
 		
 	</div>
-<!-- 
-	<div class="tbl">
-		<div class="row">
-			<h4 align="center">이 부동산의 방(%카운트)</h4>
-			<br> <br>
-
-			<div class="col-md-3">
-				<img src="/resources/images/m_003.jpg" style="width: 100%;">
-				%방타입<br> %월세<br> %총면적<br> %설명<br>
-			</div>
-
-			<div class="col-md-3">
-				<img src="/resources/images/m_003.jpg" style="width: 100%;">
-				%방타입<br> %월세<br> %총면적<br> %설명<br>
-			</div>
-
-			<div class="col-md-3">
-				<img src="/resources/images/m_003.jpg" style="width: 100%;">
-				%방타입<br> %월세<br> %총면적<br> %설명<br>
-			</div>
-
-			<div class="col-md-3">
-				<img src="/resources/images/m_003.jpg" style="width: 100%;">
-				%방타입<br> %월세<br> %총면적<br> %설명<br>
-			</div>
-
-			<div class="col-md-3">
-				<img src="/resources/images/m_003.jpg" style="width: 100%;">
-				%방타입<br> %월세<br> %총면적<br> %설명<br>
-			</div>
-
-		</div>
-	</div>
- -->
 	<!-- sub contents end -->
+	
+	<!-- 다른 매물 뷰로 넘어가기 시작-->
+	<sec:authorize access="isAuthenticated()">
+		<c:set var="username">
+			<sec:authentication property="principal.user.username"/>
+		</c:set>
+	</sec:authorize>
+	
+	<form name="productForm" action="/product/product_view.do" method="post">
+		<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
+		<input type="hidden" name="username" value="${username}">
+		<input type="hidden" name="pno" value="">
+	</form>
+	
+
+	<script>
+		function pSend(el){
+			productForm.pno.value = el.dataset.pno;
+			productForm.submit();
+		}
+	</script>
+	<!-- 다른 매물 뷰로 넘어가기  끝 -->
 
 	<%@ include file="../include/footer.jsp"%>
 

@@ -20,6 +20,7 @@ public class CorController {
 	@Autowired
 	private ProductService productService;
 	
+	// username = 부동산 이름
 	@GetMapping("/coroperation/cor_view.do")
 	public void cor_view(String username,Model model) {
 		model.addAttribute("uvo",userService.user_select(username));
