@@ -130,10 +130,9 @@ public class UserController {
 		
 		System.out.println(uvo);
 		System.out.println("회원가입  with notActive");
-//		mailCheck(uvo);
-//		// 회원가입과 동시에 active 위한 메일 발송
-//		return "/user/mailCheck_Request";
-		return "/";
+		mailCheck(uvo);
+		// 회원가입과 동시에 active 위한 메일 발송
+		return "/user/mailCheck_Request";
 	}
 	
 	@PostMapping("/user_register_cor_pro.do")
@@ -188,10 +187,9 @@ public class UserController {
 		String inputPass = pwencoder.encode(uvo.getPassword());
 		uvo.setPassword(inputPass);
 		service.adminRegister(uvo);
-//		mailCheck(uvo);
-//		// 회원가입과 동시에 active 위한 메일 발송
-//		return "/user/mailCheck_Request";
-		return "/";
+		mailCheck(uvo);
+		// 회원가입과 동시에 active 위한 메일 발송
+		return "/user/mailCheck_Request";
 	}
 	
 	@GetMapping("/user_modify.do")

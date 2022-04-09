@@ -25,6 +25,8 @@
 			<div class="iOHiXt" style="list-style: none;">
 				<div class="jcFemG">
 					<ul class="kKQMSn">
+					
+					<c:if test="${!empty list }">
 						<c:forEach var="list" items="${list }">
 							<li class="gAcyGl"><div class="hObDcQ">
 									<div class="gSwvZY">
@@ -39,7 +41,7 @@
 
 											<!-- 중개사의 다른 매물에 대한 이미지 -->
 
-											<img src="/resources/images/ex_000.png" width="60"
+											<img src="/upload/${list.thumbnail }" width="60"
 												height="60" alt="" draggable="false" loading="lazy"
 												style="width: 100%; height: 100%;">
 											<div class="styled__Cover-ami2sx-1 dZAvTS cover"></div>
@@ -61,7 +63,11 @@
 									</div>
 								</div></li>
 						</c:forEach>
-
+					</c:if>
+					
+					<c:if test="${empty list }">
+						<label>찜한 목록이 없습니다.</label>
+					</c:if>
 
 					</ul>
 				</div>

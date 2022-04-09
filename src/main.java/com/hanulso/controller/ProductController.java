@@ -15,28 +15,39 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.hanulso.domain.CorVO;
 import com.hanulso.domain.FavoriteVO;
 import com.hanulso.domain.ProductVO;
 import com.hanulso.service.FavoriteService;
 import com.hanulso.service.ProductService;
+import com.hanulso.service.UserService;
 
 @Controller
 @RequestMapping("/product/*")
 public class ProductController {
 
 	@Autowired
-	private ProductService service;
+	private ProductService productservice;
+	
+	@Autowired
+	private UserService userSerivce;
 	
 	@Autowired
 	private FavoriteService favoriteservice;
 	
+	
+	// parameter username = 로그인 사용자 이름
 	@PostMapping("/product_view.do")
-	public void product_view(@RequestParam("pno") int pno, @RequestParam("username") String username, Model model) {
-		ProductVO pvo = service.product_view(pno);
-		FavoriteVO fvo = favoriteservice.likecheck(pno, username);
-		model.addAttribute("fvo", fvo);
+	public void product_view(@RequestParam("pno") int pno, String username, Model model) {
+		ProductVO pvo = productservice.product_view(pno);
+		if(username!=null && !username.equals("")) {
+			FavoriteVO fvo = favoriteservice.likecheck(pno, username);
+			model.addAttribute("fvo", fvo);
+		}
+		CorVO cvo = userSerivce.member_select(pvo.getUsername());
 		model.addAttribute("pvo", pvo);
-		model.addAttribute("pList", service.product_view_list(pvo.getUsername()));
+		model.addAttribute("cvo", cvo);
+		model.addAttribute("pList", productservice.product_view_list(pvo.getUsername()));
 
 		// 사진파일 리스트 (썸네일 제외)
 		// jsp파일에서 경로를 /upload/{picList의 하나} 형태로 사용
@@ -106,7 +117,7 @@ public class ProductController {
 
 		/* 파일업로드 끝 */
 
-		service.product_insert(pvo);
+		productservice.product_insert(pvo);
 		return "redirect:/";
 	}
 
