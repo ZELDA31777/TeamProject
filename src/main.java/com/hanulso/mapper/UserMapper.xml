@@ -9,9 +9,18 @@
 		update one_user set active = 'active' where username = #{username} and password = #{password}
 	</update>
 	
+	<select id="user_check" resultType="int">
+		select count(*) from one_user where username=#{username}
+	</select>
+	
 	<insert id="user_insert">
 		insert into one_user (username, password, nickname, grade, favorite, active)
 		values(#{username},#{password},#{nickname},'ROLE_USER',#{favorite},#{active})
+	</insert>
+	
+	<insert id="kakao_user_insert">
+		insert into one_user (username, password, nickname, grade, favorite, active, kCheck)
+		values(#{username},#{password},#{nickname},'ROLE_USER',#{favorite},#{active},#{kCheck})
 	</insert>
 	
 	<insert id="admin_insert">

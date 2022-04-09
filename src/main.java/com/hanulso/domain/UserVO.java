@@ -15,6 +15,8 @@ public class UserVO {
 	private Date regdate;
 	private Date lastdate;
 	
+	private String kCheck;
+	
 	private CorVO cor;
 	
 }
