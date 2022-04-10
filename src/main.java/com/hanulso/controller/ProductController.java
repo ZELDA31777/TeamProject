@@ -5,6 +5,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -22,7 +27,10 @@ import com.hanulso.service.FavoriteService;
 import com.hanulso.service.ProductService;
 import com.hanulso.service.UserService;
 
+import lombok.extern.log4j.Log4j;
+
 @Controller
+@Log4j
 @RequestMapping("/product/*")
 public class ProductController {
 
@@ -38,7 +46,7 @@ public class ProductController {
 	
 	// parameter username = 로그인 사용자 이름
 	@PostMapping("/product_view.do")
-	public void product_view(@RequestParam("pno") int pno, String username, Model model) {
+	public String product_view(HttpServletRequest request, HttpServletResponse response, HttpSession session,@RequestParam("pno") int pno, String username, Model model) {
 		ProductVO pvo = productservice.product_view(pno);
 		
 		if(username!=null && !username.equals("")) {
@@ -46,6 +54,36 @@ public class ProductController {
 			model.addAttribute("fvo", fvo);
 		}
 		CorVO cvo = userSerivce.member_select(pvo.getUsername());
+		
+		//쿠키생성
+		Cookie[] cookies = request.getCookies();
+		//비교하기 위한 새로운 쿠키
+		Cookie viewCookie = null;
+		
+		//쿠키가 있을경우
+		if (cookies != null && cookies.length > 0) {
+			for(int i = 0; i < cookies.length; i++) {
+				//Cookie의 name이 cookie + pno와 일치하는 쿠키를 viewCookie에 넣어줌
+				if(cookies[i].getName().equals("cookie"+pno)) {
+					log.info("쿠키 있음");
+					viewCookie = cookies[i];
+				}
+			}
+		}
+		
+		if(pvo != null) {
+				log.info("페이지 넘어감");
+				if (viewCookie == null) {
+				//만일 viewCookie가 null일 경우 쿠키를 생성해서 조회수 증가처리
+				productservice.product_view_count(pno);
+				log.info("쿠키 없음");
+				//쿠키 생성(이름, 값)
+				Cookie newCookie = new Cookie("cookie"+pno, "|" + pno + "|");
+				//쿠키 추가
+				newCookie.setMaxAge(60 * 60 * 24);
+				response.addCookie(newCookie);
+				}
+		}
 		model.addAttribute("pvo", pvo);
 		model.addAttribute("cvo", cvo);
 		model.addAttribute("pList", productservice.product_view_list(pvo.getUsername()));
@@ -56,7 +94,8 @@ public class ProductController {
 		model.addAttribute("picList", picList);
 		model.addAttribute("picListLength", picList.length);
 		
-		productservice.product_view_count(pno);
+		//productservice.product_view_count(pno);
+		return "/product/product_view";
 	}
 
 	@GetMapping("/product_write_backUp.do")
