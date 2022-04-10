@@ -13,6 +13,9 @@ public interface UserService {
 	
 	public void userRegister(UserVO uvo);
 	
+	public void userModify(UserVO uvo);
+	
+	
 	// 카카오 유저 회원가입
 	public void kakaoUserRegister(UserVO uvo);
 	

@@ -32,8 +32,14 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 			response.sendRedirect("/");
 			return;
 		}
-		
-		response.sendRedirect("/");
+		if(grade.contains("ROLE_USER")) {
+			response.sendRedirect("/");
+			return;
+		}
+		if(grade.contains("ROLE_NON")) {
+			response.sendRedirect("/user/mailCheck_Request.do");
+			return;
+		}
 	}
 
 }

@@ -3,7 +3,6 @@ package com.hanulso.controller;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.UUID;
 
 import javax.mail.internet.MimeMessage;
@@ -13,12 +12,11 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -27,9 +25,11 @@ import com.hanulso.domain.UserVO;
 import com.hanulso.service.UserService;
 
 import lombok.Setter;
+import lombok.extern.log4j.Log4j;
 
 @Controller
 @RequestMapping("/user/*")
+@Log4j
 public class UserController {
 
 	@Setter(onMethod_ = @Autowired)
@@ -49,7 +49,7 @@ public class UserController {
 		return "redirect:/";
 	}
 	
-	@GetMapping("/mailCheck_Request")
+	@GetMapping("/mailCheck_Request.do")
 	public void mailCheckRequestForm() {
 		
 	}
@@ -105,6 +105,7 @@ public class UserController {
 	@GetMapping("/user_choose.do")
 	public void user_choose() {}
 	
+	// 체크박스 favorite 는 ,로 구분되서 넘어옴
 	@PostMapping("/user_register_pro.do")
 	public String user_register_pro(UserVO uvo) {
 		String inputPass = pwencoder.encode(uvo.getPassword());
@@ -175,14 +176,54 @@ public class UserController {
 		return "/user/mailCheck_Request";
 	}
 	
-	@GetMapping("/user_modify.do")
-	public void user_modify() {
-		
+	
+	// 비밀번호 확인
+	@GetMapping("/user_password_check.do")
+	public void user_password_check(String username, Model model) {
+		UserVO uvo = service.user_select(username);
+		model.addAttribute("uvo", uvo);
+	}
+	
+	// 비밀번호 확인 에러
+	@GetMapping("/user_password_check_error.do")
+	public void user_password_check_error(String username, Model model) {
+		UserVO uvo = service.user_select(username);
+		model.addAttribute("uvo", uvo);
 	}
 	
 	@GetMapping("/user_modify_cor.do")
 	public void user_modify_cor() {
 		
 	}
+	
+	@PostMapping("/user_password_check_pro.do")
+	public String user_password_check_pro(String username, String password, Model model) {
+		UserVO uvo = service.user_select(username);
+		if(pwencoder.matches(password, uvo.getPassword())) {
+//			return "/user/user_modify";
+			if(uvo.getGrade().equals("ROLE_USER")) {
+				model.addAttribute("uvo", uvo);
+				return "/user/user_modify";
+			}
+			if(uvo.getGrade().equals("ROLE_MEMBER")) {
+				CorVO cvo = service.member_select(username);
+				model.addAttribute("uvo", uvo);
+				model.addAttribute("cvo", cvo);
+				return "/user/user_modify_cor";
+			}
+			return "/user/user_modify"; // 예외 처리
+		}else {
+			return "/user/user_password_check_error";
+		}
+	}
+	
+	@PostMapping("/user_modify_pro.do")
+	public String user_modify_pro(UserVO uvo, Model model) {
+			String inputPass = pwencoder.encode(uvo.getPassword());
+			uvo.setPassword(inputPass);
+			service.userModify(uvo);
+			model.addAttribute("username", uvo.getUsername());
+			return "/user/user_modify_check";
+		}
 	
 }

@@ -66,6 +66,7 @@
 				<div class="collapse navbar-collapse justify-content-end mynavbar" id="navbarsExample04">
 					<ul class="navbar-nav mb-2 mb-md-0">
 					
+						<!-- 현재 로그인 한 유저의 정보를 받아옴 시작-->
 						<sec:authorize access="isAuthenticated()">
 							<c:set var="username">
 								<sec:authentication property="principal.user.username" />
@@ -74,6 +75,7 @@
 					               <sec:authentication property="principal.user.nickname" />
 					        </c:set>				
 						</sec:authorize>
+						<!-- 현재 로그인 한 유저의 정보를 받아옴 끝-->
 					
 					
 						<sec:authorize access="hasAnyRole('ADMIN' , 'SUPER_ADMIN')">
@@ -84,7 +86,7 @@
 						</sec:authorize>
 						
 						
-						<sec:authorize access="hasRole('USER')">
+						<sec:authorize access="hasAnyRole('USER' , 'NON')">
 							<li class="nav-item"><a class="nav-link" href="/map/map_view.do">지도</a></li>
 							<li class="nav-item"><a class="nav-link" href="/favorite/looked_room.do?username=${username }">관심목록</a></li>
 							<li class="nav-item"><a class="nav-link" href="/alert/alert_list.do?username=${username }">알림</a></li>
@@ -103,26 +105,22 @@
 							<li class="nav-item"><a class="nav-link" href="/user/user_login.do">로그인</a>
 						</sec:authorize>
 						
-						<sec:authorize access="hasAnyRole('USER' , 'ADMIN' , 'SUPER_ADMIN')">
+						<sec:authorize access="hasAnyRole('USER' , 'NON' , 'ADMIN' , 'SUPER_ADMIN')">
 							<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown04" 
 							data-bs-toggle="dropdown" aria-expanded="false">${nickname }</a>
 								<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown04">
-									<li><a class="dropdown-item" href="/user/user_modify.do">닉네임변경</a></li>
+									<li><a class="dropdown-item" href="/user/user_password_check.do?username=${username }">마이페이지</a></li>
 									<li>
 										<sec:authorize access="isAuthenticated()">
 											<c:if test="${empty kakao}">
 												<form name="lg" action="/user/user_logout.do" method="post">
 													<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
-													<li class="nav-item">
-														<a class="dropdown-item nav-link" href="javascript:lgSend()" >로그아웃</a>
-													</li>
+														<a class="dropdown-item" href="javascript:lgSend()" >로그아웃</a>
 												</form>
 											</c:if>
 											<c:if test="${!empty kakao}">
-												<li class="nav-item">
-													<a href="https://kauth.kakao.com/oauth/logout?client_id=ec529ddcb0a1e3f154fc6847679fe18a&logout_redirect_uri=http://localhost:8123/user/user_login.do">카카오 로그아웃</a>
-												</li>
+													<a class="dropdown-item" href="https://kauth.kakao.com/oauth/logout?client_id=ec529ddcb0a1e3f154fc6847679fe18a&logout_redirect_uri=http://localhost:8123/user/user_login.do">카카오 로그아웃</a>
 											</c:if>
 										</sec:authorize>
 									</li>
@@ -131,24 +129,22 @@
 						</sec:authorize>
 						
 						<sec:authorize access="hasRole('MEMBER')">
-					         <!-- 현재 로그인 한 유저의 정보를 받아옴 -->
+					         <!-- 현재 로그인 한 중개사의 정보를 받아옴 -->
 					            <c:set var="name">
 					               <sec:authentication property="principal.user.cor.name" />
 					            </c:set>
-					         <!-- 현재 로그인 한 유저의 정보를 받아옴 종료 -->
+					         <!-- 현재 로그인 한 중개사의 정보를 받아옴 종료 -->
 							
 							<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown04" 
 							data-bs-toggle="dropdown" aria-expanded="false">${name }</a>
 								<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown04">
-									<li><a class="dropdown-item" href="/user/user_modify_cor.do">중개사정보수정</a></li>
+									<li><a class="dropdown-item" href="/user/user_password_check.do?username=${username }">마이페이지</a></li>
 									<li>
 										<sec:authorize access="isAuthenticated()">
 											<form name="lg" action="/user/user_logout.do" method="post">
 												<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
-												<li class="nav-item">
-													<a class="dropdown-item nav-link" href="javascript:lgSend()" >로그아웃</a>
-												</li>
+													<a class="dropdown-item" href="javascript:lgSend()" >로그아웃</a>
 											</form>
 										</sec:authorize>
 									</li>
