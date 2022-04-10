@@ -8,10 +8,12 @@
 
 <div class="container">
 
-	<a href="/notice/notice_write.do"><button class="btn btn-light" style="width:10%; float:right">글쓰기</button></a>
+	<div class="write">
+		<a href="/notice/notice_write.do"><button class="btn btn-light write">작성</button></a>
+	</div>
+
 	<div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white">
-		<a href="/notice/notice_list.do"
-			class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
+		<a href="/notice/notice_list.do" class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
 			<svg class="bi me-2" width="30" height="24">
 				</svg> <span class="fs-5 fw-semibold"><strong class="mb-1">총
 					게시글 ${pageMaker.total}</strong></span>
@@ -25,36 +27,31 @@
 			<div class="col-md-2">작성일</div>
 		</div>
 
-
+		
 		<c:if test="${!empty list}">
-			<c:set var="num"
-				value="${pageMaker.total - ((pageMaker.cri.pageNum-1)*10)}" />
-			<c:forEach var="list" items="${list}">
+		<c:set var="num" value="${pageMaker.total - ((pageMaker.cri.pageNum-1)*10)}" />
+		<c:forEach var="list" items="${list}">
 
-				<div
-					class="list-group list-group-flush border-bottom scrollarea row">
-					<a href="/notice/notice_view.do?notice_no=${list.notice_no}"
-						class="list-group-item list-group-item-action py-3 lh-tight"
-						aria-current="true">
-						<div class="d-flex w-100 align-items-center justify-content-between">
-							<div class="col-md-2">
-								<div class="col-md-2">
-									<strong class="mb-1">${num}</strong>
-								</div>
-								<div class="col-md-8">
-									<small><fmt:formatDate value="${list.notice_regdate}"
-											pattern="yyyy-MM-dd" /></small>
-								</div>
+		<div class="list-group list-group-flush border-bottom scrollarea row">
+		<a href="/notice/notice_view.do?notice_no=${list.notice_no}" 
+			class="list-group-item list-group-item-action py-3 lh-tight"
+			aria-current="true">
+		<div class="d-flex w-100 align-items-center justify-content-between">
+		<div class="col-md-2"><strong class="mb-1">${num}</strong></div>
+								
+		<div class="col-md-8">
+			<small>${list.notice_title}</small>
+		</div>
+		<div class="col-md-2">
+			<small><fmt:formatDate value="${list.notice_regdate}" pattern="yyyy-MM-dd" /></small>
+		</div>
 
-								<div class="col-10 mb-1 small">${list.notice_title}</div>
+		</div>
+		</a>
+		</div>
 
-							</div>
-						</div>
-					</a>
-				</div>
-
-				<c:set var="num" value="${num-1}" />
-			</c:forEach>
+		<c:set var="num" value="${num-1}" />
+		</c:forEach>
 		</c:if>
 
 

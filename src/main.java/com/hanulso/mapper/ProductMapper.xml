@@ -29,4 +29,7 @@
 		select * from one_product where username=#{username}
 	</select>
 	
+	<update id="product_view_count">
+		update one_product set readcnt = readcnt+1 where pno = #{pno}
+	</update>
 </mapper>
