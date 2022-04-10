@@ -241,6 +241,32 @@
 </div>
 <!-- 관심동네 끝 -->
 
+<!-- 가이드&팁 시작 -->
+<div class="container-fluid mt-5">
+   <div class="container newitem bg-light">
+      <div class="row">
+         <div class="index_subtitle my-2">
+            <strong>원픽</strong>에서 알려주는 생활꿀팁
+         </div>
+      </div>
+      <c:if test="${!empty tip}">
+      <c:forEach var="tip" items="${tip}">
+      <a href="/tip/tip_view.do?tip_no=${tip.tip_no}">
+      <div class="index_subtitle my-2">
+      <div class="list-group-item list-group-item-action">
+      <div class="row">
+		<div class="col-md-7">${tip.tip_title}</div>
+		<div class="col-md-3"><fmt:formatDate value="${tip.tip_regdate}" pattern="yyyy-MM-dd" /></div>
+		<div class="col-md-2">관리자</div>
+	  </div>
+ 	  </div>	
+      </div>
+      </a>
+      </c:forEach>
+      </c:if>
+   </div>
+</div>
+<!-- 가이드&팁 끝 -->
 
 <!-- FAQ 시작 -->
 <div class="container-fluid mt-5">

@@ -5,11 +5,16 @@
 	<div class="sub_title">
 		<h2>Guide & Tip 수정</h2>
 	</div>
+	
+	<c:set var="username">
+	<sec:authentication property="principal.user.username"/>
+	</c:set>
 
 	<div class="container">
 	<form name="tip" method="post" action="/tip/tip_modify_pro.do">
 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 	<input type="hidden" name="tip_no" value="${vo.tip_no}">
+	<input type="hidden" name="username" value="${username}">
 	  <div>
 		<table class="table">
 			<colgroup>

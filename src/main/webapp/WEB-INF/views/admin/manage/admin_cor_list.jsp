@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../../include/header.jsp"%>
-
+<style>
+th {
+width: 30%
+}
+</style>
 <!-- sub contents start -->
 <div class="container-fluid">
 <div class="container">
@@ -43,27 +47,27 @@
       	<table class="table table-striped">
       	  <tr>
     		<th>대표명</th>
-    		<td>${list.name}</td>
+    		<td><small>${list.name}</small></td>
   		  </tr>
   		  <tr>
     		<th>연락처</th>
-    		<td>${list.tel}</td>
+    		<td><small>${list.tel}</small></td>
   		  </tr>
   		  <tr>
     		<th>이메일</th>
-    		<td>${list.username}</td>
+    		<td><small>${list.username}</small></td>
   		  </tr>
   		  <tr>
     		<th>사무소명</th>
-    		<td>${list.corname}</td>
+    		<td><small>${list.corname}</small></td>
   		  </tr>
   		  <tr>
     		<th>사업번호</th>
-    		<td>${list.cornum}</td>
+    		<td><small>${list.cornum}</small></td>
   		  </tr>
   		  <tr>
     		<th>주소</th>
-    		<td>${list.addr}</td>
+    		<td><small>${list.addr}</small></td>
   		  </tr>
       	</table>
       	<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -74,16 +78,16 @@
   
   </div>
   <div class="col-md-2" style="text-align: left; margin:auto;">
-  <a href="#">${list.corname}</a>
+  <a href="#"><small>${list.corname}</small></a>
   <!-- 클릭시 중개사 뷰 페이지 -->
   </div>
   
   <div class="col-md-5" style="text-align: left; margin:auto;" >
-  ${list.addr}
+  <small>${list.addr}</small>
   </div>
   
   <div class="col-md-2" style="text-align: left; margin:auto;">
-  ${list.tel}
+  <small>${list.tel}</small>
   </div>
   
   <div class="col-md-1" style="margin:auto;">

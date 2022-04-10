@@ -40,6 +40,7 @@ public class ProductController {
 	@PostMapping("/product_view.do")
 	public void product_view(@RequestParam("pno") int pno, String username, Model model) {
 		ProductVO pvo = productservice.product_view(pno);
+		
 		if(username!=null && !username.equals("")) {
 			FavoriteVO fvo = favoriteservice.likecheck(pno, username);
 			model.addAttribute("fvo", fvo);
@@ -54,6 +55,8 @@ public class ProductController {
 		String[] picList = pvo.getPicture().split("/");
 		model.addAttribute("picList", picList);
 		model.addAttribute("picListLength", picList.length);
+		
+		productservice.product_view_count(pno);
 	}
 
 	@GetMapping("/product_write_backUp.do")
