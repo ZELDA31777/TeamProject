@@ -76,6 +76,12 @@
 h4 {
 	text-align: left;
 }
+.btn-light:focus {
+	color: #000;
+	background-color: #f8f9fa;
+	border-color: #f8f9fa;
+	box-shadow: none;
+}
 
 </style>
 
@@ -84,6 +90,43 @@ h4 {
 <link href="/resources/css/nouislider.min.css" rel="stylesheet">
 <script src="/resources/js/nouislider.js"></script>
 <script src="/resources/js/wNumb.min.js"></script>
+<style>
+/* 핸들 모양 및 색상 */
+.noUi-handle {
+	height: 1.2rem !important;
+	width: 1.2rem !important;
+	top: -0.05rem !important;
+	right: -0.6rem !important;
+	border-radius: 0.6rem !important;
+}
+.noUi-handle:before, .noUi-handle:after {
+	display: none;
+}
+/* 최소 핸들 색상 */
+.noUi-handle-lower {
+	background: red;
+	border: none;
+	box-shadow: none;
+
+}
+/* 최대 핸들 색상 */
+.noUi-handle-upper {
+	background: purple;
+	border: none;
+	box-shadow: none;
+
+}
+/* 사이 색상 */
+.noUi-connect {
+    background: #3FB8AF;
+}
+
+/* 슬라이더 디자인 */
+.noUi-target {
+	border: none;
+}
+
+</style>
 <!-- 양방향 슬라이더 nouislider 끝 -->
 
 <!-- Modal -->
@@ -166,6 +209,7 @@ h4 {
 					<div class="dropdown" style="float: left; width: 15%;">
 						<button class="btn btn-light" type="button"
 							id="dropdownMenuButton1" data-bs-toggle="dropdown"
+							data-bs-auto-close="outside"
 							aria-expanded="false" style="width: 80%;">원룸, 오피스텔</button>
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 							<li>
@@ -194,6 +238,7 @@ h4 {
 					<div class="dropdown" style="float: left; width: 15%;">
 						<button class="btn btn-light" type="button"
 							id="dropdownMenuButton1" data-bs-toggle="dropdown"
+							data-bs-auto-close="outside"
 							aria-expanded="false" style="width: 80%;">보증금/월세</button>
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 							<li>
@@ -203,13 +248,25 @@ h4 {
 
 									<div class="form-label">보증금</div>
 									<div class="slider" data-min="0" data-max="1000" data-name="deposit" data-step="50"></div>
-									<input type="number" name="deposit" min="0" max="1000" value="0" step="50" data-idx="0" pattern="\d*">
-									<input type="number" name="deposit" min="0" max="1000" value="1000" step="50" data-idx="1" pattern="\d*">
+									<div class="row mt-2 mb-3">
+										<div class="col-md-6">
+											<input type="number" class="w-100" name="deposit" min="0" max="1000" value="0" step="50" data-idx="0" pattern="\d*">
+										</div>
+										<div class="col-md-6">
+											<input type="number" class="w-100" name="deposit" min="0" max="1000" value="1000" step="50" data-idx="1" pattern="\d*">
+										</div>
+									</div>
 									
 									<div class="form-label">월세</div>
 									<div class="slider" data-min="5" data-max="100" data-name="rent" data-step="5"></div>
-									<input type="number" name="rent" min="5" max="100" value="0" step="5" data-idx="0" pattern="\d*">
-									<input type="number" name="rent" min="5" max="100" value="100" step="5" data-idx="1" pattern="\d*">
+									<div class="row mt-2 mb-3">
+										<div class="col-md-6">
+											<input type="number" class="w-100" name="rent" min="5" max="100" value="0" step="5" data-idx="0" pattern="\d*">
+										</div>
+										<div class="col-md-6">
+											<input type="number" class="w-100" name="rent" min="5" max="100" value="100" step="5" data-idx="1" pattern="\d*">
+										</div>
+									</div>
 
 								</div>
 							</li>
@@ -221,6 +278,7 @@ h4 {
 					<div class="dropdown" style="float: left; width: 15%;">
 						<button class="btn btn-light" type="button"
 							id="dropdownMenuButton1" data-bs-toggle="dropdown"
+							data-bs-auto-close="outside"
 							aria-expanded="false" style="width: 80%;">관리비</button>
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 							<li>
@@ -228,8 +286,14 @@ h4 {
 
 									<h4>관리비</h4>
 									<div class="slider" data-min="0" data-max="20" data-name="manage" data-step="1"></div>
-									<input type="number" name="manage" min="0" max="20" value="0" step="1" data-idx="0" pattern="\d*">
-									<input type="number" name="manage" min="0" max="20" value="20" step="1" data-idx="1" pattern="\d*">
+									<div class="row mt-2 mb-3">
+										<div class="col-md-6">
+											<input type="number" class="w-100" name="manage" min="0" max="20" value="0" step="1" data-idx="0" pattern="\d*">
+										</div>
+										<div class="col-md-6">
+											<input type="number" class="w-100" name="manage" min="0" max="20" value="20" step="1" data-idx="1" pattern="\d*">
+										</div>
+									</div>
 
 									<button type="button" class="btn btn-light"
 										style="float: right;">조건 삭제</button>
@@ -244,6 +308,7 @@ h4 {
 					<div class="dropdown" style="float: left; width: 15%;">
 						<button class="btn btn-light" type="button"
 							id="dropdownMenuButton1" data-bs-toggle="dropdown"
+							data-bs-auto-close="outside"
 							aria-expanded="false" style="width: 80%;">방크기</button>
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 							<li>
@@ -251,8 +316,14 @@ h4 {
 
 									<h4>방크기</h4>
 									<div class="slider" data-min="5" data-max="50" data-name="area" data-step="5"></div>
-									<input type="number" name="area" min="5" max="50" value="5" step="5" data-idx="0" pattern="\d*">
-									<input type="number" name="area" min="5" max="50" value="50" step="5" data-idx="1" pattern="\d*">
+									<div class="row mt-2 mb-3">
+										<div class="col-md-6">
+										</div>
+										<div class="col-md-6">
+										</div>
+									</div>
+									<input type="number" class="w-100" name="area" min="5" max="50" value="5" step="5" data-idx="0" pattern="\d*">
+									<input type="number" class="w-100" name="area" min="5" max="50" value="50" step="5" data-idx="1" pattern="\d*">
 									
 
 									<button type="button" class="btn btn-light"
@@ -268,6 +339,7 @@ h4 {
 					<div class="dropdown" style="float: left; width: 15%;">
 						<button class="btn btn-light" type="button"
 							id="dropdownMenuButton1" data-bs-toggle="dropdown"
+							data-bs-auto-close="outside"
 							aria-expanded="false" style="width: 80%;">추가필터</button>
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 							<li>
@@ -277,45 +349,31 @@ h4 {
 										<div class="col-4" style="padding: 10px;">
 											<h4>층수</h4>
 											<input class="form-check-input" type="checkbox" value=""
-												id="flexCheckChecked" checked> <label
-												class="form-check-label" for="flexCheckChecked"
-												style="width: 35%">전체</label> <input
-												class="form-check-input" type="checkbox" value=""
-												id="flexCheckChecked"> <label
-												class="form-check-label" for="flexCheckChecked"
-												style="width: 35%">1층</label><br> <input
-												class="form-check-input" type="checkbox" value=""
-												id="flexCheckChecked"> <label
-												class="form-check-label" for="flexCheckChecked"
-												style="width: 35%">2층</label> <input
-												class="form-check-input" type="checkbox" value=""
-												id="flexCheckChecked"> <label
-												class="form-check-label" for="flexCheckChecked"
-												style="width: 35%">3층</label><br> <input
-												class="form-check-input" type="checkbox" value=""
-												id="flexCheckChecked"> <label
-												class="form-check-label" for="flexCheckChecked"
-												style="width: 35%">4층</label> <input
-												class="form-check-input" type="checkbox" value=""
-												id="flexCheckChecked"> <label
-												class="form-check-label" for="flexCheckChecked"
-												style="width: 35%">5층</label><br> <input
-												class="form-check-input" type="checkbox" value=""
-												id="flexCheckChecked"> <label
-												class="form-check-label" for="flexCheckChecked"
-												style="width: 35%">6층</label> <input
-												class="form-check-input" type="checkbox" value=""
-												id="flexCheckChecked"> <label
-												class="form-check-label" for="flexCheckChecked"
-												style="width: 35%">7층 이상</label><br> <input
-												class="form-check-input" type="checkbox" value=""
-												id="flexCheckChecked"> <label
-												class="form-check-label" for="flexCheckChecked"
-												style="width: 35%">반지층</label> <input
-												class="form-check-input" type="checkbox" value=""
-												id="flexCheckChecked"> <label
-												class="form-check-label" for="flexCheckChecked"
-												style="width: 35%">옥탑방</label><br>
+												id="flexCheckChecked" checked>
+												<label class="form-check-label" for="flexCheckChecked" style="width: 35%">전체</label>
+												<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+												<label class="form-check-label" for="flexCheckChecked" style="width: 35%">1층</label>
+												<br>
+												<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+												<label class="form-check-label" for="flexCheckChecked" style="width: 35%">2층</label>
+												<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+												<label class="form-check-label" for="flexCheckChecked" style="width: 35%">3층</label>
+												<br>
+												<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+												<label class="form-check-label" for="flexCheckChecked" style="width: 35%">4층</label>
+												<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+												<label class="form-check-label" for="flexCheckChecked" style="width: 35%">5층</label>
+												<br>
+												<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+												<label class="form-check-label" for="flexCheckChecked" style="width: 35%">6층</label>
+												<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+												<label class="form-check-label" for="flexCheckChecked" style="width: 35%">7층 이상</label>
+												<br>
+												<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+												<label class="form-check-label" for="flexCheckChecked" style="width: 35%">반지층</label>
+												<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+												<label class="form-check-label" for="flexCheckChecked" style="width: 35%">옥탑방</label>
+												<br>
 										</div>
 
 										<div class="col-8">
@@ -673,7 +731,14 @@ h4 {
 		markList[idx].setZIndex(ztmp);
 	}
 
-// 양방향 슬라이더
+
+</script>
+
+
+
+<!-- 지도 검색 조건 script 시작 -->
+<script>
+//양방향 슬라이더
 	$(function (){
 		/* 각 슬라이더 옵션에 대해 */
 		$(".slider").each(function(idx, slider) {
@@ -686,14 +751,15 @@ h4 {
 				start: [ minVal, maxVal],
 				step: stepVal,
 				connect: true,
+				margin: stepVal,
 				range: {
 					'min':[minVal],
 					'max':[maxVal]
 				},
 				format: wNumb({
 					decimal: 0
-				})
-				
+				}),
+								
 			});
 			// slider.dataset.name를 변수로 만들어 두면 모든 on에 대하여 같은 값으로 묶임
 			slider.noUiSlider.on("update", function (values, handle){
@@ -702,14 +768,17 @@ h4 {
 	
 			$("input[name='"+slider.dataset.name+"']").on("change", function(){
 				var inNumIdx = $("input[name='"+slider.dataset.name+"']").index($(this));
+				console.log(inNumIdx);
 				if (inNumIdx) {
 					leftVal = $("input[name='"+slider.dataset.name+"']")[0].value;
+					console.log("right diff", $(this).val() - leftVal < slider.dataset.step);
 					if ($(this).val() - leftVal < slider.dataset.step) {
 						$(this).val(leftVal+slider.dataset.step);
 					}
 					else slider.noUiSlider.set([null, $(this).val()]);
 				} else {
 					rightVal = $("input[name='"+slider.dataset.name+"']")[1].value;
+					console.log("left diff", rightVal - $(this).val() < slider.dataset.step);
 					if (rightVal - $(this).val() < slider.dataset.step) {
 						$(this).val(rightVal-slider.dataset.step);
 					}
@@ -722,12 +791,8 @@ h4 {
 			});
 		});
 	});
-</script>
 
-
-
-<!-- 지도 검색 조건 script 시작 -->
-<script>
+	// 선택한 정보를 이용하여 목록 받아오기(ajax)
 	function getList(dong) {
 		const header = "${_csrf.headerName}";
 	    const token = "${_csrf.token}";
@@ -809,7 +874,7 @@ h4 {
 		});
 	}
 
-	$("input").on("change", function (){getList(null);}); // 조건 선택이 바뀔 때마다 매물 목록을 가져옴
+	$("input[type!=number]").on("change", function (){getList(null);}); // 조건 선택이 바뀔 때마다 매물 목록을 가져옴
 	$(".d2-link").on("click", function (){getList($(this).html())}); // 지역 설정에서 동 클릭시 매물 목록을 가져옴
 </script>
 <!-- 지도 검색 조건 script 끝 -->
