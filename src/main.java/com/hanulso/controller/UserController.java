@@ -107,7 +107,7 @@ public class UserController {
 	
 	// 체크박스 favorite 는 ,로 구분되서 넘어옴
 	@PostMapping("/user_register_pro.do")
-	public String user_register_pro(UserVO uvo) {
+	public String user_register_pro(UserVO uvo, Model model) {
 		String inputPass = pwencoder.encode(uvo.getPassword());
 		uvo.setPassword(inputPass);
 		service.userRegister(uvo);
@@ -115,6 +115,7 @@ public class UserController {
 		System.out.println(uvo);
 		System.out.println("회원가입  with notActive");
 		mailCheck(uvo);
+		model.addAttribute("username", uvo.getUsername());
 		// 회원가입과 동시에 active 위한 메일 발송
 		return "/user/mailCheck_Request";
 	}
@@ -201,7 +202,7 @@ public class UserController {
 		UserVO uvo = service.user_select(username);
 		if(pwencoder.matches(password, uvo.getPassword())) {
 //			return "/user/user_modify";
-			if(uvo.getGrade().equals("ROLE_USER")) {
+			if(uvo.getGrade().equals("ROLE_USER")||uvo.getGrade().equals("ROLE_ADMIN")||uvo.getGrade().equals("ROLE_SUPER_ADMIN")) {
 				model.addAttribute("uvo", uvo);
 				return "/user/user_modify";
 			}
@@ -211,7 +212,7 @@ public class UserController {
 				model.addAttribute("cvo", cvo);
 				return "/user/user_modify_cor";
 			}
-			return "/user/user_modify"; // 예외 처리
+			return "/user/mailCheck_Request"; // 예외 처리
 		}else {
 			return "/user/user_password_check_error";
 		}

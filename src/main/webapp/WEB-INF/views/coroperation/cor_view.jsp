@@ -33,11 +33,12 @@
 	<!-- %가 앞에붙은것은 뽑아올것 -->
 
 	<div name="profile" class="styled__Wrap-sc-11kevv2-0 iEoaqL">
-		<div size="80" class="styled__Profile-sc-1rwobri-0 fYBZkD">
+		<div size="80" class="styled__Profile-sc-1rwobri-0 fYBZkD mb-4">
 			<img
 				src="/upload/${cvo.profile}"
 				alt="" draggable="false">
 		</div>
+<%--
 		<div type="messenger"
 			class="styled__AgentAdvantage-sc-11kevv2-1 aEvFS">
 			<svg width="18" height="18" viewBox="0 0 18 18" fill="none">
@@ -58,6 +59,7 @@
 					transform="translate(5 3.5)"></path></g></g></svg>
 			<p>간편문의를 사용하는 중개사무소입니다.</p>
 		</div>
+--%>
 		<p class="styled__AgentName-sc-11kevv2-2 kZxOhb">${cvo.corname }</p>
 	</div>
 	<div class="container" style="width: 80%">
@@ -84,12 +86,14 @@
 					class="styled__Name-y3tp2k-1 exSEvD">주소</p>
 				<div class="styled__Value-y3tp2k-2 dxmkoB" style="flex-grow: 1;">
 					${cvo.addr }
+<%--
 					<button class="styled__CopyBtn-y3tp2k-4 klmVxc">
 						<svg width="12" height="14" viewBox="0 0 12 14">
 							<g fill="#979797" fill-rule="nonzero">
 							<path d="M1 4v9h7V4H1zM0 3h9v11H0V3z"></path>
 							<path d="M4 1v.987H3V0h9v11h-1.988v-1H11V1z"></path></g></svg>
 					</button>
+ --%>
 				</div>
 			</li>
 		</ul>
