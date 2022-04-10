@@ -6,7 +6,7 @@
 <mapper namespace="com.hanulso.mapper.UserMapper">
 
 	<update id="mailCheckUp">
-		update one_user set active = 'active' where username = #{username} and password = #{password}
+		update one_user set active='active' , grade = 'ROLE_USER' where username = #{username} and password = #{password}
 	</update>
 	
 	<select id="user_check" resultType="int">
@@ -15,8 +15,13 @@
 	
 	<insert id="user_insert">
 		insert into one_user (username, password, nickname, grade, favorite, active)
-		values(#{username},#{password},#{nickname},'ROLE_USER',#{favorite},#{active})
+		values(#{username},#{password},#{nickname},'ROLE_NON',#{favorite},#{active})
 	</insert>
+	
+	<update id="user_update">
+		update one_user set password=#{password},nickname=#{nickname},favorite=#{favorite},grade=#{grade} 
+		where username=#{username}
+	</update>
 	
 	<insert id="kakao_user_insert">
 		insert into one_user (username, password, nickname, grade, favorite, active, kCheck)

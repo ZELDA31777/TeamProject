@@ -3,14 +3,17 @@
 <%@ include file="../include/header.jsp"%>
 
 <!-- sub contents start -->
-
+	<c:set var="username">
+		<sec:authentication property="principal.user.username"/>
+	</c:set>
+	
 	<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
-	<input type="hidden" name="username" value="${userVO.username}">
+	<input type="hidden" name="username" value="${username}">
 	<div class="container">
 		<h1>메일 확인</h1>
 		<p>메일을 확인해 주세요.</p>
 		<p>이메일 인증을 진행하면 원픽 서비스들을 이용하실 수 있습니다.</p>
-		<p>이메일 : ${userVO.username }</p>
+		<p>이메일 : ${username }</p>
 	</div>
 
 <!-- sub contents end -->

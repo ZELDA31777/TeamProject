@@ -21,8 +21,10 @@ import com.hanulso.domain.UserVO;
 import com.hanulso.mapper.UserMapper;
 
 import lombok.Setter;
+import lombok.extern.log4j.Log4j;
 
 @Service
+@Log4j
 public class UserServiceImpl implements UserService {
 	
 	@Setter(onMethod_=@Autowired)
@@ -42,6 +44,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void userRegister(UserVO uvo) {
 		mapper.user_insert(uvo);
+	}
+	
+	@Override
+	public void userModify(UserVO uvo) {
+		mapper.user_update(uvo);
 	}
 	
 	// 카카오 유저 회원가입

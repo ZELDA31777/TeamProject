@@ -12,19 +12,13 @@ margin-left : auto;
 margin-right : auto;
 }
 </style>
-<noscript>
-	<div style="display: inline;">
-		<img height="1" width="1" style="border-style: none;" alt=""
-			src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/967706247/?value=1.00&amp;currency_code=KRW&amp;label=-DVwCMLN3FoQh424zQM&amp;guid=ON&amp;script=0" />
-	</div>
-</noscript>
 
 <!-- sub contents start -->
 <div class="container-fluid subcontent">
 	<div class="container" style="width: 50%">
 		<form class="needs-validation" method="post" action="user_register_pro.do" novalidate >
 		        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-		        <input type="hidden" name="active" value="active">
+		        <input type="hidden" name="active" value="non_active">
 			<div class="styled__Box-sc-1etb7tu-1 cubPeM">
 				<h1>회원정보 입력</h1>
 				<h2>원픽 서비스 이용을 위해 아래 정보를 입력해주세요.</h2>

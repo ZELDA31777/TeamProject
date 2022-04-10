@@ -13,6 +13,8 @@ public interface UserMapper {
 	
 	public void user_insert(UserVO uvo);
 	
+	public void user_update(UserVO uvo);
+	
 	// 카카오 유저 회원가입
 	public void kakao_user_insert(UserVO uvo);
 	
