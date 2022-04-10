@@ -80,7 +80,7 @@
 			<div class="map_modal_info">
 				<div class="biKwOB">
 					<div>
-						<div class="dtGkBV">매물번호${pvo.pno}</div>
+						<div class="dtGkBV">매물번호 ${pvo.pno}</div>
 					</div>
 					<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
 						xmlns="http://www.w3.org/2000/svg" style="flex: 0 0 auto;">
@@ -89,7 +89,7 @@
 							fill="#CCCCCC"></path></svg>
 				</div>
 				<div class="styled__PriceWrap-cvrpi1-5 fzGgeZ">
-					<p class="eswqdM">월세 ${pvo.deposit }/${pvo.rent }</p>
+					<p class="eswqdM">보증금/월세 ${pvo.deposit }/${pvo.rent }</p>
 					<p class="iVhrbX">최근 7일 매물 조회 수 31회</p>
 				</div>
 				<ul class="bIRVVc">
@@ -133,7 +133,7 @@
 						</div>
 						<div>
 							<p class="title">위치</p>
-							<p class="content">${pvo.addr1 }${pvo.addr2 }${pvo.addr3 }</p>
+							<p class="content">${pvo.addr1 } ${pvo.addr3 }</p>
 						</div></li>
 				</ul>
 				<div class="styled__LessorWrap-cvrpi1-13 jVGbJb">

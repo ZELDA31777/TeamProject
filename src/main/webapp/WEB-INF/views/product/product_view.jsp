@@ -199,7 +199,7 @@
 				<h4 class="cBaPiP">상세설명</h4>
 				<div class="iOHiXt" style="list-style: none;">
 					<div class="styled__InfoWrap-sc-13shacj-0 jGAWeI">
-						<p class="title">${pvo.addr1} ${pvo.addr2} ${pvo.addr3 }</p>
+						<p class="title">${pvo.addr1} ${pvo.addr3 }</p>
 						<p class="styled__Memo-sc-13shacj-1 hhaHrn">${pvo.contents }</p>
 					</div>
 				</div>
