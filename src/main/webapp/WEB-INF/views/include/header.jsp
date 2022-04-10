@@ -89,7 +89,7 @@
                   </sec:authorize>
                   
                   
-                  <sec:authorize access="hasRole('USER')">
+                  <sec:authorize access="hasAnyRole('USER' , 'NON')">
                      <li class="nav-item"><a class="nav-link ${(fn:contains(nowUri, 'map_view.do'))?'active':'' }" href="/map/map_view.do">지도</a></li>
                      <li class="nav-item"><a class="nav-link ${(fn:contains(nowUri, 'looked_room.do'))?'active':'' }" href="/favorite/looked_room.do?username=${username }">관심목록</a></li>
                      <li class="nav-item"><a class="nav-link ${(fn:contains(nowUri, 'alert_list.do'))?'active':'' }" href="/alert/alert_list.do?username=${username }">알림</a></li>
@@ -108,7 +108,7 @@
                      <li class="nav-item"><a class="nav-link ${(fn:contains(nowUri, 'user_login.do'))?'active':'' }" href="/user/user_login.do">로그인</a>
                   </sec:authorize>
                   
-                  <sec:authorize access="hasAnyRole('USER' , 'ADMIN' , 'SUPER_ADMIN')">
+                  <sec:authorize access="hasAnyRole('USER' , 'NON' , 'ADMIN' , 'SUPER_ADMIN')">
                      <li class="nav-item dropdown">
                      <a class="nav-link dropdown-toggle" href="#" id="dropdown04" 
                      data-bs-toggle="dropdown" aria-expanded="false">${nickname }</a>
@@ -119,7 +119,7 @@
                                  <c:if test="${empty kakao}">
                                     <form name="lg" action="/user/user_logout.do" method="post">
                                        <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
-                                       <a class="dropdown-item nav-link" href="javascript:lg.submit();" >로그아웃</a>
+                                       <a class="dropdown-item" href="javascript:lg.submit();" >로그아웃</a>
                                     </form>
                                  </c:if>
                                  <c:if test="${!empty kakao}">
@@ -147,7 +147,7 @@
                               <sec:authorize access="isAuthenticated()">
                                  <form name="lg" action="/user/user_logout.do" method="post">
                                     <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
-                                    <a class="dropdown-item nav-link" href="javascript:lgSend()" >로그아웃</a>
+                                    <a class="dropdown-item" href="javascript:lgSend()" >로그아웃</a>
                                  </form>
                               </sec:authorize>
                            </li>

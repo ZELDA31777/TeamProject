@@ -39,6 +39,20 @@ margin-right : auto;
 					</label>
 				</div>
 				
+				<!-- 카카오 회원인지 아닌지 판별 후 readonly -->
+				
+				<div class="input-with-label__InputWrap-sc-1p3gkts-0 kYbOIJ">
+					<label class="input-with-label__Label-sc-1p3gkts-1 bDaqny">
+						<p class="label-text">비밀번호</p> <input type="password"
+						name="password" placeholder="비밀번호 입력" class="form-control kHDHPO"
+						id="password" minlength="8" pattern="[A-Za-z0-9]{8,}" required>
+						<div class="valid-feedback">확인되었습니다</div>
+						<div class="invalid-feedback">8자 이상의 영어 대소문자, 숫자로만 비밀번호를 입력해주십시오.</div>
+					</label>
+				</div>
+				
+				<!-- 카카오 회원인지 아닌지 판별 후 readonly -->
+				
 				<div class="input-with-label__InputWrap-sc-1p3gkts-0 kYbOIJ">
 					<label class="input-with-label__Label-sc-1p3gkts-1 bDaqny">
 						<p class="label-text">비밀번호</p> <input type="password"
