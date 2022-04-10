@@ -53,13 +53,27 @@ public class MapController {
 		// type 
 		// 체크를 모두 해제한 경우에는 null로 받으므로 예외처리
 		pscvo.setType( ((values=request.getParameterValues("type")) != null)?Arrays.stream(values).mapToInt(Integer::parseInt).toArray():null);
+		// 보증금
 		pscvo.setDeposit( Arrays.stream(request.getParameterValues("deposit")).mapToInt(Integer::parseInt).toArray());
+		// 월세
 		pscvo.setRent( Arrays.stream(request.getParameterValues("rent")).mapToInt(Integer::parseInt).toArray());
+		// 관리비
 		pscvo.setManage( Arrays.stream(request.getParameterValues("manage")).mapToInt(Integer::parseInt).toArray());
+		// 방크기
 		pscvo.setArea( Arrays.stream(request.getParameterValues("area")).mapToInt(Integer::parseInt).toArray());
+		// 층수
+		pscvo.setFloor( ((values=request.getParameterValues("floor")) != null)?Arrays.stream(values).mapToInt(Integer::parseInt).toArray():null);
+		// 방수
+		pscvo.setRoom( ((values=request.getParameterValues("room")) != null)?Arrays.stream(values).mapToInt(Integer::parseInt).toArray():null);
+		
+		// 욕실수
+		pscvo.setShower( ((values=request.getParameterValues("shower")) != null)?Arrays.stream(values).mapToInt(Integer::parseInt).toArray():null);
+		// 풀옵션
+		pscvo.setFulloption( ((values=request.getParameterValues("fulloption")) != null)?Arrays.stream(values).mapToInt(Integer::parseInt).toArray():null);
+		
 		
 		// 지역 설정에서 동을 선택
-		pscvo.setDong(request.getParameter("dong"));
+		pscvo.setAddr2(request.getParameter("addr2"));
 		
 		
 		log.info(pscvo);

@@ -16,8 +16,8 @@ public class ProductSearchConditionVO {
 	private int[] totalfloor;
 	private int[] room;
 	private int[] shower;
-	private String[] addr1;
-	private String[] addr2;
+	private String addr1;
+	private String addr2;
 	private String[] addr3;
 	private double[] lat;
 	private double[] lng;
@@ -29,6 +29,4 @@ public class ProductSearchConditionVO {
 	private Date[] regdate;
 	private Date[] selldate;
 	private String[] username;
-	
-	private String dong;
 }

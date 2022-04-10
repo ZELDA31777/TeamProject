@@ -1,9 +1,19 @@
-body {
+/* body {
   padding-bottom: 20px;
-}
+} */
 
 .navbar {
-  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.nav-link.active {
+	color: rgba(113,201,206,0.9) !important;
+	font-weight: bold;
+}
+
+.nav-link {
+	color: rgba(0,0,0,0.3) !important;
 }
 
 .navbar-dark .navbar-nav .nav-link, .navbar-dark .navbar-nav .show>.nav-link {

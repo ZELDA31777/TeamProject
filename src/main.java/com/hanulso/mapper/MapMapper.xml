@@ -18,13 +18,19 @@
 			<!-- 방종류 -->
 			<choose>
 				<when test="type != null">
-					<foreach item="item" collection="type" open="type in (" separator="," close=")" >
-						#{item}
-					</foreach>
+					<choose>
+						<when test="@com.hanulso.mapper.TestMethod@isInX(type, 999)">1=1</when>
+						<otherwise>
+							<foreach item="item" collection="type" open="type in (" separator="," close=")" >
+								#{item}
+							</foreach>
+						</otherwise>
+					</choose>
 				</when>
 				<otherwise>1=0</otherwise>
 			</choose>
 			
+			<!-- 보증금 -->
 			<if test="deposit != null">
 				and
 				<foreach item="item" collection="deposit" open="deposit between" separator="and">
@@ -32,7 +38,7 @@
 				</foreach>
 			</if>
 			
-			
+			<!-- 월세 -->
 			<if test="rent != null">
 				and
 				<foreach item="item" collection="rent" open="rent between" separator="and">
@@ -40,6 +46,7 @@
 				</foreach>
 			</if>
 			
+			<!-- 관리비 -->
 			<if test="manage != null">
 				and 
 				<foreach item="item" collection="manage" open="manage between" separator="and">
@@ -47,7 +54,7 @@
 				</foreach>
 			</if>
 			
-			
+			<!-- 방크기 -->
 			<if test="area != null">
 				and
 				<foreach item="item" collection="area" open="area between" separator="and">
@@ -55,9 +62,105 @@
 				</foreach>
 			</if>
 			
+			<!-- 층수 -->
+			and
+			<choose>
+				<when test="floor != null">
+					<choose>
+						<!-- 전체 선택인 경우 -->
+						<when test="@com.hanulso.mapper.TestMethod@isInX(floor, 999)">1=1</when>
+						
+						<!-- 전체 선택이 아닌 경우 -->
+						<otherwise>
+							(
+							<foreach item="item" collection="floor" open="floor in (" separator="," close=")">
+								#{item}
+							</foreach>
+							
+							<!-- 7층이상 선택시 -->
+							<if test="@com.hanulso.mapper.TestMethod@isInX(floor, 7)">
+								<![CDATA[
+								or floor > 7
+								]]>
+							</if>
+							)
+						</otherwise>
+					</choose>
+				</when>
+				<otherwise>1=0</otherwise>
+			</choose>
 			
-			<if test="dong != null">
-				and addr2=#{dong}
+			<!-- 방수 -->
+			and
+			<choose>
+				<when test="room != null">
+					<choose>
+						<!-- 전체 선택인 경우 -->
+						<when test="@com.hanulso.mapper.TestMethod@isInX(room, 999)">1=1</when>
+						
+						<!-- 전체 선택이 아닌 경우 -->
+						<otherwise>
+							(
+							<foreach item="item" collection="room" open="room in (" separator="," close=")">
+								#{item}
+							</foreach>
+							<if test="@com.hanulso.mapper.TestMethod@isInX(room, 3)">
+								<![CDATA[
+								or room > 3
+								]]>
+							</if>
+							)
+						</otherwise>
+					</choose>
+				</when>
+				<otherwise>1=0</otherwise>
+			</choose>
+			
+			<!-- 욕실수 -->
+			and
+			<choose>
+				<when test="shower != null">
+					<choose>
+						<!-- 전체 선택인 경우 -->
+						<when test="@com.hanulso.mapper.TestMethod@isInX(shower, 999)">1=1</when>
+						
+						<!-- 전체 선택이 아닌 경우 -->
+						<otherwise>
+							(
+							<foreach item="item" collection="shower" open="shower in (" separator="," close=")">
+								#{item}
+							</foreach>
+							<if test="@com.hanulso.mapper.TestMethod@isInX(shower, 3)">
+								<![CDATA[
+								or shower > 3
+								]]>
+							</if>
+							)
+						</otherwise>
+					</choose>
+				</when>
+				<otherwise>1=0</otherwise>
+			</choose>
+			
+			<!-- 풀옵션 -->
+			and
+			<choose>
+				<when test="fulloption != null">
+					<choose>
+						<when test="@com.hanulso.mapper.TestMethod@isInX(fulloption, 999)">1=1</when>
+						<otherwise>
+							<foreach item="item" collection="fulloption" open="fulloption in (" separator="," close=")" >
+								#{item}
+							</foreach>
+						</otherwise>
+					</choose>
+				</when>
+				<otherwise>1=0</otherwise>
+			</choose>
+			
+			<!-- 동 -->
+			<if test="addr2 != null">
+				and addr2=#{addr2}
 			</if>
 		</where>
 	</select>

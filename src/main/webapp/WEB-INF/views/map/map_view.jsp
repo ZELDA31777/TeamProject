@@ -10,9 +10,9 @@
 .d1, .d2 {
 	height: 100%;
 	width: 100%;
-	background-color: lawngreen;
 	position: relative;
 }
+
 
 .d1btn, .d2btn {
 	border: 0;
@@ -26,18 +26,25 @@
 	position: absolute;
 	visibility: hidden;
 	z-index: 1000;
-	background-color: #f1f1f1;
+	background-color: #fff;
 	width: 50%;
 	top: 0px;
 	opacity: 0;
 }
 
 .d1-content .d1-link, .d2-content .d2-link {
-	color: black;
 	display: block;
 	padding: 0.8rem 1rem;
 	font-size: 1.2rem;
 	text-align: center;
+	border-top: 1px solid rgba(0,0,0,.125);
+	border-bottom: 1px solid rgba(0,0,0,.125);
+	border-collapse: collapse;
+	color: rgba(0,0,0,.5) !important;
+}
+
+.d2-content .d2-link {
+	font-size: 1rem;
 }
 
 .d2-content {
@@ -47,7 +54,7 @@
 }
 
 .d1-link:hover, .d2-link:hover {
-	background-color: #6495ED;
+	background-color: rgba(113,201,206,.3);
 }
 
 .d1:hover .d1-content {
@@ -64,9 +71,32 @@
 	transition: all 0.2s linear;
 }
 
+.cursor-pointer {
+	cursor: pointer;
+}
+
+.border-btn {
+	border: 1.5px solid rgba(0,0,0,.125);
+}
+
+.border-btn:hover {
+	border: 1.5px solid rgba(113,201,206,.5);
+	background-color: rgba(113,201,206,.3);
+}
+
+.border-set {
+	border: 1.7px solid rgba(0,0,0,.2);
+}
+
+.tab-title {
+	font-size: 1.15rem;
+	font-weight: 600;
+}
+
+
 /* map 영역 높이 계산 */
 #nav-tabContent {
-	height: calc(92.5vh - 1rem - 130px);
+	height: calc(92.5vh - 1rem - 133.4px);
 }
 </style>
 <!-- 마우스 오버 드롭다운 메뉴 css 끝 -->
@@ -104,21 +134,21 @@ h4 {
 }
 /* 최소 핸들 색상 */
 .noUi-handle-lower {
-	background: red;
+	background: #71c9ce;
 	border: none;
 	box-shadow: none;
 
 }
 /* 최대 핸들 색상 */
 .noUi-handle-upper {
-	background: purple;
+	background: #71c9ce;
 	border: none;
 	box-shadow: none;
 
 }
 /* 사이 색상 */
 .noUi-connect {
-    background: #3FB8AF;
+    background: rgba(0,0,0,0.05);
 }
 
 /* 슬라이더 디자인 */
@@ -146,20 +176,20 @@ h4 {
 
 
 <div class="container-fluid">
-<form id="searchConditionForm">
+<form id="searchConditionForm" name="searchConditionForm">
 	<div class="row">
-		<div class="col-3 p-0" style="height: 60px; background-color: red;">
+		<div class="col-3 p-0 border-set border-end-0" style="height: 60px;">
 			<!-- 지역 선택 시작 -->
 			<div class="d1">
 				<div class="d1btn">
-					<div class="align-self-center">지역 설정</div>
+					<div class="align-self-center fw-bold">지역 설정</div>
 				</div>
 				<div class="d1-content">
 					<div class="d1-link d2">
 						<div class="d2btn">
-							<div class="align-self-center">동구</div>
+							<div class="align-self-center fw-bold">동구</div>
 						</div>
-						<div class="d2-content overflow-scroll" style="height: 30vh">
+						<div class="d2-content overflow-scroll cursor-pointer" style="height: 30vh">
 							<div class="d2-link">가양동</div>
 							<div class="d2-link">대동</div>
 							<div class="d2-link">대청동</div>
@@ -178,9 +208,9 @@ h4 {
 					</div>
 					<div class="d1-link d2">
 						<div class="d2btn">
-							<div class="align-self-center">중구</div>
+							<div class="align-self-center fw-bold">중구</div>
 						</div>
-						<div class="d2-content overflow-scroll" style="height: 30vh">
+						<div class="d2-content overflow-scroll cursor-pointer" style="height: 30vh">
 							<div class="d2-link">대사동</div>
 							<div class="d2-link">대흥동</div>
 							<div class="d2-link">목동</div>
@@ -201,13 +231,13 @@ h4 {
 			</div>
 			<!-- 지역 선택 끝 -->
 		</div>
-		<div class="col-9" style="background-color: green;">
+		<div class="col-9 border-set">
 			<div class="row align-items-center h-100">
 				<div class="col">
 					<!-- 필터 메뉴 시작 -->
 					<!-- 방종류 시작 -->
 					<div class="dropdown" style="float: left; width: 15%;">
-						<button class="btn btn-light" type="button"
+						<button class="btn fw-bold border-btn" type="button"
 							id="dropdownMenuButton1" data-bs-toggle="dropdown"
 							data-bs-auto-close="outside"
 							aria-expanded="false" style="width: 80%;">원룸, 오피스텔</button>
@@ -217,17 +247,20 @@ h4 {
 									<h4>방종류</h4>
 									<h6>중복선택이 가능합니다.</h6>
 
-									<div class="form-check">
-										<input class="form-check-input" type="checkbox" value="0"
-											id="type0" name="type" checked> <label
-											class="form-check-label" for="type0"> 원룸 </label>
-									</div>
-									<div class="form-check">
-										<input class="form-check-input" type="checkbox" value="1"
-											id="type1" name="type" checked> <label
-											class="form-check-label" for="type1"> 오피스텔
-										</label>
-									</div>
+									<input class="form-check-input select-all" type="checkbox" value="999"
+										id="typeall" name="type" data-name="type" checked> <label
+										class="form-check-label" for="typeall"> 전체 </label><br>
+									
+									<input class="form-check-input" type="checkbox" value="0"
+										id="type0" name="type"> <label
+										class="form-check-label" for="type0"> 원룸 </label> <br>
+								
+								
+									<input class="form-check-input" type="checkbox" value="1"
+										id="type1" name="type"> <label
+										class="form-check-label" for="type1"> 오피스텔
+									</label>
+									
 								</div>
 							</li>
 						</ul>
@@ -236,7 +269,7 @@ h4 {
 
 					<!-- 가격 시작 -->
 					<div class="dropdown" style="float: left; width: 15%;">
-						<button class="btn btn-light" type="button"
+						<button class="btn fw-bold border-btn" type="button"
 							id="dropdownMenuButton1" data-bs-toggle="dropdown"
 							data-bs-auto-close="outside"
 							aria-expanded="false" style="width: 80%;">보증금/월세</button>
@@ -276,7 +309,7 @@ h4 {
 
 					<!-- 관리비 시작 -->
 					<div class="dropdown" style="float: left; width: 15%;">
-						<button class="btn btn-light" type="button"
+						<button class="btn border-btn" type="button"
 							id="dropdownMenuButton1" data-bs-toggle="dropdown"
 							data-bs-auto-close="outside"
 							aria-expanded="false" style="width: 80%;">관리비</button>
@@ -306,7 +339,7 @@ h4 {
 
 					<!-- 방크기 시작 -->
 					<div class="dropdown" style="float: left; width: 15%;">
-						<button class="btn btn-light" type="button"
+						<button class="btn border-btn" type="button"
 							id="dropdownMenuButton1" data-bs-toggle="dropdown"
 							data-bs-auto-close="outside"
 							aria-expanded="false" style="width: 80%;">방크기</button>
@@ -318,12 +351,12 @@ h4 {
 									<div class="slider" data-min="5" data-max="50" data-name="area" data-step="5"></div>
 									<div class="row mt-2 mb-3">
 										<div class="col-md-6">
+											<input type="number" class="w-100" name="area" min="5" max="50" value="5" step="5" data-idx="0" pattern="\d*">
 										</div>
 										<div class="col-md-6">
+											<input type="number" class="w-100" name="area" min="5" max="50" value="50" step="5" data-idx="1" pattern="\d*">
 										</div>
 									</div>
-									<input type="number" class="w-100" name="area" min="5" max="50" value="5" step="5" data-idx="0" pattern="\d*">
-									<input type="number" class="w-100" name="area" min="5" max="50" value="50" step="5" data-idx="1" pattern="\d*">
 									
 
 									<button type="button" class="btn btn-light"
@@ -337,7 +370,7 @@ h4 {
 
 					<!-- 추가 필터 시작 -->
 					<div class="dropdown" style="float: left; width: 15%;">
-						<button class="btn btn-light" type="button"
+						<button class="btn border-btn" type="button"
 							id="dropdownMenuButton1" data-bs-toggle="dropdown"
 							data-bs-auto-close="outside"
 							aria-expanded="false" style="width: 80%;">추가필터</button>
@@ -348,32 +381,32 @@ h4 {
 									<div class="row" style="width: 650px;">
 										<div class="col-4" style="padding: 10px;">
 											<h4>층수</h4>
-											<input class="form-check-input" type="checkbox" value=""
-												id="flexCheckChecked" checked>
-												<label class="form-check-label" for="flexCheckChecked" style="width: 35%">전체</label>
-												<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-												<label class="form-check-label" for="flexCheckChecked" style="width: 35%">1층</label>
-												<br>
-												<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-												<label class="form-check-label" for="flexCheckChecked" style="width: 35%">2층</label>
-												<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-												<label class="form-check-label" for="flexCheckChecked" style="width: 35%">3층</label>
-												<br>
-												<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-												<label class="form-check-label" for="flexCheckChecked" style="width: 35%">4층</label>
-												<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-												<label class="form-check-label" for="flexCheckChecked" style="width: 35%">5층</label>
-												<br>
-												<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-												<label class="form-check-label" for="flexCheckChecked" style="width: 35%">6층</label>
-												<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-												<label class="form-check-label" for="flexCheckChecked" style="width: 35%">7층 이상</label>
-												<br>
-												<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-												<label class="form-check-label" for="flexCheckChecked" style="width: 35%">반지층</label>
-												<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-												<label class="form-check-label" for="flexCheckChecked" style="width: 35%">옥탑방</label>
-												<br>
+											<%-- 999가 넘어오면 전체로 생각 --%>
+											<input name="floor" class="form-check-input select-all" type="checkbox" value="999" id="flexCheckChecked" data-name="floor" checked>
+											<label class="form-check-label" for="flexCheckChecked" style="width: 35%">전체</label>
+											<input name="floor" class="form-check-input" type="checkbox" value="1" id="flexCheckChecked">
+											<label class="form-check-label" for="flexCheckChecked" style="width: 35%">1층</label>
+											<br>
+											<input name="floor" class="form-check-input" type="checkbox" value="2" id="flexCheckChecked">
+											<label class="form-check-label" for="flexCheckChecked" style="width: 35%">2층</label>
+											<input name="floor" class="form-check-input" type="checkbox" value="3" id="flexCheckChecked">
+											<label class="form-check-label" for="flexCheckChecked" style="width: 35%">3층</label>
+											<br>
+											<input name="floor" class="form-check-input" type="checkbox" value="4" id="flexCheckChecked">
+											<label class="form-check-label" for="flexCheckChecked" style="width: 35%">4층</label>
+											<input name="floor" class="form-check-input" type="checkbox" value="5" id="flexCheckChecked">
+											<label class="form-check-label" for="flexCheckChecked" style="width: 35%">5층</label>
+											<br>
+											<input name="floor" class="form-check-input" type="checkbox" value="6" id="flexCheckChecked">
+											<label class="form-check-label" for="flexCheckChecked" style="width: 35%">6층</label>
+											<input name="floor" class="form-check-input" type="checkbox" value="7" id="flexCheckChecked">
+											<label class="form-check-label" for="flexCheckChecked" style="width: 35%">7층 이상</label>
+											<br>
+											<input name="floor" class="form-check-input" type="checkbox" value="-1" id="flexCheckChecked">
+											<label class="form-check-label" for="flexCheckChecked" style="width: 35%">반지층</label>
+											<input name="floor" class="form-check-input" type="checkbox" value="0" id="flexCheckChecked">
+											<label class="form-check-label" for="flexCheckChecked" style="width: 35%">옥탑방</label>
+											<br>
 										</div>
 
 										<div class="col-8">
@@ -381,55 +414,41 @@ h4 {
 												<div class="row">
 													<div class="col-6" style="padding: 10px;">
 														<h4>방수</h4>
-														<input class="form-check-input" type="checkbox" value=""
-															id="flexCheckChecked" checked> <label
-															class="form-check-label" for="flexCheckChecked"
-															style="width: 35%">전체</label> <input
-															class="form-check-input" type="checkbox" value=""
-															id="flexCheckChecked"> <label
-															class="form-check-label" for="flexCheckChecked"
-															style="width: 35%">1개</label><br> <input
-															class="form-check-input" type="checkbox" value=""
-															id="flexCheckChecked"> <label
-															class="form-check-label" for="flexCheckChecked"
-															style="width: 35%">2개</label> <input
-															class="form-check-input" type="checkbox" value=""
-															id="flexCheckChecked"> <label
-															class="form-check-label" for="flexCheckChecked">3개
-															이상</label>
+														<%-- 999가 넘어오면 전체로 생각 --%>
+														<input name="room" class="form-check-input select-all" type="checkbox" value="999" id="flexCheckChecked" data-name="room" checked>
+														<label class="form-check-label" for="flexCheckChecked" style="width: 35%">전체</label>
+														<input name="room" class="form-check-input" type="checkbox" value="1" id="flexCheckChecked">
+														<label class="form-check-label" for="flexCheckChecked" style="width: 35%">1개</label>
+														<br>
+														<input name="room" class="form-check-input" type="checkbox" value="2" id="flexCheckChecked">
+														<label class="form-check-label" for="flexCheckChecked" style="width: 35%">2개</label>
+														<input name="room" class="form-check-input" type="checkbox" value="3" id="flexCheckChecked">
+														<label class="form-check-label" for="flexCheckChecked">3개 이상</label>
 													</div>
 
 													<div class="col-6" style="padding: 10px;">
 														<h4>욕실수</h4>
-														<input class="form-check-input" type="checkbox" value=""
-															id="flexCheckChecked" checked> <label
-															class="form-check-label" for="flexCheckChecked"
-															style="width: 35%">전체</label> <input
-															class="form-check-input" type="checkbox" value=""
-															id="flexCheckChecked"> <label
-															class="form-check-label" for="flexCheckChecked"
-															style="width: 35%">1개</label><br> <input
-															class="form-check-input" type="checkbox" value=""
-															id="flexCheckChecked"> <label
-															class="form-check-label" for="flexCheckChecked"
-															style="width: 35%">2개</label> <input
-															class="form-check-input" type="checkbox" value=""
-															id="flexCheckChecked"> <label
-															class="form-check-label" for="flexCheckChecked">3개
-															이상</label>
+														<input name="shower" class="form-check-input select-all" type="checkbox" value="999" id="flexCheckChecked" data-name="shower" checked>
+														<label class="form-check-label" for="flexCheckChecked" style="width: 35%">전체</label>
+														<input name="shower" class="form-check-input" type="checkbox" value="1" id="flexCheckChecked">
+														<label class="form-check-label" for="flexCheckChecked" style="width: 35%">1개</label>
+														<br>
+														<input name="shower" class="form-check-input" type="checkbox" value="2" id="flexCheckChecked">
+														<label class="form-check-label" for="flexCheckChecked" style="width: 35%">2개</label>
+														<input name="shower" class="form-check-input" type="checkbox" value="3" id="flexCheckChecked">
+														<label class="form-check-label" for="flexCheckChecked">3개 이상</label>
 													</div>
 												</div>
 												<div class="row">
 													<div class="col" style="padding: 20px;">
 														<h4>풀옵션 여부</h4>
-														<input class="form-check-input" type="checkbox" value=""
-															id="flexCheckChecked" checked> <label
-															class="form-check-label" for="flexCheckChecked"
-															style="width: 35%">선택</label> <input
-															class="form-check-input" type="checkbox" value=""
-															id="flexCheckChecked"> <label
-															class="form-check-label" for="flexCheckChecked"
-															style="width: 35%">미선택</label>
+																												
+														<input name="fulloption" class="form-check-input select-all" type="checkbox" value="999" data-name="fulloption"  checked>
+														<label class="form-check-label" for="flexCheckChecked" style="width: 25%">전체</label>
+														<input name="fulloption" class="form-check-input" type="checkbox" value="0" id="flexCheckChecked">
+														<label class="form-check-label" for="flexCheckChecked" style="width: 25%">선택</label>
+														<input name="fulloption" class="form-check-input" type="checkbox" value="1" id="flexCheckChecked">
+														<label class="form-check-label" for="flexCheckChecked" style="width: 25%">미선택</label>
 													</div>
 												</div>
 											</div>
@@ -441,195 +460,12 @@ h4 {
 					</div>
 					<!-- 추가필터 끝 -->
 
-					<div class="dropdown" style="float: right; width: 4%;">
-						<button class="btn btn-light" type="button"
-							id="dropdownMenuButton1" data-bs-toggle="dropdown"
-							aria-expanded="false">ㅇ</button>
-						<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-							<li>
-								<div style="padding: 20px;">
-									<h4>초기화 하는데 사용하는용도</h4>
-								</div>
-							</li>
-						</ul>
+					<div class="dropdown" style="float: right; width: 25%;">
+						<button class="btn border-btn fw-bold" type="button"
+							id="dropdownMenuButton1" onclick="formReset();"
+							>조건 초기화</button>
+						
 					</div>
-<%--
-					<div class="dropdown" style="float: right; width: 4%;">
-						<button class="btn btn-light" type="button"
-							id="dropdownMenuButton1" data-bs-toggle="dropdown"
-							aria-expanded="false">ㅁ</button>
-
-						<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-							<li>
-								<div style="padding: 20px; width: 1000px;">
-									<div class="container-fluid">
-
-										<h3>상세속성</h3>
-
-										<div class="border-bottom"
-											style="border-bottom: 1px; margin: 20px;">
-											<h4>방종류</h4>
-											<div class="form-check" style="padding: 40px; float: left">
-												<input class="form-check-input" type="checkbox" value=""
-													id="flexCheckDefault" checked> <label
-													class="form-check-label" for="flexCheckDefault"> 원룸
-												</label>
-											</div>
-											<div class="form-check" style="padding: 40px;">
-												<input class="form-check-input" type="checkbox" value=""
-													id="flexCheckChecked" checked> <label
-													class="form-check-label" for="flexCheckChecked">
-													오피스텔 </label>
-											</div>
-										</div>
-
-
-										<div class="border-bottom"
-											style="border-bottom: 1px; margin: 20px;">
-											<h4>가격</h4>
-											<div style="padding: 20px;">
-
-												<label for="customRange3" class="form-label">보증금</label> <input
-													type="range" class="form-range" min="0" max="5" step="0.5"
-													id="customRange3"> <label for="customRange3"
-													class="form-label">월세</label> <input type="range"
-													class="form-range" min="0" max="5" step="0.5"
-													id="customRange3">
-											</div>
-
-										</div>
-
-
-										<div class="border-bottom"
-											style="border-bottom: 1px; margin: 20px;">
-											<h4>방크기(전용면적)</h4>
-											<div style="padding: 20px;">
-
-												<label for="customRange3" class="form-label">방크기</label> <input
-													type="range" class="form-range" min="0" max="5" step="0.5"
-													id="customRange3">
-											</div>
-
-										</div>
-
-										<div class="border-bottom"
-											style="border-bottom: 1px; margin: 20px;">
-											<h4>층수</h4>
-											<div style="padding: 20px;">
-												<input class="form-check-input" type="checkbox" value=""
-													id="flexCheckChecked" checked> <label
-													class="form-check-label" for="flexCheckChecked"
-													style="width: 5%">전체</label> <input
-													class="form-check-input" type="checkbox" value=""
-													id="flexCheckChecked"> <label
-													class="form-check-label" for="flexCheckChecked"
-													style="width: 5%">1층</label> <input
-													class="form-check-input" type="checkbox" value=""
-													id="flexCheckChecked"> <label
-													class="form-check-label" for="flexCheckChecked"
-													style="width: 5%">2층</label> <input
-													class="form-check-input" type="checkbox" value=""
-													id="flexCheckChecked"> <label
-													class="form-check-label" for="flexCheckChecked"
-													style="width: 5%">3층</label> <input
-													class="form-check-input" type="checkbox" value=""
-													id="flexCheckChecked"> <label
-													class="form-check-label" for="flexCheckChecked"
-													style="width: 5%">4층</label> <input
-													class="form-check-input" type="checkbox" value=""
-													id="flexCheckChecked"> <label
-													class="form-check-label" for="flexCheckChecked"
-													style="width: 5%">5층</label> <input
-													class="form-check-input" type="checkbox" value=""
-													id="flexCheckChecked"> <label
-													class="form-check-label" for="flexCheckChecked"
-													style="width: 5%">6층</label> <input
-													class="form-check-input" type="checkbox" value=""
-													id="flexCheckChecked"> <label
-													class="form-check-label" for="flexCheckChecked"
-													style="width: 8%">7층 이상</label> <input
-													class="form-check-input" type="checkbox" value=""
-													id="flexCheckChecked"> <label
-													class="form-check-label" for="flexCheckChecked"
-													style="width: 8%">반지층</label> <input
-													class="form-check-input" type="checkbox" value=""
-													id="flexCheckChecked"> <label
-													class="form-check-label" for="flexCheckChecked"
-													style="width: 8%">옥탑방</label>
-											</div>
-										</div>
-										<div class="border-bottom"
-											style="border-bottom: 1px; margin: 20px;">
-											<h4>방수</h4>
-											<div style="padding: 20px;">
-												<input class="form-check-input" type="checkbox" value=""
-													id="flexCheckChecked" checked> <label
-													class="form-check-label" for="flexCheckChecked"
-													style="width: 15%">전체</label> <input
-													class="form-check-input" type="checkbox" value=""
-													id="flexCheckChecked"> <label
-													class="form-check-label" for="flexCheckChecked"
-													style="width: 15%">1개</label> <input
-													class="form-check-input" type="checkbox" value=""
-													id="flexCheckChecked"> <label
-													class="form-check-label" for="flexCheckChecked"
-													style="width: 15%">2개</label> <input
-													class="form-check-input" type="checkbox" value=""
-													id="flexCheckChecked"> <label
-													class="form-check-label" for="flexCheckChecked">3개
-													이상</label>
-											</div>
-										</div>
-
-
-										<div class="border-bottom"
-											style="border-bottom: 1px; margin: 20px;">
-											<h4>욕실수</h4>
-											<div style="padding: 20px;">
-												<input class="form-check-input" type="checkbox" value=""
-													id="flexCheckChecked" checked> <label
-													class="form-check-label" for="flexCheckChecked"
-													style="width: 15%">전체</label> <input
-													class="form-check-input" type="checkbox" value=""
-													id="flexCheckChecked"> <label
-													class="form-check-label" for="flexCheckChecked"
-													style="width: 15%">1개</label> <input
-													class="form-check-input" type="checkbox" value=""
-													id="flexCheckChecked"> <label
-													class="form-check-label" for="flexCheckChecked"
-													style="width: 15%">2개</label> <input
-													class="form-check-input" type="checkbox" value=""
-													id="flexCheckChecked"> <label
-													class="form-check-label" for="flexCheckChecked">3개
-													이상</label>
-											</div>
-										</div>
-
-
-
-										<div class="border-bottom"
-											style="border-bottom: 1px; margin: 20px;">
-											<h4>풀옵션 여부</h4>
-											<div class="form-check" style="padding: 40px; float: left">
-												<input class="form-check-input" type="checkbox" value=""
-													id="flexCheckDefault" checked> <label
-													class="form-check-label" for="flexCheckDefault"> 선택
-												</label>
-											</div>
-											<div class="form-check" style="padding: 40px;">
-												<input class="form-check-input" type="checkbox" value=""
-													id="flexCheckChecked" checked> <label
-													class="form-check-label" for="flexCheckChecked">
-													미선택 </label>
-											</div>
-										</div>
-									</div>
-								</div>
-							</li>
-						</ul>
-
-					</div>
- --%>
 					<!-- 필터 메뉴 끝 -->
 
 
@@ -648,11 +484,11 @@ h4 {
 		<div class="col-3 p-0">
 			<nav style="height: 50px">
 				<div class="nav nav-tabs ps-3" id="nav-tab" role="tablist">
-					<button class="nav-link active" id="nav-home-tab"
+					<button class="nav-link tab-title active" id="nav-home-tab"
 						data-bs-toggle="tab" data-bs-target="#nav-home" type="button"
 						role="tab" aria-controls="nav-home" aria-selected="true">전체
 						방</button>
-					<button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab"
+					<button class="nav-link tab-title" id="nav-profile-tab" data-bs-toggle="tab"
 						data-bs-target="#nav-profile" type="button" role="tab"
 						aria-controls="nav-profile" aria-selected="false">중개사무소</button>
 				</div>
@@ -661,7 +497,27 @@ h4 {
 				<div class="tab-pane fade show active h-100" id="nav-home"
 					role="tabpanel" aria-labelledby="nav-home-tab">
 					<!-- 지도에 표시되는 방 목록 시작-->
-
+					
+					<!-- 없을때 시작 -->
+					<div class="container-fluid h-100">
+						<div class="row h-100">
+							<div class="col align-self-center">
+								<!--
+										조건에 맞는 방이 없습니다.
+										위치 및 맞춤필터를 조정해보세요. 
+									 -->
+								<div class="d-flex justify-content-center">
+									<div class="spinner-border text-primary" role="status">
+										<span class="visually-hidden">Loading...</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- 없을때 끝 -->
+					
+					
+<%-- 
 					<!-- 페이징 시작 -->
 					<nav aria-label="Page navigation example">
 						<ul class="pagination justify-content-center">
@@ -677,11 +533,14 @@ h4 {
 						</ul>
 					</nav>
 					<!-- 페이징 끝 -->
+--%>
 					<!-- 지도에 표시되는 방 목록 끝 -->
 				</div>
+				
+				
+				<!-- 지도에 표시되는 중개사무소 목록 시작 -->
 				<div class="tab-pane fade h-100" id="nav-profile" role="tabpanel"
 					aria-labelledby="nav-profile-tab">
-					<!-- 지도에 표시되는 중개사무소 목록 시작 -->
 					<!-- 없을때 시작 -->
 					<div class="container-fluid h-100">
 						<div class="row h-100">
@@ -700,8 +559,8 @@ h4 {
 						</div>
 					</div>
 					<!-- 없을때 끝 -->
-					<!-- 지도에 표시되는 중개사무소 목록 끝 -->
 				</div>
+				<!-- 지도에 표시되는 중개사무소 목록 끝 -->
 			</div>
 		</div>
 		<div id="map" class="col-9" style="background-color: yellow;"></div>
@@ -715,6 +574,8 @@ h4 {
 	function openModal(addr){
 		$('#exampleModal').modal('show').find('.modal-body').load(addr);
 	}
+
+	
 
 
 	var ztmp;
@@ -765,34 +626,33 @@ h4 {
 			slider.noUiSlider.on("update", function (values, handle){
 				$("input[name='"+slider.dataset.name+"']")[handle].value = parseInt(values[handle]);
 			});
-	
+
+			// 슬라이더 와 연동되는 input type number의 값을 사용자가 바꾸는 경우	
 			$("input[name='"+slider.dataset.name+"']").on("change", function(){
-				var inNumIdx = $("input[name='"+slider.dataset.name+"']").index($(this));
-				console.log(inNumIdx);
-				if (inNumIdx) {
-					leftVal = $("input[name='"+slider.dataset.name+"']")[0].value;
-					console.log("right diff", $(this).val() - leftVal < slider.dataset.step);
-					if ($(this).val() - leftVal < slider.dataset.step) {
-						$(this).val(leftVal+slider.dataset.step);
+				var inNumIdx = $("input[name='"+slider.dataset.name+"']").index($(this)); // 0:최소, 1:최대 
+				if (inNumIdx) { // 최대값을 변경하는 경우
+					leftVal = $("input[name='"+slider.dataset.name+"']")[0].value; // 현재 최소값
+					if ($(this).val() - leftVal < slider.dataset.step) { // 바뀐 최대값과 현재 최소값과의 차이가 변하는 수치 보다 작은 경우
+						$(this).val(leftVal+slider.dataset.step); // 수치 만큼 차이가 나도록 값을 강제로 변경
 					}
-					else slider.noUiSlider.set([null, $(this).val()]);
-				} else {
-					rightVal = $("input[name='"+slider.dataset.name+"']")[1].value;
-					console.log("left diff", rightVal - $(this).val() < slider.dataset.step);
-					if (rightVal - $(this).val() < slider.dataset.step) {
-						$(this).val(rightVal-slider.dataset.step);
+					else slider.noUiSlider.set([null, $(this).val()]); // 차이가 적당하다면 슬라이더의 오른쪽 버튼 위치를 변경
+				} else { // 최소값을 변경하는 경우
+					rightVal = $("input[name='"+slider.dataset.name+"']")[1].value; // 현재 최대값
+					if (rightVal - $(this).val() < slider.dataset.step) { // 바뀐 최소값과 현재 최대값과의 차이가 변하는 수치 보다 작은 경우
+						$(this).val(rightVal-slider.dataset.step); // 수치 만큼 차이가 나도록 값을 강제로 변경
 					}
-					else slider.noUiSlider.set([$(this).val(), null]);
+					else slider.noUiSlider.set([$(this).val(), null]); // 차이가 적당하다면 슬라이더의 왼쪽 버튼 위치를 변경
 				}
 			});
-	
+
+			// 슬라이더의 버튼 위치가 변경되는 경우(마우스 드래그 후 놓음) 리스트 갱신
 			slider.noUiSlider.on("set", function (){
 				getList(null);
 			});
 		});
 	});
 
-	// 선택한 정보를 이용하여 목록 받아오기(ajax)
+	// 선택한 정보를 이용하여 목록 받아오기(ajax) - 리스트 갱신
 	function getList(dong) {
 		const header = "${_csrf.headerName}";
 	    const token = "${_csrf.token}";
@@ -802,7 +662,7 @@ h4 {
 		$.ajax({
 			type: 'post',
 			url: '/map/getList.do',
-			data: $('#searchConditionForm').serialize()+(dong?"&dong="+dong:""),
+			data: $('#searchConditionForm').serialize()+(dong?"&addr2="+dong:""),
 			datatype: 'json',
 			//contentType: "application/json; charset=utf-8",
 			beforeSend: function(xhr) {
@@ -841,7 +701,7 @@ h4 {
 												`+(list[i].type==1?"오피스텔":"원룸")+`
 											</p>
 											<p class="fYtEsj">`+list[i].floor+`층,
-												`+list[i].area+`m², 관리비`+list[i].manage+`만</p>
+												`+list[i].area.toFixed(2)+`m², 관리비`+list[i].manage+`만</p>
 											<p class="fYtEsj">`+list[i].contents+`</p>
 										</div>
 										<div class="eCimNy"></div>
@@ -874,8 +734,58 @@ h4 {
 		});
 	}
 
-	$("input[type!=number]").on("change", function (){getList(null);}); // 조건 선택이 바뀔 때마다 매물 목록을 가져옴
+	// 조건 선택이 바뀔 때마다 매물 목록을 가져옴
+	$("input[type!=number]").on("change", function (){
+		var checked = $(this).is(":checked"); // check 되어있으면 true
+		var name = $(this).parent().find(".select-all").data("name"); // data-name 값 가져오기 (jquery ver.)
+		
+		if ($(this).hasClass("select-all")) { // [전체] 값이 체크되는 경우 다른 체크 모두 지우기
+			if (checked) {
+				var allIdx = $("input[name='"+name+"']").index($(this));
+				$("input:checkbox[name='"+name+"']").each(function (idx, chkbox){
+					if (idx != allIdx) {
+						chkbox.checked = false;
+					}
+				});
+			} else { // 전체가 선택되어있을때 해제 시 다시 체크 , 리스트 갱신 없음
+				$(this).prop("checked", true);
+				return ;
+			}
+		} else { // [전체] 값이 아닌 것을 클릭
+			if (checked) { // check될때 전체를 선택해제
+				$(this).siblings(".select-all").prop("checked", false);
+			} else { // check가 해제 될때 선택된 값이 하나도 없다면 다시 선택되게
+				var chk = false; // 한개라도 체크 되어있으면 true
+				$("input[name='"+name+"']").each(function (idx, chkbox){
+					if (chk) return ;
+					if(chkbox.checked) {
+						chk = true;
+						return ;
+					}
+				});
+
+				if (!chk){ // 자기자신을 다시 선택해줄 땐 목록 갱신 안되게
+					$(this).prop("checked", true);
+					return ;
+				}
+			}
+		}
+		
+		getList(null);
+	});
+	
+	
 	$(".d2-link").on("click", function (){getList($(this).html())}); // 지역 설정에서 동 클릭시 매물 목록을 가져옴
+
+	// 조건 초기화
+	function formReset() {
+		searchConditionForm.reset();
+		$(".slider").each(function(idx, slider) {
+			slider.noUiSlider.set([parseInt(slider.dataset.min), parseInt(slider.dataset.max)], false, false);
+		});
+		getList(null);
+	}
+	
 </script>
 <!-- 지도 검색 조건 script 끝 -->
 

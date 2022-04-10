@@ -7,6 +7,15 @@ body {
 	background-color: #fff;
 }
 
+a {
+	text-decoration: none;
+}
+
+.form-check-input:checked {
+	background-color: #71c9ce;
+	border-color: #71c9ce;
+}
+
 .newitem {
 	margin-top: 150px;
 }
@@ -1414,7 +1423,6 @@ body p.bold {
     font-size: 14px;
     font-weight: 300;
     line-height: 20px;
-    width: 212px;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
