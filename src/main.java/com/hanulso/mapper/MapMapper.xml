@@ -11,7 +11,7 @@
 		select * from one_product where pno = #{pno}
 	</select>
 	
-	<select id="getList" resultType="com.hanulso.domain.ProductVO">
+	<select id="getList0" resultType="com.hanulso.domain.ProductVO">
 		select * from one_product
 		<where>
 			<!-- 방종류 -->
@@ -162,6 +162,14 @@
 				and addr2=#{addr2}
 			</if>
 		</where>
+	</select>
+	
+	
+	<select id="getList1" resultType="com.hanulso.domain.CorVO">
+		SELECT * FROM one_cor
+			<if test="addr2 != null">
+				WHERE addr like '%'||#{addr2}||'%'
+			</if>
 	</select>
 
 </mapper>

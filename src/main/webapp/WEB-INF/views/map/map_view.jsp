@@ -106,6 +106,8 @@
 h4 {
 	text-align: left;
 }
+
+/* 조건 선택 버튼  */
 .btn-light:focus {
 	color: #000;
 	background-color: #f8f9fa;
@@ -113,6 +115,10 @@ h4 {
 	box-shadow: none;
 }
 
+/*  */
+.spinner-border {
+	color: rgba(113,201,206,1);
+}
 </style>
 
 
@@ -507,7 +513,7 @@ h4 {
 										위치 및 맞춤필터를 조정해보세요. 
 									 -->
 								<div class="d-flex justify-content-center">
-									<div class="spinner-border text-primary" role="status">
+									<div class="spinner-border " role="status">
 										<span class="visually-hidden">Loading...</span>
 									</div>
 								</div>
@@ -541,24 +547,7 @@ h4 {
 				<!-- 지도에 표시되는 중개사무소 목록 시작 -->
 				<div class="tab-pane fade h-100" id="nav-profile" role="tabpanel"
 					aria-labelledby="nav-profile-tab">
-					<!-- 없을때 시작 -->
-					<div class="container-fluid h-100">
-						<div class="row h-100">
-							<div class="col align-self-center">
-								<!--
-										조건에 맞는 방이 없습니다.
-										위치 및 맞춤필터를 조정해보세요. 
-									 -->
-								<p class="text-center">
-									<i class="fa-solid fa-circle-exclamation fa-2xl"></i>
-								</p>
-								<p class="text-center fs-6">
-									이 지역에 안내 가능한 중개사무소가 없습니다.<br> 다른 지역으로 검색해보세요.
-								<p>
-							</div>
-						</div>
-					</div>
-					<!-- 없을때 끝 -->
+					
 				</div>
 				<!-- 지도에 표시되는 중개사무소 목록 끝 -->
 			</div>
@@ -592,7 +581,60 @@ h4 {
 		markList[idx].setZIndex(ztmp);
 	}
 
+// 로딩 화면
+	const loadingStr = `
+		<div class="container-fluid h-100">
+			<div class="row h-100">
+				<div class="col align-self-center">
+					<div class="d-flex justify-content-center">
+						<div class="spinner-border" role="status">
+							<span class="visually-hidden">Loading...</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>`;
 
+
+// 각 탭별 선택 시 내용을 채워넣어야할 div의 id 정보
+	const navContent = ["#nav-home", "#nav-profile"];
+
+// 검색된 정보가 없을 때 보여줄 것
+	const noList = [`
+		<!-- 없을때 시작 -->
+		<div class="container-fluid h-100">
+			<div class="row h-100">
+				<div class="col align-self-center">
+					<!--
+							조건에 맞는 방이 없습니다.
+							위치 및 맞춤필터를 조정해보세요. 
+						 -->
+					<p class="text-center">
+						<i class="fa-solid fa-circle-exclamation fa-2xl"></i>
+					</p>
+					<p class="text-center fs-6">
+						조건에 맞는 방이 없습니다.<br> 지역 및 조건필터를 조정해보세요.
+					<p>
+				</div>
+			</div>
+		</div>
+		<!-- 없을때 끝 -->
+		`,`
+		<!-- 없을때 시작 -->
+		<div class="container-fluid h-100">
+			<div class="row h-100">
+				<div class="col align-self-center">
+					<p class="text-center">
+						<i class="fa-solid fa-circle-exclamation fa-2xl"></i>
+					</p>
+					<p class="text-center fs-6">
+						이 지역에 안내 가능한 중개사무소가 없습니다.<br> 다른 지역으로 검색해보세요.
+					<p>
+				</div>
+			</div>
+		</div>
+		<!-- 없을때 끝 -->
+		`];
 </script>
 
 
@@ -653,16 +695,34 @@ h4 {
 	});
 
 	// 선택한 정보를 이용하여 목록 받아오기(ajax) - 리스트 갱신
+	// 동을 선택한 경우 dong값을 가져옴, dong 값이 없는 경우엔 null
 	function getList(dong) {
+
+		
 		const header = "${_csrf.headerName}";
 	    const token = "${_csrf.token}";
 
 	    var list = [];
 
+		var flag = 1; // [전체 방] 탭이 활성화 되어있는 경우를 0로 , [중개사무소] 탭이 활성화 되어있는 경우를 1
+	    var submitData = "";
+	    if ($("#nav-home-tab").hasClass("active")) { // 전체 방 탭이 활성화 되어있는 경우
+		    submitData = $('#searchConditionForm').serialize();
+		    flag = 0;
+		}
+		submitData += (dong?"&addr2="+dong:"");
+
+		// 로딩 동작 보여주기
+		$(navContent[flag]).html(loadingStr);
+
+		// 맨 앞의 & 제거
+		if (submitData[0] == '&') submitData = submitData.substring(1);
+		
+
 		$.ajax({
 			type: 'post',
-			url: '/map/getList.do',
-			data: $('#searchConditionForm').serialize()+(dong?"&addr2="+dong:""),
+			url: '/map/getList'+flag+'.do',
+			data: submitData,
 			datatype: 'json',
 			//contentType: "application/json; charset=utf-8",
 			beforeSend: function(xhr) {
@@ -675,57 +735,107 @@ h4 {
 				for (var i=0; i<markList.length; i++) markList[i].setMap(null);
 
 				markList = [];
-				
+
 				for (var i=0; i<list.length; i++) {
-					htmlStr += `<div class="card w-100">
-						<div class="card-body">
-							<div class="row m-0 gx-3">
-								<div class="col-5"
-									style="background: blue; background-clip: content-box; height: calc(200px - 32px);">
-									<!-- 썸네일 이미지 출력 -->
-									<img class="product_view"
-										src="/upload/`+list[i].thumbnail+`"
-										style="width: 100%; height: 100%;" data-bs-toggle="modal"
-										data-bs-target="#exampleModal" data-idx=`+i+`
-										href="/map/map_modal_view.do?pno=`+list[i].pno+`"
-										onclick="openModal(this.getAttribute('href'));"
-										onmouseover="jumpMarker(this.dataset.idx);"
-										onmouseout="stopMarker(this.dataset.idx);">
-								</div>
-								<div class="col-7">
-									<div class="iamnls">
-										<div class="fOVNCS">
-											<h1 class="kPmScS">보증금 / 월세
-												`+list[i].deposit+`/`+list[i].rent+`</h1>
-											<p class="fGfKPR">
-												`+(list[i].type==1?"오피스텔":"원룸")+`
-											</p>
-											<p class="fYtEsj">`+list[i].floor+`층,
-												`+list[i].area.toFixed(2)+`m², 관리비`+list[i].manage+`만</p>
-											<p class="fYtEsj">`+list[i].contents+`</p>
+					if (flag == 0) { // [전체 방] 탭 선택
+						htmlStr += `<div class="card w-100">
+							<div class="card-body">
+								<div class="row m-0 gx-3">
+									<div class="col-5"
+										style="background: blue; background-clip: content-box; height: calc(200px - 32px);">
+										<!-- 썸네일 이미지 출력 -->
+										<img class="product_view"
+											src="/upload/`+list[i].thumbnail+`"
+											style="width: 100%; height: 100%;" data-bs-toggle="modal"
+											data-bs-target="#exampleModal" data-idx=`+i+`
+											href="/map/map_modal_view.do?pno=`+list[i].pno+`"
+											onclick="openModal(this.getAttribute('href'));"
+											onmouseover="jumpMarker(this.dataset.idx);"
+											onmouseout="stopMarker(this.dataset.idx);">
+									</div>
+									<div class="col-7">
+										<div class="iamnls">
+											<div class="fOVNCS">
+												<h1 class="kPmScS">보증금 / 월세
+													`+list[i].deposit+`/`+list[i].rent+`</h1>
+												<p class="fGfKPR">
+													`+(list[i].type==1?"오피스텔":"원룸")+`
+												</p>
+												<p class="fYtEsj">`+list[i].floor+`층,
+													`+list[i].area.toFixed(2)+`m², 관리비`+list[i].manage+`만</p>
+												<p class="fYtEsj">`+list[i].contents+`</p>
+											</div>
+											<div class="eCimNy"></div>
 										</div>
-										<div class="eCimNy"></div>
 									</div>
 								</div>
 							</div>
-						</div>
-					</div>`;
+						</div>`;
+	
+						const marker = new google.maps.Marker({
+							position: {lat:list[i].lat, lng:list[i].lng},
+							map: map,
+							zIndex: list[i].pno,
+						});
+	
+						marker.addListener("click", () => {
+							openModal("/map/map_modal_view.do?pno="+marker.getZIndex());
+						});
 
-					const marker = new google.maps.Marker({
-						position: {lat:list[i].lat, lng:list[i].lng},
-						map: map,
-						zIndex: list[i].pno,
-					});
+						markList.push(marker);
+						
+					} else { // [중개사무소] 탭 상태
+						htmlStr += `<div class="card w-100">
+							<div class="card-body">
+								<div class="row m-0 gx-3">
+									<div class="col-5"
+										style="background: blue; background-clip: content-box; height: calc(200px - 32px);">
+										<!-- 썸네일 이미지 출력 -->
+										<img class="product_view"
+											src="/upload/`+list[i].profile+`"
+											style="width: 100%; height: 100%;" data-idx=`+i+`
+											href="/coroperation/cor_view.do?username=`+list[i].username+`"
+											onclick="window.open(this.getAttribute('href'), '_blank');"
+											onmouseover="jumpMarker(this.dataset.idx);"
+											onmouseout="stopMarker(this.dataset.idx);">
+									</div>
+									<div class="col-7">
+										<div class="iamnls">
+											<div class="fOVNCS">
+												<h1 class="kPmScS">
+													`+list[i].corname+`</h1>
+												<p class="fGfKPR">
+													대표자 : `+list[i].name+`
+												</p>
+												<p class="fYtEsj">연락처 : `+list[i].tel+`</p>
+												<p class="fYtEsj">`+list[i].addr.substring(6)+`</p>
+											</div>
+											<div class="eCimNy"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>`;
 
-					marker.addListener("click", () => {
-						openModal("/map/map_modal_view.do?pno="+marker.getZIndex());
-					});
+						const marker = new google.maps.Marker({
+							position: {lat:list[i].lat, lng:list[i].lng},
+							map: map,
+							//zIndex: list[i].pno
+							title: list[i].username,
+						});
+	
+						marker.addListener("click", () => {
+							window.open("/coroperation/cor_view.do?username="+marker.getTitle(),"_blank");
+						});
 
-					markList.push(marker);
+						markList.push(marker);
+					}
+
+					
 				}
 				
 				
-				$("#nav-home").html(htmlStr);
+				$(navContent[flag]).html(htmlStr.length==0?noList[flag]:htmlStr);
 				
 			},
 			error: function(xhr, status, err) {
@@ -775,7 +885,8 @@ h4 {
 	});
 	
 	
-	$(".d2-link").on("click", function (){getList($(this).html())}); // 지역 설정에서 동 클릭시 매물 목록을 가져옴
+	$(".d2-link").on("click", function (){getList($(this).html());}); // 지역 설정에서 동 클릭시 매물 목록을 가져옴
+	$(".tab-title").on("click", function (){ getList(null); });
 
 	// 조건 초기화
 	function formReset() {

@@ -2,9 +2,7 @@ package com.hanulso.controller;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -12,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,12 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.hanulso.domain.CorVO;
-import com.hanulso.domain.FavoriteVO;
-import com.hanulso.domain.ProductVO;
-import com.hanulso.service.FavoriteService;
-import com.hanulso.service.ProductService;
-import com.hanulso.service.UserService;
+import com.hanulso.domain.*;
+import com.hanulso.service.*;
 
 import lombok.extern.log4j.Log4j;
 
