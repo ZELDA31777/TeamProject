@@ -228,11 +228,40 @@ public class UserController {
 	}
 	
 	@PostMapping("/user_modify_cor_pro.do")
-	public String user_modify_cor_pro(UserVO uvo, CorVO cvo, Model model) {
+	public String user_modify_cor_pro(UserVO uvo, CorVO cvo, MultipartFile pimg, Model model) {
 		String inputPass = pwencoder.encode(uvo.getPassword());
 		uvo.setPassword(inputPass);
+
+		
+		/* 파일업로드 시작 */
+		String uploadFolder = "C:\\upload";
+		String folderPath = getFolder();
+		File uploadPath = new File(uploadFolder, folderPath);
+		if (!uploadPath.exists()) {
+			uploadPath.mkdirs();
+		}
+		
+		try {
+			if (!pimg.isEmpty()) { // 업로드 된 파일이 있을때에만
+				String uploadFileName = UUID.randomUUID().toString() /* 중복 처리 */
+						+"_"+pimg.getOriginalFilename().substring(pimg.getOriginalFilename().lastIndexOf("\\")+1); // 모든 경로까지 저장되는 ie 브라우저용 처리
+				
+				File saveFile = new File(uploadPath, uploadFileName);
+				pimg.transferTo(saveFile);
+				
+				String savePath = folderPath+File.separator+uploadFileName;
+				
+				
+				cvo.setProfile(savePath);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		service.userModify(uvo);
 		service.userCorModify(cvo);
+		
+		/* 파일업로드 끝 */
 		model.addAttribute("username", uvo.getUsername());
 		return "/user/user_modify_check";
 	}

@@ -141,9 +141,8 @@
 					<div class="col-md-3">
 						<div class="row">
 							<form action="/product/product_view.do" method="post">
-								<input type="hidden" name="${_csrf.parameterName}"
-									value="${_csrf.token}"> <input type="hidden" name="pno"
-									value="${top.pno }">
+								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+								<input type="hidden" name="pno" value="${top.pno }">
 								<div class="thumbnail">
 									<input class="product_list_image" type="image"
 										src="/upload/${top.thumbnail}" onClick="submit()">
