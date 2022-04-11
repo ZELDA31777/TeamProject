@@ -265,11 +265,9 @@
 										</div>
 
 										<div class="styled__ImgWrap-sc-14w4no0-0 hkMQhb">
-											<div class="styled__Image-ami2sx-0 gMnRzx">
-
-												<!-- 중개사의 다른 매물에 대한 이미지 -->
-
-												<img src="/upload/${list.thumbnail }" width="60" height="60"
+											<div class="styled__Image-ami2sx-0 gMnRzx" onClick="pSend(this)" data-pno="${list.pno}">
+										<!-- 중개사의 다른 매물에 대한 이미지 -->
+												<input type="image" src="/upload/${list.thumbnail }" width="60" height="60"
 													alt="" draggable="false" loading="lazy"
 													style="width: 100%; height: 100%;">
 												<div class="styled__Cover-ami2sx-1 dZAvTS cover"></div>
@@ -284,8 +282,8 @@
 											</p>
 											<p class="styled__Price-n321y7-2 bYNMgs">보증금/월세
 												${list.deposit }/${list.rent }</p>
-											<p class="styled__Desc-n321y7-3 eHtuHa">${list.floor },
-												${list.area }m², 관리비 ${list.manage }만</p>
+											<p class="styled__Desc-n321y7-3 eHtuHa">${list.floor }층,
+												${Math.round(list.area * 100) / 100.0}m², 관리비 ${list.manage }만</p>
 											<p class="styled__Desc-n321y7-3 eHtuHa">${list.contents }</p>
 											<div class="styled__TagWrap-n321y7-4 guJBBw"></div>
 										</div>
@@ -316,6 +314,11 @@
 					value="${username}">
 			</sec:authorize>
 			<!-- 현재 로그인 한 유저의 정보를 받아옴 종료 -->
+			
+			<form name="productForm" action="/product/product_view.do" method="post">
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+			<input type="hidden" name="pno" value="">
+			</form>
 
 
 		</div>
@@ -437,6 +440,11 @@
 		})
 
 	});
+	
+	function pSend(ps){
+		productForm.pno.value = ps.dataset.pno;
+		productForm.submit();
+	}
 </script>
 <!-- 스크롤 스파이 navar 관련 script 끝 -->
 <script>

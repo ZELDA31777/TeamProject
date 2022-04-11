@@ -121,6 +121,13 @@
 </div>
 <!-- Carousel 끝 -->
 
+<!-- 로그인시 정보 가져오기 -->
+	<sec:authorize access="isAuthenticated()">
+		<c:set var="username">
+			<sec:authentication property="principal.user.username"/>
+		</c:set>
+	</sec:authorize>
+
 <!-- 인기매물 시작 (수정) -->
 <div class="container-fluid">
 	<div class="container newitem">
@@ -168,11 +175,29 @@
 
 
 <!-- 관심동네 시작 -->
+
+<!-- 비회원시 -->
+<sec:authorize access="isAnonymous()">
 <div class="container-fluid mt-5">
 	<div class="container newitem bg-light">
 		<div class="row">
 			<div class="index_subtitle my-2">
-				51기님의 관심매물의 <strong>평균</strong>은 얼마일까요?
+				<a href="/user/user_login.do"><button class="btn btn-light">로그인</button></a>/
+				<a href="/user/user_register.do"><button class="btn btn-light">회원가입</button></a>
+				하시면 관심지역의 평균 매물과 정보를 알수있습니다~
+			</div>
+		</div>
+	</div>
+</div>
+</sec:authorize>
+
+
+<!-- 회원시 -->
+<div class="container-fluid mt-5">
+	<div class="container newitem bg-light">
+		<div class="row">
+			<div class="index_subtitle my-2">
+				${username}&nbsp;님의 관심매물의 <strong>평균</strong>은 얼마일까요?
 			</div>
 		</div>
 		<div class="row">
@@ -207,7 +232,7 @@
 				<div class="d-flex justify-content-center">
 					<div class="card my-3 d-inline-block" style="width: 15rem;">
 						<div class="card-body">
-							<h5 class="card-title">원룸 평균 매물가</h5>
+							<h5 class="card-title">전체 평균 매물가</h5>
 							<p
 								class="card-text border-top border-secondary border-1 pt-3 pb-5 my-3">월세
 								500/84</p>
