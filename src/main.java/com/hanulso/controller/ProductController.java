@@ -3,6 +3,7 @@ package com.hanulso.controller;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.Cookie;
@@ -36,14 +37,13 @@ public class ProductController {
 
 	@Autowired
 	private ProductService productservice;
-	
+
 	@Autowired
 	private UserService userSerivce;
-	
+
 	@Autowired
 	private FavoriteService favoriteservice;
-	
-	
+
 	// parameter username = 로그인 사용자 이름
 	@PostMapping("/product_view.do")
 	public String product_view(HttpServletRequest request, HttpServletResponse response, HttpSession session,@RequestParam("pno") int pno, String username, Model model) {
@@ -79,11 +79,14 @@ public class ProductController {
 				log.info("쿠키 없음");
 				//쿠키 생성(이름, 값)
 				Cookie newCookie = new Cookie("cookie"+pno, "|" + pno + "|");
+
+				
 				//쿠키 추가
 				newCookie.setMaxAge(60 * 60 * 24);
 				response.addCookie(newCookie);
 				}
 		}
+		
 		model.addAttribute("pvo", pvo);
 		model.addAttribute("cvo", cvo);
 		model.addAttribute("pList", productservice.product_view_list(pvo.getUsername()));

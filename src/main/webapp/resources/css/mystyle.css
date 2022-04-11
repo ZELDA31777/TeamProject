@@ -663,7 +663,6 @@ body p.bold {
 }
 
 .fCMewi {
-	width: 780px;
 	padding-top: 50px;
 	position: relative;
 }
@@ -996,7 +995,7 @@ body p.bold {
 	align-items: center;
 	-webkit-box-pack: center;
 	justify-content: center;
-	min-width: 160px;
+	min-width: -webkit-fill-available;
 	padding: 0px 16px;
 	font-weight: 700;
 	vertical-align: middle;
