@@ -267,9 +267,8 @@
 										<div class="styled__ImgWrap-sc-14w4no0-0 hkMQhb">
 											<div class="styled__Image-ami2sx-0 gMnRzx">
 
-												<!-- 중개사의 다른 매물에 대한 이미지 -->
-
-												<img src="/upload/${list.thumbnail }" width="60" height="60"
+										<!-- 중개사의 다른 매물에 대한 이미지 -->
+												<input type="image" src="/upload/${list.thumbnail }" width="60" height="60"
 													alt="" draggable="false" loading="lazy"
 													style="width: 100%; height: 100%;">
 												<div class="styled__Cover-ami2sx-1 dZAvTS cover"></div>
