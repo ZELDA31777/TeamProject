@@ -52,19 +52,15 @@
 												<c:if test="${!empty list }">
 													<div class="row">
 														<c:forEach var="list" items="${list }">
-															<div class="col-md-3">
+															<div class="col-md-3" style="padding-bottom: 5%;">
 																<li class="gAcyGl"><div class="hObDcQ">
-																		<div class="gSwvZY">
-																			<button class="eBlbuF">
-																				<!-- 좋아요 버튼 include 화 -->
-																				<%@ include file="../include/interest_img.jsp"%>
-																			</button>
-																		</div>
 																		<div class="hkMQhb">
-																			<div class="gMnRzx">
+																			<div class="gMnRzx" onClick="pSend(this)"
+																				data-pno="${list.pno}">
 																				<!-- 중개사의 다른 매물에 대한 이미지 -->
-																				<img src="/upload/${list.thumbnail }" width="60"
-																					height="60" alt="" draggable="false" loading="lazy"
+																				<img src="/upload/${list.thumbnail }"
+																					onClick="submit()" width="60" height="60" alt=""
+																					draggable="false" loading="lazy"
 																					style="width: 100%; height: 100%;">
 																				<div class="styled__Cover-ami2sx-1 dZAvTS cover"></div>
 																			</div>
@@ -121,14 +117,29 @@
 			</div>
 		</div>
 	</sec:authorize>
-
-
-
-
-
-
-
 </div>
+
+<!-- 다른 매물 뷰로 넘어가기 시작-->
+<sec:authorize access="isAuthenticated()">
+	<c:set var="username">
+		<sec:authentication property="principal.user.username" />
+	</c:set>
+</sec:authorize>
+
+<form name="productForm" action="/product/product_view.do" method="post">
+	<input type="hidden" name="${_csrf.parameterName }"
+		value="${_csrf.token }"> <input type="hidden" name="username"
+		value="${username}"> <input type="hidden" name="pno" value="">
+</form>
+
+
+<script>
+	function pSend(el) {
+		productForm.pno.value = el.dataset.pno;
+		productForm.submit();
+	}
+</script>
+<!-- 다른 매물 뷰로 넘어가기  끝 -->
 
 <!-- sub contents end -->
 <%@ include file="../include/footer.jsp"%>
