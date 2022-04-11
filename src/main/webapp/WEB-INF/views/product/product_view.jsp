@@ -36,9 +36,47 @@
 
 		<div class="col-md-6 align-self-center" style="position: relative;">
 			<div class="gSwvZYY">
-				<button type="button" class="btn btn-secondary eBlbuFF">사진
-					모두 보기</button>
+				<button type="button" class="btn btn-secondary eBlbuFF" data-bs-toggle="modal" data-bs-target="#option">사진모두 보기</button>
 			</div>
+			<!-- 사진모두보기 모달 시작 -->
+<div class="modal fade" id="option" data-bs-keyboard="false" tabindex="-1" 
+	aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+   <div class="modal-content">
+    <div class="modal-body">
+     <div class="row">
+      	<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+      	 <div class="carousel-inner">
+      	  <!-- 썸네일 -->
+      	  <div class="carousel-item active"> 
+            <img src ="/upload/${pvo.thumbnail}" style="width:100%;">
+          </div>
+          <c:forEach var="i" begin="0" end="3">
+          <div class="carousel-item">
+      	  <img src ="						
+      	  <c:choose>
+				<c:when test="${i < picListLength}">/upload/${picList[i] }</c:when>
+				<c:otherwise>/resources/images/logo_002_opacity.png</c:otherwise>
+		  </c:choose>" style="width:100%;">
+    	  </div>
+    	  </c:forEach>
+      	 </div>
+      	 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    	 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+   		 <span class="visually-hidden"></span>
+  		 </button>
+ 		 <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    	 <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    	 <span class="visually-hidden"></span>
+ 		 </button>
+      	</div>
+     </div>
+    </div>
+   </div>
+  </div>
+</div>
+			<!-- 사진모두보기 모달 끝 -->
+			
 			<div class="row mb-2">
 				<!-- 사진 출력 시작 -->
 				<c:forEach var="i" begin="0" end="3">

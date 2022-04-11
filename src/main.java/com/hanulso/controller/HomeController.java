@@ -24,6 +24,7 @@ public class HomeController {
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		model.addAttribute("tip", service.main_tip_list());
+		model.addAttribute("top", service.main_top_list());
 		return "index";
 	}
 	
