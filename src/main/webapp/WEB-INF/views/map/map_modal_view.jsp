@@ -143,10 +143,9 @@
 				</div>
 				<div class="styled__BtnWrap-cvrpi1-15 brpHbd">
 					<form name="test" method="post" action="/product/product_view.do">
-						<input type="hidden" name="pno" value="${pvo.pno }"> <input
-							type="hidden" name="username" value="${username }"> <input
-							type="hidden" name="${_csrf.parameterName}"
-							value="${_csrf.token}">
+						<input type="hidden" name="pno" value="${pvo.pno }"> 
+						<input type="hidden" name="username" value="${username }"> 
+						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 						<button color="blue" class="fiEZwu3">
 							<span><span>상세보기</span></span>
 						</button>

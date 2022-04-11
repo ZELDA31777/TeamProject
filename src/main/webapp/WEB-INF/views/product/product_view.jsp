@@ -36,8 +36,7 @@
 
 		<div class="col-md-6 align-self-center" style="position: relative;">
 			<div class="gSwvZYY">
-				<button type="button" class="btn btn-secondary eBlbuFF">사진
-					모두 보기</button>
+				<button type="button" class="btn btn-secondary eBlbuFF">사진모두 보기</button>
 			</div>
 			<div class="row mb-2">
 				<!-- 사진 출력 시작 -->
