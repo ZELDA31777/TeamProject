@@ -268,11 +268,10 @@
 											<div class="styled__Image-ami2sx-0 gMnRzx">
 
 												<!-- 중개사의 다른 매물에 대한 이미지 -->
-
-												<img src="/upload/${list.thumbnail }" width="60" height="60"
-													alt="" draggable="false" loading="lazy"
-													style="width: 100%; height: 100%;">
-												<div class="styled__Cover-ami2sx-1 dZAvTS cover"></div>
+													<img src="/upload/${list.thumbnail }" width="60" height="60"
+														alt="" draggable="false" loading="lazy"
+														style="width: 100%; height: 100%;">
+													<div class="styled__Cover-ami2sx-1 dZAvTS cover"></div>
 											</div>
 										</div>
 										<!-- 중개사의 다른 매물에 대한 정보 -->

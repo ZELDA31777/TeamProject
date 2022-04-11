@@ -31,8 +31,8 @@
 	        <input type="hidden" name="addr" id="addr" value="${cvo.addr }">
 	        <input type="hidden" name="lat" id="lat" value="${cvo.lat }"> 
 			<input type="hidden" name="lng" id="lng" value="${cvo.lng }"> 
-			<input type="hidden" name="grade" value="${uvo.grade }">
 			<input type="hidden" name="profile" value="${cvo.profile }">
+			<input type="hidden" name="grade" value="${uvo.grade }">
 			<div class="styled__Box-sc-1etb7tu-1 cubPeM">
 				<h1>중개사 회원정보 입력</h1>
 				<h2>원픽 서비스 이용을 위해 아래 정보를 입력해주세요.</h2>
@@ -41,7 +41,7 @@
 						<div class="input-with-label__InputWrap-sc-1p3gkts-0 eVAGdp">
 							<label class="bDaqny">
 								<p class="label-text">대표 사진</p> 
-								<input type="file" name="pimg" class="form-control kHDHPO w-100" id="pimg" value="" accept="image/*" onchange="selectFile(this)">
+								<input type="file" name="pimg" class="form-control kHDHPO w-100" id="pimg" accept="image/*" onchange="selectFile(this)">
 								<div class="valid-feedback">확인되었습니다</div>
 								<div class="invalid-feedback">대표 사진을 등록해주십시오.</div>
 							</label>
