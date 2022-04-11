@@ -6,7 +6,6 @@ import lombok.Data;
 
 @Data
 public class ProductSearchConditionVO {
-	private int[] pno;
 	private int[] type;
 	private int[] deposit;
 	private int[] rent;
@@ -18,15 +17,7 @@ public class ProductSearchConditionVO {
 	private int[] shower;
 	private String addr1;
 	private String addr2;
-	private String[] addr3;
-	private double[] lat;
-	private double[] lng;
-	private String[] picture;
-	private String[] thumbnail;
-	private String[] contents;
 	private int[] fulloption;
-	private int[] readcnt;
-	private Date[] regdate;
-	private Date[] selldate;
-	private String[] username;
+	
+	private int flag;
 }

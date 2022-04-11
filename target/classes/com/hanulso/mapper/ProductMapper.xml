@@ -25,4 +25,16 @@
 		]]>
 	</select>
 	
+	<select id="product_select" resultType="com.hanulso.domain.ProductVO">
+		select * from one_product where username=#{username}
+	</select>
+	
+	<update id="product_view_count">
+		update one_product set readcnt = readcnt+1 where pno = #{pno}
+	</update>
+	
+	<select id="product_count" resultType="int">
+		select count(*) from one_product where username=#{username}
+	</select>
+	
 </mapper>
