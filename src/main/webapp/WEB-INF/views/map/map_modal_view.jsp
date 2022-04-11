@@ -82,12 +82,32 @@
 					<div>
 						<div class="dtGkBV">매물번호 ${pvo.pno}</div>
 					</div>
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-						xmlns="http://www.w3.org/2000/svg" style="flex: 0 0 auto;">
+
+					<a href="mailto:${pvo.username }"><svg width="24" height="24"
+							viewBox="0 0 24 24" fill="none"
+							xmlns="http://www.w3.org/2000/svg" style="flex: 0 0 auto;">
 							<path
-							d="M10.4627 3C11.015 3 11.4627 3.44772 11.4627 4C11.4627 4.51284 11.0767 4.93551 10.5794 4.99327L10.4627 5H5V19H19V13.6069C19 13.094 19.386 12.6714 19.8834 12.6136L20 12.6069C20.5128 12.6069 20.9355 12.9929 20.9933 13.4903L21 13.6069V19.5C21 20.2797 20.4051 20.9204 19.6445 20.9931L19.5 21H4.5C3.7203 21 3.07955 20.4051 3.00687 19.6445L3 19.5V4.5C3 3.7203 3.59489 3.07955 4.35554 3.00687L4.5 3H10.4627ZM21 3V10C21 10.5523 20.5523 11 20 11C19.4872 11 19.0645 10.614 19.0067 10.1166L19 10V6.414L12.7071 12.7071C12.3166 13.0976 11.6834 13.0976 11.2929 12.7071C10.9324 12.3466 10.9047 11.7794 11.2097 11.3871L11.2929 11.2929L17.584 5H14C13.4872 5 13.0645 4.61396 13.0067 4.11662L13 4C13 3.48716 13.386 3.06449 13.8834 3.00673L14 3H21Z"
-							fill="#CCCCCC"></path></svg>
+								d="M10.4627 3C11.015 3 11.4627 3.44772 11.4627 4C11.4627 4.51284 11.0767 4.93551 10.5794 4.99327L10.4627 5H5V19H19V13.6069C19 13.094 19.386 12.6714 19.8834 12.6136L20 12.6069C20.5128 12.6069 20.9355 12.9929 20.9933 13.4903L21 13.6069V19.5C21 20.2797 20.4051 20.9204 19.6445 20.9931L19.5 21H4.5C3.7203 21 3.07955 20.4051 3.00687 19.6445L3 19.5V4.5C3 3.7203 3.59489 3.07955 4.35554 3.00687L4.5 3H10.4627ZM21 3V10C21 10.5523 20.5523 11 20 11C19.4872 11 19.0645 10.614 19.0067 10.1166L19 10V6.414L12.7071 12.7071C12.3166 13.0976 11.6834 13.0976 11.2929 12.7071C10.9324 12.3466 10.9047 11.7794 11.2097 11.3871L11.2929 11.2929L17.584 5H14C13.4872 5 13.0645 4.61396 13.0067 4.11662L13 4C13 3.48716 13.386 3.06449 13.8834 3.00673L14 3H21Z"
+								fill="#CCCCCC"></path></svg></a>
 				</div>
+
+				<!-- 비로그인 상태의 정보를 받아옴 -->
+				<sec:authorize access="isAnonymous()">
+					<c:set var="username" value="" />
+				</sec:authorize>
+				<!-- 비로그인 상태의 정보를 받아옴 종료 -->
+
+				<!-- 현재 로그인 한 유저의 정보를 받아옴 -->
+				<sec:authorize access="isAuthenticated()">
+					<c:set var="username">
+						<sec:authentication property="principal.user.username" />
+					</c:set>
+					<input type="hidden" id="username1" name="username1"
+						value="${username}">
+				</sec:authorize>
+				<!-- 현재 로그인 한 유저의 정보를 받아옴 종료 -->
+
+
 				<div class="styled__PriceWrap-cvrpi1-5 fzGgeZ">
 					<p class="eswqdM">보증금/월세 ${pvo.deposit }/${pvo.rent }</p>
 					<p class="iVhrbX">최근 7일 매물 조회 수 31회</p>
@@ -133,7 +153,7 @@
 						</div>
 						<div>
 							<p class="title">위치</p>
-							<p class="content">${pvo.addr1 } ${pvo.addr3 }</p>
+							<p class="content">${pvo.addr1 }${pvo.addr3 }</p>
 						</div></li>
 				</ul>
 				<div class="styled__LessorWrap-cvrpi1-13 jVGbJb">
@@ -141,33 +161,79 @@
 						<p>우리공인중개사사무소</p>
 					</div>
 				</div>
-				<div class="styled__BtnWrap-cvrpi1-15 brpHbd">
-					<form name="test" method="post" action="/product/product_view.do">
-						<input type="hidden" name="pno" value="${pvo.pno }"> 
-						<input type="hidden" name="username" value="${username }"> 
-						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-						<button color="blue" class="fiEZwu3">
-							<span><span>상세보기</span></span>
-						</button>
-					</form>
-					<div class="styled__FavoriteBtn-cvrpi1-16 ceYkeN">
-						<button class="styled__LikeBtn-jmubsw-1 ezZqwh">
-							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-								viewBox="0 0 24 24">
-									<g fill="none" fill-rule="evenodd">
-									<g stroke="#222" stroke-width="1.5">
-									<g>
-									<g>
-									<g>
-									<path
-									d="M12.945 3.518c2.096-2.028 5.423-2.028 7.518 0l.117.117c1.945 2.01 1.892 5.215-.117 7.16h0l-3.768 3.646-4.699 4.548-3.752-3.631-.016-.015-4.699-4.548c-2.009-1.945-2.061-5.15-.116-7.16l.116-.117h0c2.096-2.028 5.423-2.028 7.518 0l.949.92z"
-									transform="translate(-250 -216) translate(250 121) translate(0 92) translate(0 3)"></path></g></g></g></g></g></svg>
-							<span class="styled__CntText-jmubsw-2 iXjxft">2</span>
-						</button>
+				<div class="styled__BtnWrap-cvrpi1-15 brpHbd row">
+					<div class="col-md-10">
+						<form name="test" method="post" action="/product/product_view.do">
+							<input type="hidden" name="pno" value="${pvo.pno }"> <input
+								type="hidden" name="username" value="${username }"> <input
+								type="hidden" name="${_csrf.parameterName}"
+								value="${_csrf.token}">
+							<button color="blue" class="fiEZwu3">
+								<span><span>상세보기</span></span>
+							</button>
+						</form>
+					</div>
+					<div class="col-md-2">
+						<a class="text-dark heart"> <img id="heart"
+							src="/resources/icon/heart.svg"
+							style="filter: invert(41%) sepia(87%) saturate(7008%) hue-rotate(327deg) brightness(91%) contrast(88%); width: 100%; object-fit: cover; vertical-align: -55%;">
+						</a>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	<script>
+    $(document).ready(function () {
+		
+    	var csrfHeaderName = "${_csrf.headerName}";
+        var csrfTokenValue = "${_csrf.token}";
+        //스프링 시큐리티을 이용한다면 csrf 토큰을 같이 전송하도록 해야 한다
+    	
+         $(document).ajaxSend(function(e, xhr, options) {
+               xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+            })
+	// 좋아요가 있는지 확인한 값을 heartval에 저장
+			var heartval = 0;
+        
+        
+        if(${!empty fvo and !empty fvo.heart}){
+			heartval = 1;
+        }
+        
+	// heartval이 1이면 좋아요가 이미 되있는것이므로 heart-fill.svg를 출력하는 코드
+        if(heartval>0) {
+            console.log(heartval);
+            $("#heart").prop("src", "/resources/icon/heart-fill.svg");
+            $(".heart").prop('name',heartval)
+        }
+        else {
+            console.log(heartval);
+            $("#heart").prop("src", "/resources/icon/heart.svg");
+            $(".heart").prop('name',heartval)
+        }
+
+	// 좋아요 버튼을 클릭 시 실행되는 코드
+        $(".heart").on("click", function () {
+            var that = $(".heart");
+	    $.ajax({
+	    	url :'/favorite/saveHeart',
+	        type :'POST',
+	        data : {'pno':${pvo.pno},'username': $("#username1").val() },
+	    	success : function(data){
+	    		that.prop('name',data);
+	        	if(data==1) {
+	            	     $('#heart').prop("src","/resources/icon/heart-fill.svg");
+	        	} else {
+                    	     $('#heart').prop("src","/resources/icon/heart.svg");
+	        	}
+             	},
+             	error : function(data){
+             		alert("로그인 이후에 이용해주시기 바랍니다.")
+             	}
+	    });
+        });
+    });
+</script>
 </body>
 </html>

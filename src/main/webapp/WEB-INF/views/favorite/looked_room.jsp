@@ -9,6 +9,7 @@
 </div>
 
 <div class="container">
+
 	<!-- 비회원 알림 내용 -->
 	<sec:authorize access="isAnonymous()">
 		<div align="center">
@@ -20,60 +21,110 @@
 		</div>
 	</sec:authorize>
 
-	<sec:authorize access="isAuthenticated()">
-		<div class="fCMewi">
-			<div class="iOHiXt" style="list-style: none;">
-				<div class="jcFemG">
-					<ul class="kKQMSn">
-					
-					<c:if test="${!empty list }">
-						<c:forEach var="list" items="${list }">
-							<li class="gAcyGl"><div class="hObDcQ">
-									<div class="gSwvZY">
-										<button class="eBlbuF">
-											<!-- 좋아요 버튼 include 화 -->
-											<%@ include file="../include/interest_img.jsp"%>
+	<!-- 회원 알림내용 -->
+	<sec:authorize access="hasAnyRole('USER' , 'MEMBER')">
 
-										</button>
-									</div>
-									<div class="styled__ImgWrap-sc-14w4no0-0 hkMQhb">
-										<div class="styled__Image-ami2sx-0 gMnRzx">
+		<ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
+			<li class="nav-item" role="presentation">
+				<button class="nav-link active" id="home-tab" data-bs-toggle="tab"
+					data-bs-target="#home" type="button" role="tab"
+					aria-controls="home" aria-selected="true">관심목록</button>
+			</li>
+			<li class="nav-item" role="presentation">
+				<button class="nav-link" id="profile-tab" data-bs-toggle="tab"
+					data-bs-target="#profile" type="button" role="tab"
+					aria-controls="profile" aria-selected="false">최근에 본 목록</button>
+			</li>
+		</ul>
+		<div class="tab-content" id="myTabContent">
+			<div class="tab-pane fade show active" id="home" role="tabpanel"
+				aria-labelledby="home-tab">
 
-											<!-- 중개사의 다른 매물에 대한 이미지 -->
+				<div
+					class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+					<div class="col p-4 d-flex flex-column position-static">
+						<div class="container">
+							<sec:authorize access="isAuthenticated()">
+								<div class="fCMewi">
+									<div class="iOHiXt" style="list-style: none;">
+										<div class="jcFemG">
+											<ul class="kKQMSn">
+												<c:if test="${!empty list }">
+													<div class="row">
+														<c:forEach var="list" items="${list }">
+															<div class="col-md-3">
+																<li class="gAcyGl"><div class="hObDcQ">
+																		<div class="gSwvZY">
+																			<button class="eBlbuF">
+																				<!-- 좋아요 버튼 include 화 -->
+																				<%@ include file="../include/interest_img.jsp"%>
+																			</button>
+																		</div>
+																		<div class="hkMQhb">
+																			<div class="gMnRzx">
+																				<!-- 중개사의 다른 매물에 대한 이미지 -->
+																				<img src="/upload/${list.thumbnail }" width="60"
+																					height="60" alt="" draggable="false" loading="lazy"
+																					style="width: 100%; height: 100%;">
+																				<div class="styled__Cover-ami2sx-1 dZAvTS cover"></div>
+																			</div>
+																		</div>
+																		<!-- 중개사의 다른 매물에 대한 정보 -->
 
-											<img src="/upload/${list.thumbnail }" width="60"
-												height="60" alt="" draggable="false" loading="lazy"
-												style="width: 100%; height: 100%;">
-											<div class="styled__Cover-ami2sx-1 dZAvTS cover"></div>
+																		<div class="bSKZAI">
+																			<p class="hybbHD">
+																				<c:if test="${list.type eq 0 }">원룸</c:if>
+																				<c:if test="${list.type eq 1 }">오피스텔</c:if>
+																			</p>
+																			<p class="styled__Price-n321y7-2 bYNMgs">보증금/월세
+																				${list.deposit }/${list.rent }</p>
+																			<p class="styled__Desc-n321y7-3 eHtuHa">${list.floor },
+																				${list.area }m², 관리비 ${list.manage }만</p>
+																			<p class="styled__Desc-n321y7-3 eHtuHa">${list.contents }</p>
+																			<div class="styled__TagWrap-n321y7-4 guJBBw"></div>
+																		</div>
+																	</div></li>
+															</div>
+														</c:forEach>
+													</div>
+												</c:if>
+												<c:if test="${empty list }">
+													<label>찜한 목록이 없습니다.</label>
+												</c:if>
+
+											</ul>
 										</div>
 									</div>
-									<!-- 중개사의 다른 매물에 대한 정보 -->
+								</div>
+							</sec:authorize>
 
-									<div class="bSKZAI">
-										<p class="hybbHD">
-											<c:if test="${list.type eq 0 }">원룸</c:if>
-											<c:if test="${list.type eq 1 }">오피스텔</c:if>
-										</p>
-										<p class="styled__Price-n321y7-2 bYNMgs">보증금/월세
-											${list.deposit }/${list.rent }</p>
-										<p class="styled__Desc-n321y7-3 eHtuHa">${list.floor },
-											${list.area }m², 관리비 ${list.manage }만</p>
-										<p class="styled__Desc-n321y7-3 eHtuHa">${list.contents }</p>
-										<div class="styled__TagWrap-n321y7-4 guJBBw"></div>
-									</div>
-								</div></li>
-						</c:forEach>
-					</c:if>
-					
-					<c:if test="${empty list }">
-						<label>찜한 목록이 없습니다.</label>
-					</c:if>
 
-					</ul>
+
+						</div>
+					</div>
 				</div>
+			</div>
+
+
+			<div class="tab-pane fade" id="profile" role="tabpanel"
+				aria-labelledby="profile-tab">
+				<div
+					class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+				</div>
+				<div class="col p-4 d-flex flex-column position-static">
+					<div class="container">
+
+						<lable> 타노시</lable>
+					</div>
+				</div>
+
 			</div>
 		</div>
 	</sec:authorize>
+
+
+
+
 
 
 

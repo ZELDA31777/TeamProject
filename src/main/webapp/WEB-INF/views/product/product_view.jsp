@@ -237,68 +237,68 @@
 				<h4 class="cBaPiP">상세설명</h4>
 				<div class="iOHiXt" style="list-style: none;">
 					<div class="styled__InfoWrap-sc-13shacj-0 jGAWeI">
-						<p class="title">${pvo.addr1} ${pvo.addr3 }</p>
+						<p class="title">${pvo.addr1}${pvo.addr3 }</p>
 						<p class="styled__Memo-sc-13shacj-1 hhaHrn">${pvo.contents }</p>
 					</div>
 				</div>
 			</div>
-			
+
 			<div class="fCMewi">
 				<p id="scrollspyHeading5"></p>
 				<h4 class="cBaPiP">이 중개사무소의 다른 방</h4>
-				
+
 				<div class="iOHiXt" style="list-style: none;">
 					<div class="jcFemG">
-					
+
 						<div class="row">
 							<c:forEach var="list" items="${pList }">
 								<div class="col-md-4">
-								
-									
-										<div class="hObDcQ">
-											<div class="gSwvZY">
-												<button class="eBlbuF">
-													<!-- 좋아요 버튼 include 화 -->
-													<%@ include file="../include/interest_img.jsp"%>
-			
-												</button>
-											</div>
-													
-											<div class="styled__ImgWrap-sc-14w4no0-0 hkMQhb">
-												<div class="styled__Image-ami2sx-0 gMnRzx">
-		
-													<!-- 중개사의 다른 매물에 대한 이미지 -->
-		
-													<img src="/upload/${list.thumbnail }" width="60"
-														height="60" alt="" draggable="false" loading="lazy"
-														style="width: 100%; height: 100%;">
-													<div class="styled__Cover-ami2sx-1 dZAvTS cover"></div>
-												</div>
-											</div>
-													<!-- 중개사의 다른 매물에 대한 정보 -->
 
-											<div class="bSKZAI">
-												<p class="hybbHD">
-													<c:if test="${list.type eq 0 }">원룸</c:if>
-													<c:if test="${list.type eq 1 }">오피스텔</c:if>
-												</p>
-												<p class="styled__Price-n321y7-2 bYNMgs">보증금/월세
-													${list.deposit }/${list.rent }</p>
-												<p class="styled__Desc-n321y7-3 eHtuHa">${list.floor },
-													${list.area }m², 관리비 ${list.manage }만</p>
-												<p class="styled__Desc-n321y7-3 eHtuHa">${list.contents }</p>
-												<div class="styled__TagWrap-n321y7-4 guJBBw"></div>
+
+									<div class="hObDcQ">
+										<div class="gSwvZY">
+											<button class="eBlbuF">
+												<!-- 좋아요 버튼 include 화 -->
+												<%@ include file="../include/interest_img.jsp"%>
+
+											</button>
+										</div>
+
+										<div class="styled__ImgWrap-sc-14w4no0-0 hkMQhb">
+											<div class="styled__Image-ami2sx-0 gMnRzx">
+
+												<!-- 중개사의 다른 매물에 대한 이미지 -->
+
+												<img src="/upload/${list.thumbnail }" width="60" height="60"
+													alt="" draggable="false" loading="lazy"
+													style="width: 100%; height: 100%;">
+												<div class="styled__Cover-ami2sx-1 dZAvTS cover"></div>
 											</div>
 										</div>
-									
+										<!-- 중개사의 다른 매물에 대한 정보 -->
+
+										<div class="bSKZAI">
+											<p class="hybbHD">
+												<c:if test="${list.type eq 0 }">원룸</c:if>
+												<c:if test="${list.type eq 1 }">오피스텔</c:if>
+											</p>
+											<p class="styled__Price-n321y7-2 bYNMgs">보증금/월세
+												${list.deposit }/${list.rent }</p>
+											<p class="styled__Desc-n321y7-3 eHtuHa">${list.floor },
+												${list.area }m², 관리비 ${list.manage }만</p>
+											<p class="styled__Desc-n321y7-3 eHtuHa">${list.contents }</p>
+											<div class="styled__TagWrap-n321y7-4 guJBBw"></div>
+										</div>
+									</div>
+
 								</div>
 							</c:forEach>
 						</div>
-						
+
 					</div>
 				</div>
 			</div>
-				
+
 
 
 			<!-- 비로그인 상태의 정보를 받아옴 -->
@@ -312,13 +312,14 @@
 				<c:set var="username">
 					<sec:authentication property="principal.user.username" />
 				</c:set>
-				<input type="hidden" id="username1" name="username1" value="${username}">
+				<input type="hidden" id="username1" name="username1"
+					value="${username}">
 			</sec:authorize>
 			<!-- 현재 로그인 한 유저의 정보를 받아옴 종료 -->
-			
+
 
 		</div>
-		
+
 		<div class="col-md-4" style="margin-top: 80px">
 			<div class="position-sticky" style="top: 7rem;">
 				<div class="jtcdhj">
@@ -326,11 +327,12 @@
 						<div>
 							<div class="dtGkBV">매물번호 ${pvo.pno }</div>
 						</div>
-						<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-							xmlns="http://www.w3.org/2000/svg" style="flex: 0 0 auto;">
+						<a href="mailto:${pvo.username }"><svg width="24" height="24"
+								viewBox="0 0 24 24" fill="none"
+								xmlns="http://www.w3.org/2000/svg" style="flex: 0 0 auto;">
 							<path
-								d="M10.4627 3C11.015 3 11.4627 3.44772 11.4627 4C11.4627 4.51284 11.0767 4.93551 10.5794 4.99327L10.4627 5H5V19H19V13.6069C19 13.094 19.386 12.6714 19.8834 12.6136L20 12.6069C20.5128 12.6069 20.9355 12.9929 20.9933 13.4903L21 13.6069V19.5C21 20.2797 20.4051 20.9204 19.6445 20.9931L19.5 21H4.5C3.7203 21 3.07955 20.4051 3.00687 19.6445L3 19.5V4.5C3 3.7203 3.59489 3.07955 4.35554 3.00687L4.5 3H10.4627ZM21 3V10C21 10.5523 20.5523 11 20 11C19.4872 11 19.0645 10.614 19.0067 10.1166L19 10V6.414L12.7071 12.7071C12.3166 13.0976 11.6834 13.0976 11.2929 12.7071C10.9324 12.3466 10.9047 11.7794 11.2097 11.3871L11.2929 11.2929L17.584 5H14C13.4872 5 13.0645 4.61396 13.0067 4.11662L13 4C13 3.48716 13.386 3.06449 13.8834 3.00673L14 3H21Z"
-								fill="#CCCCCC"></path></svg>
+									d="M10.4627 3C11.015 3 11.4627 3.44772 11.4627 4C11.4627 4.51284 11.0767 4.93551 10.5794 4.99327L10.4627 5H5V19H19V13.6069C19 13.094 19.386 12.6714 19.8834 12.6136L20 12.6069C20.5128 12.6069 20.9355 12.9929 20.9933 13.4903L21 13.6069V19.5C21 20.2797 20.4051 20.9204 19.6445 20.9931L19.5 21H4.5C3.7203 21 3.07955 20.4051 3.00687 19.6445L3 19.5V4.5C3 3.7203 3.59489 3.07955 4.35554 3.00687L4.5 3H10.4627ZM21 3V10C21 10.5523 20.5523 11 20 11C19.4872 11 19.0645 10.614 19.0067 10.1166L19 10V6.414L12.7071 12.7071C12.3166 13.0976 11.6834 13.0976 11.2929 12.7071C10.9324 12.3466 10.9047 11.7794 11.2097 11.3871L11.2929 11.2929L17.584 5H14C13.4872 5 13.0645 4.61396 13.0067 4.11662L13 4C13 3.48716 13.386 3.06449 13.8834 3.00673L14 3H21Z"
+									fill="#CCCCCC"></path></svg></a>
 					</div>
 					<div class="styled__PriceWrap-cvrpi1-5 fzGgeZ">
 						<p class="eswqdM">월세 ${pvo.deposit }/${pvo.rent }</p>
@@ -377,7 +379,7 @@
 							</div>
 							<div>
 								<p class="title">위치</p>
-								<p class="content">${pvo.addr1 } ${pvo.addr2 } ${pvo.addr3 }</p>
+								<p class="content">${pvo.addr1 }${pvo.addr2 }${pvo.addr3 }</p>
 							</div></li>
 					</ul>
 					<div class="styled__LessorWrap-cvrpi1-13 jVGbJb">
@@ -387,18 +389,21 @@
 					</div>
 
 					<div class="styled__BtnWrap-cvrpi1-15 brpHbd row">
-						<form name="cor_view_read" action="/coroperation/cor_view.do">
-							<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
-							<input type="hidden" name="username" value="${cvo.username}">
-							<button color="blue" class="fiEZwu3 col-md-10">
-								<span><span>연락처보기</span></span>
-							</button>
-	
-							<div class="col-md-2">
-								<a class="text-dark heart"> <img id="heart"
-									src="/resources/icon/heart.svg">
-								</a>
-							</div>
+						<div class="col-md-10">
+							<form name="cor_view_read" action="/coroperation/cor_view.do">
+								<input type="hidden" name="${_csrf.parameterName }"
+									value="${_csrf.token }"> <input type="hidden"
+									name="username" value="${cvo.username}">
+								<button color="blue" class="fiEZwu3">
+									<span><span>연락처보기</span></span>
+								</button>
+						</div>
+						<div class="col-md-2">
+							<a class="text-dark heart"> <img id="heart"
+								src="/resources/icon/heart.svg"
+								style="filter: invert(41%) sepia(87%) saturate(7008%) hue-rotate(327deg) brightness(91%) contrast(88%); width: 100%; object-fit: cover; vertical-align: -65%;">
+							</a>
+						</div>
 						</form>
 					</div>
 				</div>

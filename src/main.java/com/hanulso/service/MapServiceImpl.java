@@ -2,6 +2,7 @@ package com.hanulso.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +27,7 @@ public class MapServiceImpl implements MapService {
 	public ProductVO map_modal_view(int pno) {
 		return mapper.map_modal_view(pno);
 	}
+	
 	
 	@Override
 	public List<ProductVO> getList(ProductSearchConditionVO pscvo) {
