@@ -165,7 +165,7 @@ h4 {
 	<div class="modal-dialog modal-xl">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">(여기엔 무엇을 출력해야할까? 매물정보는 x)</h5>
+				<h5 class="modal-title" id="exampleModalLabel"></h5>
 				<button type="button" class="btn-close" data-bs-dismiss="modal"
 					aria-label="Close"></button>
 			</div>

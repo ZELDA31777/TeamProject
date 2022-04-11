@@ -500,6 +500,7 @@ body p.bold {
 	width: calc(25% - 20px);
 	margin-left: 20px;
 	margin-top: 50px;
+	list-style: none;
 }
 
 .hObDcQ {

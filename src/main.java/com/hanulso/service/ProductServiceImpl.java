@@ -41,5 +41,10 @@ public class ProductServiceImpl implements ProductService {
 		mapper.product_view_count(pno);
 	}
 	
+	@Override
+	public int product_count(String username) {
+		return mapper.product_count(username);
+	}
+	
 	
 }
