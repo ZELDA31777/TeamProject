@@ -37,7 +37,6 @@ public class FavoriteCotroller {
 	public void looked_room(@RequestParam("username") String username, Model model) {
 		List<ProductVO> list = service.favorite_list(username);
 		model.addAttribute("list", list);
-		
 	}
 
 	@GetMapping("/looked_room_non.do")
@@ -46,7 +45,18 @@ public class FavoriteCotroller {
 
 	@RequestMapping(value = "saveHeart", method = RequestMethod.POST)
 	public @ResponseBody int heart(@ModelAttribute FavoriteVO fvo) {
-		int result = service.insertHeart(fvo);
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		// principal에 SecurityContextHolder의 값을 getContext로 불러오고, getAuthentication 현재
+		// 로그인 상태(비로그인 상태도 포함)
+		// User user = (User)
+		// SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		// 위와 같은 형식도 가능하다고 합니다.
+		log.info(fvo);
+		int result = -1;
+		if (!principal.toString().equals("anonymousUser")) {
+			CustomUserDetails user = (CustomUserDetails) principal;
+			result = service.insertHeart(fvo);
+		}
 		return result;
 	}
 

@@ -12,119 +12,219 @@
 
 	<!-- 비회원 알림 내용 -->
 	<sec:authorize access="isAnonymous()">
-	<div align="center">
-	로그인이 필요한 서비스입니다.
-	<div>
-	<a href="/user/user_login.do"><button type="button" class="btn btn-light">로그인</button></a>
-	</div>
-	</div>
-	</sec:authorize>
-	
-	<!-- 회원 알림내용 -->		
-	<sec:authorize access="hasAnyRole('USER' , 'MEMBER')">	
-	
-<ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
-  <li class="nav-item" role="presentation">
-    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">추천</button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">공지</button>
-  </li>
-</ul>
-<div class="tab-content" id="myTabContent">
-  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-  <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-		<div class="col p-4 d-flex flex-column position-static">
-			<div class="row">
-				<div class="col-md-3">
-					<!-- 알람 대상의 사진 -->
-					<img src="/resources/images/ex_000.png">
-				</div>
-				<div class="col-md-2 ">
-					<!-- 알람 대상의 정보 -->
-					<div class="fzGgeZ">
-						<p class="hybbHD">투룸</p>
-						<p class="eswqdM">월세 1000/65</p>
-					</div>
-				</div>
-				<!-- 알람 대상의 상세 정보 -->
-				<div class="col-md-6 bSKZAI">
-					<p class="eHtuHa">반지층, 42.97m², 관리비 6만</p>
-					<p class="eHtuHa">7호선 신대방삼거리역 도보 5분도 안걸리는 원룸 아닙니다 투룸에 이 가격 위치
-						채광까지 갖춘 문의 정말 많이오는 실매물</p>
-				</div>
-				<div class="col-md-1">
-					<!-- 알람 마크 -->
-					<%@ include file="../include/interest_img.jsp"%>
-				</div>
+		<div align="center">
+			로그인이 필요한 서비스입니다.
+			<div>
+				<a href="/user/user_login.do"><button type="button"
+						class="btn btn-light">로그인</button></a>
 			</div>
 		</div>
-	</div>
-	
-	<div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-		<div class="col p-4 d-flex flex-column position-static">
-			<div class="row">
-				<div class="col-md-3">
-					<!-- 알람 대상의 사진 -->
-					<img src="/resources/images/ex_000.png">
-				</div>
-				<div class="col-md-2 ">
-					<!-- 알람 대상의 정보 -->
-					<div class="fzGgeZ">
-						<p class="hybbHD">투룸</p>
-						<p class="eswqdM">월세 1000/65</p>
-					</div>
-				</div>
-				<!-- 알람 대상의 상세 정보 -->
-				<div class="col-md-6 bSKZAI">
-					<p class="eHtuHa">반지층, 42.97m², 관리비 6만</p>
-					<p class="eHtuHa">7호선 신대방삼거리역 도보 5분도 안걸리는 원룸 아닙니다 투룸에 이 가격 위치
-						채광까지 갖춘 문의 정말 많이오는 실매물</p>
-				</div>
-				<div class="col-md-1">
-					<!-- 알람 마크 -->
-					<%@ include file="../include/interest_img.jsp"%>
-				</div>
-			</div>
-		</div>
-	</div>
-  </div>
-  
-  
-  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-  	<div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-		
-		<c:if test="${!empty list}">
-		<c:set var="num" value="1"/>
-		<c:forEach var="list" items="${list}">
-			<div class="row">
-			<div class="col-md-2">
-			${num}
-			</div>
-			<div class="col-md-7">
-			<a href="/notice/notice_view.do?notice_no=${list.notice_no}">${list.notice_title}</a>
-			</div>
-			<div class="col-md-3">
-			<fmt:formatDate value="${list.notice_regdate}" pattern="yyyy-MM-dd"/>
-			</div>
-			</div>
-		<c:set var="num" value="${num+1}"/>	
-		</c:forEach>
-		</c:if>
-	</div>
-
-  </div>
-</div>
 	</sec:authorize>
 
-	
+	<!-- 회원 알림내용 -->
+	<sec:authorize access="hasAnyRole('USER' , 'MEMBER')">
 
-	
-	
-	
-	
+		<ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
+			<li class="nav-item" role="presentation">
+				<button class="nav-link active" id="profile-tab" data-bs-toggle="tab"
+					data-bs-target="#profile" type="button" role="tab"
+					aria-controls="profile" aria-selected="true">공지</button>
+			</li>
+			<li class="nav-item" role="presentation">
+				<button class="nav-link " id="home-tab" data-bs-toggle="tab"
+					data-bs-target="#home" type="button" role="tab"
+					aria-controls="home" aria-selected="false">추천</button>
+			</li>
+		</ul>
+		<div class="tab-content" id="myTabContent">
+			<div class="tab-pane fade" id="home" role="tabpanel"
+				aria-labelledby="home-tab">
+				<div
+					class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+					<div class="col p-4 d-flex flex-column position-static">
+						<div class="row">
+							<div class="col-md-3">
+								<!-- 알람 대상의 사진 -->
+								<img src="/resources/images/ex_000.png">
+							</div>
+							<div class="col-md-2 ">
+								<!-- 알람 대상의 정보 -->
+								<div class="fzGgeZ">
+									<p class="hybbHD">투룸</p>
+									<p class="eswqdM">월세 1000/65</p>
+								</div>
+							</div>
+							<!-- 알람 대상의 상세 정보 -->
+							<div class="col-md-6 bSKZAI">
+								<p class="eHtuHa">반지층, 42.97m², 관리비 6만</p>
+								<p class="eHtuHa">7호선 신대방삼거리역 도보 5분도 안걸리는 원룸 아닙니다 투룸에 이 가격
+									위치 채광까지 갖춘 문의 정말 많이오는 실매물</p>
+							</div>
+							<div class="col-md-1">
+								<!-- 알람 마크 -->
+								<%@ include file="../include/interest_img.jsp"%>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div
+					class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+					<div class="col p-4 d-flex flex-column position-static">
+						<div class="row">
+							<div class="col-md-3">
+								<!-- 알람 대상의 사진 -->
+								<img src="/resources/images/ex_000.png">
+							</div>
+							<div class="col-md-2 ">
+								<!-- 알람 대상의 정보 -->
+								<div class="fzGgeZ">
+									<p class="hybbHD">투룸</p>
+									<p class="eswqdM">월세 1000/65</p>
+								</div>
+							</div>
+							<!-- 알람 대상의 상세 정보 -->
+							<div class="col-md-6 bSKZAI">
+								<p class="eHtuHa">반지층, 42.97m², 관리비 6만</p>
+								<p class="eHtuHa">7호선 신대방삼거리역 도보 5분도 안걸리는 원룸 아닙니다 투룸에 이 가격
+									위치 채광까지 갖춘 문의 정말 많이오는 실매물</p>
+							</div>
+							<div class="col-md-1">
+								<!-- 알람 마크 -->
+								<%@ include file="../include/interest_img.jsp"%>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="tab-pane fade show active" id="profile" role="tabpanel"
+				aria-labelledby="profile-tab">
+				<div
+					class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+
+					<div
+						class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white">
+						<a href="/notice/notice_list.do"
+							class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
+							<svg class="bi me-2" width="30" height="24">
+				</svg> <span class="fs-5 fw-semibold"><strong class="mb-1">총
+									게시글 ${pageMaker.total}</strong></span>
+						</a>
+
+
+
+						<div class="row">
+							<div class="col-md-2">번호</div>
+							<div class="col-md-8">제목</div>
+							<div class="col-md-2">작성일</div>
+						</div>
+
+
+						<c:if test="${!empty list}">
+							<c:set var="num"
+								value="${pageMaker.total - ((pageMaker.cri.pageNum-1)*10)}" />
+							<c:forEach var="list" items="${list}">
+
+								<div
+									class="list-group list-group-flush border-bottom scrollarea row">
+									<a href="/notice/notice_view.do?notice_no=${list.notice_no}"
+										class="list-group-item list-group-item-action py-3 lh-tight"
+										aria-current="true">
+										<div
+											class="d-flex w-100 align-items-center justify-content-between">
+											<div class="col-md-2">
+												<strong class="mb-1">${num}</strong>
+											</div>
+
+											<div class="col-md-8">
+												<small>${list.notice_title}</small>
+											</div>
+											<div class="col-md-2">
+												<small><fmt:formatDate
+														value="${list.notice_regdate}" pattern="yyyy-MM-dd" /></small>
+											</div>
+
+										</div>
+									</a>
+								</div>
+
+								<c:set var="num" value="${num-1}" />
+							</c:forEach>
+						</c:if>
+					</div>
+
+
+					<div align="center" class="paging">
+						<c:if test="${pageMaker.prev}">
+							<a href="${pageMaker.startPage-1}"><i
+								class="fa  fa-angle-double-left"></i></a>
+						</c:if>
+						<c:forEach var="num" begin="${pageMaker.startPage}"
+							end="${pageMaker.endPage}">
+							<a href="${num}"
+								class="${pageMaker.cri.pageNum == num?'active':''}">${num}</a>
+						</c:forEach>
+						<c:if test="${pageMaker.next}">
+							<a href="${pageMaker.endPage+1}"><i
+								class="fa  fa-angle-double-right"></i></a>
+						</c:if>
+					</div>
+
+					<div align="center">
+						<form name="searchForm" id="searchForm" method="get"
+							action="/notice/notice_list.do">
+							<input type="hidden" name="pageNum"
+								value="${pageMaker.cri.pageNum}"> <input type="hidden"
+								name="amount" value="${pageMaker.cri.amount}"> <select
+								class="form-select selform" name="type">
+								<option selected>선택</option>
+								<option value="T">제목</option>
+								<option value="C">내용</option>
+							</select> <input type="text" name="keyword" class="form-control txtform">
+							<button class="btn btn-light">검색</button>
+						</form>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</sec:authorize>
+
+	<form id="actionForm" action="/alert/alert_list.do" method="get">
+		<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
+		<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
+		<input type="hidden" name="type" value="${pageMaker.cri.type}">
+		<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
+	</form>
+
+
 </div>
+<script>
+	$(function() {
+		var actionForm = $("#actionForm")
+		$(".paging > a").on("click", function(e) {
+			e.preventDefault();
+			actionForm.find("input[name='pageNum']").val($(this).attr("href"));
+			actionForm.submit();
+		})
 
+		var searchForm = $("#searchForm");
+		$("#searchForm button").on("click", function(e) {
+			if (!searchForm.find("input[name='keyword']").val()) {
+				alert("키워드를 입력하세요.");
+				return false;
+			}
+
+			searchForm.find("input[name='pageNum']").val("1");
+			e.preventDefault();
+
+			searchForm.submit();
+		})
+	})
+</script>
 <!-- sub contents end -->
 <%@ include file="../include/footer.jsp"%>
 </body>

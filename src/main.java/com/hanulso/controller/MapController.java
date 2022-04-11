@@ -56,6 +56,7 @@ public class MapController {
 			log.info(user);
 			FavoriteVO fvo = favoriteservice.likecheck(pno, user.getUsername());
 			model.addAttribute("fvo", fvo);
+			model.addAttribute("username", user.getUsername());
 		}
 
 		model.addAttribute("pvo", pvo);

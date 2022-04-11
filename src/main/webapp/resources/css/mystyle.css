@@ -1093,7 +1093,6 @@ body p.bold {
 	flex: 0 0 auto;
 	display: flex;
 	flex-direction: column;
-	width: 236px;
 }
 
 .gAcyGl>div:nth-child(1), .gAcyGl>a {
