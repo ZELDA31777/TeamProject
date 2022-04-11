@@ -44,7 +44,7 @@ public class TipController {
 		return "redirect:/tip/tip_list.do";
 	}
 	
-	@GetMapping({"/tip_view.do","/tip_modify"})
+	@GetMapping({"/tip_view.do","/tip_modify.do"})
 	public void tip_view(@RequestParam("tip_no") int tip_no, Model model) {
 		model.addAttribute("vo", service.tip_view(tip_no));
 	}
