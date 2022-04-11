@@ -23,6 +23,12 @@
 		where username=#{username}
 	</update>
 	
+	<update id="user_cor_update">
+		update one_cor set cornum=#{cornum}, corname=#{corname}, 
+		tel=#{tel}, addr=#{addr}, profile=#{profile}, name=#{name}, lat=#{lat}, lng=#{lng} 
+		where username=#{username}
+	</update>
+	
 	<insert id="kakao_user_insert">
 		insert into one_user (username, password, nickname, grade, favorite, active, kCheck)
 		values(#{username},#{password},#{nickname},'ROLE_USER',#{favorite},#{active},#{kCheck})

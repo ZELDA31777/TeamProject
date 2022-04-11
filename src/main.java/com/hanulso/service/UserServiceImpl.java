@@ -51,6 +51,11 @@ public class UserServiceImpl implements UserService {
 		mapper.user_update(uvo);
 	}
 	
+	@Override
+	public void userCorModify(CorVO cvo) {
+		mapper.user_cor_update(cvo);
+	}
+	
 	// 카카오 유저 회원가입
 	@Override
 	public void kakaoUserRegister(UserVO uvo) {

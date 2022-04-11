@@ -227,6 +227,16 @@ public class UserController {
 			return "/user/user_modify_check";
 	}
 	
+	@PostMapping("/user_modify_cor_pro.do")
+	public String user_modify_cor_pro(UserVO uvo, CorVO cvo, Model model) {
+		String inputPass = pwencoder.encode(uvo.getPassword());
+		uvo.setPassword(inputPass);
+		service.userModify(uvo);
+		service.userCorModify(cvo);
+		model.addAttribute("username", uvo.getUsername());
+		return "/user/user_modify_check";
+	}
+	
 	@GetMapping("/user_modify_kakao.do")
 	public void user_modify_kakao(String username, Model model) {
 		UserVO uvo = service.user_select(username);
