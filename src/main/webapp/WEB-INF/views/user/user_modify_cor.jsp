@@ -22,7 +22,7 @@
 <!-- sub contents start -->
 <div class="container-fluid subcontent">
 	<div class="container" style="width: 50%">
-		<form id="userForm" class="needs-validation" method="post" action="/user/user_register_cor_pro.do" enctype="multipart/form-data" novalidate>
+		<form id="userForm" class="needs-validation" method="post" action="/user/user_modify_cor_pro.do" enctype="multipart/form-data" novalidate>
 	        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 	        <input type="hidden" name="favorite" value="favorite_test_msg">
 	        <input type="hidden" name="active" value="${uvo.active }">
@@ -31,6 +31,8 @@
 	        <input type="hidden" name="addr" id="addr" value="${cvo.addr }">
 	        <input type="hidden" name="lat" id="lat" value="${cvo.lat }"> 
 			<input type="hidden" name="lng" id="lng" value="${cvo.lng }"> 
+			<input type="hidden" name="grade" value="${uvo.grade }">
+			<input type="hidden" name="profile" value="${cvo.profile }">
 			<div class="styled__Box-sc-1etb7tu-1 cubPeM">
 				<h1>중개사 회원정보 입력</h1>
 				<h2>원픽 서비스 이용을 위해 아래 정보를 입력해주세요.</h2>
@@ -39,14 +41,14 @@
 						<div class="input-with-label__InputWrap-sc-1p3gkts-0 eVAGdp">
 							<label class="bDaqny">
 								<p class="label-text">대표 사진</p> 
-								<input type="file" name="pimg" class="form-control kHDHPO w-100" id="pimg" value="/upload/${cvo.profile }" required accept="image/*" onchange="selectFile(this)">
+								<input type="file" name="pimg" class="form-control kHDHPO w-100" id="pimg" value="" accept="image/*" onchange="selectFile(this)">
 								<div class="valid-feedback">확인되었습니다</div>
 								<div class="invalid-feedback">대표 사진을 등록해주십시오.</div>
 							</label>
 						</div>
 					</div>
 					<div class="col-md-6">
-						<img id="imgPreview" class="w-100" src="/resources/images/logo_002_opacity.png">
+						<img id="imgPreview" class="w-100" src="/upload/${cvo.profile}">
 					</div>
 				</div>
 				<div class="input-with-label__InputWrap-sc-1p3gkts-0 eVAGdp">
@@ -170,6 +172,12 @@
 <script src="/resources/js/juso_api.js"></script>
 <script>
 	$(function() {
+		var tel_a = "${cvo.tel}";
+		var telAll = tel_a.split('-');
+		$("#tel01").val(telAll[0]);
+		$("#tel02").val(telAll[1]);
+		$("#tel03").val(telAll[2]);
+		
 		'use strict'
 		// Fetch all the forms we want to apply custom Bootstrap validation styles to
 		var forms = document.querySelectorAll('.needs-validation')
@@ -206,7 +214,6 @@
 	
 
 </script>
-
 <!--  전화번호 관련 스크립트 시작 -->
 <script>
    var tel01 = null;

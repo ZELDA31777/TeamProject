@@ -15,6 +15,8 @@ public interface UserMapper {
 	
 	public void user_update(UserVO uvo);
 	
+	public void user_cor_update(CorVO cvo);
+	
 	// 카카오 유저 회원가입
 	public void kakao_user_insert(UserVO uvo);
 	
