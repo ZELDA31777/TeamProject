@@ -60,8 +60,11 @@
 					<span> 확인 </span>
 				</button>
 				
-				<a class="p-2" href="https://kauth.kakao.com/oauth/authorize?client_id=ec529ddcb0a1e3f154fc6847679fe18a&redirect_uri=http://localhost:8123/kakaoLogin&response_type=code">
-				<img src="/resources/icon/kakao_login_large_wide.png"></a>
+				<div class="container-fluid">
+				<a href="https://kauth.kakao.com/oauth/authorize?client_id=ec529ddcb0a1e3f154fc6847679fe18a&redirect_uri=http://localhost:8123/kakaoLogin&response_type=code">
+				<img src="/resources/icon/kakao_login_large_wide.png">
+				</a>
+				</div>
 				
 			</div>
 		</form>

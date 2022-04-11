@@ -113,16 +113,21 @@
                      <a class="nav-link dropdown-toggle" href="#" id="dropdown04" 
                      data-bs-toggle="dropdown" aria-expanded="false">${nickname }</a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown04">
-                           <li><a class="dropdown-item" href="/user/user_password_check.do?username=${username }">마이페이지</a></li>
                            <li>
                               <sec:authorize access="isAuthenticated()">
                                  <c:if test="${empty kakao}">
+									<li>
+										<a class="dropdown-item" href="/user/user_password_check.do?username=${username }">마이페이지</a>
+									</li>
                                     <form name="lg" action="/user/user_logout.do" method="post">
                                        <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
                                        <a class="dropdown-item" href="javascript:lg.submit();" >로그아웃</a>
                                     </form>
                                  </c:if>
                                  <c:if test="${!empty kakao}">
+									<li>
+										<a class="dropdown-item" href="/user/user_modify_kakao.do?username=${username }">마이페이지</a>
+									</li>
                                     <a class="dropdown-item" href="https://kauth.kakao.com/oauth/logout?client_id=ec529ddcb0a1e3f154fc6847679fe18a&logout_redirect_uri=${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/user/user_login.do">카카오 로그아웃</a>
                                  </c:if>
                               </sec:authorize>

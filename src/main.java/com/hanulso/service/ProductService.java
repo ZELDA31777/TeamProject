@@ -15,5 +15,7 @@ public interface ProductService {
 	public List<ProductVO> product_view_list(String username);
 	
 	public void product_view_count(int pno);
+	
+	public int product_count(String username);
 
 }

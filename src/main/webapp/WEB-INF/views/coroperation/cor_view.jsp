@@ -26,6 +26,8 @@
 	width: 80%;
 	margin: 0px auto;
 }
+
+
 </style>
 </head>
 <body>
@@ -80,8 +82,8 @@
 				<div class="styled__Value-y3tp2k-2 dxmkoB">
 					<fmt:formatDate pattern="yyyy-MM-dd" value="${uvo.lastdate}"/>
 				</div></li>
-			<li><p class="styled__Name-y3tp2k-1 exSEvD">거래완료된 방</p>
-				<div class="styled__Value-y3tp2k-2 dxmkoB">10개의 방(나중에 추가)</div></li>
+			<li><p class="styled__Name-y3tp2k-1 exSEvD">등록된 방 수</p>
+				<div class="styled__Value-y3tp2k-2 dxmkoB">${pcnt} 개의 방</div></li>
 			<li style="width: 66.6%;"><p
 					class="styled__Name-y3tp2k-1 exSEvD">주소</p>
 				<div class="styled__Value-y3tp2k-2 dxmkoB" style="flex-grow: 1;">
@@ -105,7 +107,7 @@
 	<div name="room" class="container dWqXbC" style="width: 80%">
 		<div class="styled__TabWrap-sc-1j5nm8l-1 bKTJew">
 			<p class="styled__Tab-sc-1j5nm8l-2 gYpPYH">
-				이 부동산의 방<span>(6)</span>
+				이 부동산의 방<span>&nbsp;${pcnt}</span>
 			</p>
 		</div>
 		

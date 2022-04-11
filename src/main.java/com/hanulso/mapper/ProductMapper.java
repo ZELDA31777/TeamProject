@@ -16,4 +16,6 @@ public interface ProductMapper {
 	
 	public void product_view_count(int pno);
 	
+	public int product_count(String username);
+	
 }

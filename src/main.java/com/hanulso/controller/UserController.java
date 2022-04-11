@@ -225,6 +225,19 @@ public class UserController {
 			service.userModify(uvo);
 			model.addAttribute("username", uvo.getUsername());
 			return "/user/user_modify_check";
-		}
+	}
+	
+	@GetMapping("/user_modify_kakao.do")
+	public void user_modify_kakao(String username, Model model) {
+		UserVO uvo = service.user_select(username);
+		model.addAttribute("uvo", uvo);
+	}
+	
+	@PostMapping("/user_modify_kakao_pro.do")
+	public String user_modify_kakao_pro(UserVO uvo, Model model) {
+		service.userModify(uvo);
+		model.addAttribute("username", uvo.getUsername());
+		return "/user/user_modify_check";
+	}
 	
 }
