@@ -147,7 +147,7 @@
                               <sec:authorize access="isAuthenticated()">
                                  <form name="lg" action="/user/user_logout.do" method="post">
                                     <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
-                                    <a class="dropdown-item" href="javascript:lgSend()" >로그아웃</a>
+                                    <a class="dropdown-item" href="javascript:lg.submit()" >로그아웃</a>
                                  </form>
                               </sec:authorize>
                            </li>
