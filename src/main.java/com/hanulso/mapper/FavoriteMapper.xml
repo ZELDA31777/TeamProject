@@ -23,7 +23,8 @@
 	</select>
 
 	<delete id="deleteHeart">
-		delete from one_favorite where pno=#{pno} and username=#{username}
+		delete from one_favorite where pno=#{pno} and
+		username=#{username}
 	</delete>
 
 	<select id="likecheck"
@@ -31,12 +32,6 @@
 		select * from one_favorite where pno=#{pno} and
 		username=#{username}
 	</select>
-
-
-
-
-
-
 
 
 

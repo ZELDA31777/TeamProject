@@ -216,21 +216,23 @@
 	// 좋아요 버튼을 클릭 시 실행되는 코드
         $(".heart").on("click", function () {
             var that = $(".heart");
+            console.log("${fvo}");
 	    $.ajax({
 	    	url :'/favorite/saveHeart',
 	        type :'POST',
-	        data : {'pno':${pvo.pno},'username': $("#username1").val() },
+	        data : {'pno':${pvo.pno},'username': "${username}" },
 	    	success : function(data){
+	    		console.log(data);
 	    		that.prop('name',data);
 	        	if(data==1) {
 	            	     $('#heart').prop("src","/resources/icon/heart-fill.svg");
-	        	} else {
+	        	} else if (data==0) {
                     	     $('#heart').prop("src","/resources/icon/heart.svg");
+	        	} else {
+	        		alert("로그인 이후에 이용해주십시오.");
+	        		location.href="/user/user_login.do";
 	        	}
-             	},
-             	error : function(data){
-             		alert("로그인 이후에 이용해주시기 바랍니다.")
-             	}
+	    	}
 	    });
         });
     });
