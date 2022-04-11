@@ -6,6 +6,7 @@ import com.hanulso.domain.FavoriteVO;
 import com.hanulso.domain.ProductVO;
 
 public interface FavoriteService {
+	
 
 	public void favorite_insert(int pno, String username);
 	

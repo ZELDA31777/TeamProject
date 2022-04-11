@@ -52,5 +52,4 @@ public class FavoriteServiceImpl implements FavoriteService {
 		return  mapper.favorite_list(username);
 	}
 	
-	
 }

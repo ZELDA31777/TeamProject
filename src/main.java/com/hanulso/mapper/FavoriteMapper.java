@@ -20,7 +20,7 @@ public interface FavoriteMapper {
 	public int insertHeart(FavoriteVO fvo);
 	
 	public void deleteHeart(FavoriteVO fvo);
-
+	
 }
 
 
