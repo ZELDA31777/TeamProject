@@ -37,4 +37,34 @@
 		select count(*) from one_product where username=#{username}
 	</select>
 	
+	<select id="product_count_with_addr2" resultType="int">
+		select count(*) from one_product where addr2=#{addr2}
+	</select>
+	
+	
+	<!-- 평균 계산 -->
+	<select id="room_rent_cal" resultType="double">
+		select avg(rent) from one_product where addr2=#{addr2} and type=1
+	</select>
+	
+	<select id="room_deposit_cal" resultType="double">
+		select avg(deposit) from one_product where addr2=#{addr2} and type=1
+	</select>
+	
+	<select id="off_rent_cal" resultType="double">
+		select avg(rent) from one_product where addr2=#{addr2} and type=0
+	</select>
+	
+	<select id="off_deposit_cal" resultType="double">
+		select avg(deposit) from one_product where addr2=#{addr2} and type=0
+	</select>
+	
+	<select id="all_rent_cal" resultType="double">
+		select avg(rent) from one_product where addr2=#{addr2}
+	</select>
+	
+	<select id="all_deposit_cal" resultType="double">
+		select avg(deposit) from one_product where addr2=#{addr2}
+	</select>
+	
 </mapper>

@@ -42,6 +42,18 @@
 	width: -webkit-fill-available;
 	float: left;
 }
+
+.dongSelect{
+	width: -webkit-fill-available;
+}
+
+
+.spanAl{
+	float: right;
+	width: 49%;
+}
+
+
 </style>
 <link href="/resources/css/carousel.css" rel="stylesheet">
 
@@ -60,10 +72,6 @@
 		<button type="button" data-bs-target="#myCarousel"
 			data-bs-slide-to="3" aria-label="Slide 4" class=""></button>
 	</div>
-
-
-
-
 
 	<div class="carousel-inner">
 		<div class="carousel-item active">
@@ -128,6 +136,12 @@
 	</c:set>
 </sec:authorize>
 
+<sec:authorize access="hasAnyRole('ROLE_USER','NON')">
+	<c:set var="nickname">
+		<sec:authentication property="principal.user.nickname"/>
+	</c:set>
+</sec:authorize>
+
 <!-- 인기매물 시작 (수정) -->
 <div class="container-fluid">
 	<div class="container newitem">
@@ -186,80 +200,109 @@
 <!-- 인기매물 끝 -->
 
 <!-- 관심동네 시작 -->
+<sec:authorize access="isAnonymous() or hasAnyRole('ROLE_USER' , 'ROLE_NON')">
 
-<!-- 비회원시 -->
-<sec:authorize access="isAnonymous()">
 	<div class="container-fluid mt-5">
 		<div class="container newitem bg-light">
+			<!-- 회원 시 -->
+			<sec:authorize access="hasAnyRole('ROLE_USER' , 'ROLE_NON')">
+				<div class="row">
+						<div class="row">
+							<div class="index_subtitle my-2">
+								${nickname}&nbsp;님의 관심지역의 <strong>평균</strong>은 얼마일까요?
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-3">
+								<select class="form-select dongSelect" name="arr" id="arr">
+									<option value="">=== 동선택 ===</option>
+										<c:if test="${!empty faArr}">
+											<c:forEach var="arr" items="${faArr}">
+												<option value="${arr }">${arr }</option>
+											</c:forEach>
+										</c:if>
+								</select>
+							</div>
+							<div class="col-md-9">
+								<span></span>
+							</div>
+						</div>
+				</div>
+			</sec:authorize>
+			
+			<!-- 비회원 시 -->
+			<sec:authorize access="isAnonymous()">
+				<div class="row">
+						<div class="row">
+							<div class="index_subtitle my-2">
+								<a href="/user/user_login.do"><span>&nbsp;로그인&nbsp;</span></a>하시면 관심지역의 정보를 확인하실 수 있습니다
+							</div>
+						</div>
+						<div class="row">
+							<div class="index_subtitle my-2">
+								&nbsp;용두동 <strong>평균</strong>은 얼마일까요?
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-3">
+								<input type="hidden" class="form-select dongSelect" name="arr" id="arr" value="용두동">
+
+							</div>
+							<div class="col-md-9">
+								<span></span>
+							</div>
+						</div>
+
+				</div>
+			</sec:authorize>
 			<div class="row">
-				<div class="index_subtitle my-2">
-					<div class="row">
-						<div class="col-md-2">
-							<a href="/user/user_login.do"><button class="btn btn-light">로그인</button></a>/
-							<a href="/user/user_register.do"><button
-									class="btn btn-light">회원가입</button></a>
+	
+				<div class="col-4">
+					<div class="d-flex justify-content-center">
+						<div class="card my-3 d-inline-block" style="width: 15rem;">
+							<div class="card-body">
+								<h5 class="card-title">원룸 평균 매물가</h5>
+								<p class="card-text border-top border-1 pt-3 pb-1 my-3">
+								월세&nbsp;<span id="roomRent" class="spanAl"></span></p>
+								<p class="card-text pt-3 pb-1 my-3">
+								보증금&nbsp;<span id="roomDeposit" class="spanAl"></span></p>
+							</div>
 						</div>
-						<div class="col-md-10 index_more">하시면 관심지역의 평균 매물과 정보를 알수있습니다~</div>
 					</div>
 				</div>
+	
+				<div class="col-4">
+					<div class="d-flex justify-content-center">
+						<div class="card my-3 d-inline-block" style="width: 15rem;">
+							<div class="card-body">
+								<h5 class="card-title">오피스텔 평균 매물가</h5>
+								<p class="card-text border-top border-1 pt-3 pb-1 my-3">
+								월세&nbsp;<span id="offRent" class="spanAl"></span></p>
+								<p class="card-text pt-3 pb-1 my-3">
+								보증금&nbsp;<span id="offDeposit" class="spanAl"></span></p>
+							</div>
+						</div>
+					</div>
+				</div>
+	
+				<div class="col-4">
+					<div class="d-flex justify-content-center">
+						<div class="card my-3 d-inline-block" style="width: 15rem;">
+							<div class="card-body">
+								<h5 class="card-title">전체 평균 매물가</h5>
+								<p class="card-text border-top border-1 pt-3 pb-1 my-3">
+								월세&nbsp;<span id="allRent" class="spanAl"></span></p>
+								<p class="card-text pt-3 pb-1 my-3">
+								보증금&nbsp;<span id="allDeposit" class="spanAl"></span></p>
+							</div>
+						</div>
+					</div>
+				</div>
+	
 			</div>
 		</div>
 	</div>
-</sec:authorize>
-
-
-<!-- 회원시 -->
-<div class="container-fluid mt-5">
-	<div class="container newitem bg-light">
-		<div class="row">
-			<div class="index_subtitle my-2">
-				${username}&nbsp;님의 관심매물의 <strong>평균</strong>은 얼마일까요?
-			</div>
-		</div>
-		<div class="row">
-
-			<div class="col-4">
-				<div class="d-flex justify-content-center">
-					<div class="card my-3 d-inline-block" style="width: 15rem;">
-						<div class="card-body">
-							<h5 class="card-title">원룸 평균 매물가</h5>
-							<p
-								class="card-text border-top border-secondary border-1 pt-3 pb-5 my-3">월세
-								500/84</p>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-4">
-				<div class="d-flex justify-content-center">
-					<div class="card my-3 d-inline-block" style="width: 15rem;">
-						<div class="card-body">
-							<h5 class="card-title">오피스텔 평균 매물가</h5>
-							<p
-								class="card-text border-top border-secondary border-1 pt-3 pb-5 my-3">월세
-								2000/124</p>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-4">
-				<div class="d-flex justify-content-center">
-					<div class="card my-3 d-inline-block" style="width: 15rem;">
-						<div class="card-body">
-							<h5 class="card-title">전체 평균 매물가</h5>
-							<p
-								class="card-text border-top border-secondary border-1 pt-3 pb-5 my-3">월세
-								500/84</p>
-						</div>
-					</div>
-				</div>
-			</div>
-
-		</div>
-	</div>
-</div>
+	</sec:authorize>
 <!-- 관심동네 끝 -->
 
 <!-- 가이드&팁 시작 -->
@@ -527,8 +570,50 @@
 
 
 <%@ include file="./include/footer.jsp"%>
+<script>
 
-
+	$(document).ready(function(){
+		
+		var csrfHeaderName = "${_csrf.headerName}";
+		var csrfTokenValue = "${_csrf.token}";
+		
+		$(document).ajaxSend(function(e, xhr, options){
+			xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+		});
+		
+		$("#arr").on("change", function(){
+			
+			var that = $(this).val()
+			
+			if(that != ""){
+				$.ajax({
+					url : '/dongCheck',
+					type : 'POST',
+					data : {'arr' : that},
+					
+					success : function(data){
+						$("#roomRent").html((data.roomRent == -1) ? '-' : data.roomRent);
+						$("#roomDeposit").html((data.roomDeposit == -1) ? '-' : data.roomDeposit);
+						$("#offRent").html((data.offRent == -1) ? '-' : data.offRent);
+						$("#offDeposit").html((data.offRent == -1) ? '-' : data.offDeposit);
+						$("#allRent").html((data.allRent == -1) ? '-' : data.allRent);
+						$("#allDeposit").html((data.allDeposit== -1) ? '-' : data.allDeposit);
+					}
+				});
+			}
+			
+		});
+	})
+	
+	
+</script>
+<sec:authorize access="isAnonymous()">
+<script>
+	$(function(){
+		$("#arr").trigger("change");
+	})
+</script>
+</sec:authorize>
 </body>
 
 </html>
