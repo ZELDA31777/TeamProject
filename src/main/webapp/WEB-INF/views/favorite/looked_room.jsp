@@ -87,15 +87,11 @@
 												<c:if test="${empty list }">
 													<label>찜한 목록이 없습니다.</label>
 												</c:if>
-
 											</ul>
 										</div>
 									</div>
 								</div>
 							</sec:authorize>
-
-
-
 						</div>
 					</div>
 				</div>

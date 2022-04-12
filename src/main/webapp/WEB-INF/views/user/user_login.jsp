@@ -13,96 +13,98 @@
 <!-- sub contents start -->
 <div class="container-fluid subcontent">
 	<div class="container" style="width: 50%">
-		<form class="needs-validation" method="post" action="/login" novalidate>
-			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+		<form class="needs-validation" method="post" action="/login"
+			novalidate>
+			<input type="hidden" name="${_csrf.parameterName}"
+				value="${_csrf.token}">
 			<div class="styled__Box-sc-1etb7tu-1 cubPeM">
 				<h1>로그인</h1>
 				<h2>원픽 서비스 이용을 위해 로그인해주세요.</h2>
 				<div class="input-with-label__InputWrap-sc-1p3gkts-0 eVAGdp">
 					<label class="bDaqny">
-						<p class="label-text">이메일</p> 
-						<input type="text" name="username" class="form-control kHDHPO" id="validationCustom01"
+						<p class="label-text">이메일</p> <input type="text" name="username"
+						class="form-control kHDHPO" id="validationCustom01"
 						placeholder="이메일 주소 입력"
-						pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-						required>
+						pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
 						<div class="valid-feedback">확인되었습니다</div>
 						<div class="invalid-feedback">이메일을 입력해주십시오.</div>
 					</label>
 				</div>
 				<div class="input-with-label__InputWrap-sc-1p3gkts-0 eVAGdp">
 					<label class="input-with-label__Label-sc-1p3gkts-1 bDaqny">
-						<p class="label-text">비밀번호</p> 
-						<input type="password" name="password"
-						placeholder="비밀번호 입력"
-						class="form-control kHDHPO"
+						<p class="label-text">비밀번호</p> <input type="password"
+						name="password" placeholder="비밀번호 입력" class="form-control kHDHPO"
 						id="validationCustom02" minlength="8" required>
-					<div class="valid-feedback">확인되었습니다</div>
-					<div class="invalid-feedback">비밀번호를 입력해주십시오.</div>
+						<div class="valid-feedback">확인되었습니다</div>
+						<div class="invalid-feedback">비밀번호를 입력해주십시오.</div>
 					</label>
 				</div>
 				<div class="styled__BetweenBox-sc-11t199e-4 dRLayg">
-					<label class="input-with-label__Label-sc-1p3gkts-1 bDaqny">
-						<label class="label-checkbox__Label-sc-7y17oo-0 dkAjDR"> <input
-							type="checkbox" name="isSaved"
-							class="label-checkbox__Checkbox-sc-7y17oo-1 PCjET">
-							<p class="label-text">아이디 저장</p>
-					</label>
+					<label class="label-checkbox__Label-sc-7y17oo-0 dkAjDR"> <input
+						type="checkbox" name="isSaved"
+						class="label-checkbox__Checkbox-sc-7y17oo-1 PCjET">
+						<p class="label-text" style="margin-bottom: 0;">아이디 저장</p>
 					</label>
 					<div>
-						<a href="user_choose.do"><p class="caption1 bold">회원가입</p></a>
-						<span></span>
-						<p class="caption1 bold">비밀번호 재설정</p>
+						<a href="user_choose.do"><p class="caption1 bold"
+								style="margin-bottom: 0;">회원가입</p></a> <span></span>
+						<p class="caption1 bold" style="margin-bottom: 0;">비밀번호 재설정</p>
 					</div>
 				</div>
 				<!-- 추가 -->
 				<button color="blue" class="button__Button-sc-153m1au-0 fiEZwu"
-					type="submit" style="margin-top: 32px;">
+					type="submit"
+					style="margin-top: 48px; margin-left: 48px; margin-right: 48px;">
 					<span> 확인 </span>
 				</button>
-				
-				<div class="container-fluid">
-				<a href="https://kauth.kakao.com/oauth/authorize?client_id=ec529ddcb0a1e3f154fc6847679fe18a&redirect_uri=http://localhost:8123/kakaoLogin&response_type=code">
-				<img src="/resources/icon/kakao_login_large_wide.png">
-				</a>
+				<div class="container">
+					<a
+						href="https://kauth.kakao.com/oauth/authorize?client_id=ec529ddcb0a1e3f154fc6847679fe18a&redirect_uri=http://localhost:8123/kakaoLogin&response_type=code">
+						<img src="/resources/icon/kakao_login_large_wide.png"
+						style="width: -webkit-fill-available; margin: 32px;">
+					</a>
 				</div>
-				
+
 			</div>
 		</form>
 	</div>
 </div>
 
-	<!-- 카카오로그인 -->
-	<c:if test="${!empty uvo}">
-		<form action="/login" method="post" id="kakaoLogin">
-			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-			<input type="hidden" value="${uvo.username}" name="username">
-			<input type="hidden" value="${kakaoPassword}" name="password">
-		</form>
-	</c:if>
-	
-	<sec:authorize access="isAuthenticated()">
-		<form action="/user/user_logout.do" method="post" id="kakaoLogout">
-			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-			<input type="hidden" value="<sec:authentication property='principal.user.username'/>" id="kakao">
-		</form>
-	</sec:authorize>
-	
-	<c:if test="${!empty uvo}">
-		<script>
-		   alert("카카오로 로그인 되었습니다");
-		   $("#kakaoLogin").submit();
-		</script>
-	</c:if>
-	
-	<sec:authorize access="isAuthenticated()">
-		<script>
-			alert("카카오 로그아웃");
-			$("#kakaoLogout").submit();
-		</script>
-	</sec:authorize>
+<!-- 카카오로그인 -->
+<c:if test="${!empty uvo}">
+	<form action="/login" method="post" id="kakaoLogin">
+		<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}"> <input type="hidden"
+			value="${uvo.username}" name="username"> <input type="hidden"
+			value="${kakaoPassword}" name="password">
+	</form>
+</c:if>
 
-	<!-- 카카오 -->
-	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<sec:authorize access="isAuthenticated()">
+	<form action="/user/user_logout.do" method="post" id="kakaoLogout">
+		<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}"> <input type="hidden"
+			value="<sec:authentication property='principal.user.username'/>"
+			id="kakao">
+	</form>
+</sec:authorize>
+
+<c:if test="${!empty uvo}">
+	<script>
+		alert("카카오로 로그인 되었습니다");
+		$("#kakaoLogin").submit();
+	</script>
+</c:if>
+
+<sec:authorize access="isAuthenticated()">
+	<script>
+		alert("카카오 로그아웃");
+		$("#kakaoLogout").submit();
+	</script>
+</sec:authorize>
+
+<!-- 카카오 -->
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 
 <script>
 	(function() {
