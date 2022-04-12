@@ -18,4 +18,6 @@ public interface ProductMapper {
 	
 	public int product_count(String username);
 	
+	public void product_modify(ProductVO pvo);
+	
 }

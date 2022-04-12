@@ -67,7 +67,7 @@
 	<!-- 스크롤 스파이 navar 시작 -->
 	<nav id="navbar-example"
 		class="navbar navbar-light bg-light px-3 fixed-top"
-		style="top: -80px; transition: all 0.2s">
+		style="top: -80px; transition: all 0.2s; margin-top: 0;">
 		<a class="navbar-brand" href="#">TOP</a>
 		<ul class="nav nav-pills">
 			<li class="nav-item"><a class="nav-link"

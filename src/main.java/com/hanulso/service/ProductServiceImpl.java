@@ -22,6 +22,11 @@ public class ProductServiceImpl implements ProductService {
 	}
 	
 	@Override
+	public void product_modify(ProductVO pvo) {
+		mapper.product_modify(pvo);
+	}
+	
+	@Override
 	public ProductVO product_view(int pno) {
 		return mapper.product_view(pno);
 	}

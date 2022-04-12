@@ -112,7 +112,7 @@
 			<!-- 스크롤 스파이 navar 시작 -->
 			<nav id="navbar-example"
 				class="navbar navbar-light bg-light px-3 fixed-top"
-				style="top: -80px; transition: all 0.2s; justify-content: center; width: -webkit-fill-available;">
+				style="top: -80px; transition: all 0.2s; justify-content: center; width: -webkit-fill-available; margin-top: 0;">
 				<a class="navbar-brand" href="#">TOP</a>
 				<ul class="nav nav-pills">
 					<li class="nav-item"><a class="nav-link"
@@ -357,7 +357,7 @@
 					</div>
 					<div class="styled__PriceWrap-cvrpi1-5 fzGgeZ">
 						<p class="eswqdM">월세 ${pvo.deposit }/${pvo.rent }</p>
-						<p class="iVhrbX">최근 7일 매물 조회 수 31회</p>
+						<p class="iVhrbX">매물 조회 수 ${pvo.readcnt }회</p>
 					</div>
 					<ul class="bIRVVc">
 						<li><div class="styled__Item-cvrpi1-9 fYSHvV left">
@@ -414,26 +414,47 @@
 					</div>
 
 					<div class="styled__BtnWrap-cvrpi1-15 brpHbd row">
-						<div class="col-md-10">
-							<form name="cor_view_read" action="/coroperation/cor_view.do">
+						<c:if test="${corchange }">
+							<div class="col-md-8">
+						</c:if>
+						<c:if test="${!corchange }">
+							<div class="col-md-10">
+						</c:if>
+						<form name="cor_view_read" action="/coroperation/cor_view.do">
+							<input type="hidden" name="${_csrf.parameterName }"
+								value="${_csrf.token }"> <input type="hidden"
+								name="username" value="${cvo.username}">
+							<button color="blue" class="fiEZwu3">
+								<span><span id="cor_change">연락처보기</span></span>
+							</button>
+						</form>
+					</div>
+					<c:if test="${corchange }">
+						<div class="col-md-4">
+							<form name="cor_view_read" action="/product/product_modify.do">
 								<input type="hidden" name="${_csrf.parameterName }"
 									value="${_csrf.token }"> <input type="hidden"
-									name="username" value="${cvo.username}">
-								<button color="blue" class="fiEZwu3">
-									<span><span>연락처보기</span></span>
+									name="username" value="${cvo.username}"> <input
+									type="hidden" name="pno" value="${pvo.pno }">
+								<button color="blue" class="modify_button">
+									<span><span>매물 수정</span></span>
 								</button>
+							</form>
 						</div>
+					</c:if>
+
+					<c:if test="${!corchange }">
 						<div class="col-md-2">
 							<a class="text-dark heart"> <img id="heart"
 								src="/resources/icon/heart.svg"
 								style="filter: invert(41%) sepia(87%) saturate(7008%) hue-rotate(327deg) brightness(91%) contrast(88%); width: 100%; object-fit: cover; vertical-align: -65%;">
 							</a>
 						</div>
-						</form>
-					</div>
+					</c:if>
 				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 </main>
 
@@ -471,7 +492,12 @@
 <!-- 스크롤 스파이 navar 관련 script 끝 -->
 <script>
     $(document).ready(function () {
-		
+    	
+    	if(${!empty corchange}){
+    		if(${corchange}){
+    		$('#cor_change').text("내 매물 페이지");
+    		}
+    	}
     	var csrfHeaderName = "${_csrf.headerName}";
         var csrfTokenValue = "${_csrf.token}";
         //스프링 시큐리티을 이용한다면 csrf 토큰을 같이 전송하도록 해야 한다

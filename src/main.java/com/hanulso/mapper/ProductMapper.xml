@@ -12,29 +12,42 @@
 		values
 		(#{pno},#{type},#{deposit},#{rent},#{manage},#{area},#{floor},#{totalfloor},#{room},#{shower},#{addr1},#{addr2},#{addr3},#{lat},#{lng},#{picture},#{thumbnail},#{contents},#{fulloption},#{username})
 	</insert>
-	
-	<select id="product_view" resultType="com.hanulso.domain.ProductVO">
+
+	<update id="product_modify">
+		update ONE_PRODUCT set
+		rent=#{rent},type=#{type},deposit=#{deposit},manage=#{manage},area=#{area},floor=#{floor},totalfloor=#{totalfloor},
+		picture=#{picture}, thumbnail=#{thumbnail},
+		room=#{room},shower=#{shower},addr1=#{addr1},addr2=#{addr2},addr3=#{addr3},lat=#{lat},lng=#{lng},contents=#{contents},fulloption=#{fulloption}
+		where pno = #{pno}
+	</update>
+
+	<select id="product_view"
+		resultType="com.hanulso.domain.ProductVO">
 		select * from one_product where
 		pno = #{pno}
 	</select>
-	
-	<select id="product_view_list" resultType="com.hanulso.domain.ProductVO">
+
+	<select id="product_view_list"
+		resultType="com.hanulso.domain.ProductVO">
 	<![CDATA[
 		select * from (select * from one_product where username=#{username} order by regdate
 		desc) where rownum < 21
 		]]>
 	</select>
-	
-	<select id="product_select" resultType="com.hanulso.domain.ProductVO">
+
+	<select id="product_select"
+		resultType="com.hanulso.domain.ProductVO">
 		select * from one_product where username=#{username}
 	</select>
-	
+
 	<update id="product_view_count">
-		update one_product set readcnt = readcnt+1 where pno = #{pno}
+		update one_product set readcnt = readcnt+1 where pno
+		= #{pno}
 	</update>
-	
+
 	<select id="product_count" resultType="int">
-		select count(*) from one_product where username=#{username}
+		select count(*) from
+		one_product where username=#{username}
 	</select>
-	
+
 </mapper>

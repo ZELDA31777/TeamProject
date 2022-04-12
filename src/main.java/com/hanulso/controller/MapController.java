@@ -54,6 +54,7 @@ public class MapController {
 			model.addAttribute("fvo", fvo);
 			model.addAttribute("username", user.getUsername());
 		}
+		
 
 		model.addAttribute("pvo", pvo);
 		model.addAttribute("picList", pvo.getPicture().split("/"));
