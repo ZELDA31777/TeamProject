@@ -26,8 +26,6 @@
 	width: 80%;
 	margin: 0px auto;
 }
-
-
 </style>
 </head>
 <body>
@@ -36,11 +34,9 @@
 
 	<div name="profile" class="styled__Wrap-sc-11kevv2-0 iEoaqL">
 		<div size="80" class="styled__Profile-sc-1rwobri-0 fYBZkD mb-4">
-			<img
-				src="/upload/${cvo.profile}"
-				alt="" draggable="false">
+			<img src="/upload/${cvo.profile}" alt="" draggable="false">
 		</div>
-<%--
+		<%--
 		<div type="messenger"
 			class="styled__AgentAdvantage-sc-11kevv2-1 aEvFS">
 			<svg width="18" height="18" viewBox="0 0 18 18" fill="none">
@@ -76,19 +72,19 @@
 				<div class="styled__Value-y3tp2k-2 dxmkoB">${cvo.cornum }</div></li>
 			<li><p class="styled__Name-y3tp2k-1 exSEvD">다방가입일</p>
 				<div class="styled__Value-y3tp2k-2 dxmkoB">
-					<fmt:formatDate pattern="yyyy-MM-dd" value="${uvo.regdate}"/>
+					<fmt:formatDate pattern="yyyy-MM-dd" value="${uvo.regdate}" />
 				</div></li>
 			<li><p class="styled__Name-y3tp2k-1 exSEvD">최근접속일</p>
 				<div class="styled__Value-y3tp2k-2 dxmkoB">
-					<fmt:formatDate pattern="yyyy-MM-dd" value="${uvo.lastdate}"/>
+					<fmt:formatDate pattern="yyyy-MM-dd" value="${uvo.lastdate}" />
 				</div></li>
 			<li><p class="styled__Name-y3tp2k-1 exSEvD">등록된 방 수</p>
-				<div class="styled__Value-y3tp2k-2 dxmkoB">${pcnt} 개의 방</div></li>
+				<div class="styled__Value-y3tp2k-2 dxmkoB">${pcnt}개의방</div></li>
 			<li style="width: 66.6%;"><p
 					class="styled__Name-y3tp2k-1 exSEvD">주소</p>
 				<div class="styled__Value-y3tp2k-2 dxmkoB" style="flex-grow: 1;">
 					${cvo.addr }
-<%--
+					<%--
 					<button class="styled__CopyBtn-y3tp2k-4 klmVxc">
 						<svg width="12" height="14" viewBox="0 0 12 14">
 							<g fill="#979797" fill-rule="nonzero">
@@ -96,120 +92,85 @@
 							<path d="M4 1v.987H3V0h9v11h-1.988v-1H11V1z"></path></g></svg>
 					</button>
  --%>
-				</div>
-			</li>
+				</div></li>
 		</ul>
 	</div>
-	
 
-	
-	
+
+
+
 	<div name="room" class="container dWqXbC" style="width: 80%">
 		<div class="styled__TabWrap-sc-1j5nm8l-1 bKTJew">
 			<p class="styled__Tab-sc-1j5nm8l-2 gYpPYH">
 				이 부동산의 방<span>&nbsp;${pcnt}</span>
 			</p>
 		</div>
-		
+
 		<!-- 이 부동산의 방 -->
 		<ul class="styled__CardWrap-sc-144mdah-1 cNzXuD">
-		<c:if test="${!empty pList }">
-		<c:forEach var="pList" items="${pList }">
-			<li><div class="styled__CardWrap-sc-1e0j1a1-0 hObDcQ">
-					<div class="styled__LikeWrap-sc-1e0j1a1-3 gSwvZY">
-						<button class="styled__LikeBtn-jmubsw-1 eBlbuF">
-							<svg xmlns="http://www.w3.org/2000/svg"
-								xmlns:xlink="http://www.w3.org/1999/xlink" width="24"
-								height="24" viewBox="0 0 24 24">
-								<defs>
-								<filter id="ut3h4tqe8a" width="137.5%" height="145.9%"
-									x="-18.7%" y="-22.1%" filterUnits="objectBoundingBox">
-								<feMorphology in="SourceAlpha" operator="dilate" radius="0.75"
-									result="shadowSpreadOuter1"></feMorphology>
-								<feOffset in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
-								<feMorphology in="SourceAlpha" radius="1" result="shadowInner"></feMorphology>
-								<feOffset in="shadowInner" result="shadowInner"></feOffset>
-								<feComposite in="shadowOffsetOuter1" in2="shadowInner"
-									operator="out" result="shadowOffsetOuter1"></feComposite>
-								<feGaussianBlur in="shadowOffsetOuter1"
-									result="shadowBlurOuter1" stdDeviation="1"></feGaussianBlur>
-								<feColorMatrix in="shadowBlurOuter1"
-									values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"></feColorMatrix></filter>
-								<path id="327ed5yu1b"
-									d="M12.945 3.518c2.096-2.028 5.423-2.028 7.518 0l.117.117c1.945 2.01 1.892 5.215-.117 7.16l-3.768 3.646-4.699 4.548-3.752-3.631-.016-.015-4.699-4.548c-2.009-1.945-2.061-5.15-.116-7.16l.116-.117c2.096-2.028 5.423-2.028 7.518 0l.949.92z"></path></defs>
-								<g fill="none" fill-rule="evenodd">
-								<g>
-								<g>
-								<g>
-								<g
-									transform="translate(-445 -1074) translate(0 1040) translate(445 30) translate(0 4)">
-								<use fill="#000" filter="url(#ut3h4tqe8a)"
-									xlink:href="#327ed5yu1b"></use>
-								<use stroke="#FFF" stroke-width="1.5" xlink:href="#327ed5yu1b"></use></g></g></g></g></g></svg>
-						</button>
-					</div>
-					<div onClick="pSend(this)" 
-						 data-pno="${pList.pno}"
-						class="styled__DetailLink-sc-1e0j1a1-1 bwyaas">
-						<div class="styled__ImgWrap-sc-14w4no0-0 hkMQhb">
-							<div class="styled__Image-ami2sx-0 gMnRzx">
-								<img
-									src="/upload/${pList.thumbnail }"
-									width="60" height="60" alt="매물 사진" draggable="false"
-									loading="lazy" style="width: 100%; height: 100%;">
-								<div class="styled__Cover-ami2sx-1 dZAvTS cover"></div>
+			<c:if test="${!empty pList }">
+				<c:forEach var="pList" items="${pList }">
+					<li><div class="styled__CardWrap-sc-1e0j1a1-0 hObDcQ">
+							<div onClick="pSend(this)" data-pno="${pList.pno}" class="bwyaas">
+								<div class="hkMQhb">
+									<div class="gMnRzx">
+										<img src="/upload/${pList.thumbnail }" width="60" height="60"
+											alt="매물 사진" draggable="false" loading="lazy"
+											style="width: 100%; height: 100%;">
+										<div class="styled__Cover-ami2sx-1 dZAvTS cover"></div>
+									</div>
+								</div>
+								<div class="bSKZAI">
+									<p class="hybbHD">
+										<c:if test="${pList.type eq 0 }">원룸</c:if>
+										<c:if test="${pList.type eq 1 }">오피스텔</c:if>
+									</p>
+									<h1 class="iJlOig">월세 : ${pList.rent } 보증금 :
+										${pList.deposit }</h1>
+									<p class="eHtuHa">${pList.floor }층,면적: ${pList.area }m²,
+										관리비 : ${pList.manage }만</p>
+									<p class="eHtuHa">${pList.contents }</p>
+									<div class="styled__TagWrap-sc-1e0j1a1-11 hRcMAS"></div>
+								</div>
 							</div>
-						</div>
-						<div class="styled__InfoWrap-sc-1e0j1a1-7 VkltZ">
-							<p class="styled__RoomType-sc-1e0j1a1-8 dENvCl">
-								<c:if test="${pList.type eq 0 }">원룸</c:if>
-								<c:if test="${pList.type eq 1 }">오피스텔</c:if>
-								</p>
-							<h1 class="styled__Price-sc-1e0j1a1-9 iJlOig">월세 : ${pList.rent } 보증금 : ${pList.deposit }</h1>
-							<p class="styled__Desc-sc-1e0j1a1-10 jFvIUQ">${pList.floor }층, 면적 : ${pList.area }m², 관리비 : ${pList.manage }만</p>
-							<p class="styled__Desc-sc-1e0j1a1-10 jFvIUQ">${pList.contents }</p>
-							<div class="styled__TagWrap-sc-1e0j1a1-11 hRcMAS"></div>
-						</div>
-					</div>
-				</div>
-			</li>
-		</c:forEach>
-		</c:if>
+						</div></li>
+				</c:forEach>
+			</c:if>
 		</ul>
-		
-		
+
+
 		<!-- 중개사 로그인 시에만 매물등록 가능 -->
 		<sec:authorize access="hasRole('MEMBER')">
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-md-10">
-					</div>
+					<div class="col-md-10"></div>
 					<div class="col-md-2">
 						<a href="/product/product_write3.do">매물등록</a>
 					</div>
 				</div>
 			</div>
 		</sec:authorize>
-		
+
 	</div>
 	<!-- sub contents end -->
-	
+
 	<!-- 다른 매물 뷰로 넘어가기 시작-->
 	<sec:authorize access="isAuthenticated()">
 		<c:set var="username">
-			<sec:authentication property="principal.user.username"/>
+			<sec:authentication property="principal.user.username" />
 		</c:set>
 	</sec:authorize>
-	
-	<form name="productForm" action="/product/product_view.do" method="post">
-		<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
-		<input type="hidden" name="username" value="${username}">
-		<input type="hidden" name="pno" value="">
+
+	<form name="productForm" action="/product/product_view.do"
+		method="post">
+		<input type="hidden" name="${_csrf.parameterName }"
+			value="${_csrf.token }"> <input type="hidden" name="username"
+			value="${username}"> <input type="hidden" name="pno" value="">
 	</form>
-	
+
 
 	<script>
-		function pSend(el){
+		function pSend(el) {
 			productForm.pno.value = el.dataset.pno;
 			productForm.submit();
 		}
