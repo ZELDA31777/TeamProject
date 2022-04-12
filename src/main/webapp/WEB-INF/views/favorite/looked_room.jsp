@@ -74,7 +74,13 @@
 																			</p>
 																			<p class="styled__Price-n321y7-2 bYNMgs">보증금/월세
 																				${list.deposit }/${list.rent }</p>
-																			<p class="styled__Desc-n321y7-3 eHtuHa">${list.floor },
+																			<p class="styled__Desc-n321y7-3 eHtuHa">
+																				<c:choose>
+																					<c:when test="${list.floor == -1}">반지층</c:when>
+																					<c:when test="${list.floor == 0 }">옥탑</c:when>
+																					<c:otherwise>${list.floor }층</c:otherwise>
+																				</c:choose>
+																				,
 																				${list.area }m², 관리비 ${list.manage }만</p>
 																			<p class="styled__Desc-n321y7-3 eHtuHa">${list.contents }</p>
 																			<div class="styled__TagWrap-n321y7-4 guJBBw"></div>
@@ -140,7 +146,13 @@
 																		</p>
 																		<p class="styled__Price-n321y7-2 bYNMgs">보증금/월세
 																			${cookieProduct.deposit }/${cookieProduct.rent }</p>
-																		<p class="styled__Desc-n321y7-3 eHtuHa">${cookieProduct.floor },
+																		<p class="styled__Desc-n321y7-3 eHtuHa">
+																			<c:choose>
+																				<c:when test="${cookieProduct.floor == -1}">반지층</c:when>
+																				<c:when test="${cookieProduct.floor == 0 }">옥탑</c:when>
+																				<c:otherwise>${cookieProduct.floor }층</c:otherwise>
+																			</c:choose>
+																			, 
 																			${cookieProduct.area }m², 관리비 ${cookieProduct.manage }만</p>
 																		<p class="styled__Desc-n321y7-3 eHtuHa">${cookieProduct.contents }</p>
 																		<div class="styled__TagWrap-n321y7-4 guJBBw"></div>

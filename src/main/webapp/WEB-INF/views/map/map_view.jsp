@@ -761,7 +761,7 @@ h4 {
 												<p class="fGfKPR">
 													`+(list[i].type==1?"오피스텔":"원룸")+`
 												</p>
-												<p class="fYtEsj">`+list[i].floor+`층,
+												<p class="fYtEsj">`+(list[i].floor==-1?"반지층":((list[i].floor==0)?"옥탑":list[i].floor+"층"))+`,
 													`+list[i].area.toFixed(2)+`m², 관리비`+list[i].manage+`만</p>
 												<p class="fYtEsj">`+list[i].contents+`</p>
 											</div>
