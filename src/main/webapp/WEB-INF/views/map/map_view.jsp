@@ -742,7 +742,7 @@ h4 {
 							<div class="card-body">
 								<div class="row m-0 gx-3">
 									<div class="col-5"
-										style="background: blue; background-clip: content-box; height: calc(200px - 32px);">
+										style="background-clip: content-box; height: calc(200px - 32px);">
 										<!-- 썸네일 이미지 출력 -->
 										<img class="product_view"
 											src="/upload/`+list[i].thumbnail+`"

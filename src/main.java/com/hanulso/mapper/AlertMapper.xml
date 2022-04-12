@@ -5,5 +5,26 @@
 	<select id="notice_list" resultType="com.hanulso.domain.KnowledgeVO">
 		select * from one_admin_notice order by notice_no desc
 	</select>
+	
+	<resultMap id="alertResultMap" type="com.hanulso.domain.AlertVO">
+		<id property="idx" column="idx" />
+		
+		<result property="idx" column="idx" />
+		<result property="regdate" column="aregdate" />
+		<result property="pno" column="pno" />
+		<association property="product" javaType="com.hanulso.domain.ProductVO" autoMapping="true" />
+	</resultMap>
+	
+	<select id="alert_list" resultMap="alertResultMap">
+	<![CDATA[
+		select * from 
+			(select a.idx, a.regdate aregdate, p.* 
+			from one_alert a inner join one_product p
+			on a.pno = p.pno
+			where a.username = #{loginuser}
+			order by a.idx desc)
+		where rownum <= #{alertCnt}
+	]]>
+	</select>
 
 </mapper>

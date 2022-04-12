@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.hanulso.domain.KnowledgeVO;
+import com.hanulso.domain.*;
 import com.hanulso.mapper.AlertMapper;
 
 import lombok.Setter;
@@ -21,4 +21,8 @@ public class AlertServiceImpl implements AlertService{
 		return mapper.notice_list();
 	}
 	
+	@Override
+	public List<AlertVO> alert_list(String loginuser, int alertCnt) {
+		return mapper.alert_list(loginuser, alertCnt);
+	}
 }

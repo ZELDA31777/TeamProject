@@ -45,7 +45,6 @@ public class MapController {
 		// principal에 SecurityContextHolder의 값을 getContext로 불러오고, getAuthentication 현재 로그인 상태(비로그인 상태도 포함)
 		// User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		// 위와 같은 형식도 가능하다고 합니다.
-		log.info(principal);
 
 		if (!principal.toString().equals("anonymousUser")) {
 			CustomUserDetails user = (CustomUserDetails) principal;
