@@ -37,4 +37,8 @@ public interface UserService {
 	public String getAccessToken(String authorize_code);
 	public HashMap<String, Object> getUserInfo(String access_Token);
 	
+	//탈퇴
+	public void user_delete_user(String username);
+	public void user_delete_favorite(String username);
+	
 }
