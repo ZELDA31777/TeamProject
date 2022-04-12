@@ -122,72 +122,89 @@
 <!-- Carousel 끝 -->
 
 <!-- 로그인시 정보 가져오기 -->
-	<sec:authorize access="isAuthenticated()">
-		<c:set var="username">
-			<sec:authentication property="principal.user.username"/>
-		</c:set>
-	</sec:authorize>
+<sec:authorize access="isAuthenticated()">
+	<c:set var="username">
+		<sec:authentication property="principal.user.username" />
+	</c:set>
+</sec:authorize>
 
 <!-- 인기매물 시작 (수정) -->
 <div class="container-fluid">
 	<div class="container newitem">
-		<h2>
-			<strong>원픽</strong>의 인기매물
-		</h2>
-
+		<div class="index_style">
+			<h2>
+				<strong>원픽</strong>의 인기매물
+			</h2>
+		</div>
 		<div class="row">
 			<c:if test="${!empty top}">
 				<c:forEach var="top" items="${top}">
 					<div class="col-md-3">
-						<div class="row">
-							<form action="/product/product_view.do" method="post">
-								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-								<input type="hidden" name="pno" value="${top.pno }">
-								<div class="thumbnail">
-									<input class="product_list_image" type="image"
-										src="/upload/${top.thumbnail}" onClick="submit()">
+						<li class="gAcyGl" onClick="pSend(this)" data-pno="${top.pno}">
+							<!-- onClick의 경우에는 li에 Function을 걸어주어야 인식됩니다. -->
+							<div class="hObDcQ">
+								<div class="gMnRzx">
+									<div class="thumbnail">
+										<img class="product_list_image" src="/upload/${top.thumbnail}"
+											width="60" height="60" alt="" draggable="false"
+											loading="lazy" style="width: 100%; height: 100%;">
+									</div>
 								</div>
-							</form>
-						</div>
-						<div class="row">
-							<h5>
-								<c:if test="${top.type eq '0'}">원룸</c:if>
-								<c:if test="${top.type eq '1'}">오피스텔</c:if>
-							</h5>
-							<h3>
-								<strong>월세 ${top.deposit}/${top.pno}</strong>
-							</h3>
-							<h5>${top.floor}층
-								/ 방 ${top.room}개 / 욕실 ${top.shower}개 <br> 위치 ${top.addr1}
-								${top.addr2}
-							</h5>
-						</div>
-
+								<div class="bSKZAI">
+									<p class="hybbHD">
+										<c:if test="${top.type eq 0 }">원룸</c:if>
+										<c:if test="${top.type eq 1 }">오피스텔</c:if>
+									</p>
+									<p class="styled__Price-n321y7-2 bYNMgs">보증금/월세
+										${top.deposit }/${top.rent }</p>
+									<p class="styled__Desc-n321y7-3 eHtuHa">${top.floor }층,
+										${top.area }m², 관리비 ${top.manage }만</p>
+									<p class="styled__Desc-n321y7-3 eHtuHa">방 ${top.room}개 / 욕실
+										${top.shower}개, 위치 ${top.addr1} ${top.addr2}</p>
+									<div class="styled__TagWrap-n321y7-4 guJBBw"></div>
+								</div>
+							</div>
+						</li>
 					</div>
 				</c:forEach>
 			</c:if>
 		</div>
-
 	</div>
 </div>
+<!-- 인기 매물 페이지 이동 Function -->
+<form name="productForm" action="/product/product_view.do" method="post">
+	<input type="hidden" name="${_csrf.parameterName }"
+		value="${_csrf.token }"> <input type="hidden" name="username"
+		value="${username}"> <input type="hidden" name="pno" value="">
+</form>
+<script>
+	function pSend(el) {
+		productForm.pno.value = el.dataset.pno;
+		productForm.submit();
+	}
+</script>
 <!-- 인기매물 끝 -->
-
 
 <!-- 관심동네 시작 -->
 
 <!-- 비회원시 -->
 <sec:authorize access="isAnonymous()">
-<div class="container-fluid mt-5">
-	<div class="container newitem bg-light">
-		<div class="row">
-			<div class="index_subtitle my-2">
-				<a href="/user/user_login.do"><button class="btn btn-light">로그인</button></a>/
-				<a href="/user/user_register.do"><button class="btn btn-light">회원가입</button></a>
-				하시면 관심지역의 평균 매물과 정보를 알수있습니다~
+	<div class="container-fluid mt-5">
+		<div class="container newitem bg-light">
+			<div class="row">
+				<div class="index_subtitle my-2">
+					<div class="row">
+						<div class="col-md-2">
+							<a href="/user/user_login.do"><button class="btn btn-light">로그인</button></a>/
+							<a href="/user/user_register.do"><button
+									class="btn btn-light">회원가입</button></a>
+						</div>
+						<div class="col-md-10 index_more">하시면 관심지역의 평균 매물과 정보를 알수있습니다~</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
 </sec:authorize>
 
 

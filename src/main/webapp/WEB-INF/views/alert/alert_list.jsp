@@ -132,8 +132,7 @@
 									<a href="/notice/notice_view.do?notice_no=${list.notice_no}"
 										class="list-group-item list-group-item-action py-3 lh-tight"
 										aria-current="true">
-										<div
-											class="d-flex w-100 align-items-center justify-content-between">
+										<div class="d-flex w-100 align-items-center justify-content-between">
 											<div class="col-md-2">
 												<strong class="mb-1">${num}</strong>
 											</div>
