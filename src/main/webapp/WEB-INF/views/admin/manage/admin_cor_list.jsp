@@ -5,6 +5,27 @@
 th {
 width: 30%
 }
+.boxxx {
+    width: 100px;
+    height: 100px; 
+    border-radius: 70%;
+    overflow: hidden;
+    margin-bottom:10px;
+	
+}
+.boxxxm{
+    width: 200px;
+    height: 200px; 
+    border-radius: 70%;
+    overflow: hidden;
+    margin-bottom:20px;
+	
+}
+.imst {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 </style>
 <!-- sub contents start -->
 <div class="container-fluid">
@@ -36,14 +57,42 @@ width: 30%
 <c:forEach var="list" items="${list}">
 
 <div class="row" style="border-bottom:1px solid gray; margin-bottom:10px;">
-  <div class="col-md-2">
-    <img src="/upload/${list.profile}" style="width:50%;  border-radius:70%; overflow: hidden;" data-bs-toggle="modal" data-bs-target="#cor_modal">
+  <div class="col-md-2 ">
+  <div class="boxxx">
+    <img src="/upload/${list.profile}" class="imst" data-bs-toggle="modal" data-bs-target="#cor_modal${list.tel}">
+  </div>
+  </div>
+  <div class="col-md-2" style="text-align: left; margin:auto;">
+  <a href="/coroperation/cor_view.do?username=${list.username}"><small>${list.corname}</small></a>
+  <!-- 클릭시 중개사 뷰 페이지 -->
+  </div>
+  
+  <div class="col-md-5" style="text-align: left; margin:auto;" >
+  <small>${list.addr}</small>
+  </div>
+  
+  <div class="col-md-2" style="text-align: left; margin:auto;">
+  <small>${list.tel}</small>
+  </div>
+  
+  <div class="col-md-1" style="margin:auto;">
+    <button class="btn btn-primary" style="width:120%">회원 삭제</button>
+  </div>
+				
+</div>
+</c:forEach>
+</c:if>
+
 <!-- Modal -->
-<div class="modal fade" id="cor_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<c:if test="${!empty list}">
+<c:forEach var="list" items="${list}">
+<div class="modal fade" id="cor_modal${list.tel}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body" align="center">
-        <img src="/upload/${list.profile}" style="width:35%;  border-radius:70%; overflow: hidden;">
+      	<div class="boxxxm">
+        <img src="/upload/${list.profile}" class="imst">
+        </div>
       	<table class="table table-striped">
       	  <tr>
     		<th>대표명</th>
@@ -74,26 +123,6 @@ width: 30%
       </div>
     </div>
   </div>
-</div>
-  
-  </div>
-  <div class="col-md-2" style="text-align: left; margin:auto;">
-  <a href="#"><small>${list.corname}</small></a>
-  <!-- 클릭시 중개사 뷰 페이지 -->
-  </div>
-  
-  <div class="col-md-5" style="text-align: left; margin:auto;" >
-  <small>${list.addr}</small>
-  </div>
-  
-  <div class="col-md-2" style="text-align: left; margin:auto;">
-  <small>${list.tel}</small>
-  </div>
-  
-  <div class="col-md-1" style="margin:auto;">
-    <button class="btn btn-primary" style="width:120%">회원 삭제</button>
-  </div>
-				
 </div>
 </c:forEach>
 </c:if>
