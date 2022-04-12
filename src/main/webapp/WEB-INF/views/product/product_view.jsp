@@ -346,7 +346,7 @@
 					</div>
 					<div class="styled__PriceWrap-cvrpi1-5 fzGgeZ">
 						<p class="eswqdM">월세 ${pvo.deposit }/${pvo.rent }</p>
-						<p class="iVhrbX">최근 7일 매물 조회 수 31회</p>
+						<p class="iVhrbX">매물 조회 수 ${pvo.readcnt }회</p>
 					</div>
 					<ul class="bIRVVc">
 						<li><div class="styled__Item-cvrpi1-9 fYSHvV left">
