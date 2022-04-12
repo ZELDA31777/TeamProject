@@ -183,7 +183,14 @@
 							style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid rgb(245, 245, 245);">
 							<div class="iehkos col-md-3">해당층/건물층</div>
 							<div class="gEjpOz col-md-9">
-								<p>${pvo.floor }층/${pvo.totalfloor }층</p>
+								<p>
+									<c:choose>
+										<c:when test="${pvo.floor == -1}">반지층</c:when>
+										<c:when test="${pvo.floor == 0 }">옥탑</c:when>
+										<c:otherwise>${pvo.floor }층</c:otherwise>
+									</c:choose>
+									
+									/${pvo.totalfloor }층</p>
 							</div>
 						</div>
 					</li>

@@ -74,7 +74,13 @@
 																			</p>
 																			<p class="styled__Price-n321y7-2 bYNMgs">보증금/월세
 																				${list.deposit }/${list.rent }</p>
-																			<p class="styled__Desc-n321y7-3 eHtuHa">${list.floor },
+																			<p class="styled__Desc-n321y7-3 eHtuHa">
+																				<c:choose>
+																					<c:when test="${list.floor == -1}">반지층</c:when>
+																					<c:when test="${list.floor == 0 }">옥탑</c:when>
+																					<c:otherwise>${list.floor }층</c:otherwise>
+																				</c:choose>
+																				,
 																				${list.area }m², 관리비 ${list.manage }만</p>
 																			<p class="styled__Desc-n321y7-3 eHtuHa">${list.contents }</p>
 																			<div class="styled__TagWrap-n321y7-4 guJBBw"></div>
@@ -87,31 +93,91 @@
 												<c:if test="${empty list }">
 													<label>찜한 목록이 없습니다.</label>
 												</c:if>
+
 											</ul>
 										</div>
 									</div>
 								</div>
 							</sec:authorize>
+
+
+
 						</div>
 					</div>
 				</div>
 			</div>
+		
 
 
+
+<!-- 최근에 본 목록 시작 -->
 			<div class="tab-pane fade" id="profile" role="tabpanel"
 				aria-labelledby="profile-tab">
 				<div
 					class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-				</div>
-				<div class="col p-4 d-flex flex-column position-static">
-					<div class="container">
-
-						<lable> 타노시</lable>
+				
+					<div class="col p-4 d-flex flex-column position-static">
+						<div class="container">
+	
+							<div class="fCMewi">
+								<div class="iOHiXt" style="list-style: none;">
+									<div class="jcFemG">
+										<ul class="kKQMSn">
+											<c:if test="${!empty clist }">
+												<div class="row">
+													<c:forEach var="cookieProduct" items="${clist }">
+														<div class="col-md-3" style="padding-bottom: 5%;">
+															<li class="gAcyGl"><div class="hObDcQ">
+																	<div class="hkMQhb">
+																		<div class="gMnRzx" onClick="pSend(this)"
+																			data-pno="${cookieProduct.pno}">
+																			<img src="/upload/${cookieProduct.thumbnail }"
+																				onClick="submit()" width="60" height="60" alt=""
+																				draggable="false" loading="lazy"
+																				style="width: 100%; height: 100%;">
+																			<div class="styled__Cover-ami2sx-1 dZAvTS cover"></div>
+																		</div>
+																	</div>
+	
+																	<div class="bSKZAI">
+																		<p class="hybbHD">
+																			<c:if test="${cookieProduct.type eq 0 }">원룸</c:if>
+																			<c:if test="${cookieProduct.type eq 1 }">오피스텔</c:if>
+																		</p>
+																		<p class="styled__Price-n321y7-2 bYNMgs">보증금/월세
+																			${cookieProduct.deposit }/${cookieProduct.rent }</p>
+																		<p class="styled__Desc-n321y7-3 eHtuHa">
+																			<c:choose>
+																				<c:when test="${cookieProduct.floor == -1}">반지층</c:when>
+																				<c:when test="${cookieProduct.floor == 0 }">옥탑</c:when>
+																				<c:otherwise>${cookieProduct.floor }층</c:otherwise>
+																			</c:choose>
+																			, 
+																			${cookieProduct.area }m², 관리비 ${cookieProduct.manage }만</p>
+																		<p class="styled__Desc-n321y7-3 eHtuHa">${cookieProduct.contents }</p>
+																		<div class="styled__TagWrap-n321y7-4 guJBBw"></div>
+																	</div>
+																</div></li>
+														</div>
+													</c:forEach>
+												</div>
+											</c:if>
+											<c:if test="${empty clist }">
+												<p>최근에 본 목록이 없습니다.</p>
+											</c:if>
+	
+										</ul>
+									</div>
+								</div>
+						</div>
 					</div>
+	
 				</div>
-
 			</div>
 		</div>
+	
+<!-- 최근에 본 목록 끝 -->
+	</div>
 	</sec:authorize>
 </div>
 
