@@ -121,7 +121,7 @@ public class UserController {
 	}
 	
 	@PostMapping("/user_register_cor_pro.do")
-	public String user_register_cor_pro(UserVO uvo, CorVO cvo, MultipartFile pimg ,RedirectAttributes rttr) {
+	public String user_register_cor_pro(UserVO uvo, CorVO cvo, MultipartFile pimg , Model model) {
 		String inputPass = pwencoder.encode(uvo.getPassword());
 		uvo.setPassword(inputPass);
 		
@@ -154,6 +154,7 @@ public class UserController {
 		
 		service.corRegister(uvo, cvo);
 		mailCheck(uvo);
+		model.addAttribute("username", uvo.getUsername());
 		// 회원가입과 동시에 active 위한 메일 발송
 		return "/user/mailCheck_Request";
 	}
@@ -227,6 +228,8 @@ public class UserController {
 			return "/user/user_modify_check";
 	}
 	
+	
+	// 중개사 수정
 	@PostMapping("/user_modify_cor_pro.do")
 	public String user_modify_cor_pro(UserVO uvo, CorVO cvo, MultipartFile pimg, Model model) {
 		String inputPass = pwencoder.encode(uvo.getPassword());
@@ -243,6 +246,15 @@ public class UserController {
 		
 		try {
 			if (!pimg.isEmpty()) { // 업로드 된 파일이 있을때에만
+				
+				// 이전에 저장한 이미지 파일 삭제
+				File preProfile = new File(uploadFolder, cvo.getProfile());
+				
+				if (preProfile.exists()) {
+					preProfile.delete();
+					log.info(preProfile.getPath()+" 삭제 완료");
+				}
+				
 				String uploadFileName = UUID.randomUUID().toString() /* 중복 처리 */
 						+"_"+pimg.getOriginalFilename().substring(pimg.getOriginalFilename().lastIndexOf("\\")+1); // 모든 경로까지 저장되는 ie 브라우저용 처리
 				

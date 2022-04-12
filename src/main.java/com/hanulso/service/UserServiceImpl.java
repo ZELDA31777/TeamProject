@@ -62,6 +62,7 @@ public class UserServiceImpl implements UserService {
 		mapper.kakao_user_insert(uvo);
 	}
 	
+	// 중개사 회원 가입
 	@Override
 	public void corRegister(UserVO uvo, CorVO cvo) {
 		mapper.cor_insert_1st(uvo);
