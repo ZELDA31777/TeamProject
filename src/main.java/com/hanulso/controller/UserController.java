@@ -379,6 +379,8 @@ public class UserController {
 	
 	@PostMapping("/passwordModify_pro.do")
 	public String passwordModify_pro(UserVO uvo) {
+		String inputPass = pwencoder.encode(uvo.getPassword());
+		uvo.setPassword(inputPass);
 		service.passwordModify(uvo);
 		return "/user/password_mailCheck_complete";
 	}
