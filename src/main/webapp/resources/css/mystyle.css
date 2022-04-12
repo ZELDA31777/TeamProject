@@ -118,9 +118,6 @@ a {
 	margin-bottom: 0;
 }
 
-
-
-
 .cubPeM {
 	display: flex;
 	flex-direction: column;
@@ -603,8 +600,9 @@ body p.bold {
 .iJlOig {
 	margin-bottom: 4px;
 	color: rgb(34, 34, 34);
-	font-size: 20px;
+	font-size: 18px;
 	line-height: 29px;
+	font-weight: 700;
 }
 
 .jFvIUQ {
