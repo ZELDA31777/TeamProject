@@ -9,6 +9,10 @@
 		update one_user set active='active' , grade = 'ROLE_USER' where username = #{username} and password = #{password}
 	</update>
 	
+	<update id="mailCheckUpCor">
+		update one_user set active='active' , grade = 'ROLE_MEMBER' where username = #{username} and password = #{password}
+	</update>
+	
 	<select id="user_check" resultType="int">
 		select count(*) from one_user where username=#{username}
 	</select>
@@ -29,6 +33,10 @@
 		where username=#{username}
 	</update>
 	
+	<update id="passwordModify">
+		update one_user set password=#{password} where username = #{username}
+	</update>
+	
 	<insert id="kakao_user_insert">
 		insert into one_user (username, password, nickname, grade, favorite, active, kCheck)
 		values(#{username},#{password},#{nickname},'ROLE_USER',#{favorite},#{active},#{kCheck})
@@ -42,7 +50,7 @@
 	
 	<insert id="cor_insert_1st">
 		insert into one_user (username, password, nickname, grade, favorite, active)
-		values(#{username},#{password},#{nickname},'ROLE_MEMBER',#{favorite},#{active})
+		values(#{username},#{password},#{nickname},'ROLE_NON',#{favorite},#{active})
 	</insert>
 	
 	<insert id="cor_insert_2nd">
@@ -87,8 +95,6 @@
 		where u.username=#{username}
 	</select>
  -->
-    
-   
 
    
 </mapper>

@@ -9,6 +9,8 @@ public interface UserMapper {
 	
 	public void mailCheckUp(@Param("username") String username, @Param("password") String password);
 	
+	public void mailCheckUpCor(@Param("username") String username, @Param("password") String password);
+	
 	public int user_check(String username);
 	
 	public void user_insert(UserVO uvo);
@@ -16,6 +18,8 @@ public interface UserMapper {
 	public void user_update(UserVO uvo);
 	
 	public void user_cor_update(CorVO cvo);
+	
+	public void passwordModify(UserVO uvo);
 	
 	// 카카오 유저 회원가입
 	public void kakao_user_insert(UserVO uvo);

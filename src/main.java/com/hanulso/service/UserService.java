@@ -11,11 +11,15 @@ public interface UserService {
 	
 	public void mailCheckUp(String username, String password);
 	
+	public void mailCheckUpCor(String username, String password);
+	
 	public void userRegister(UserVO uvo);
 	
 	public void userModify(UserVO uvo);
 	
 	public void userCorModify(CorVO cvo);
+	
+	public void passwordModify(UserVO uvo);
 	
 	
 	// 카카오 유저 회원가입
@@ -28,9 +32,7 @@ public interface UserService {
 	public UserVO user_select(String username);
 	
 	public CorVO member_select(String username);
-	
-	
-	
+
 	// 카카오 로그인 관련
 	public String getAccessToken(String authorize_code);
 	public HashMap<String, Object> getUserInfo(String access_Token);
