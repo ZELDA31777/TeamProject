@@ -1,11 +1,8 @@
 package com.hanulso.controller;
 
-import java.util.List;
+import java.util.*;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -18,10 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.hanulso.domain.FavoriteVO;
-import com.hanulso.domain.ProductVO;
+import com.hanulso.domain.*;
 import com.hanulso.security.CustomUserDetails;
-import com.hanulso.service.FavoriteService;
+import com.hanulso.service.*;
 
 import lombok.extern.log4j.Log4j;
 
@@ -32,11 +28,25 @@ public class FavoriteCotroller {
 
 	@Autowired
 	private FavoriteService service;
+	
+	@Autowired
+	private ProductService productService;
 
 	@GetMapping("/looked_room.do")
-	public void looked_room(@RequestParam("username") String username, Model model) {
+	public void looked_room(@RequestParam("username") String username, HttpServletRequest request, Model model) {
 		List<ProductVO> list = service.favorite_list(username);
 		model.addAttribute("list", list);
+		
+		// 쿠기에 저장된 매물 정보를 담을 리스트
+		List <ProductVO> clist = new ArrayList<ProductVO>();
+		Cookie[] cookies = request.getCookies();
+		for (Cookie c:cookies) {
+			if (c.getName().startsWith("OnePickRecentViewPno-")) {
+				int pno = Integer.parseInt(c.getValue());
+				clist.add(productService.product_view(pno));
+			}
+		}
+		model.addAttribute("clist", clist);
 	}
 
 	@GetMapping("/looked_room_non.do")

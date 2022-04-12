@@ -48,37 +48,55 @@ public class ProductController {
 		}
 		CorVO cvo = userSerivce.member_select(pvo.getUsername());
 		
-		//쿠키생성
+		
+		/* ##### 조회수 처리 및 최근에 본 목록 처리 시작 ##### */
+		
+		//컴퓨터에 저장되어있는 쿠키 목록을 받아옴
 		Cookie[] cookies = request.getCookies();
 		//비교하기 위한 새로운 쿠키
 		Cookie viewCookie = null;
+		
+		// 최근 본 목록의 쿠키가 없는지 확인, 없다면 true
+		boolean noRecentView = true;
 		
 		//쿠키가 있을경우
 		if (cookies != null && cookies.length > 0) {
 			for(int i = 0; i < cookies.length; i++) {
 				//Cookie의 name이 cookie + pno와 일치하는 쿠키를 viewCookie에 넣어줌
 				if(cookies[i].getName().equals("cookie"+pno)) {
-					log.info("쿠키 있음");
 					viewCookie = cookies[i];
+				}
+				
+				if(cookies[i].getName().equals("OnePickRecentViewPno-"+pno)) {
+					noRecentView = false; // 최근 본 목록의 쿠기가 존재하므로 false로
 				}
 			}
 		}
 		
 		if(pvo != null) {
-				log.info("페이지 넘어감");
-				if (viewCookie == null) {
+			if (viewCookie == null) {
 				//만일 viewCookie가 null일 경우 쿠키를 생성해서 조회수 증가처리
 				productservice.product_view_count(pno);
-				log.info("쿠키 없음");
 				//쿠키 생성(이름, 값)
 				Cookie newCookie = new Cookie("cookie"+pno, "|" + pno + "|");
-
 				
-				//쿠키 추가
+				//조회수 쿠키 추가 (1일)
 				newCookie.setMaxAge(60 * 60 * 24);
 				response.addCookie(newCookie);
-				}
+			}
+			
+			// 최근 본 목록의 쿠기 생성
+			if (noRecentView) {
+				Cookie newCookie = new Cookie("OnePickRecentViewPno-"+pno, ""+pno);
+				newCookie.setMaxAge(60*60*24*7); // 7일
+				newCookie.setPath("/"); // 해당 서버에서 어느 경로에서 보이게 할것인지 - / 로 설정하여 모든 곳에서 볼 수 있도록
+				
+				response.addCookie(newCookie);
+			}
 		}
+		
+		/* ##### 조회수 처리 및 최근에 본 목록 처리 끝 ##### */
+		
 		
 		model.addAttribute("pvo", pvo);
 		model.addAttribute("cvo", cvo);
