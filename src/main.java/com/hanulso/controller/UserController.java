@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.UUID;
 
 import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -385,6 +387,20 @@ public class UserController {
 		return "/user/password_mailCheck_complete";
 	}
 	
+	@PostMapping("/user_delete.do")
+	public void userDelete(String username, HttpServletResponse response) {
+		service.user_delete_user(username);
+		service.user_delete_favorite(username);
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		try {
+			response.getWriter().println("<script>alert('탈퇴 완료');location.href='/';</script>");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+
 	
 	
 	
