@@ -9,8 +9,8 @@
 	<input type="hidden" name="username" value=${username }>
 	<input type="hidden" name="password" value=${password }>
 	<div class="container">
-		<h1>메일 확인 완료</h1>
-		<p>인증을 완료 했습니다.</p>
+		<h1>비밀번호 변경 완료</h1>
+		<p>비밀번호를 변경 하였습니다.</p>
 		<p>지금부터 원픽 서비스들을 이용하실 수 있습니다.</p>
 		<a href="/">홈으로</a>
 	</div>

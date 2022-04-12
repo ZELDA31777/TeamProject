@@ -86,10 +86,43 @@ public class UserController {
 		}
 	}
 	
+	// active 위한 메일 발송(중개사)
+	public void mailCheckCor(UserVO uvo) {
+		System.out.println("mailCheck_pro.do 실행 확인");
+		System.out.println(uvo);
+		/* 이메일 보내기 */
+		String setFrom = "onepick.jsl51@gmail.com";
+		String toMail = uvo.getUsername();
+		System.out.println(uvo.getUsername());
+		String title = "회원가입 인증 이메일 입니다.";
+		String contents = "<h1>[이메일 인증]</h1><br><p>아래 링크를 클릭하시면 이메일 인증이 완료됩니다.</p>"
+                + "<a href='http://localhost:8123/user/mailCheck_done_cor.do?username="+uvo.getUsername()+"&active_key="+uvo.getPassword()+"'>이메일 인증 확인</a>";
+		
+		try {
+			MimeMessage message = mailSender.createMimeMessage();
+			MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
+			helper.setFrom(setFrom);
+			helper.setTo(toMail);
+			helper.setSubject(title);
+			helper.setText(contents, true);
+			mailSender.send(message);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	// 이메일 인증이 완료 된 회원이 active 가능
 	@GetMapping("/mailCheck_done.do")
 	public void mailCheckUp(@RequestParam("username") String username, @RequestParam("active_key") String password) {
 		service.mailCheckUp(username, password);
+		System.out.println("mailCheckUp.do 실행 확인");
+	}
+	
+	// 이메일 인증이 완료 된 중개사 회원이 active 가능
+	@GetMapping("/mailCheck_done_cor.do")
+	public void mailCheckUpCor(@RequestParam("username") String username, @RequestParam("active_key") String password) {
+		service.mailCheckUpCor(username, password);
 		System.out.println("mailCheckUp.do 실행 확인");
 	}
 	
@@ -151,9 +184,8 @@ public class UserController {
 		}
 		
 		/* 파일업로드 끝 */
-		
 		service.corRegister(uvo, cvo);
-		mailCheck(uvo);
+		mailCheckCor(uvo);
 		model.addAttribute("username", uvo.getUsername());
 		// 회원가입과 동시에 active 위한 메일 발송
 		return "/user/mailCheck_Request";
@@ -290,5 +322,68 @@ public class UserController {
 		model.addAttribute("username", uvo.getUsername());
 		return "/user/user_modify_check";
 	}
+	
+	
+	
+	
+	//비밀번호 재설정
+	@GetMapping("/passwordReset.do")
+	public void paswordReset() {
+		
+	}
+	
+	// 비밀번호 재설정 위한 이메일 인증
+	public void passwordMailCheck(UserVO uvo) {
+		/* 이메일 보내기 */
+		String setFrom = "onepick.jsl51@gmail.com";
+		String toMail = uvo.getUsername();
+		System.out.println(uvo.getUsername());
+		String title = "비밀번호 재설정 인증 이메일입니다.";
+		String contents = "<h1>[이메일 인증]</h1><br><p>아래 링크를 클릭하시면 이메일 인증이 완료됩니다.</p>"
+                + "<a href='http://localhost:8123/user/passwordReset_mailCheck.do?username="+uvo.getUsername()+"&active_key="+uvo.getPassword()+"'>이메일 인증 확인</a>";
+		
+		try {
+			MimeMessage message = mailSender.createMimeMessage();
+			MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
+			helper.setFrom(setFrom);
+			helper.setTo(toMail);
+			helper.setSubject(title);
+			helper.setText(contents, true);
+			mailSender.send(message);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@GetMapping("/passwordReset_mailCheck.do")
+	public String passwordReset_mailCheck(String username, String active_key, Model model) {
+		UserVO uvo = service.user_select(username);
+		if(uvo.getPassword().equals(active_key)) {
+			model.addAttribute("username", username);
+			return "/user/passwordReset_mailCheck_done";
+		}
+		return "/";
+	}
+	
+	@PostMapping("/passwordReset_pro.do")
+	public String paswordReset_pro(String username, Model model) {
+		UserVO uvo = service.user_select(username);
+		if(uvo != null) {
+			passwordMailCheck(uvo);
+			model.addAttribute("username",username);
+			return "/user/password_mailCheck_Request";
+		}
+		return "/user/passwordReset_error";
+	}
+	
+	@PostMapping("/passwordModify_pro.do")
+	public String passwordModify_pro(UserVO uvo) {
+		service.passwordModify(uvo);
+		return "/user/password_mailCheck_complete";
+	}
+	
+	
+	
 	
 }

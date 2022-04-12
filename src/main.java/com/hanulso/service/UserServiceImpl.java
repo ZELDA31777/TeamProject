@@ -39,6 +39,11 @@ public class UserServiceImpl implements UserService {
 	public void mailCheckUp(String username, String password) {
 		mapper.mailCheckUp(username, password);
 	}
+	
+	@Override
+	public void mailCheckUpCor(String username, String password) {
+		mapper.mailCheckUpCor(username, password);
+	}
 
 	// 일반 유저 회원가입
 	@Override
@@ -54,6 +59,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void userCorModify(CorVO cvo) {
 		mapper.user_cor_update(cvo);
+	}
+	
+	@Override
+	public void passwordModify(UserVO uvo) {
+		mapper.passwordModify(uvo);
 	}
 	
 	// 카카오 유저 회원가입
