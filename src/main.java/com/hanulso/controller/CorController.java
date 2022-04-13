@@ -22,7 +22,7 @@ public class CorController {
 	private ProductService productService;
 
 	// username = 부동산 이름
-	@GetMapping("/coroperation/cor_view.do")
+	@GetMapping("/cor_view.do")
 	public void cor_view(String username, Model model) {
 		// 이 부동산의 매물 수
 		int pcnt = product_count(username);

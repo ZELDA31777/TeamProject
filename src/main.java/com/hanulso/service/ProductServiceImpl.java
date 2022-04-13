@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.hanulso.domain.DongCheckVO;
 import com.hanulso.domain.ProductVO;
 import com.hanulso.mapper.ProductMapper;
+import com.hanulso.mapper.UserMapper;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
@@ -19,6 +20,9 @@ public class ProductServiceImpl implements ProductService {
 	
 	@Setter(onMethod_ = @Autowired)
 	private ProductMapper mapper;
+	
+	@Setter(onMethod_ = @Autowired)
+	private UserMapper usermapper;
 	
 	@Override
 	public void product_insert(ProductVO pvo) {
@@ -89,6 +93,12 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public double all_deposit_cal(String addr2) {
 		return mapper.all_deposit_cal(addr2);
+	}
+	
+	@Override
+	public void product_delete(ProductVO pvo) {
+		usermapper.cor_delete_favorit(pvo);
+		mapper.product_delete(pvo);
 	}
 	
 }

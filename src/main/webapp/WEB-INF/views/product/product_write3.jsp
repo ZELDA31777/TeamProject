@@ -36,10 +36,6 @@
 		</div>
 
 		<div class="col-md-6 align-self-center" style="position: relative;">
-			<div class="gSwvZYY">
-				<button type="button" class="btn btn-secondary eBlbuFF">사진
-					모두 보기</button>
-			</div>
 			<div class="row mb-2">
 				<div class="col-md-6 py-2 px-2">
 					<div class="img_wrap">
@@ -441,8 +437,8 @@
 							<p>우리공인중개사사무소</p>
 						</div>
 					</div>
-					<div class="styled__BtnWrap-cvrpi1-15 brpHbd">
-						<button type="button" color="blue" class="fiEZwu" onClick="javascript:write_()">
+					<div class="brpHbd">
+						<button type="button" color="blue" class="fiEZwu3" onClick="javascript:write_()">
 							<span><span>매물 등록</span></span>
 						</button>
 						<div class="styled__FavoriteBtn-cvrpi1-16 ceYkeN"></div>
