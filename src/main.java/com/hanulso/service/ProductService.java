@@ -29,4 +29,6 @@ public interface ProductService {
 	public double all_deposit_cal(String addr2);
 	
 
+	public void product_modify(ProductVO pvo);
+	
 }

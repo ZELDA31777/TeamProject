@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp"%>
 <%
 // '\n' 은 replace에서 인식이 안됨...
@@ -7,18 +7,21 @@ pageContext.setAttribute("LF", "\n");
 %>
 <style>
 .abcdef {
-	margin-top: 10%;
 	padding-bottom: 10%;
 }
-
 </style>
 
-	<div class="container">
-      <article class="blog-post abcdef">
-        <hr>
-        <h2 class="blog-post-title">${vo.notice_title}</h2>
-        <p class="blog-post-meta"><fmt:formatDate value="${vo.notice_regdate}" pattern="yyyy-MM-dd"/></p>
+<div class="sub_title">
+	<h2>공지사항</h2>
+</div>
 
+<div class="container">
+	<article class="blog-post abcdef">
+		<hr>
+		<h2 class="blog-post-title">${vo.notice_title}</h2>
+		<p class="blog-post-meta">
+			<fmt:formatDate value="${vo.notice_regdate}" pattern="yyyy-MM-dd" />
+		</p>
         <p><c:set var="contect" value="${fn:replace(fn:replace(vo.notice_content, LF, '<br>'),' ','&nbsp;')}"/>
         	${contect}</p>
         <hr>
@@ -34,7 +37,8 @@ pageContext.setAttribute("LF", "\n");
       </article>
 	</div>
 	
-	
 
+	</article>
+</div>
 
 <%@ include file="../include/footer.jsp"%>

@@ -19,6 +19,9 @@ public interface ProductMapper {
 	
 	public int product_count(String username);
 	
+
+	public void product_modify(ProductVO pvo);
+
 	public int product_count_with_addr2(String addr2);
 	
 	// 평균계산
@@ -28,6 +31,5 @@ public interface ProductMapper {
 	public double off_deposit_cal(String addr2);
 	public double all_rent_cal(String addr2);
 	public double all_deposit_cal(String addr2);
-	
 	
 }
