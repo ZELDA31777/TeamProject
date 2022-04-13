@@ -8,6 +8,7 @@ import com.hanulso.domain.ProductVO;
 public interface ProductMapper {
 
 	public void product_insert(ProductVO pvo);
+	public int getProductSeqCurrVal();
 	
 	public ProductVO product_view(int pno);
 	

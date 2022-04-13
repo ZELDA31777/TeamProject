@@ -24,6 +24,11 @@ public class ProductServiceImpl implements ProductService {
 	public void product_insert(ProductVO pvo) {
 		mapper.product_insert(pvo);
 	}
+	@Override
+	public int getProductSeqCurrVal() {
+		return mapper.getProductSeqCurrVal();
+	}
+	
 	
 	@Override
 	public void product_modify(ProductVO pvo) {

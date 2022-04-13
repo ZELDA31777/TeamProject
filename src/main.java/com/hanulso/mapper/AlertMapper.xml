@@ -26,5 +26,13 @@
 		where rownum <= #{alertCnt}
 	]]>
 	</select>
+	
+	<insert id="alert_insert" >
+		insert into one_alert (idx, pno, username) values (alert_seq.nextval, #{pno}, #{username})
+	</insert>
+	
+	<select id="userListFavorite" resultType="String">
+		select username from one_user where favorite like '%'||#{addr2}||'%'
+	</select>
 
 </mapper>

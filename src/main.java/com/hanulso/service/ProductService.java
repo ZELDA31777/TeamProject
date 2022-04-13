@@ -7,6 +7,7 @@ import com.hanulso.domain.*;
 public interface ProductService {
 
 	public void product_insert(ProductVO pvo);
+	public int getProductSeqCurrVal();
 	
 	public ProductVO product_view(int pno);
 	
