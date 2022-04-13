@@ -44,7 +44,9 @@
 }
 
 .translation-links {
+	font-size:1.3rem;
 	list-style: none;
+	
 }
 
 .translation-links li {
@@ -53,6 +55,15 @@
 	box-sizing: border-box;
 	float: left;
 	margin-right: 10px;
+}
+
+.translation-links li>a:link {
+	color: rgba(166, 227, 233, 1) !important;
+	vertical-align:middle;
+}
+
+.translation-links li>a:active {
+	font-weight: bold;
 }
 
 .translation-links span {

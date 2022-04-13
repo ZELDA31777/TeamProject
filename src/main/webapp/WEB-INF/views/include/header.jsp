@@ -50,6 +50,48 @@
     <![endif]-->
 
 <!-- 구글 번역기 Script -->
+<style type="text/css">
+
+/*상단 플로팅 바 옵션 가리기  */
+body {
+	position: static !important;
+	top: 0px !important;
+}
+
+iframe.goog-te-banner-frame {
+	display: none !important;
+}
+
+.goog-logo-link {
+	display: none !important;
+}
+
+.goog-te-gadget {
+	color: transparent !important;
+	overflow: hidden;
+}
+
+.goog-te-balloon-frame {
+	display: none !important;
+}
+
+/*원본 텍스트 팝업 안뜨게 하기*/
+.goog-tooltip {
+	display: none !important;
+}
+
+.goog-tooltip:hover {
+	display: none !important;
+}
+
+.goog-text-highlight {
+	background-color: transparent !important;
+	border: none !important;
+	box-shadow: none !important;
+}
+</style>
+
+
 </head>
 <body class="test">
 	<div class="container-fluid">
@@ -95,8 +137,8 @@
 						<div id="google_translate_element" style="display: none;"></div>
 						<!-- "새 번역 링크 UI" -->
 						<ul class="translation-links">
-							<li><a href="javascript:googleTranslateElementInit()" class="korean"
-								data-lang="ko">한국어</a></li>
+							<li><a href="javascript:googleTranslateElementInit()"
+								class="korean" data-lang="ko">한국어</a></li>
 							<li><a href="javascript:void(0)" class="japanese"
 								data-lang="ja">Japanese</a></li>
 						</ul>
@@ -120,6 +162,7 @@
 									.addEventListener(
 											'click',
 											function(event) {
+
 												let el = event.target;
 												if (el != null) {
 													while (el.nodeName == 'FONT') {

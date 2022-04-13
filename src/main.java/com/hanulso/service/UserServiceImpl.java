@@ -3,11 +3,14 @@ package com.hanulso.service;
 import java.io.BufferedReader;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -20,6 +23,7 @@ import com.google.gson.JsonParser;
 import com.hanulso.domain.CorVO;
 import com.hanulso.domain.ProductVO;
 import com.hanulso.domain.UserVO;
+import com.hanulso.mapper.ProductMapper;
 import com.hanulso.mapper.UserMapper;
 
 import lombok.Setter;
@@ -31,6 +35,9 @@ public class UserServiceImpl implements UserService {
 	
 	@Setter(onMethod_=@Autowired)
 	private UserMapper mapper;
+	
+	@Setter(onMethod_=@Autowired)
+	private ProductMapper productmapper;
 	
 	@Override
 	public int user_check(String username) {
@@ -225,14 +232,47 @@ public class UserServiceImpl implements UserService {
 	public void cor_delete(String username) {
 		List<ProductVO> plist = mapper.cor_product_select(username);
 		for(ProductVO pvo: plist) {
+			log.info(pvo.getPno());
+			ProductVO vo = productmapper.product_view(pvo.getPno());
+			log.info(vo);
+			String uploadFolder = "C:\\upload";
+			String folderPath = getFolder();
+			File uploadPath = new File(uploadFolder, folderPath);
+			File preThumbnail = new File(uploadFolder, vo.getThumbnail());
+			if (preThumbnail.exists()) {
+				preThumbnail.delete();
+				log.info(preThumbnail.getPath() + " 삭제 완료");
+			}
+			for (String picturedel : vo.getPicture().split("/")) {
+				File pictures = new File(uploadFolder, picturedel);
+				if (pictures.exists()) {
+					pictures.delete();
+					log.info(pictures.getPath() + " 삭제 완료");
+				}
+			}
 			mapper.cor_delete_alert(pvo);
 			mapper.cor_delete_favorit(pvo);
 		}
 		mapper.cor_delete_product(username);
+		CorVO cvo = mapper.member_select(username);
+		String uploadFolder = "C:\\upload";
+		String folderPath = getFolder();
+		File uploadPath = new File(uploadFolder, folderPath);
+		File preProfile = new File(uploadFolder, cvo.getProfile());
+		if (preProfile.exists()) {
+			preProfile.delete();
+			log.info(preProfile.getPath() + " 삭제 완료");
+		}
 		mapper.cor_delete_cor(username);
 		mapper.cor_delete_user(username);
 	}
 	
-	
+	// 날짜로 년도/월/일 로 경로 생성
+		public String getFolder() {
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			Date date = new Date(); // 오늘날짜
+			return sdf.format(date).replace("-", File.separator); // File.separator : 윈도우의 경우 "//"
+		}
+
 
 }

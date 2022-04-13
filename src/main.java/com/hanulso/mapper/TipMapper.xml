@@ -46,7 +46,7 @@
 		
 		<![CDATA[
 			rownum <= #{pageNum} * #{amount} order by tip_no desc
-			)where rn > (#{pageNum}-1) * #{amount} 
+			)where rn >= (#{pageNum}-1) * #{amount} 
 		]]>
 	</select>
 	

@@ -7,11 +7,6 @@
 </div>
 
 <div class="container">
-
-	<div class="write">
-		<a href="/tip/tip_write.do"><button class="btn btn-light write">작성</button></a>
-	</div>
-
 	<div
 		class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white">
 		<div
@@ -20,9 +15,9 @@
 					게시글 ${pageMaker.total}</strong></span>
 		</div>
 		<div class="row py-3 border-bottom">
-			<div class="col-md-2">번호</div>
-			<div class="col-md-8">제목</div>
-			<div class="col-md-2">작성일</div>
+			<div class="col-md-2" style="text-align: center;">번호</div>
+			<div class="col-md-8" style="text-align: center;">제목</div>
+			<div class="col-md-2" style="text-align: center;">작성일</div>
 		</div>
 		<c:if test="${!empty list}">
 			<c:set var="num"
@@ -30,24 +25,22 @@
 			<c:forEach var="list" items="${list}">
 
 				<div
-					class="list-group list-group-flush border-bottom scrollarea row">
+					class="list-group list-group-flush border-bottom scrollarea">
 					<a href="/tip/tip_view.do?tip_no=${list.tip_no}"
-						class="list-group-item list-group-item-action py-3 lh-tight"
+						class="list-group-item-action py-3 lh-tight"
 						aria-current="true">
-						<div
-							class="d-flex w-100 align-items-center justify-content-between">
-							<div class="col-md-2">
-								<strong class="mb-1">${num}</strong>
+						<div class="d-flex w-100 align-items-center">
+							<div class="col-md-2" style="text-align: center;">
+								<strong>${num}</strong>
 							</div>
 
 							<div class="col-md-8">
 								<small>${list.tip_title}</small>
 							</div>
-							<div class="col-md-2">
+							<div class="col-md-2" style="text-align: center;">
 								<small><fmt:formatDate value="${list.tip_regdate}"
 										pattern="yyyy-MM-dd" /></small>
 							</div>
-
 						</div>
 					</a>
 				</div>
@@ -88,7 +81,11 @@
 			</select> <input type="text" name="keyword" class="form-control txtform">
 			<button class="btn btn-light">검색</button>
 		</form>
-		<a href="/tip/tip_list.do"><button class="btn btn-light write">목록으로</button></a>
+		<div class="write">
+			<a href="/tip/tip_list.do"><button class="btn btn-light write">목록으로</button></a>
+			<a href="/tip/tip_write.do"><button class="btn btn-light write">작성</button></a>
+
+		</div>
 
 	</div>
 
