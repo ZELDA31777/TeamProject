@@ -42,6 +42,7 @@ public interface UserService {
 	//유저 탈퇴
 	public void user_delete_user(String username);
 	public void user_delete_favorite(String username);
+	public void user_delete_alert(String username);
 	
 	//중개사 탈퇴
 	public void cor_delete(String username);
