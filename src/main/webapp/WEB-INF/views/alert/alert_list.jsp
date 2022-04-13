@@ -39,36 +39,43 @@
 		<div class="tab-content" id="myTabContent">
 			<div class="tab-pane fade" id="home" role="tabpanel"
 				aria-labelledby="home-tab">
-				<div
-					class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-					<div class="col p-4 d-flex flex-column position-static">
-						<div class="row">
-							<div class="col-md-3">
-								<!-- 알람 대상의 사진 -->
-								<img src="/resources/images/ex_000.png">
-							</div>
-							<div class="col-md-2 ">
-								<!-- 알람 대상의 정보 -->
-								<div class="fzGgeZ">
-									<p class="hybbHD">투룸</p>
-									<p class="eswqdM">월세 1000/65</p>
+				<c:if test="${not empty alertList}">
+				<c:forEach items="alertList" var="alertvo">
+					<div
+						class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+						<div class="col p-4 d-flex flex-column position-static">
+							<div class="row">
+								<div class="col-md-3">
+									<!-- 알람 대상의 사진 -->
+									<img src="/upload/">
 								</div>
-							</div>
-							<!-- 알람 대상의 상세 정보 -->
-							<div class="col-md-6 bSKZAI">
-								<p class="eHtuHa">반지층, 42.97m², 관리비 6만</p>
-								<p class="eHtuHa">7호선 신대방삼거리역 도보 5분도 안걸리는 원룸 아닙니다 투룸에 이 가격
-									위치 채광까지 갖춘 문의 정말 많이오는 실매물</p>
-							</div>
-							<div class="col-md-1">
-								<!-- 알람 마크 -->
-								<%@ include file="../include/interest_img.jsp"%>
+								<div class="col-md-2 ">
+									<!-- 알람 대상의 정보 -->
+									<div class="fzGgeZ">
+										<p class="hybbHD">투룸</p>
+										<p class="eswqdM">월세 1000/65</p>
+									</div>
+								</div>
+								<!-- 알람 대상의 상세 정보 -->
+								<div class="col-md-6 bSKZAI">
+									<p class="eHtuHa">반지층, 42.97m², 관리비 6만</p>
+									<p class="eHtuHa">7호선 신대방삼거리역 도보 5분도 안걸리는 원룸 아닙니다 투룸에 이 가격
+										위치 채광까지 갖춘 문의 정말 많이오는 실매물</p>
+								</div>
+								<div class="col-md-1">
+									<!-- 알람 마크 -->
+									<%@ include file="../include/interest_img.jsp"%>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
+				</c:forEach>
+				</c:if>
+				<c:if test="${empty alertList}">
+					알림이 없다
+				</c:if>
 
-				<div
+				<%-- <div
 					class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
 					<div class="col p-4 d-flex flex-column position-static">
 						<div class="row">
@@ -95,7 +102,7 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> --%>
 			</div>
 
 
@@ -106,12 +113,11 @@
 
 					<div
 						class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white">
-						<a href="/notice/notice_list.do"
-							class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
+						<div class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
 							<svg class="bi me-2" width="30" height="24">
 				</svg> <span class="fs-5 fw-semibold"><strong class="mb-1">총
 									게시글 ${pageMaker.total}</strong></span>
-						</a>
+						</div>
 
 
 
