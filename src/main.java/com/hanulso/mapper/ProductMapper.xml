@@ -58,6 +58,9 @@
 		select count(*) from one_product where addr2=#{addr2}
 	</select>
 	
+	<delete id="product_delete">
+		delete one_product where pno = #{pno}
+	</delete>
 	
 	<!-- 평균 계산 -->
 	<select id="room_rent_cal" resultType="double">

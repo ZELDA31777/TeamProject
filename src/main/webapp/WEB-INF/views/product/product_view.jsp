@@ -163,7 +163,10 @@
 							<p>예상 주거비용</p>
 						</div>
 						<div class="gEjpOz col-md-9">
-							<p class="blue-500 bold">${pvo.rent }+${pvo.manage }만원</p>
+							<p class="blue-500 bold">${pvo.rent }
+								<c:if test="${pvo.type ne 0}">+${pvo.manage }</c:if>
+								만원
+							</p>
 							<p class="gray-700">월세 + 관리비</p>
 							<p class="body-3 gray-700">별도 금액으로 부과되는 항목 제외</p>
 						</div>
@@ -236,12 +239,12 @@
 				<p id="scrollspyHeading3"></p>
 				<h4 class="styled__Title-sc-16d1qhz-2 cBaPiP">옵션</h4>
 				<div class="iOHiXt" style="list-style: none;">
-					<c:if test="${pvo.fulloption eq 0 }">
+					<c:if test="${pvo.fulloption eq 1 }">
 						<p>
 							<img src="/resources/images/o_100.png">
 						</p>
 					</c:if>
-					<c:if test="${pvo.fulloption eq 1 }">
+					<c:if test="${pvo.fulloption eq 0 }">
 						<p>이 방의 옵션은 중개사무소에게 문의 바랍니다.</p>
 					</c:if>
 
@@ -253,7 +256,7 @@
 				<div class="iOHiXt" style="list-style: none;">
 					<div class="styled__InfoWrap-sc-13shacj-0 jGAWeI">
 						<p class="title">${pvo.addr1}${pvo.addr3 }</p>
-						<p class="styled__Memo-sc-13shacj-1 hhaHrn">${pvo.contents }</p>
+						<p class="hhaHrn">${pvo.contents }</p>
 					</div>
 				</div>
 			</div>
@@ -356,7 +359,7 @@
 									fill="#CCCCCC"></path></svg></a>
 					</div>
 					<div class="styled__PriceWrap-cvrpi1-5 fzGgeZ">
-						<p class="eswqdM">월세 ${pvo.deposit }/${pvo.rent }</p>
+						<p class="eswqdM">보증금 / 월세 ${pvo.deposit }/${pvo.rent }</p>
 						<p class="iVhrbX">매물 조회 수 ${pvo.readcnt }회</p>
 					</div>
 					<ul class="bIRVVc">
@@ -415,7 +418,7 @@
 
 					<div class="styled__BtnWrap-cvrpi1-15 brpHbd row">
 						<c:if test="${corchange }">
-							<div class="col-md-8">
+							<div class="col-md-4">
 						</c:if>
 						<c:if test="${!corchange }">
 							<div class="col-md-10">
@@ -431,13 +434,25 @@
 					</div>
 					<c:if test="${corchange }">
 						<div class="col-md-4">
-							<form name="cor_view_read" action="/product/product_modify.do">
+							<form name="product_modify" action="/product/product_modify.do">
 								<input type="hidden" name="${_csrf.parameterName }"
 									value="${_csrf.token }"> <input type="hidden"
 									name="username" value="${cvo.username}"> <input
 									type="hidden" name="pno" value="${pvo.pno }">
-								<button color="blue" class="modify_button">
+								<button color="blue" class="modify_button1">
 									<span><span>매물 수정</span></span>
+								</button>
+							</form>
+						</div>
+						<div class="col-md-4">
+							<form name="product_delete" action="/product/product_delete.do">
+								<input type="hidden" name="${_csrf.parameterName }"
+									value="${_csrf.token }"> <input type="hidden"
+									name="username" value="${cvo.username}"> <input
+									type="hidden" name="pno" value="${pvo.pno }">
+								<button type="button" color="blue" class="modify_button"
+									onClick="delete_check()">
+									<span><span>매물 삭제</span></span>
 								</button>
 							</form>
 						</div>
@@ -495,7 +510,7 @@
     	
     	if(${!empty corchange}){
     		if(${corchange}){
-    		$('#cor_change').text("내 매물 페이지");
+    		$('#cor_change').text("매물 목록");
     		}
     	}
     	var csrfHeaderName = "${_csrf.headerName}";
@@ -548,6 +563,16 @@
     });
 </script>
 
+<script>
+// 매물 삭제 확인창 Function
+function delete_check(){
+	if (confirm("정말 삭제하시겠습니까??") == true){    //확인
+	     document.product_delete.submit();
+	 }else{   //취소
+	     return false;
+	 }
+}
+</script>
 
 </body>
 
