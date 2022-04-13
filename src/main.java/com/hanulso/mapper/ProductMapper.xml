@@ -50,7 +50,6 @@
 		one_product where username=#{username}
 	</select>
 
-	
 	<select id="product_count_with_addr2" resultType="int">
 		select count(*) from one_product where addr2=#{addr2}
 	</select>
@@ -81,5 +80,4 @@
 		select avg(deposit) from one_product where addr2=#{addr2}
 	</select>
 	
-
 </mapper>
