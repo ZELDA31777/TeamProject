@@ -47,7 +47,9 @@ margin-right : auto;
 					<label class="input-with-label__Label-sc-1p3gkts-1 bDaqny">
 						<p class="label-text">관심지역설정</p>
 					</label>
+
 					<!-- 동구 -->
+					
 					<div>
 					<div class="dropdown" style="width: 35%;  float:left;">
 						<button class="btn btn-light" type="button"
@@ -87,7 +89,9 @@ margin-right : auto;
 							</li>
 						</ul>
 					</div>
+					
 					<!-- 중구 -->
+					
 					<div class="dropdown" style="width: 35%; float:left;">
 						<button class="btn btn-light" type="button"
 							id="gu_02" data-bs-toggle="dropdown"
@@ -128,7 +132,9 @@ margin-right : auto;
 						</ul>
 					</div>
 					</div>
+				
 				<!-- 지역 선택 끝 -->
+
 				</div>
 				
 				<div class="input-with-label__InputWrap-sc-1p3gkts-0 kYbOIJ">
@@ -184,7 +190,7 @@ margin-right : auto;
             form.classList.add('was-validated')
          }, false)
       })
-   })
+   })()
   
     $(function (){
         $('#password').on('change', function(){
