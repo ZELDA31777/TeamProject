@@ -390,6 +390,7 @@ public class UserController {
 	
 	@PostMapping("/user_delete.do")
 	public void userDelete(String username, HttpServletResponse response) {
+		service.user_delete_alert(username);
 		service.user_delete_user(username);
 		service.user_delete_favorite(username);
 		response.setCharacterEncoding("UTF-8");

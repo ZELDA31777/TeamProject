@@ -106,6 +106,22 @@
 			</p>
 		</div>
 
+		<!-- 중개사 로그인 시에만 매물등록 가능 -->
+		<sec:authorize access="hasRole('MEMBER')">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-10"></div>
+					<div class="col-md-2">
+						<a href="/product/product_write3.do">
+							<button color="blue" class="fiEZwu3">
+								<span><span id="cor_change">매물 등록</span></span>
+							</button>
+						</a>
+					</div>
+				</div>
+			</div>
+		</sec:authorize>
+
 		<!-- 이 부동산의 방 -->
 		<ul class="styled__CardWrap-sc-144mdah-1 cNzXuD">
 			<c:if test="${!empty pList }">
@@ -127,8 +143,8 @@
 									</p>
 									<h1 class="iJlOig">월세 : ${pList.rent } 보증금 :
 										${pList.deposit }</h1>
-									<p class="eHtuHa">${pList.floor }층,면적: ${pList.area }m²,
-										관리비 : ${pList.manage }만</p>
+									<p class="eHtuHa">${pList.floor }층,면적:${pList.area }m²,관리비
+										: ${pList.manage }만</p>
 									<p class="eHtuHa">${pList.contents }</p>
 									<div class="styled__TagWrap-sc-1e0j1a1-11 hRcMAS"></div>
 								</div>
@@ -137,20 +153,6 @@
 				</c:forEach>
 			</c:if>
 		</ul>
-
-
-		<!-- 중개사 로그인 시에만 매물등록 가능 -->
-		<sec:authorize access="hasRole('MEMBER')">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-md-10"></div>
-					<div class="col-md-2">
-						<a href="/product/product_write3.do">매물등록</a>
-					</div>
-				</div>
-			</div>
-		</sec:authorize>
-
 	</div>
 	<!-- sub contents end -->
 

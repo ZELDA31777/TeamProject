@@ -75,6 +75,10 @@
 		delete one_favorite where username = #{username}
 	</delete>
 	
+	<delete id="user_delete_alert">
+		delete one_alert where username = #{username}
+	</delete>
+	
 	<!-- 중개사 탈퇴 -->
 	<select id="cor_product_select" resultType="com.hanulso.domain.ProductVO">
 		select pno from one_product where username = #{username}

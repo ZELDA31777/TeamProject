@@ -40,7 +40,7 @@
 	<p style="font-size:0.8em;">${num}</p>
   </div>
   <div class="col-md-1">
-  	<p><input type="checkbox" name="01" class="cb"></p>
+  	<p><input type="checkbox" name="un" value="${list.username}" class="cb"></p>
   </div>
   <div class="col-md-4">
   	<p style="font-size:0.8em;">${list.username}</p>
@@ -73,9 +73,7 @@
 	</sec:authorize>
 	
 		<div align="right">
-			<form>
-				<button class="btn btn-primary" style="margin:5px;">선택회원 삭제</button>
-			</form>
+			<button class="btn btn-primary" style="margin:5px;" onClick="delete_user_list()">선택회원 삭제</button>
 		</div>
 	</div>
 
@@ -121,6 +119,10 @@
 </form>
 	<!-- sub contents end -->
 	
+<form name="user_delete" action="/admin/manage/admin_user_delete.do" method="post">
+<input type="hidden" id="un_list" name="username" value="">
+<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+</form>	
 <script>
 	$(function() {
 		var actionForm = $("#actionForm")
@@ -149,6 +151,15 @@
 	    $( '.cb' ).prop( 'checked', this.checked );
 	  });
 	});
+	
+	function delete_user_list() {
+		var list = new Array();
+		$("input[name=un]:checked").each(function(index, item){
+			list.push($(item).val());
+		});
+		$("#un_list").val(list);
+		user_delete.submit();
+	}
 </script>	
 	
 	<%@ include file="../../include/footer.jsp"%>
