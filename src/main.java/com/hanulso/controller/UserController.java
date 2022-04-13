@@ -400,6 +400,18 @@ public class UserController {
 		}
 	}
 	
+	@PostMapping("/cor_delete.do")
+	public void corDelete(String username, HttpServletResponse response) {
+		service.cor_delete(username);
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		try {
+			response.getWriter().println("<script>alert('탈퇴 완료');location.href='/';</script>");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 
 	
 	
