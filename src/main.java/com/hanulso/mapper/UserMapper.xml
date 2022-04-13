@@ -66,12 +66,38 @@
 		select * from one_cor where username=#{username}
 	</select>
 	
+	<!-- 유저 탈퇴 -->
 	<delete id="user_delete_user">
 		delete one_user where username = #{username}
 	</delete>
 	
 	<delete id="user_delete_favorite">
 		delete one_favorite where username = #{username}
+	</delete>
+	
+	<!-- 중개사 탈퇴 -->
+	<select id="cor_product_select" resultType="com.hanulso.domain.ProductVO">
+		select pno from one_product where username = #{username}
+	</select>
+	
+	<delete id="cor_delete_alert">
+		delete one_alert where pno = #{pno}
+	</delete>
+	
+	<delete id="cor_delete_favorit">
+		delete one_favorite where pno = #{pno}
+	</delete>
+	
+	<delete id="cor_delete_product">
+		delete one_product where username = #{username}
+	</delete>
+	
+	<delete id="cor_delete_cor">
+		delete one_cor where username = #{username}
+	</delete>
+	
+	<delete id="cor_delete_user">
+		delete one_user where username = #{username}
 	</delete>
 	
 <!-- 	
