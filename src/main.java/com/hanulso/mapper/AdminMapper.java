@@ -14,4 +14,6 @@ public interface AdminMapper {
 	
 	public List<UserVO> user_list(Criteria cri);
 	public int userTotalCount(Criteria cri);
+	
+	
 }
