@@ -217,6 +217,11 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
+	public void user_delete_alert(String username) {
+		mapper.user_delete_alert(username);
+	}
+	
+	@Override
 	public void cor_delete(String username) {
 		List<ProductVO> plist = mapper.cor_product_select(username);
 		for(ProductVO pvo: plist) {

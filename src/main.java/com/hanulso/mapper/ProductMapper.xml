@@ -12,6 +12,10 @@
 		values
 		(#{pno},#{type},#{deposit},#{rent},#{manage},#{area},#{floor},#{totalfloor},#{room},#{shower},#{addr1},#{addr2},#{addr3},#{lat},#{lng},#{picture},#{thumbnail},#{contents},#{fulloption},#{username})
 	</insert>
+	
+	<select id="getProductSeqCurrVal" resultType="int">
+		select ONE_PRODUCT_SEQ.currval from dual
+	</select>
 
 	<update id="product_modify">
 		update ONE_PRODUCT set

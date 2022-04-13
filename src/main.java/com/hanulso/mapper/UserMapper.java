@@ -14,7 +14,7 @@ public interface UserMapper {
 	
 	public void mailCheckUpCor(@Param("username") String username, @Param("password") String password);
 	
-	public int user_check(String username);
+	public int user_check(@Param("username") String username);
 	
 	public void user_insert(UserVO uvo);
 	
@@ -39,6 +39,7 @@ public interface UserMapper {
 	//유저 탈퇴
 	public void user_delete_user(String username);
 	public void user_delete_favorite(String username);
+	public void user_delete_alert(String username);
 	
 	//중개사 탈퇴
 	public List<ProductVO> cor_product_select(String username);

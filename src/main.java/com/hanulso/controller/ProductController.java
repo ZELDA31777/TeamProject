@@ -36,6 +36,9 @@ public class ProductController {
 
 	@Autowired
 	private FavoriteService favoriteservice;
+	
+	@Autowired
+	private AlertService alertservice;
 
 	// parameter username = 로그인 사용자 이름
 	@PostMapping("/product_view.do")
@@ -287,6 +290,8 @@ public class ProductController {
 		/* 파일업로드 끝 */
 
 		productservice.product_insert(pvo);
+		int alertCnt = alertservice.alert_insert(productservice.getProductSeqCurrVal(), pvo.getAddr2());
+		log.info(alertCnt);
 		return "redirect:/";
 	}
 

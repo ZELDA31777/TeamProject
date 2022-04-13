@@ -40,27 +40,33 @@
 			<div class="tab-pane fade" id="home" role="tabpanel"
 				aria-labelledby="home-tab">
 				<c:if test="${not empty alertList}">
-				<c:forEach items="alertList" var="alertvo">
+				<c:forEach items="${ alertList}" var="alertvo">
+					<c:set value="${alertvo.product}" var="pvo" />
 					<div
 						class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
 						<div class="col p-4 d-flex flex-column position-static">
 							<div class="row">
 								<div class="col-md-3">
 									<!-- 알람 대상의 사진 -->
-									<img src="/upload/">
+									<img src="/upload/${pvo.thumbnail }" style="object-fit: cover; width: 100%; cursor: pointer;" onclick="pSend(this);" data-pno="${pvo.pno}">
 								</div>
 								<div class="col-md-2 ">
 									<!-- 알람 대상의 정보 -->
 									<div class="fzGgeZ">
-										<p class="hybbHD">투룸</p>
-										<p class="eswqdM">월세 1000/65</p>
+										<p class="hybbHD">${pvo.type==0?'원룸':'오피스텔'}</p>
+										<p class="eswqdM">보증금/${pvo.deposit }만원<br>월&nbsp;세/${pvo.rent}만원</p>
 									</div>
 								</div>
 								<!-- 알람 대상의 상세 정보 -->
 								<div class="col-md-6 bSKZAI">
-									<p class="eHtuHa">반지층, 42.97m², 관리비 6만</p>
-									<p class="eHtuHa">7호선 신대방삼거리역 도보 5분도 안걸리는 원룸 아닙니다 투룸에 이 가격
-										위치 채광까지 갖춘 문의 정말 많이오는 실매물</p>
+									<p class="eHtuHa">
+										<c:choose>
+											<c:when test="${pvo.floor == -1}">반지층</c:when>
+											<c:when test="${pvo.floor == 0 }">옥탑</c:when>
+											<c:otherwise>${pvo.floor }층</c:otherwise>
+										</c:choose>
+									, ${Math.round(pvo.area * 100) / 100.0}m², 관리비 ${pvo.manage }만</p>
+									<p class="eHtuHa">${pvo.contents }</p>
 								</div>
 								<div class="col-md-1">
 									<!-- 알람 마크 -->
@@ -72,37 +78,11 @@
 				</c:forEach>
 				</c:if>
 				<c:if test="${empty alertList}">
-					알림이 없다
+					<div class="container-fluid text-center">
+						관심지역에 새로 등록된 매물이 없습니다.
+					</div>
 				</c:if>
 
-				<%-- <div
-					class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-					<div class="col p-4 d-flex flex-column position-static">
-						<div class="row">
-							<div class="col-md-3">
-								<!-- 알람 대상의 사진 -->
-								<img src="/resources/images/ex_000.png">
-							</div>
-							<div class="col-md-2 ">
-								<!-- 알람 대상의 정보 -->
-								<div class="fzGgeZ">
-									<p class="hybbHD">투룸</p>
-									<p class="eswqdM">월세 1000/65</p>
-								</div>
-							</div>
-							<!-- 알람 대상의 상세 정보 -->
-							<div class="col-md-6 bSKZAI">
-								<p class="eHtuHa">반지층, 42.97m², 관리비 6만</p>
-								<p class="eHtuHa">7호선 신대방삼거리역 도보 5분도 안걸리는 원룸 아닙니다 투룸에 이 가격
-									위치 채광까지 갖춘 문의 정말 많이오는 실매물</p>
-							</div>
-							<div class="col-md-1">
-								<!-- 알람 마크 -->
-								<%@ include file="../include/interest_img.jsp"%>
-							</div>
-						</div>
-					</div>
-				</div> --%>
 			</div>
 
 
@@ -207,6 +187,21 @@
 
 
 </div>
+
+<form name="productForm" action="/product/product_view.do" method="post">
+	<input type="hidden" name="${_csrf.parameterName }"
+		value="${_csrf.token }"> <input type="hidden" name="username"
+		value="${username}"> <input type="hidden" name="pno" value="">
+</form>
+
+
+<script>
+	function pSend(el) {
+		productForm.pno.value = el.dataset.pno;
+		productForm.submit();
+	}
+</script>
+
 <script>
 	$(function() {
 		var actionForm = $("#actionForm")

@@ -196,20 +196,20 @@ h4 {
 							<div class="align-self-center fw-bold">동구</div>
 						</div>
 						<div class="d2-content overflow-scroll cursor-pointer" style="height: 30vh">
-							<div class="d2-link">가양동</div>
-							<div class="d2-link">대동</div>
-							<div class="d2-link">대청동</div>
-							<div class="d2-link">산내동</div>
-							<div class="d2-link">삼성동</div>
-							<div class="d2-link">성남동</div>
-							<div class="d2-link">신인동</div>
-							<div class="d2-link">용운동</div>
-							<div class="d2-link">용전동</div>
-							<div class="d2-link">자양동</div>
-							<div class="d2-link">중앙동</div>
-							<div class="d2-link">판암동</div>
-							<div class="d2-link">홍도동</div>
-							<div class="d2-link">효동</div>
+							<div class="d2-link" data-dong="가양동">가양동</div>
+							<div class="d2-link" data-dong="대동">대동</div>
+							<div class="d2-link" data-dong="대청동">대청동</div>
+							<div class="d2-link" data-dong="산내동">산내동</div>
+							<div class="d2-link" data-dong="삼성동">삼성동</div>
+							<div class="d2-link" data-dong="성남동">성남동</div>
+							<div class="d2-link" data-dong="신인동">신인동</div>
+							<div class="d2-link" data-dong="용운동">용운동</div>
+							<div class="d2-link" data-dong="용전동">용전동</div>
+							<div class="d2-link" data-dong="자양동">자양동</div>
+							<div class="d2-link" data-dong="중앙동">중앙동</div>
+							<div class="d2-link" data-dong="판암동">판암동</div>
+							<div class="d2-link" data-dong="홍도동">홍도동</div>
+							<div class="d2-link" data-dong="효동">효동</div>
 						</div>
 					</div>
 					<div class="d1-link d2">
@@ -217,20 +217,20 @@ h4 {
 							<div class="align-self-center fw-bold">중구</div>
 						</div>
 						<div class="d2-content overflow-scroll cursor-pointer" style="height: 30vh">
-							<div class="d2-link">대사동</div>
-							<div class="d2-link">대흥동</div>
-							<div class="d2-link">목동</div>
-							<div class="d2-link">문창동</div>
-							<div class="d2-link">문화동</div>
-							<div class="d2-link">부사동</div>
-							<div class="d2-link">산성동</div>
-							<div class="d2-link">석교동</div>
-							<div class="d2-link">오류동</div>
-							<div class="d2-link">용두동</div>
-							<div class="d2-link">유천동</div>
-							<div class="d2-link">은행동</div>
-							<div class="d2-link">중천동</div>
-							<div class="d2-link">태평동</div>
+							<div class="d2-link" data-dong="대사동">대사동</div>
+							<div class="d2-link" data-dong="대흥동">대흥동</div>
+							<div class="d2-link" data-dong="목동">목동</div>
+							<div class="d2-link" data-dong="문창동">문창동</div>
+							<div class="d2-link" data-dong="문화동">문화동</div>
+							<div class="d2-link" data-dong="부사동">부사동</div>
+							<div class="d2-link" data-dong="산성동">산성동</div>
+							<div class="d2-link" data-dong="석교동">석교동</div>
+							<div class="d2-link" data-dong="오류동">오류동</div>
+							<div class="d2-link" data-dong="용두동">용두동</div>
+							<div class="d2-link" data-dong="유천동">유천동</div>
+							<div class="d2-link" data-dong="은행동">은행동</div>
+							<div class="d2-link" data-dong="중천동">중천동</div>
+							<div class="d2-link" data-dong="태평동">태평동</div>
 						</div>
 					</div>
 				</div>
@@ -884,8 +884,12 @@ h4 {
 		getList(null);
 	});
 	
+
+	// 지역 설정에서 동 클릭시 매물 목록을 가져옴
+	$(".d2-link").on("click", function (){getList($(this).data("dong"));});
+
 	
-	$(".d2-link").on("click", function (){getList($(this).html());}); // 지역 설정에서 동 클릭시 매물 목록을 가져옴
+	// 탭 전환 시
 	$(".tab-title").on("click", function (){ getList(null); });
 
 	// 조건 초기화
