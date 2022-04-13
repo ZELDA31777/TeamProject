@@ -147,7 +147,18 @@ margin-right : auto;
 					style="margin-top: 32px;">
 					<span> 확인 </span>
 				</button>
+				
+
 			</div>
+		</form>
+		
+		<form class="ududud" method="post" action="user_delete.do">
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+		<input type="hidden" name="username" value="${uvo.username}">
+				<button color="blue" class="button__Button-sc-153m1au-0 fiEZwu"
+					style="margin-top: 32px;">
+					<span> 탈퇴 </span>
+				</button>
 		</form>
 	</div>
 </div>

@@ -2,15 +2,19 @@ package com.hanulso.service;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hanulso.domain.DongCheckVO;
 import com.hanulso.domain.ProductVO;
 import com.hanulso.mapper.ProductMapper;
 
 import lombok.Setter;
+import lombok.extern.log4j.Log4j;
 
 @Service
+@Log4j
 public class ProductServiceImpl implements ProductService {
 	
 	@Setter(onMethod_ = @Autowired)
@@ -51,5 +55,40 @@ public class ProductServiceImpl implements ProductService {
 		return mapper.product_count(username);
 	}
 	
+	@Override
+	public int product_count_with_addr2(String addr2) {
+		return mapper.product_count_with_addr2(addr2);
+	}
+	
+	// 평균 계산 시작
+	@Override
+	public double room_rent_cal(String addr2) {
+		return mapper.room_rent_cal(addr2);
+	}
+	
+	@Override
+	public double room_deposit_cal(String addr2) {
+		return mapper.room_deposit_cal(addr2);
+	}
+	
+	@Override
+	public double off_rent_cal(String addr2) {
+		return mapper.off_rent_cal(addr2);
+	}
+	
+	@Override
+	public double off_deposit_cal(String addr2) {
+		return mapper.off_deposit_cal(addr2);
+	}
+	
+	@Override
+	public double all_rent_cal(String addr2) {
+		return mapper.all_rent_cal(addr2);
+	}
+	
+	@Override
+	public double all_deposit_cal(String addr2) {
+		return mapper.all_deposit_cal(addr2);
+	}
 	
 }

@@ -22,8 +22,8 @@
 		<!-- 관리자들 -->
 		<security:intercept-url pattern="/admin/manage/admin_cor_list.do" access="hasAnyRole('ROLE_ADMIN , ROLE_SUPER_ADMIN')"/>
 		<security:intercept-url pattern="/admin/manage/admin_user_list.do" access="hasAnyRole('ROLE_ADMIN , ROLE_SUPER_ADMIN')"/>
-		<security:intercept-url pattern="/notice/notice_wrtie.do" access="hasAnyRole('ROLE_ADMIN , ROLE_SUPER_ADMIN')"/>
-		<security:intercept-url pattern="/notice/notice_wrtie_pro.do" access="hasAnyRole('ROLE_ADMIN , ROLE_SUPER_ADMIN')"/>
+		<security:intercept-url pattern="/notice/notice_write.do" access="hasAnyRole('ROLE_ADMIN , ROLE_SUPER_ADMIN')"/>
+		<security:intercept-url pattern="/notice/notice_write_pro.do" access="hasAnyRole('ROLE_ADMIN , ROLE_SUPER_ADMIN')"/>
 		<security:intercept-url pattern="/notice/notice_modify.do" access="hasAnyRole('ROLE_ADMIN , ROLE_SUPER_ADMIN')"/>
 		<security:intercept-url pattern="/notice/notice_modify_pro.do" access="hasAnyRole('ROLE_ADMIN , ROLE_SUPER_ADMIN')"/>
 		<security:intercept-url pattern="/notice/notice_delete.do" access="hasAnyRole('ROLE_ADMIN , ROLE_SUPER_ADMIN')"/>

@@ -202,7 +202,16 @@ public class UserServiceImpl implements UserService {
 			e.printStackTrace();
 		}
 		return userInfo;
-		
+	}
+	
+	@Override
+	public void user_delete_user(String username) {
+		mapper.user_delete_user(username);
+	}
+	
+	@Override
+	public void user_delete_favorite(String username) {
+		mapper.user_delete_favorite(username);
 	}
 
 }
