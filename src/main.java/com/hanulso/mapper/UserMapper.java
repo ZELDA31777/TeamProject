@@ -1,8 +1,11 @@
 package com.hanulso.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 import com.hanulso.domain.CorVO;
+import com.hanulso.domain.ProductVO;
 import com.hanulso.domain.UserVO;
 
 public interface UserMapper {
@@ -33,8 +36,16 @@ public interface UserMapper {
 	
 	public CorVO member_select(String username);
 	
-	//탈퇴
+	//유저 탈퇴
 	public void user_delete_user(String username);
 	public void user_delete_favorite(String username);
+	
+	//중개사 탈퇴
+	public List<ProductVO> cor_product_select(String username);
+	public void cor_delete_alert(ProductVO pvo);
+	public void cor_delete_favorit(ProductVO pvo);
+	public void cor_delete_product(String username);
+	public void cor_delete_cor(String username);
+	public void cor_delete_user(String username);
 	
 }

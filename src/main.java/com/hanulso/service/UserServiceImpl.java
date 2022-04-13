@@ -9,6 +9,7 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.hanulso.domain.CorVO;
+import com.hanulso.domain.ProductVO;
 import com.hanulso.domain.UserVO;
 import com.hanulso.mapper.UserMapper;
 
@@ -213,5 +215,19 @@ public class UserServiceImpl implements UserService {
 	public void user_delete_favorite(String username) {
 		mapper.user_delete_favorite(username);
 	}
+	
+	@Override
+	public void cor_delete(String username) {
+		List<ProductVO> plist = mapper.cor_product_select(username);
+		for(ProductVO pvo: plist) {
+			mapper.cor_delete_alert(pvo);
+			mapper.cor_delete_favorit(pvo);
+		}
+		mapper.cor_delete_product(username);
+		mapper.cor_delete_cor(username);
+		mapper.cor_delete_user(username);
+	}
+	
+	
 
 }
