@@ -48,7 +48,9 @@ public class AdminController {
 		List<CorInfoVO> list = service.coruser_list(cri);
 		int total = service.getTotalCount(cri);
 		model.addAttribute("list", list);
-		model.addAttribute("pageMaker", new PageVO(cri, total));
+		PageVO pavo = new PageVO(cri, total);
+		model.addAttribute("pageMaker", pavo);
+		log.info(pavo);
 		return "/admin/manage/admin_cor_list";
 	}
 	

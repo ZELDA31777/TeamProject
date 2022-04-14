@@ -26,30 +26,32 @@ width: 30%
     height: 100%;
     object-fit: cover;
 }
+.paging
 </style>
 <!-- sub contents start -->
 <div class="container-fluid">
 <div class="container">
   <div class="row">
 
-
-<p style="font-size:0.8em; margin:2%;">총가입자:${pageMaker.total}명</p>
+<div style="padding-bottom: 2%">
+	<strong>총가입자:${pageMaker.total}명</strong>
+</div>
 
 <div class="row" style="border-bottom:1px solid gray; margin-bottom:10px;">
   <div class="col-md-2" style="text-align: left; margin:auto;">
-	<p style="font-size:0.8em;">프로필 사진</p>
+	<p style="font-size:0.8em;"><strong>프로필 사진</strong></p>
   </div>
   <div class="col-md-2" style="text-align: left; margin:auto;">
-  	<p style="font-size:0.8em;">중개사명</p>
+  	<p style="font-size:0.8em;"><strong>중개사명</strong></p>
   </div>
   <div class="col-md-5" style="text-align: left; margin:auto;" >
-  	<p style="font-size:0.8em;">중개사 주소</p>
+  	<p style="font-size:0.8em;"><strong>중개사 주소</strong></p>
   </div>
   <div class="col-md-2" style="text-align: left; margin:auto;">
-  	<p style="font-size:0.8em;">중개사 연락처</p>
+  	<p style="font-size:0.8em;"><strong>중개사 연락처</strong></p>
   </div>
   <div class="col-md-1" style="text-align: center; margin:auto;">
-    <p style="font-size:0.8em;">회원관리</p>
+    <p style="font-size:0.8em;"><strong>회원관리</strong></p>
   </div>
 </div>  
 
@@ -59,7 +61,7 @@ width: 30%
 <div class="row" style="border-bottom:1px solid gray; margin-bottom:10px;">
   <div class="col-md-2 ">
   <div class="boxxx">
-    <img src="/upload/${list.profile}" class="imst" data-bs-toggle="modal" data-bs-target="#cor_modal${list.tel}">
+    <img src="/upload/${list.profile}" class="imst">
   </div>
   </div>
   <div class="col-md-2" style="text-align: left; margin:auto;">
@@ -87,54 +89,10 @@ width: 30%
 </c:forEach>
 </c:if>
 
-<!-- Modal -->
-<c:if test="${!empty list}">
-<c:forEach var="list" items="${list}">
-<div class="modal fade" id="cor_modal${list.tel}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-body" align="center">
-      	<div class="boxxxm">
-        <img src="/upload/${list.profile}" class="imst">
-        </div>
-      	<table class="table table-striped">
-      	  <tr>
-    		<th>대표명</th>
-    		<td><small>${list.name}</small></td>
-  		  </tr>
-  		  <tr>
-    		<th>연락처</th>
-    		<td><small>${list.tel}</small></td>
-  		  </tr>
-  		  <tr>
-    		<th>이메일</th>
-    		<td><small>${list.username}</small></td>
-  		  </tr>
-  		  <tr>
-    		<th>사무소명</th>
-    		<td><small>${list.corname}</small></td>
-  		  </tr>
-  		  <tr>
-    		<th>사업번호</th>
-    		<td><small>${list.cornum}</small></td>
-  		  </tr>
-  		  <tr>
-    		<th>주소</th>
-    		<td><small>${list.addr}</small></td>
-  		  </tr>
-      	</table>
-      	<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-    </div>
-  </div>
-</div>
-</c:forEach>
-</c:if>
-
 	<div align="center" class="paging">
 		<c:if test="${pageMaker.prev}">
 			<a href="${pageMaker.startPage-1}"><i
-				class="fa  fa-angle-double-left"></i></a>
+				class="fa fa-angle-double-left"></i></a>
 		</c:if>
 		<c:forEach var="num" begin="${pageMaker.startPage}"
 			end="${pageMaker.endPage}">
@@ -142,7 +100,7 @@ width: 30%
 		</c:forEach>
 		<c:if test="${pageMaker.next}">
 			<a href="${pageMaker.endPage+1}"><i
-				class="fa  fa-angle-double-right"></i></a>
+				class="fa fa-angle-double-right"></i></a>
 		</c:if>
 	</div>
   

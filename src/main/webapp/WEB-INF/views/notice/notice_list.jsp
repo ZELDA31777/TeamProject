@@ -1,44 +1,39 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp"%>
-
 <div class="sub_title">
 	<h2>공지사항</h2>
 </div>
 
 <div class="container">
 
-	<div class="write">
-		<a href="/notice/notice_write.do"><button class="btn btn-light write">작성</button></a>
-	</div>
-
-	<div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white">
-		<a href="/notice/notice_list.do" class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
-			<svg class="bi me-2" width="30" height="24">
-				</svg> <span class="fs-5 fw-semibold"><strong class="mb-1">총
-					게시글 ${pageMaker.total}</strong></span>
-		</a>
-		
-		
+		<div style="padding-bottom: 2%">
+		<strong>총 게시글 ${pageMaker.total}</strong>
+		</div>
 		
 		<div class="row">
-			<div class="col-md-2">번호</div>
-			<div class="col-md-8">제목</div>
-			<div class="col-md-2">작성일</div>
-		</div>
+			<div class="list-group list-group-flush border-bottom scrollarea efdsfa row" style="padding-left: 0; padding-right: 0;">
+			<div class="d-flex w-100 align-items-center justify-content-between">
+			<div class="col-md-2"><strong>번호</strong></div>
+			<div class="col-md-8"><strong>제목</strong></div>
+			<div class="col-md-2"><strong>작성일</strong></div>
+			</div>
+			</div>
 
 		
 		<c:if test="${!empty list}">
 		<c:set var="num" value="${pageMaker.total - ((pageMaker.cri.pageNum-1)*10)}" />
 		<c:forEach var="list" items="${list}">
 
-		<div class="list-group list-group-flush border-bottom scrollarea row">
+		<div class="list-group list-group-flush border-bottom scrollarea efdsfa row" style="padding-left: 0; padding-right: 0;">
 		<a href="/notice/notice_view.do?notice_no=${list.notice_no}" 
 			class="list-group-item list-group-item-action py-3 lh-tight"
 			aria-current="true">
 		<div class="d-flex w-100 align-items-center justify-content-between">
-		<div class="col-md-2"><strong class="mb-1">${num}</strong></div>
-								
+		
+		<div class="col-md-2">
+			<strong class="mb-1">${num}</strong>
+		</div>
 		<div class="col-md-8">
 			<small>${list.notice_title}</small>
 		</div>
@@ -87,6 +82,10 @@
 			<button class="btn btn-light">검색</button>
 		</form>
 	</div>
+		<div class="write">
+			<a href="/notice/notice_list.do"><button class="btn btn-light write">목록으로</button></a>
+			<a href="/notice/notice_write.do"><button class="btn btn-light write">작성</button></a>
+		</div>
 
 </div>
 
