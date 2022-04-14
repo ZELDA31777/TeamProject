@@ -1,7 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp"%>
+
+<!-- 아임포트 라이브러리 추가 시작-->
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<!-- 아임포트 라이브러리 추가 끝-->
+
 <!-- sub contents start -->
+
+<!-- 비로그인 상태의 정보를 받아옴 -->
+<sec:authorize access="isAnonymous()">
+	<c:set var="username" value="" />
+</sec:authorize>
+<!-- 비로그인 상태의 정보를 받아옴 종료 -->
+
+<!-- 현재 로그인 한 유저의 정보를 받아옴 -->
+<sec:authorize access="isAuthenticated()">
+	<c:set var="username">
+		<sec:authentication property="principal.user.username" />
+	</c:set>
+	<input type="hidden" id="username1" name="username1" value="${username}">
+</sec:authorize>
+<!-- 현재 로그인 한 유저의 정보를 받아옴 종료 -->
 
 <div class="container sub_title"
 	style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid rgb(245, 245, 245);">
@@ -22,7 +43,7 @@
 	</sec:authorize>
 
 	<!-- 회원 알림내용 -->
-	<sec:authorize access="hasAnyRole('USER' , 'MEMBER')">
+	<sec:authorize access="hasAnyRole('USER','MEMBER')">
 
 		<ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
 			<li class="nav-item" role="presentation">
@@ -37,6 +58,9 @@
 			</li>
 		</ul>
 		<div class="tab-content" id="myTabContent">
+		
+			<sec:authorize access="hasRole('USER')">
+			<!-- 일반회원 추천 탭 시작 -->
 			<div class="tab-pane fade" id="home" role="tabpanel"
 				aria-labelledby="home-tab">
 				<c:if test="${not empty alertList}">
@@ -84,6 +108,41 @@
 				</c:if>
 
 			</div>
+			<!-- 일반회원 추천 탭 끝 -->
+			</sec:authorize>
+			
+			
+			<sec:authorize access="hasRole('MEMBER')">
+			<!-- 중개사회원 프리미엄멤버십 탭 시작 -->
+			<div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
+				<div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+					<div class="col p-4 d-flex flex-column position-static">
+					
+						<c:if test="${empty pvo }">
+							<div class="row">
+								<p>아직 프리미엄 회원이 아닙니다.</p>
+								<p>원픽의 프리미엄 회원이 되어 더 많은 혜택을 누리세요.</p>
+								<button type="button" id="iamportPayment01" class="btn btn-light">가입하기</button>
+							</div>
+						</c:if>
+						
+						<c:if test="${!empty pvo }">
+							<div class="row">
+								<p>프리미엄 멤버십 잔여일이</p>
+								<p><span></span>&nbsp;일 남았습니다.</p>
+								<button type="button" id="iamportPayment02" class="btn btn-light">연장하기</button>
+							</div>
+						</c:if>
+						
+					</div>
+				</div>
+			</div>
+			<!-- 중개사회원 프리미엄멤버십 탭  끝 -->
+			</sec:authorize>
+			
+
+			
+			
 
 
 			<div class="tab-pane fade show active" id="profile" role="tabpanel"
@@ -178,20 +237,25 @@
 		</div>
 	</sec:authorize>
 
-	<form id="actionForm" action="/alert/alert_list.do" method="get">
-		<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
-		<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
-		<input type="hidden" name="type" value="${pageMaker.cri.type}">
-		<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
-	</form>
-
+<form id="actionForm" action="/alert/alert_list.do" method="get">
+	<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
+	<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
+	<input type="hidden" name="type" value="${pageMaker.cri.type}">
+	<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
+</form>
 
 </div>
 
 <form name="productForm" action="/product/product_view.do" method="post">
-	<input type="hidden" name="${_csrf.parameterName }"
-		value="${_csrf.token }"> <input type="hidden" name="username"
-		value="${username}"> <input type="hidden" name="pno" value="">
+	<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
+	<input type="hidden" name="username" value="${username}">
+	<input type="hidden" name="pno" value="">
+</form>
+
+<form name="payform" action="/alert/premium_insert_pro.do" method="post">
+	<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
+	<input type="hidden" name="username" value="${username}">
+	<input type="hidden" id="merchant_uid" name="merchant_uid">
 </form>
 
 
@@ -225,6 +289,72 @@
 		})
 	})
 </script>
+
+<!-- 결제 스크립트 시작 -->
+<script>
+$(document).ready(function(){
+	
+	var csrfHeaderName = "${_csrf.headerName}";
+	var csrfTokenValue = "${_csrf.token}";
+	
+	$(document).ajaxSend(function(e, xhr, options){
+		xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+	});
+	
+	$("#iamportPayment01").on("click", function(){
+		iamport();
+	});
+	
+	$("#iamportPayment02").on("click", function(){
+		iamport();
+	});
+})
+
+
+function iamport(){
+	//가맹점 식별코드
+	IMP.init('imp72486560'); // 가맹점 식별코드
+	IMP.request_pay({
+	    pg : 'kakaopay.TC0ONETIME', //pg사 명
+	    pay_method : 'card', // 지불방법
+	    merchant_uid : 'merchant_' + new Date().getTime(), // 가맹점 주문번호, 주문번호가 겹치면 안되기 때문에 밀리초를 추가해서 중복 방지
+	    name : '프리미엄 멤버십' , //결제창에서 보여질 이름
+	    amount : 10, //실제 결제되는 가격
+	    username : $('#username1'),
+	}, function(rsp) {
+		console.log(rsp);
+		
+		var merchant_uid = "";
+	        
+	    if ( rsp.success ) {
+	    	var msg = '결제가 완료되었습니다.';
+	    	
+	    	/*
+		        msg += '고유ID : ' + rsp.imp_uid;
+		        msg += '상점 거래ID : ' + rsp.merchant_uid;
+		        msg += '결제 금액 : ' + rsp.paid_amount;
+		        msg += '카드 승인번호 : ' + rsp.apply_num;
+	        */
+	        
+	        var merchant_uid = rsp.merchant_uid;
+	        
+	        
+	        
+	    } else {
+	    	 var msg = '결제에 실패하였습니다.';
+	         msg += '에러내용 : ' + rsp.error_msg;
+	    }
+	    $('#merchant_uid').val(merchant_uid);
+	    payform.submit();
+	    alert(msg);
+	    
+	});
+}
+
+</script>
+<!-- 결제 스크립트 시작 -->
+
+
 <!-- sub contents end -->
 <%@ include file="../include/footer.jsp"%>
 </body>

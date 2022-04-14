@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -414,4 +415,13 @@ public class UserController {
 		}
 		return "/user/user_delete_check";
 	}
+
+  
+	// 회원가입시 아이디 중복 체크
+	@PostMapping("/username_check.do")
+	@ResponseBody
+	public int userNameCheck(String username) {
+		return service.user_check(username);
+	}
+  
 }
