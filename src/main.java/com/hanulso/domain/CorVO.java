@@ -14,4 +14,5 @@ public class CorVO {
 	private double lng;
 	private double lat;
 	
+	private int pc; // one_premium 테이블의 pcheck 값 (null도 0으로 간주)
 }
