@@ -1,4 +1,4 @@
-ropaddinbody {
+body {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 23px;
 	line-height: 1.42857143;
@@ -8,6 +8,10 @@ ropaddinbody {
 
 a {
 	text-decoration: none;
+}
+
+.ropadding {
+	padding: 2%;
 }
 
 .form-check-input:checked {
