@@ -91,7 +91,9 @@
 													</div>
 												</c:if>
 												<c:if test="${empty list }">
-													<label>찜한 목록이 없습니다.</label>
+													<div class="container-fluid text-center">
+														찜한 목록이 없습니다.
+													</div>
 												</c:if>
 
 											</ul>
@@ -163,7 +165,9 @@
 												</div>
 											</c:if>
 											<c:if test="${empty clist }">
-												<p>최근에 본 목록이 없습니다.</p>
+												<div class="container-fluid text-center">
+													최근에 본 목록이 없습니다.
+												</div>
 											</c:if>
 	
 										</ul>

@@ -50,6 +50,7 @@ margin-right : auto;
 						<div class="dropdown" style="width: 35%;  float:left;">
 							<button class="btn btn-light" type="button"
 								id="gu_01" data-bs-toggle="dropdown"
+								data-bs-auto-close="outside" 
 								aria-expanded="false" style="width: 80%;">동구</button>
 							<ul class="dropdown-menu" aria-labelledby="gu_01" style="width:450px">
 								<li>
@@ -89,6 +90,7 @@ margin-right : auto;
 						<div class="dropdown" style="width: 35%; float:left;">
 							<button class="btn btn-light" type="button"
 								id="gu_02" data-bs-toggle="dropdown"
+								data-bs-auto-close="outside" 
 								aria-expanded="false" style="width: 80%; ">중구</button>
 							<ul class="dropdown-menu" aria-labelledby="gu_02" style="width:450px">
 								<li>

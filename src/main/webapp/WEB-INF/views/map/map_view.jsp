@@ -552,7 +552,7 @@ h4 {
 				<!-- 지도에 표시되는 중개사무소 목록 끝 -->
 			</div>
 		</div>
-		<div id="map" class="col-9" style="background-color: yellow;"></div>
+		<div id="map" class="col-9"></div>
 	</div>
 </div>
 
