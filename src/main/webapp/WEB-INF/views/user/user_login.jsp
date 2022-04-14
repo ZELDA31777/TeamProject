@@ -3,13 +3,6 @@
 <%@ include file="../include/header.jsp"%>
 
 
-<noscript>
-	<div style="display: inline;">
-		<img height="1" width="1" style="border-style: none;" alt=""
-			src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/967706247/?value=1.00&amp;currency_code=KRW&amp;label=-DVwCMLN3FoQh424zQM&amp;guid=ON&amp;script=0" />
-	</div>
-</noscript>
-
 <!-- sub contents start -->
 <div class="container-fluid subcontent">
 	<div class="container" style="width: 50%">
@@ -59,6 +52,12 @@
 					style="margin-top: 48px; margin-left: 48px; margin-right: 48px;">
 					<span> 로그인 </span>
 				</button>
+				
+				<button type="button" class="fiEZwu" style="background-color:transparent; border:none; background-image: url('/resources/images/kakao_login_large_wide_none.png'); background-position: 0 0; background-size: contain; background-repeat: no-repeat; margin-top: 12px; margin-left: 48px; margin-right: 48px;" onclick="location.href='https://kauth.kakao.com/oauth/authorize?client_id=ec529ddcb0a1e3f154fc6847679fe18a&redirect_uri=http://localhost:8123/kakaoLogin&response_type=code'">
+					<span style="color: black;">카카오 로그인</span>
+				</button>
+				
+			<%--
 				<div class="container">
 					<a
 						href="https://kauth.kakao.com/oauth/authorize?client_id=ec529ddcb0a1e3f154fc6847679fe18a&redirect_uri=http://localhost:8123/kakaoLogin&response_type=code">
@@ -66,7 +65,8 @@
 						style="width: -webkit-fill-available; margin-left: 32px; margin-right: 32px; margin-top: 16px;">
 					</a>
 				</div>
-
+			 --%>
+			 
 			</div>
 		</form>
 	</div>

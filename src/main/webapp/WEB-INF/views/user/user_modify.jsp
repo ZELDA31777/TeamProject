@@ -97,18 +97,18 @@ margin-right : auto;
 									<div style="margin:5%;">
 									<table class="table_center">
 									<tr>
-									<td class="cell_padding"><input class="jung-fav" type="checkbox" name="favorite" value="대사동">대사동</td>
-									<td class="cell_padding"><input class="jung-fav" type="checkbox" name="favorite" value="대흥동">대흥동</td>
-									<td class="cell_padding"><input class="jung-fav" type="checkbox" name="favorite" value="목동">목동</td>
-									<td class="cell_padding"><input class="jung-fav" type="checkbox" name="favorite" value="문창동">문창동</td>
+										<td class="cell_padding"><input class="jung-fav" type="checkbox" name="favorite" value="대사동">대사동</td>
+										<td class="cell_padding"><input class="jung-fav" type="checkbox" name="favorite" value="대흥동">대흥동</td>
+										<td class="cell_padding"><input class="jung-fav" type="checkbox" name="favorite" value="목동">목동</td>
+										<td class="cell_padding"><input class="jung-fav" type="checkbox" name="favorite" value="문창동">문창동</td>
 									</tr>
 									<tr>
-									<td class="cell_padding"><input class="jung-fav" type="checkbox" name="favorite" value="문화동">문화동</td>
-									<td class="cell_padding"><input class="jung-fav" type="checkbox" name="favorite" value="부사동">부사동</td>
-									<td class="cell_padding"><input class="jung-fav" type="checkbox" name="favorite" value="산성동">산성동</td>
+										<td class="cell_padding"><input class="jung-fav" type="checkbox" name="favorite" value="문화동">문화동</td>
+										<td class="cell_padding"><input class="jung-fav" type="checkbox" name="favorite" value="부사동">부사동</td>
+										<td class="cell_padding"><input class="jung-fav" type="checkbox" name="favorite" value="산성동">산성동</td>
+										<td class="cell_padding"><input class="jung-fav" type="checkbox" name="favorite" value="석교동">석교동</td>
 									</tr>
 									<tr>
-									<td class="cell_padding"><input class="jung-fav" type="checkbox" name="favorite" value="석교동">석교동</td>
 									<td class="cell_padding"><input class="jung-fav" type="checkbox" name="favorite" value="오류동">오류동</td>
 									<td class="cell_padding"><input class="jung-fav" type="checkbox" name="favorite" value="용두동">용두동</td>
 									<td class="cell_padding"><input class="jung-fav" type="checkbox" name="favorite" value="유천동">유천동</td>

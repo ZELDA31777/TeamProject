@@ -137,7 +137,7 @@ iframe.goog-te-banner-frame {
 						<div id="google_translate_element" style="display: none;"></div>
 						<!-- "새 번역 링크 UI" -->
 						<ul class="translation-links">
-							<li><a href="javascript:googleTranslateElementInit()"
+							<li><a href="javascript:void(0)"
 								class="korean" data-lang="ko">한국어</a></li>
 							<li><a href="javascript:void(0)" class="japanese"
 								data-lang="ja">Japanese</a></li>
@@ -175,10 +175,19 @@ iframe.goog-te-banner-frame {
 														alert("Error: Could not find Google translate Combolist.");
 														return false;
 													}
+
+													console.log(gtcombo.value);
+													
 													gtcombo.value = tolang; // 변경할 언어 적용
+													
 													gtcombo
 															.dispatchEvent(new Event(
 																	'change')); // 변경 이벤트 트리거
+
+													// 한국어 를 2번 눌러야 하므로 1번 더 누르는 이벤트 트리거 동작
+													if (gtcombo.value == "ko") {
+														gtcombo.dispatchEvent(new Event('change'));
+													}
 												}
 												return false;
 											});
