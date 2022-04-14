@@ -489,7 +489,7 @@ h4 {
 	<div class="row">
 		<div class="col-3 p-0">
 			<nav style="height: 50px">
-				<div class="nav nav-tabs ps-3" id="nav-tab" role="tablist">
+				<div class="nav nav-tabs ps-3 justify-content-center" id="nav-tab" role="tablist">
 					<button class="nav-link tab-title active" id="nav-home-tab"
 						data-bs-toggle="tab" data-bs-target="#nav-home" type="button"
 						role="tab" aria-controls="nav-home" aria-selected="true">전체
@@ -560,6 +560,7 @@ h4 {
 <script>
 // 매물 사진 클릭시 매물 정보 모달 열림
 	function openModal(addr){
+		map.setCenter({})
 		$('#exampleModal').modal('show').find('.modal-body').load(addr);
 	}
 
@@ -569,7 +570,9 @@ h4 {
 	var ztmp;
 // 마커가 점프하게
 	function jumpMarker(idx) {
+		map.panTo(markList[idx].getPosition());
 		markList[idx].setAnimation(google.maps.Animation.BOUNCE);
+		markList[idx].setIcon("https://img.icons8.com/ultraviolet/40/000000/marker.png");
 		ztmp = markList[idx].getZIndex();
 		markList[idx].setZIndex(1234567890);
 	}
@@ -578,6 +581,7 @@ h4 {
 	function stopMarker(idx) {
 		markList[idx].setAnimation(null);
 		markList[idx].setZIndex(ztmp);
+		markList[idx].setIcon(null);
 	}
 
 // 로딩 화면
@@ -749,7 +753,7 @@ h4 {
 										<img class="product_view"
 											src="/upload/`+list[i].thumbnail+`"
 											style="width: 100%; height: 100%;" data-bs-toggle="modal"
-											data-bs-target="#exampleModal" data-idx=`+i+`
+											data-bs-target="#exampleModal" data-idx=`+i+` data-lat=`+list[i].lat+` data-lng=`+list[i].lng+`
 											href="/map/map_modal_view.do?pno=`+list[i].pno+`"
 											onclick="openModal(this.getAttribute('href'));"
 											onmouseover="jumpMarker(this.dataset.idx);"
@@ -795,7 +799,7 @@ h4 {
 										<!-- 썸네일 이미지 출력 -->
 										<img class="product_view"
 											src="/upload/`+list[i].profile+`"
-											style="width: 100%; height: 100%;" data-idx=`+i+`
+											style="width: 100%; height: 100%; `+(list[i].pc==1?'border : 5px solid #71c9ce;':'') +`" data-idx=`+i+`
 											href="/coroperation/cor_view.do?username=`+list[i].username+`"
 											onclick="window.open(this.getAttribute('href'), '_blank');"
 											onmouseover="jumpMarker(this.dataset.idx);"
@@ -803,16 +807,16 @@ h4 {
 									</div>
 									<div class="col-7">
 										<div class="iamnls">
-											<div class="fOVNCS">
+											<div class="fOVNCS" style="flex-grow: 0;">
 												<h1 class="kPmScS">
 													`+list[i].corname+`</h1>
 												<p class="fGfKPR">
 													대표자 : `+list[i].name+`
 												</p>
 												<p class="fYtEsj">연락처 : `+list[i].tel+`</p>
-												<p class="fYtEsj">`+list[i].addr.substring(6)+`</p>
+												<p class="fYtEsj" style="margin-bottom: 0.5rem;">`+list[i].addr.substring(6)+`</p>
 											</div>
-											<div class="eCimNy"></div>
+											<div class="eCimNy">`+(list[i].pc==1?'<i class="fa-solid fa-crown" style="color: #71c9ce"></i><p style="font-size: 0.7rem; font-weight: 700; display:inline">프리미엄 중개사</p>':"")+`</div>
 										</div>
 									</div>
 								</div>
@@ -914,7 +918,7 @@ h4 {
 	let markList = [];
   function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
-      center: { lat: 36.32843039, lng: 127.40531874 }, // 처음 로딩시 보여지는 중심점
+      center: { lat: 36.32843039, lng: 127.44031874 }, // 처음 로딩시 보여지는 중심점
       // latLngBounds: {north: northLat, south: southLat, west: westLng, east: eastLng}, 
       zoom: 13, // 클수록 확대
     });

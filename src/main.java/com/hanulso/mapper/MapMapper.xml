@@ -166,12 +166,13 @@
 	
 	
 	<select id="getList1" resultType="com.hanulso.domain.CorVO">
-		SELECT c.*, NVL(pcheck,0) pc FROM one_cor c left outer join one_premium p
+		SELECT c.*, NVL(pcheck,0) pc, decode(NVL(pcheck,0),1,regdate,0,sysdate) rg
+		FROM one_cor c left outer join one_premium p
 		on c.username=p.username
 		<if test="addr2 != null">
 			WHERE addr like '%'||#{addr2}||'%'
 		</if>
-		order by pc desc
+		order by pc desc, rg asc
 	</select>
 
 </mapper>
