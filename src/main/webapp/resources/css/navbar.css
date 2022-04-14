@@ -29,6 +29,8 @@
     background-color: rgba(var(--bs-white-rgb),var(--bs-bg-opacity))!important;
 }
 
-.mynavbar{
-	
+.nav-pills .nav-link.active {
+    color: #fff;
+    background-color: rgba(var(--bs-light-rgb),var(--bs-bg-opacity))!important;
+}
 }

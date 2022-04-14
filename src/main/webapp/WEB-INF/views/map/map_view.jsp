@@ -246,7 +246,7 @@ h4 {
 						<button class="btn fw-bold border-btn" type="button"
 							id="dropdownMenuButton1" data-bs-toggle="dropdown"
 							data-bs-auto-close="outside"
-							aria-expanded="false" style="width: 80%;">원룸, 오피스텔</button>
+							aria-expanded="false" style="width: 80%;" >방 종류</button>
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 							<li>
 								<div style="padding: 20px;">
@@ -348,7 +348,7 @@ h4 {
 						<button class="btn border-btn" type="button"
 							id="dropdownMenuButton1" data-bs-toggle="dropdown"
 							data-bs-auto-close="outside"
-							aria-expanded="false" style="width: 80%;">방크기</button>
+							aria-expanded="false" style="width: 80%;">방 크기</button>
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 							<li>
 								<div style="padding: 20px;">
@@ -643,6 +643,9 @@ h4 {
 <script>
 //양방향 슬라이더
 	$(function (){
+		
+		$(".test").css("overflow", "hidden");
+		
 		/* 각 슬라이더 옵션에 대해 */
 		$(".slider").each(function(idx, slider) {
 			minVal = parseInt(slider.dataset.min);
