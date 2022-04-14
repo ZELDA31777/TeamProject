@@ -89,6 +89,15 @@ iframe.goog-te-banner-frame {
 	border: none !important;
 	box-shadow: none !important;
 }
+
+.skiptranslate {
+   display: none !important;
+}
+
+.skiptranslate:hover {
+   display: none !important;
+}
+
 </style>
 
 
