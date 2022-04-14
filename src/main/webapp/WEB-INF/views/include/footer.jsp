@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <style>
 .ropadding {
 	padding: 2%;
 }
 </style>
-<footer>
+<footer class="footer" style="margin-top:7%;">
 	<div class="container-fluid footerbg9">
 		<div class="row ropaddin">
 			<div class="col-md-10">
