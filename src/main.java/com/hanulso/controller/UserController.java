@@ -359,7 +359,7 @@ public class UserController {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@GetMapping("/passwordReset_mailCheck.do")
 	public String passwordReset_mailCheck(String username, String active_key, Model model) {
 		UserVO uvo = service.user_select(username);

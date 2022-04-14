@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hanulso.service.UserService;
+import com.hanulso.domain.PremiumVO;
 import com.hanulso.domain.ProductVO;
+import com.hanulso.service.PremiumService;
 import com.hanulso.service.ProductService;
 
 @Controller
@@ -20,12 +22,24 @@ public class CorController {
 
 	@Autowired
 	private ProductService productService;
+	
+	@Autowired
+	private PremiumService premiumService;
 
 	// username = 부동산 이름
 	@GetMapping("/cor_view.do")
 	public void cor_view(String username, Model model) {
 		// 이 부동산의 매물 수
 		int pcnt = product_count(username);
+		
+		PremiumVO prevo = premiumService.premium_select(username);
+		
+		if(prevo != null) {
+			if(prevo.getPCheck()!=0) {
+				model.addAttribute("prevo", prevo);
+			}
+		}
+		
 		model.addAttribute("pcnt", pcnt);
 		model.addAttribute("uvo", userService.user_select(username));
 		model.addAttribute("cvo", userService.member_select(username));
