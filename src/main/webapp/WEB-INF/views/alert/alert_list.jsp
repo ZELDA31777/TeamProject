@@ -118,7 +118,7 @@
 				<div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
 					<div class="col p-4 d-flex flex-column position-static">
 					
-						<c:if test="${empty pvo }">
+						<c:if test="${empty prevo }">
 							<div class="row">
 								<p>아직 프리미엄 회원이 아닙니다.</p>
 								<p>원픽의 프리미엄 회원이 되어 더 많은 혜택을 누리세요.</p>
@@ -126,10 +126,10 @@
 							</div>
 						</c:if>
 						
-						<c:if test="${!empty pvo }">
+						<c:if test="${!empty prevo }">
 							<div class="row">
 								<p>프리미엄 멤버십 잔여일이</p>
-								<p><span></span>&nbsp;일 남았습니다.</p>
+								<p><span>${dayCheck }</span>&nbsp;일 남았습니다.</p>
 								<button type="button" id="iamportPayment02" class="btn btn-light">연장하기</button>
 							</div>
 						</c:if>
@@ -258,6 +258,12 @@
 	<input type="hidden" id="merchant_uid" name="merchant_uid">
 </form>
 
+<form name="payUpdateform" action="/alert/premium_update_pro.do" method="post">
+	<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
+	<input type="hidden" name="username" value="${username}">
+	<input type="hidden" id="merchant_uid" name="merchant_uid">
+</form>
+
 
 <script>
 	function pSend(el) {
@@ -302,16 +308,16 @@ $(document).ready(function(){
 	});
 	
 	$("#iamportPayment01").on("click", function(){
-		iamport();
+		iamport(1);
 	});
 	
 	$("#iamportPayment02").on("click", function(){
-		iamport();
+		iamport(2);
 	});
 })
 
 
-function iamport(){
+function iamport(flag){
 	//가맹점 식별코드
 	IMP.init('imp72486560'); // 가맹점 식별코드
 	IMP.request_pay({
@@ -341,11 +347,18 @@ function iamport(){
 	        
 	        
 	    } else {
+	    	
 	    	 var msg = '결제에 실패하였습니다.';
 	         msg += '에러내용 : ' + rsp.error_msg;
+	         return false;
 	    }
+	    
 	    $('#merchant_uid').val(merchant_uid);
-	    payform.submit();
+	    if(flag==1){
+		    payform.submit();
+	    }else{
+	    	payUpdateform.submit();
+	    }
 	    alert(msg);
 	    
 	});

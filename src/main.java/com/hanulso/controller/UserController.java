@@ -1,6 +1,7 @@
 package com.hanulso.controller;
 
 import java.io.File;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
@@ -407,7 +408,8 @@ public class UserController {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		try {
-			response.getWriter().println("<script>alert('탈퇴 완료');location.href='/';</script>");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('탈퇴 완료');location.href='/';</script>");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

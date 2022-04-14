@@ -1,8 +1,11 @@
 package com.hanulso.controller;
 
+import java.io.PrintWriter;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -11,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hanulso.domain.AlertVO;
 import com.hanulso.domain.CorVO;
@@ -64,35 +68,55 @@ public class AlertController {
 			// 중개사 회원으로 로그인 한 경우 판별 후 이름 넘기기
 			CorVO cvo = userService.member_select(user.getUsername());
 			if(cvo != null) {
+				
 				PremiumVO prevo = premiumService.premium_select(user.getUsername());
 				
 				if(prevo != null) {
-					Calendar cal = Calendar.getInstance(); 
-					cal.setTime(prevo.getPLastdate());
-					Date date = new Date();
-							
+					
+					int dayCheck = premiumService.premium_daycheck(user.getUsername());
+					
+					if(dayCheck<0) {
+						dayCheck = 0;
+					}
+					
+					model.addAttribute("dayCheck", dayCheck);
+					model.addAttribute("prevo", prevo);
 					
 				}
 				
-				model.addAttribute("prevo", prevo);
-
 				model.addAttribute("username", user.getUsername());
 			}
 		}
 	}
 	
 	@PostMapping("/premium_insert_pro.do")
-	public String premium_insert(PremiumVO prevo) {
-		
-		Calendar cal = Calendar.getInstance();
-		cal.add(Calendar.DATE, 31);
-		
-		Date date = new Date(cal.getTimeInMillis());
-		
-		prevo.setPLastdate(date);
-		premiumService.premium_insert(prevo);
-		return "redirect:/";
+	public void premium_insert(PremiumVO prevo,HttpServletResponse response) {
+		if(!prevo.getMerchant_uid().isEmpty()) {
+			premiumService.premium_insert(prevo);
+			response.setCharacterEncoding("UTF-8");
+			response.setContentType("text/html; charset=UTF-8");
+			try {
+				PrintWriter out = response.getWriter();
+				out.println("<script>alert('프리미엄 멤버십 가입을 환영합니다.');location.href='/';</script>");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
+	@PostMapping("/premium_update_pro.do")
+	public void premium_update(PremiumVO prevo,HttpServletResponse response) {
+		if(!prevo.getMerchant_uid().isEmpty()) {
+			premiumService.premium_update(prevo);
+			response.setCharacterEncoding("UTF-8");
+			response.setContentType("text/html; charset=UTF-8");
+			try {
+				PrintWriter out = response.getWriter();
+				out.println("<script>alert('프리미엄 멤버십을 연장하셨습니다.');location.href='/';</script>");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
 	
 }
