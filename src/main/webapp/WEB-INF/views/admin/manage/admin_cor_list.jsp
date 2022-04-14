@@ -76,7 +76,11 @@ width: 30%
   </div>
   
   <div class="col-md-1" style="margin:auto;">
+<form class="cdcdcd" method="post" action="/admin/manage/admin_cor_delete.do">
+<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+<input type="hidden" name="username" value="${list.username}">
     <button class="btn btn-primary" style="width:120%">회원 삭제</button>
+</form> 
   </div>
 				
 </div>
