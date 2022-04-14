@@ -16,7 +16,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- 위 3개의 메타 태그는 *반드시* head 태그의 처음에 와야합니다; 어떤 다른 콘텐츠들은 반드시 이 태그들 *다음에* 와야 합니다 -->
-<title>살고 싶은 집! 원픽!</title>
+<title>살고 싶은 집! 원 픽!</title>
 
 <!-- 부트스트랩 -->
 <!-- 합쳐지고 최소화된 최신 CSS -->
@@ -208,6 +208,9 @@ iframe.goog-te-banner-frame {
 							<li class="nav-item"><a
 								class="nav-link ${(fn:contains(nowUri, 'notice_list.do'))?'active':'' }"
 								href="/notice/notice_list.do">공지사항</a></li>
+							<li class="nav-item"><a
+								class="nav-link ${(fn:contains(nowUri, 'income.do'))?'active':'' }"
+								href="/admin/manage/income.do">수익현황</a></li>
 							<li class="nav-item"><a
 								class="nav-link ${(fn:contains(nowUri, 'admin_cor_list.do'))?'active':'' }"
 								href="/admin/manage/admin_cor_list.do">중개사 회원관리</a></li>
