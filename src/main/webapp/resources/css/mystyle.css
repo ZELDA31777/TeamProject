@@ -10,6 +10,10 @@ a {
 	text-decoration: none;
 }
 
+.ropadding {
+	padding: 2%;
+}
+
 .form-check-input:checked {
 	background-color: #71c9ce;
 	border-color: #71c9ce;
