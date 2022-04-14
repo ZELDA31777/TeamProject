@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hanulso.mapper.ChartMapper">
+
+	<select id="chart_list" resultType="com.hanulso.domain.ChartVO">
+		SELECT TO_CHAR(regdate,'yyyy-mm'), count(*) as userNo
+		FROM one_user WHERE grade='ROLE_USER'
+		GROUP BY TO_CHAR(regdate, 'yyyy-mm')
+	</select>
+
+</mapper>

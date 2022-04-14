@@ -2,9 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../../include/header.jsp"%>
 <style>
-th {
-width: 30%
-}
 .boxxx {
     width: 100px;
     height: 100px; 
@@ -26,7 +23,6 @@ width: 30%
     height: 100%;
     object-fit: cover;
 }
-.paging
 </style>
 <!-- sub contents start -->
 <div class="container-fluid">
