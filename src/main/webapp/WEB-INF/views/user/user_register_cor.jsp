@@ -211,8 +211,32 @@
             $('#passwordConfirm').attr('pattern', $(this).val());
         });
    	});
-	
-	
+
+
+    // 아이디 중복 체크
+    $("#username").on("change", function(){
+
+		const header = "${_csrf.headerName}";
+	    const token = "${_csrf.token}";
+
+		var data = "username="+$(this).val();
+
+		$.ajax({
+			url: '/user/username_check.do',
+			type: 'post',
+			data: data,
+			beforeSend: function(xhr) {
+				xhr.setRequestHeader(header, token);
+			},
+			success : function(result) {
+				if (result == "1") {
+					alert("중복된 아이디 입니다.");
+					$("#username").val("");
+					$("#username").focus();
+				}
+			}
+		})
+	})	
 
 </script>
 

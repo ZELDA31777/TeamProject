@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -389,34 +390,39 @@ public class UserController {
 	}
 	
 	@PostMapping("/user_delete.do")
-	public void userDelete(String username, HttpServletResponse response) {
+	public String userDelete(String username, HttpServletResponse response) {
 		service.user_delete_alert(username);
 		service.user_delete_user(username);
 		service.user_delete_favorite(username);
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		try {
-			response.getWriter().println("<script>alert('탈퇴 완료');location.href='/';</script>");
+			response.getWriter().println("<script>alert('탈퇴 완료');</script>");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return "/user/user_delete_check";
 	}
 	
 	@PostMapping("/cor_delete.do")
-	public void corDelete(String username, HttpServletResponse response) {
+	public String corDelete(String username, HttpServletResponse response) {
 		service.cor_delete(username);
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		try {
-			PrintWriter out = response.getWriter();
-			out.println("<script>alert('탈퇴 완료');location.href='/';</script>");
+			response.getWriter().println("<script>alert('탈퇴 완료');</script>");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return "/user/user_delete_check";
 	}
-	
 
-	
-	
-	
+  
+	// 회원가입시 아이디 중복 체크
+	@PostMapping("/username_check.do")
+	@ResponseBody
+	public int userNameCheck(String username) {
+		return service.user_check(username);
+	}
+  
 }

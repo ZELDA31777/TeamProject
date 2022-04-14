@@ -63,12 +63,12 @@
 			<!-- 일반회원 추천 탭 시작 -->
 			<div class="tab-pane fade" id="home" role="tabpanel"
 				aria-labelledby="home-tab">
-				<c:if test="${not empty alertList}">
-				<c:forEach items="${ alertList}" var="alertvo">
-					<c:set value="${alertvo.product}" var="pvo" />
-					<div
-						class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-						<div class="col p-4 d-flex flex-column position-static">
+				<div
+					class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+					<div class="col p-4 d-flex flex-column position-static">
+						<c:if test="${not empty alertList}">
+						<c:forEach items="${ alertList}" var="alertvo">
+							<c:set value="${alertvo.product}" var="pvo" />
 							<div class="row">
 								<div class="col-md-3">
 									<!-- 알람 대상의 사진 -->
@@ -97,15 +97,15 @@
 									<%@ include file="../include/interest_img.jsp"%>
 								</div>
 							</div>
-						</div>
+							</c:forEach>
+							</c:if>
+						<c:if test="${empty alertList}">
+							<div class="container-fluid text-center">
+								관심지역에 새로 등록된 매물이 없습니다.
+							</div>
+						</c:if>
 					</div>
-				</c:forEach>
-				</c:if>
-				<c:if test="${empty alertList}">
-					<div class="container-fluid text-center">
-						관심지역에 새로 등록된 매물이 없습니다.
-					</div>
-				</c:if>
+				</div>
 
 			</div>
 			<!-- 일반회원 추천 탭 끝 -->

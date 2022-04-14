@@ -7,49 +7,46 @@
 </div>
 
 <div class="container">
-
-	<div class="write">
-		<a href="/tip/tip_write.do"><button class="btn btn-light write">작성</button></a>
-	</div>
-	
-	<div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white">
-		<a href="/tip/tip_list.do" class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
-			<svg class="bi me-2" width="30" height="24">
-				</svg> <span class="fs-5 fw-semibold"><strong class="mb-1">총
+	<div
+		class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white">
+		<div
+			class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
+			<span class="fs-5 fw-semibold"><strong class="mb-1">총
 					게시글 ${pageMaker.total}</strong></span>
-		</a>
-
-		<div class="row">
-			<div class="col-md-2">번호</div>
-			<div class="col-md-8">제목</div>
-			<div class="col-md-2">작성일</div>
 		</div>
-
-
+		<div class="row py-3 border-bottom">
+			<div class="col-md-2" style="text-align: center;">번호</div>
+			<div class="col-md-8" style="text-align: center;">제목</div>
+			<div class="col-md-2" style="text-align: center;">작성일</div>
+		</div>
 		<c:if test="${!empty list}">
-		<c:set var="num" value="${pageMaker.total - ((pageMaker.cri.pageNum-1)*10)}" />
-		<c:forEach var="list" items="${list}">
+			<c:set var="num"
+				value="${pageMaker.total - ((pageMaker.cri.pageNum-1)*10)}" />
+			<c:forEach var="list" items="${list}">
 
-		<div class="list-group list-group-flush border-bottom scrollarea row">
-		<a href="/tip/tip_view.do?tip_no=${list.tip_no}" 
-			class="list-group-item list-group-item-action py-3 lh-tight"
-			aria-current="true">
-		<div class="d-flex w-100 align-items-center justify-content-between">
-		<div class="col-md-2"><strong class="mb-1">${num}</strong></div>
-								
-		<div class="col-md-8">
-			<small>${list.tip_title}</small>
-		</div>
-		<div class="col-md-2">
-			<small><fmt:formatDate value="${list.tip_regdate}" pattern="yyyy-MM-dd" /></small>
-		</div>
+				<div
+					class="list-group list-group-flush border-bottom scrollarea">
+					<a href="/tip/tip_view.do?tip_no=${list.tip_no}"
+						class="list-group-item-action py-3 lh-tight"
+						aria-current="true">
+						<div class="d-flex w-100 align-items-center">
+							<div class="col-md-2" style="text-align: center;">
+								<strong>${num}</strong>
+							</div>
 
-		</div>
-		</a>
-		</div>
+							<div class="col-md-8">
+								<small>${list.tip_title}</small>
+							</div>
+							<div class="col-md-2" style="text-align: center;">
+								<small><fmt:formatDate value="${list.tip_regdate}"
+										pattern="yyyy-MM-dd" /></small>
+							</div>
+						</div>
+					</a>
+				</div>
 
-		<c:set var="num" value="${num-1}" />
-		</c:forEach>
+				<c:set var="num" value="${num-1}" />
+			</c:forEach>
 		</c:if>
 
 
@@ -84,8 +81,12 @@
 			</select> <input type="text" name="keyword" class="form-control txtform">
 			<button class="btn btn-light">검색</button>
 		</form>
-		<a href="/tip/tip_list.do"><button class="btn btn-light write">목록으로</button></a>
-			
+		<div class="write">
+			<a href="/tip/tip_list.do"><button class="btn btn-light write">목록으로</button></a>
+			<a href="/tip/tip_write.do"><button class="btn btn-light write">작성</button></a>
+
+		</div>
+
 	</div>
 
 </div>

@@ -32,4 +32,5 @@ public interface ProductService {
 
 	public void product_modify(ProductVO pvo);
 	
+	public void product_delete(ProductVO pvo);
 }

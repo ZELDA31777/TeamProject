@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <div class="nIpBu">
 	<p class="boOTqL">건물 층수</p>
-	<select id="totalfloor" name="tatolfloor" width="170"
+	<select id="totalfloor" name="totalfloor" width="170"
 		class="gwaqis"><option value="">건물
 			층수 선택</option>
 		<option value="1">1층</option>

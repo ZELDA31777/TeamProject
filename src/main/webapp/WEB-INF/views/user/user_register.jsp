@@ -201,6 +201,32 @@ margin-right : auto;
              return string.replace(/[.*+?$^{}()|[\]\\]/g, '\\$&'); // $&은 일치한 문자열 전체를 의미
         }
     });
+
+
+    // 아이디 중복체크
+	$("#username").on("change", function(){
+	
+		const header = "${_csrf.headerName}";
+	    const token = "${_csrf.token}";
+	
+		var data = "username="+$(this).val();
+	
+		$.ajax({
+			url: '/user/username_check.do',
+			type: 'post',
+			data: data,
+			beforeSend: function(xhr) {
+				xhr.setRequestHeader(header, token);
+			},
+			success : function(result) {
+				if (result == "1") {
+					alert("중복된 아이디 입니다.");
+					$("#username").val("");
+					$("#username").focus();
+				}
+			}
+		})
+	})
    
 </script>
 

@@ -18,7 +18,7 @@
 }
 
 .index_subtitle {
-	font-size: 1.1rem;
+	font-size: 1rem;
 }
 
 .pcl {
@@ -234,7 +234,7 @@
 			<sec:authorize access="isAnonymous()">
 				<div class="row">
 						<div class="row">
-							<div class="index_subtitle my-2">
+							<div class="index_subtitle my-2" style="font-size: 1.1rem;">
 								<a href="/user/user_login.do"><span>&nbsp;로그인&nbsp;</span></a>하시면 관심지역의 정보를 확인하실 수 있습니다
 							</div>
 						</div>
@@ -330,6 +330,9 @@
 				</a>
 			</c:forEach>
 		</c:if>
+		<div class="container-fluid row">
+		<div><p>  </p></div>
+		</div>
 	</div>
 </div>
 <!-- 가이드&팁 끝 -->
@@ -445,7 +448,7 @@
 									data-bs-parent="#accordionFlushExample">
 									<div class="accordion-body">
 										<p class="qstyle">A</p>
-										<p class="naityousize">아직모름~</p>
+										<p class="naityousize">마이페이지에서 비밀번호를 입력하시고, 회원탈퇴 버튼을 누르시면 탈퇴하실 수 있습니다.</p>
 									</div>
 								</div>
 							</div>

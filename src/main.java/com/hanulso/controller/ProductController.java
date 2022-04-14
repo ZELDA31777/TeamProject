@@ -145,10 +145,99 @@ public class ProductController {
 	}
 
 	@PostMapping("/product_modify_pro.do")
-	public String product_modify_pro(ProductVO pvo, Model model) {
+	public String product_modify_pro(ProductVO pvo, MultipartFile thumbnailFile, MultipartFile[] pictureFile) {
+		/* 파일업로드 시작 */
+		String uploadFolder = "C:\\upload";
+		String folderPath = getFolder();
+		File uploadPath = new File(uploadFolder, folderPath);
+		if (!uploadPath.exists()) {
+			uploadPath.mkdirs();
+		}
+
+		String picture = null; // 사진을 /로 구분하여 저장
+
+		try {
+			if (!thumbnailFile.isEmpty()) { // 업로드 된 파일이 있을때에만
+				// 이전에 저장한 이미지 파일 삭제
+				File preThumbnail = new File(uploadFolder, pvo.getThumbnail());
+
+				if (preThumbnail.exists()) {
+					preThumbnail.delete();
+					log.info(preThumbnail.getPath() + " 삭제 완료");
+				}
+
+				String uploadFileName = UUID.randomUUID().toString() /* 중복 처리 */
+						+ "_" + thumbnailFile.getOriginalFilename()
+								.substring(thumbnailFile.getOriginalFilename().lastIndexOf("\\") + 1); // 모든 경로까지 저장되는
+																										// ie 브라우저용 처리
+
+				File saveFile = new File(uploadPath, uploadFileName);
+				thumbnailFile.transferTo(saveFile);
+
+				String savePath = folderPath + File.separator + uploadFileName;
+				pvo.setThumbnail(savePath);
+			}
+
+
+			if (pictureFile.length != 0) {
+				for (String picturedel : pvo.getPicture().split("/")) {
+					File pictures = new File(uploadFolder, picturedel);
+					if (pictures.exists()) {
+						pictures.delete();
+						log.info(pictures.getPath() + " 삭제 완료");
+					}
+				}
+			}
+
+			for (int i = 0; i < pictureFile.length; i++) {
+				MultipartFile mfile = pictureFile[i];
+				if (!mfile.isEmpty()) { // 업로드 된 파일이 있을때에만
+					String uploadFileName = UUID.randomUUID().toString() /* 중복 처리 */
+							+ "_"
+							+ mfile.getOriginalFilename().substring(mfile.getOriginalFilename().lastIndexOf("\\") + 1);
+					File saveFile = new File(uploadPath, uploadFileName);
+					mfile.transferTo(saveFile);
+					String savePath = folderPath + File.separator + uploadFileName;
+					if (picture != null) {
+						picture += "/" + savePath;
+					} else {
+						picture = savePath;
+					}
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		pvo.setPicture(picture);
 		productservice.product_modify(pvo);
-		System.out.println("확인하였습니다.");
+		/* 파일업로드 끝 */
 		return "redirect:/";
+	}
+
+	@GetMapping("/product_delete.do")
+	public String product_delete(int pno, String username,Model model) {
+		ProductVO pvo = productservice.product_view(pno);
+		String uploadFolder = "C:\\upload";
+		String folderPath = getFolder();
+		File uploadPath = new File(uploadFolder, folderPath);
+		File preThumbnail = new File(uploadFolder, pvo.getThumbnail());
+		if (preThumbnail.exists()) {
+			preThumbnail.delete();
+			log.info(preThumbnail.getPath() + " 삭제 완료");
+		}
+		for (String picturedel : pvo.getPicture().split("/")) {
+			File pictures = new File(uploadFolder, picturedel);
+			if (pictures.exists()) {
+				pictures.delete();
+				log.info(pictures.getPath() + " 삭제 완료");
+			}
+		}
+		
+		productservice.product_delete(pvo);
+		
+		model.addAttribute("username", username);
+		
+		return "redirect:/coroperation/cor_view.do";
 	}
 
 	@PostMapping("/product_write_pro.do")

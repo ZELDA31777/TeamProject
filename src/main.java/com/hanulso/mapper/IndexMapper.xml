@@ -13,8 +13,7 @@
 	<select id="main_top_list"  resultType="com.hanulso.domain.ProductVO">
 	<![CDATA[
 		select * from
-		(select pno, type, rent, deposit, floor, room, shower, addr1, addr2, readcnt, thumbnail
-		from one_product order by readcnt desc) 
+		(select * from one_product order by readcnt desc) 
 		where rownum <= 4
 	]]>
 	</select>
