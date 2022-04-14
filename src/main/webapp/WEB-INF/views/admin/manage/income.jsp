@@ -31,6 +31,22 @@
 <!-- sub contents start -->
 <div class="container">
 	<div class="row">
+	<div>
+		<c:forEach var="uList" items="${uList }">
+			<label>${uList.ddate.substring(5) }</label>
+			<label>${uList.userno }</label>
+		</c:forEach>
+		
+		<c:forEach var="mList" items="${mList }">
+			<label>${mList.ddate.substring(5) }</label>
+			<label>${mList.memberno }</label>
+		</c:forEach>
+		
+		<c:forEach var="pList" items="${pList }">
+			<label>${pList.ddate.substring(5) }</label>
+			<label>${pList.preno }</label>
+		</c:forEach>
+	</div>
 		<div class="col-md-12" style="width: -webkit-fill-available; height: 800px;">
 			<!--차트가 그려질 부분-->
 			<canvas id="line-chart" width="300" height="150"></canvas>
@@ -48,9 +64,9 @@
 new Chart(document.getElementById("line-chart"), {
 	  type: 'line',
 	  data: {
-	    labels: [1500,1600,1700,1750,1800,1850],
+	    labels: [11, 12, 01, 02, 03, 04],
 	    datasets: [{ 
-	        data: [86,114,106,106,107,111],
+	        data: [0,0,106,106,107,111],
 	        label: "일반 회원 수",
 	        borderColor: "#3e95cd",
 	        fill: false

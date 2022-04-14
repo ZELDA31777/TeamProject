@@ -119,6 +119,9 @@
 					<div class="col p-4 d-flex flex-column position-static">
 					
 						<c:if test="${empty prevo }">
+							<div class="row" style="width:100%">
+								<img src="/resources/images/premium_membership.png">
+							</div>
 							<div class="row">
 								<p>아직 프리미엄 회원이 아닙니다.</p>
 								<p>원픽의 프리미엄 회원이 되어 더 많은 혜택을 누리세요.</p>
@@ -127,6 +130,9 @@
 						</c:if>
 						
 						<c:if test="${!empty prevo }">
+							<div class="row" style="width:100%">
+								<img src="/resources/images/premium_membership.png">
+							</div>
 							<div class="row">
 								<p>프리미엄 멤버십 잔여일이</p>
 								<p><span>${dayCheck }</span>&nbsp;일 남았습니다.</p>
