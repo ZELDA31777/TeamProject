@@ -562,6 +562,14 @@
 
 	$(function() {
 		$("#totalfloor").on("change", function() {
+			var floorval = $("#floor").val();
+			var totalfloor = $(this).val();
+
+			// 건물의 층 수가 층보다 작을 경우, 층 수와 같은 값이 되도록 변경
+			if (floorval != "" && floorval*1 > totalfloor*1) {
+				$(this).val(floorval).prop("selected", true);
+			}
+			
 			var floor = $("#totalfloor option:selected").text();
 			$("#totalfloor2").text(floor);
 			return false;
@@ -570,11 +578,23 @@
 
 	$(function() {
 		$("#floor").on("change", function() {
+			var floorval = $(this).val();
+			var totalfloor = $("#totalfloor").val();
+
+			// 층이 건물의 층 수 보다 클 경우, 건물의 층 수와 같은 값이 되도록 변경
+			if (totalfloor != "" && floorval*1 > totalfloor*1) {
+				$(this).val(totalfloor).prop("selected", true);
+			}
+				
 			var floor = $("#floor option:selected").text();
 			$("#floor2").text(floor);
+
+			
 			return false;
 		})
 	})
+	
+	
 
 	$(function() {
 		$("#addr").on("propertychange change keyup paste input", function() {
