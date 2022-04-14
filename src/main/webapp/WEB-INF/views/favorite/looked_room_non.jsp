@@ -11,9 +11,9 @@
 <div class="container">
 	<!-- 비회원 알림 내용 -->
 	<sec:authorize access="isAnonymous()">
-		<div align="center">
+		<div align="center" style="padding-top: 5%;">
 			로그인이 필요한 서비스입니다.
-			<div>
+			<div style="padding-top: 2%;">
 				<a href="/user/user_login.do"><button type="button"
 						class="btn btn-light">로그인</button></a>
 			</div>
@@ -24,4 +24,10 @@
 <!-- sub contents end -->
 <%@ include file="../include/footer.jsp"%>
 </body>
+<script>
+	$(function() {
+		$(".footer").css("padding-top", "4%");
+		$(".test").css("overflow", "hidden");
+	});
+</script>
 </html>

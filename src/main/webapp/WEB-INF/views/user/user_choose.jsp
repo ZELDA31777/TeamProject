@@ -1,110 +1,71 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<%@ include file="../include/header.jsp"%>
 
-<link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/pricing/">
+<style>
+.chooseform {
+	float: left;
+	display: flex;
+	flex-direction: column;
+	padding: 64px;
+	border: 1px solid rgb(245, 245, 245);
+}
 
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
+.chooseform>h1 {
+	padding-bottom: 48px;
+	font-size: 30px;
+	line-height: 48px;
+	letter-spacing: -0.5px;
+	border-bottom: 1px solid rgb(245, 245, 245);
+}
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-      
-      .jb-percentage { font-size: 100%; }
-    </style>
-
-    
-    <!-- Custom styles for this template -->
-    <link href="/resources/css/pricing.css" rel="stylesheet">
-</head>
-<body>
-	<%@ include file="../include/header.jsp"%>
-	<!-- sub contents start -->
-
-<div class="container py-3">
-  <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-    <div class="row text-center">
-    
-      <div class="col">
-        <div class="card mb-4 rounded-3 shadow-sm">
-          <div class="card-body">
-            <img src="/resources/images/ANKO.jpg" width="100%">
-            <ul class="list-unstyled mt-3 mb-4">
-              <li>원픽의 회원이 되어</li>
-              <li>원하는 방을 찾아보세요!</li>
-            </ul>
-            <button type="button" class="w-100 btn btn-lg btn-outline-primary">일반회원</button>
-          </div>
-        </div>
-      </div>
- 
-      <div class="col">
-      </div>
-      
-      <div class="col">
-        <div class="card mb-4 rounded-3 shadow-sm">
-          <div class="card-body">
-            <img src="/resources/images/ANKO.jpg" width="100%">
-            <ul class="list-unstyled mt-3 mb-4">
-              <li>원픽의 파트너 중개사가 되어</li>
-              <li>다양한 매물을 소개해보세요!</li>
-            </ul>
-            <button type="button" class="w-100 btn btn-lg btn-outline-primary">중개사 회원</button>
-          </div>
-        </div>
-      </div>
-      
-   </div>
-  </div>
+.chooseform>h2 {
+	padding: 48px 0px 80px;
+	color: rgb(34, 34, 34);
+	font-size: 14px;
+	line-height: 24px;
+}
+</style>
+<!-- sub contents start -->
+<div class="container" style="width: 80%;">
+	<div class="row justify-content-between">
+		<div class="col-5 chooseform">
+			<h1>일반회원 가입</h1>
+			<h2>원픽 서비스 이용을 위해 회원가입을 해주세요.</h2>
+			<!-- 추가 -->
+			<button color="blue" class="fiEZwu" onClick="location.href='/user/user_register.do'">
+				<span> 일반회원 가입 </span>
+			</button>
+		</div>
+		<div class="col-5 chooseform">
+			<h1>중개사 회원 가입</h1>
+			<h2>중개사 회원 이용을 위해서, 중개사 회원 가입을 해주세요.</h2>
+			<!-- 추가 -->
+			<button color="blue" class="fiEZwu" onClick="location.href='/user/user_register_cor.do'">
+				<span> 중개사 회원 가입 </span>
+			</button>
+		</div>
+	</div>
 </div>
 
-<div class="row">
-<div class="d-flex justify-content-evenly">
 
-	<div class="col-md-2">
-       <div class="card mb-4 rounded-3 shadow-sm">
-          <div class="card-body">
-            <img src="/resources/images/ANKO.jpg" width="100%">
-            <ul class="list-unstyled mt-3 mb-4">
-              <li>원픽의 회원이 되어
-              	원하는 방을 찾아보세요!</li>
-            </ul>
-            <button type="button" class="w-100 btn btn-lg btn-outline-primary">일반회원</button>
-          </div>
-        </div>
-	</div>
-	
 
-	<div class="col-md-2">
-       <div class="card mb-4 rounded-3 shadow-sm">
-          <div class="card-body">
-            <img src="/resources/images/ANKO.jpg" width="100%">
-            <ul class="list-unstyled mt-3 mb-4">
-              <li>원픽의 파트너 중개사가 되어
-              	다양한 매물을 소개해보세요!</li>
-            </ul>
-            <button type="button" class="w-100 btn btn-lg btn-outline-primary">중개사 회원</button>
-          </div>
-        </div>
-	</div>
+<!-- sub contents end -->
 
-</div>	
-</div>
+<%@ include file="../include/footer.jsp"%>
 
-	<!-- sub contents end -->
-	<%@ include file="../include/footer.jsp"%>
+<!-- jquery를 기반으로 로드함 -->
+<!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<!-- 모든 컴파일된 플러그인을 포함합니다 (아래), 원하지 않는다면 필요한 각각의 파일을 포함하세요 -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+<script>
+
+</script>
+
 </body>
+
 </html>
