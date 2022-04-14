@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
 <mapper namespace="com.hanulso.mapper.PremiumMapper">
-
+	
 	<insert id="premium_insert">
 		insert into one_premium (merchant_uid,username)
 		values (#{merchant_uid},#{username})

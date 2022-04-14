@@ -39,6 +39,9 @@ public class ProductController {
 	
 	@Autowired
 	private AlertService alertservice;
+	
+	@Autowired
+	private PremiumService premiumService;
 
 	// parameter username = 로그인 사용자 이름
 	@PostMapping("/product_view.do")
@@ -58,6 +61,13 @@ public class ProductController {
 		}
 
 		CorVO cvo = userSerivce.member_select(pvo.getUsername());
+		PremiumVO prevo = premiumService.premium_select(pvo.getUsername());
+		
+		if(prevo != null) {
+			if(prevo.getPCheck()!=0) {
+				model.addAttribute("prevo", prevo);
+			}
+		}
 
 		/* ##### 조회수 처리 및 최근에 본 목록 처리 시작 ##### */
 

@@ -34,7 +34,8 @@
 
 	<div name="profile" class="styled__Wrap-sc-11kevv2-0 iEoaqL">
 		<div size="80" class="styled__Profile-sc-1rwobri-0 fYBZkD mb-4">
-			<img src="/upload/${cvo.profile}" alt="" draggable="false">
+			<img src="/upload/${cvo.profile}" alt="" draggable="false"
+				<c:if test="${!empty prevo }">style="border : 5px solid #71c9ce;"</c:if>>
 		</div>
 		<%--
 		<div type="messenger"
@@ -59,6 +60,20 @@
 		</div>
 --%>
 		<p class="styled__AgentName-sc-11kevv2-2 kZxOhb">${cvo.corname }</p>
+
+
+		<!-- 이미지 넣어줘 !  -->
+		<!-- 보더 수정해주세요 ! -->
+		<div style="text-align: center;">
+			<c:if test="${!empty prevo }">
+				<i class="fa-solid fa-crown" style="color: #71c9ce"></i>
+				<p style="font-size: 1rem; font-weight: 700;">프리미엄 멤버십 가입 중개사
+					입니다.</p>
+			</c:if>
+		</div>
+
+
+
 	</div>
 	<div class="container" style="width: 80%">
 		<ul class="styled__Ul-y3tp2k-0 uJPcK">
@@ -102,7 +117,7 @@
 	<div name="room" class="container dWqXbC" style="width: 80%">
 		<div class="styled__TabWrap-sc-1j5nm8l-1 bKTJew">
 			<p class="styled__Tab-sc-1j5nm8l-2 gYpPYH">
-				이 부동산의 방<span>&nbsp;${pcnt}</span>
+				이 부동산의 방<span style="color: #71c9c2;">&nbsp;${pcnt}</span>
 			</p>
 		</div>
 
@@ -188,7 +203,6 @@
 	<!-- 모든 컴파일된 플러그인을 포함합니다 (아래), 원하지 않는다면 필요한 각각의 파일을 포함하세요 -->
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
 </body>
 
 </html>

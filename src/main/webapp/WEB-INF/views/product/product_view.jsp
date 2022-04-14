@@ -17,6 +17,7 @@
 		font-size: 3.5rem;
 	}
 }
+
 </style>
 
 <!-- Custom styles for this template -->
@@ -346,7 +347,7 @@
 
 		<div class="col-md-4" style="margin-top: 80px">
 			<div class="position-sticky" style="top: 7rem;">
-				<div class="jtcdhj">
+				<div class="jtcdhj" <c:if test="${!empty prevo }">style="border: 2px solid rgba(166, 227, 233, 0.7);"</c:if> >
 					<div class="biKwOB">
 						<div>
 							<div class="dtGkBV">매물번호 ${pvo.pno }</div>
@@ -413,6 +414,9 @@
 					<div class="styled__LessorWrap-cvrpi1-13 jVGbJb">
 						<div class="styled__Name-cvrpi1-14 jueGPM">
 							<p>${cvo.corname }</p>
+							<c:if test="${!empty prevo }">
+								&nbsp;<i class="fa-solid fa-crown" style="color:#71c9ce"></i>
+							</c:if>
 						</div>
 					</div>
 
