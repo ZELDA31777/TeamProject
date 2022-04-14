@@ -48,7 +48,9 @@ public class AdminController {
 		List<CorInfoVO> list = service.coruser_list(cri);
 		int total = service.getTotalCount(cri);
 		model.addAttribute("list", list);
-		model.addAttribute("pageMaker", new PageVO(cri, total));
+		PageVO pavo = new PageVO(cri, total);
+		model.addAttribute("pageMaker", pavo);
+		log.info(pavo);
 		return "/admin/manage/admin_cor_list";
 	}
 	
@@ -63,8 +65,19 @@ public class AdminController {
 		}
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
-		
-			response.getWriter().println("<script>alert('탈퇴 완료');location.href='/admin/manage/admin_user_list.do'</script>");
+		response.getWriter().println("<script>alert('삭제 완료');location.href='/admin/manage/admin_user_list.do'</script>");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@PostMapping("/manage/admin_cor_delete.do")
+	public void admin_cor_delete(String username, HttpServletRequest request, HttpServletResponse response) {
+		uservice.cor_delete(username);
+		try {
+			response.setCharacterEncoding("UTF-8");
+			response.setContentType("text/html; charset=UTF-8");
+			response.getWriter().println("<script>alert('삭제 완료');location.href='/admin/manage/admin_cor_list.do'</script>");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
