@@ -1,11 +1,13 @@
 package com.hanulso.domain;
 
+import java.util.Date;
+
 import lombok.Data;
 
 @Data
 public class ChartVO {
-	private int ddate; // 4월
-	private int userno; // 23명
-	private int memberno; // 34명
-	private int preno; // 7명
+	private String ddate; // 4월
+	private String userno; // 23명
+	private String memberno; // 34명
+	private String preno; // 7명
 }

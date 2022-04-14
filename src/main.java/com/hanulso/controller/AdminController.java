@@ -42,10 +42,6 @@ public class AdminController {
 		model.addAttribute("pageMaker",new PageVO(cri, total));
 		return "/admin/manage/admin_user_list";
 	}
-
-	@GetMapping("/manage/income.do")
-	public void income() {
-	}
 	
 	@GetMapping("/manage/admin_cor_list.do")
 	public String cor_list(Criteria cri, Model model) {
