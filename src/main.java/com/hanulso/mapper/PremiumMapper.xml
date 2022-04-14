@@ -4,15 +4,30 @@
 <mapper namespace="com.hanulso.mapper.PremiumMapper">
 
 	<insert id="premium_insert">
-		insert into one_premium
-		(merchant_uid,username,pLastdate)
-		values
-		(#{merchant_uid},#{username},#{pLastdate})
+		insert into one_premium (merchant_uid,username)
+		values (#{merchant_uid},#{username})
 	</insert>
 	
-	<select id="premium_select">
+	<select id="premium_select" resultType="com.hanulso.domain.PremiumVO">
 		select * from one_premium
 		where username=#{username}
+	</select>
+	
+	<select id="premium_daycheck" resultType="int">
+		select pLastdate-sysdate from one_premium where username=#{username}
+	</select>
+	
+	<update id="premium_update">
+		update one_premium set merchant_uid=#{merchant_uid}, pCheck=1, pLastdate= pLastdate+31
+		where username=#{username}
+	</update>
+	
+	<update id="premium_pCheck_update">
+		update one_premium set pCheck=0 where username=#{username}
+	</update>
+	
+	<select id="premium_list" resultType="com.hanulso.domain.PremiumVO">
+		select * from one_premium
 	</select>
 	
 	

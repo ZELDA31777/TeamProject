@@ -1,5 +1,6 @@
 package com.hanulso.controller;
 
+import java.util.List;
 import java.util.Locale;
 
 import org.slf4j.Logger;
@@ -18,9 +19,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.hanulso.domain.DongCheckVO;
 import com.hanulso.domain.FavoriteVO;
 import com.hanulso.domain.JusoVO;
+import com.hanulso.domain.PremiumVO;
 import com.hanulso.domain.UserVO;
 import com.hanulso.security.CustomUserDetails;
 import com.hanulso.service.IndexService;
+import com.hanulso.service.PremiumService;
 import com.hanulso.service.ProductService;
 import com.hanulso.service.UserService;
 
@@ -40,13 +43,30 @@ public class HomeController {
 
 	@Autowired
 	private ProductService productService;
+	
+	@Autowired
+	private PremiumService premiumService;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
+		pCheck_from_premium_list();
 		model.addAttribute("tip", service.main_tip_list());
 		model.addAttribute("top", service.main_top_list());
 		model.addAttribute("faArr", avgCal());
 		return "index";
+	}
+	
+	
+	// 기간 0일 이하 남은 사람들 pCheck = 0 으로 바꿔주는 메소드
+	// 호출은 어디서?? > 홈이 실행 될 때 마다	
+	public void pCheck_from_premium_list() {
+		List<PremiumVO> preList = premiumService.premium_list();
+		for (PremiumVO prevo : preList) {
+			int dayCheck = premiumService.premium_daycheck(prevo.getUsername());
+			if(dayCheck<0) {
+				premiumService.premium_pCheck_update(prevo.getUsername());
+			}
+		}
 	}
 
 	@RequestMapping("/include/jusoPopup.do")
