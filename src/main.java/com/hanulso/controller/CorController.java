@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hanulso.service.UserService;
+
+import lombok.Setter;
+
 import com.hanulso.domain.PremiumVO;
 import com.hanulso.domain.ProductVO;
 import com.hanulso.service.PremiumService;

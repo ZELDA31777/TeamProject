@@ -18,12 +18,12 @@
 	</select>
 	
 	<update id="premium_update">
-		update one_premium set merchant_uid=#{merchant_uid}, pCheck=1, pLastdate= pLastdate+31
+		update one_premium set merchant_uid=#{merchant_uid}, pcheck=1, plastdate=plastdate+31
 		where username=#{username}
 	</update>
 	
 	<update id="premium_pCheck_update">
-		update one_premium set pCheck=0 where username=#{username}
+		update one_premium set pcheck=0 where username=#{username}
 	</update>
 	
 	<select id="premium_list" resultType="com.hanulso.domain.PremiumVO">

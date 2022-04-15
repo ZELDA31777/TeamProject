@@ -160,7 +160,12 @@
 					</div>
 				</div>
 				<div class="styled__BtnWrap-cvrpi1-15 brpHbd row">
-					<div class="col-md-10">
+				<sec:authorize access="hasRole('MEMBER')">
+						<div class="col-md-12">
+				</sec:authorize>
+				<sec:authorize access="hasRole('USER')">
+								<div class="col-md-10">
+				</sec:authorize>
 						<form name="test" method="post" action="/product/product_view.do">
 							<input type="hidden" name="pno" value="${pvo.pno }"> <input
 								type="hidden" name="username" value="${username }"> <input
@@ -171,12 +176,14 @@
 							</button>
 						</form>
 					</div>
-					<div class="col-md-2">
-						<a class="text-dark heart"> <img id="heart"
-							src="/resources/icon/heart.svg"
-							style="filter: invert(41%) sepia(87%) saturate(7008%) hue-rotate(327deg) brightness(91%) contrast(88%); width: 100%; object-fit: cover; vertical-align: -55%;">
-						</a>
-					</div>
+					<sec:authorize access="hasRole('USER')">
+						<div class="col-md-2">
+							<a class="text-dark heart"> <img id="heart"
+								src="/resources/icon/heart.svg"
+								style="filter: invert(41%) sepia(87%) saturate(7008%) hue-rotate(327deg) brightness(91%) contrast(88%); width: 100%; object-fit: cover; vertical-align: -55%;">
+							</a>
+						</div>
+					</sec:authorize>
 				</div>
 			</div>
 		</div>

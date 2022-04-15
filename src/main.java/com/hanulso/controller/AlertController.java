@@ -106,6 +106,9 @@ public class AlertController {
 	
 	@PostMapping("/premium_update_pro.do")
 	public void premium_update(PremiumVO prevo,HttpServletResponse response) {
+		System.out.println(prevo.getUsername());
+		System.out.println(prevo.getMerchant_uid());
+		System.out.println(prevo.getUsername());
 		if(!prevo.getMerchant_uid().isEmpty()) {
 			premiumService.premium_update(prevo);
 			response.setCharacterEncoding("UTF-8");
