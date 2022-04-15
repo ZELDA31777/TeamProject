@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp"%>
-
 <div class="sub_title">
 	<h2>Guide & Tip</h2>
 </div>
@@ -25,9 +24,9 @@
 		<c:set var="num" value="${pageMaker.total - ((pageMaker.cri.pageNum-1)*(pageMaker.cri.amount))}" />
 		<c:forEach var="list" items="${list}">
 
-		<div class="list-group list-group-flush border-bottom scrollarea efdsfa row">
+		<div class="list-group list-group-flush border-bottom scrollarea efdsfa row" style="padding-left: 0; padding-right: 0;">
 		<a href="/tip/tip_view.do?tip_no=${list.tip_no}"
-			class="list-group-item-action py-3 lh-tight"
+			class="list-group-item list-group-item-action py-3 lh-tight"
 			aria-current="true">
 		<div class="d-flex w-100 align-items-center justify-content-between">
 							
