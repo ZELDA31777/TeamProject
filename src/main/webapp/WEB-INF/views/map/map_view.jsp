@@ -730,6 +730,7 @@ h4 {
 				list = result;
 				var htmlStr = "";
 
+				
 				for (var i=0; i<markList.length; i++) markList[i].setMap(null);
 
 				markList = [];
@@ -739,12 +740,13 @@ h4 {
 				
 					// 상단 프리미엄 중개사 출력
 					list = result.clist;
-					for (var i=0; i<list.length; i++) {
+					var j;
+					for (i=0,j=0; i<list.length; i++,j++) {
 						htmlStr += `<div class="card w-100">
 							<div class="card-body">
 								<div class="row m-0 gx-3">
 									<div class="col-5"
-										style="background: blue; background-clip: content-box; height: calc(200px - 32px);">
+										style="background-clip: content-box; height: calc(200px - 32px);">
 										<!-- 썸네일 이미지 출력 -->
 										<img class="product_view"
 											src="/upload/`+list[i].profile+`"
@@ -771,6 +773,19 @@ h4 {
 								</div>
 							</div>
 						</div>`;
+
+						const marker = new google.maps.Marker({
+							position: {lat:list[i].lat, lng:list[i].lng},
+							map: map,
+							//zIndex: list[i].pno
+							title: list[i].username
+						});
+	
+						marker.addListener("click", () => {
+							window.open("/coroperation/cor_view.do?username="+marker.getTitle(),"_blank");
+						});
+
+						markList.push(marker);
 					}
 
 					// 매물 출력
@@ -785,7 +800,7 @@ h4 {
 										<img class="product_view"
 											src="/upload/`+list[i].thumbnail+`"
 											style="width: 100%; height: 100%;" data-bs-toggle="modal"
-											data-bs-target="#exampleModal" data-idx=`+i+` data-lat=`+list[i].lat+` data-lng=`+list[i].lng+`
+											data-bs-target="#exampleModal" data-idx=`+(i+j)+` data-lat=`+list[i].lat+` data-lng=`+list[i].lng+`
 											href="/map/map_modal_view.do?pno=`+list[i].pno+`"
 											onclick="openModal(this.getAttribute('href'));"
 											onmouseover="jumpMarker(this.dataset.idx);"
@@ -831,7 +846,7 @@ h4 {
 							<div class="card-body">
 								<div class="row m-0 gx-3">
 									<div class="col-5"
-										style="background: blue; background-clip: content-box; height: calc(200px - 32px);">
+										style="background-clip: content-box; height: calc(200px - 32px);">
 										<!-- 썸네일 이미지 출력 -->
 										<img class="product_view"
 											src="/upload/`+list[i].profile+`"

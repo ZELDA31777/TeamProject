@@ -1354,7 +1354,7 @@ body p.bold {
 	border: 1px solid rgb(223, 223, 223);
 	border-radius: 2px;
 	box-sizing: border-box;
-	background: url(/static/media/select_arrow.95d6586e.svg) right 8px
+	background: right 8px
 		center/10px 6px no-repeat rgb(255, 255, 255);
 	outline: none;
 	appearance: none;
