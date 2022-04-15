@@ -17,7 +17,6 @@
 		font-size: 3.5rem;
 	}
 }
-
 </style>
 
 <!-- Custom styles for this template -->
@@ -330,6 +329,9 @@
 				<c:set var="username">
 					<sec:authentication property="principal.user.username" />
 				</c:set>
+				<c:set var="authorities">
+					<sec:authentication property="principal.authorities" />
+				</c:set>
 				<input type="hidden" id="username1" name="username1"
 					value="${username}">
 			</sec:authorize>
@@ -347,7 +349,8 @@
 
 		<div class="col-md-4" style="margin-top: 80px">
 			<div class="position-sticky" style="top: 7rem;">
-				<div class="jtcdhj" <c:if test="${!empty prevo }">style="border: 2px solid rgba(166, 227, 233, 0.7);"</c:if> >
+				<div class="jtcdhj"
+					<c:if test="${!empty prevo }">style="border: 2px solid rgba(166, 227, 233, 0.7);"</c:if>>
 					<div class="biKwOB">
 						<div>
 							<div class="dtGkBV">매물번호 ${pvo.pno }</div>
@@ -415,7 +418,7 @@
 						<div class="styled__Name-cvrpi1-14 jueGPM">
 							<p>${cvo.corname }</p>
 							<c:if test="${!empty prevo }">
-								&nbsp;<i class="fa-solid fa-crown" style="color:#71c9ce"></i>
+								&nbsp;<i class="fa-solid fa-crown" style="color: #71c9ce"></i>
 							</c:if>
 						</div>
 					</div>
@@ -425,7 +428,12 @@
 							<div class="col-md-4">
 						</c:if>
 						<c:if test="${!corchange }">
-							<div class="col-md-10">
+							<sec:authorize access="hasRole('MEMBER')">
+								<div class="col-md-12">
+							</sec:authorize>
+							<sec:authorize access="hasRole('USER')">
+								<div class="col-md-10">
+							</sec:authorize>
 						</c:if>
 						<form name="cor_view_read" action="/coroperation/cor_view.do">
 							<input type="hidden" name="${_csrf.parameterName }"
@@ -463,13 +471,18 @@
 					</c:if>
 
 					<c:if test="${!corchange }">
-						<div class="col-md-2">
-							<a class="text-dark heart"> <img id="heart"
-								src="/resources/icon/heart.svg"
-								style="filter: invert(41%) sepia(87%) saturate(7008%) hue-rotate(327deg) brightness(91%) contrast(88%); width: 100%; object-fit: cover; vertical-align: -65%;">
-							</a>
-						</div>
+						<sec:authorize access="hasRole('USER')">
+							<div class="col-md-2">
+								<a class="text-dark heart"> <img id="heart"
+									src="/resources/icon/heart.svg"
+									style="filter: invert(41%) sepia(87%) saturate(7008%) hue-rotate(327deg) brightness(91%) contrast(88%); width: 100%; object-fit: cover; vertical-align: -65%;">
+								</a>
+							</div>
+						</sec:authorize>
 					</c:if>
+
+
+
 				</div>
 			</div>
 		</div>

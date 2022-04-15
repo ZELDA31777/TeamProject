@@ -175,7 +175,7 @@
 
 						<c:if test="${!empty list}">
 							<c:set var="num"
-								value="${pageMaker.total - ((pageMaker.cri.pageNum-1)*(pageMaker.cri.amount))}" />
+								value="${pageMaker.total - ((pageMaker.cri.pageNum-1)*10)}" />
 							<c:forEach var="list" items="${list}">
 
 								<div
@@ -261,13 +261,13 @@
 <form name="payform" action="/alert/premium_insert_pro.do" method="post">
 	<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
 	<input type="hidden" name="username" value="${username}">
-	<input type="hidden" id="merchant_uid" name="merchant_uid">
+	<input type="hidden" id="merchant_uid1" name="merchant_uid">
 </form>
 
 <form name="payUpdateform" action="/alert/premium_update_pro.do" method="post">
 	<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
 	<input type="hidden" name="username" value="${username}">
-	<input type="hidden" id="merchant_uid" name="merchant_uid">
+	<input type="hidden" id="merchant_uid2" name="merchant_uid">
 </form>
 
 
@@ -359,7 +359,9 @@ function iamport(flag){
 	         return false;
 	    }
 	    
-	    $('#merchant_uid').val(merchant_uid);
+	    $('#merchant_uid1').val(merchant_uid);
+	    $('#merchant_uid2').val(merchant_uid);
+	    
 	    if(flag==1){
 		    payform.submit();
 	    }else{
