@@ -98,237 +98,255 @@ iframe.goog-te-banner-frame {
    display: none !important;
 }
 
-</style>
+.mynavbar .nav-item {
+	padding: 0 1rem;
+}
 
+</style>
 
 </head>
 <body class="test">
-	<div class="container-fluid">
+	<div class="container">
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<nav class="navbar navbar-expand-md navbar-light"
 			aria-label="Fourth navbar example">
 			<div class="container-fluid">
-
-				<!-- brand 부분에 텍스트 대신 이미지 추가 -->
-				<img src="/resources/images/logo_001.png"
-					onClick="location.href='/';" style="width: 4%;">
-
-				<!-- 화면 축소시 나오는 = 버튼 -->
-				<button class="navbar-toggler" type="button"
-					data-bs-toggle="collapse" data-bs-target="#navbarsExample04"
-					aria-controls="navbarsExample04" aria-expanded="false"
-					aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<!-- = 버튼 끝 -->
-
-				<!-- 네비 목록 시작 -->
-				<div class="collapse navbar-collapse justify-content-end mynavbar"
-					id="navbarsExample04">
-					<ul class="navbar-nav mb-2 mb-md-0">
-
-						<!-- 현재 주소 정보 가져오기 -->
-						<c:set var="nowUri"
-							value="${requestScope['javax.servlet.forward.request_uri']}" />
-
-						<!-- 현재 로그인 한 유저의 정보를 받아옴 시작-->
-						<sec:authorize access="isAuthenticated()">
-							<c:set var="username">
-								<sec:authentication property="principal.user.username" />
-							</c:set>
-							<c:set var="nickname">
-								<sec:authentication property="principal.user.nickname" />
-							</c:set>
-						</sec:authorize>
-						<!-- 현재 로그인 한 유저의 정보를 받아옴 끝-->
-
-						<!-- 구글 번역기 API -->
-						<div id="google_translate_element" style="display: none;"></div>
-						<!-- "새 번역 링크 UI" -->
-						<ul class="translation-links">
-							<li><a href="javascript:void(0)"
-								class="korean" data-lang="ko">한국어</a></li>
-							<li><a href="javascript:void(0)" class="japanese"
-								data-lang="ja">Japanese</a></li>
-						</ul>
-						<script
-							src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-						<script type="text/javascript">
-							/* 구글 번역 초기화 */
-							function googleTranslateElementInit() {
-								new google.translate.TranslateElement({
-									pageLanguage : 'ko',
-									autoDisplay : true
-								}, 'google_translate_element');
-							}
-						</script>
-						<script type="text/javascript">
-							/* 새 UI 선택 클릭 이벤트가 발생하면
-							   감춤 처리한 구글 번역 콤보리스트에
-							   선택한 언어를 적용해 변경 이벤트를 발생시키는 코드  */
-							document
-									.querySelector('.translation-links')
-									.addEventListener(
-											'click',
-											function(event) {
-
-												let el = event.target;
-												if (el != null) {
-													while (el.nodeName == 'FONT') {
-														el = el.parentElement;
-													}//data-lang 속성이 있는 태그 찾기
-													const tolang = el.dataset.lang; // 변경할 언어 코드 얻기
-													const gtcombo = document
-															.querySelector('.goog-te-combo');
-													if (gtcombo == null) {
-														alert("Error: Could not find Google translate Combolist.");
-														return false;
-													}
-
-													console.log(gtcombo.value);
-													
-													gtcombo.value = tolang; // 변경할 언어 적용
-													
-													gtcombo
-															.dispatchEvent(new Event(
-																	'change')); // 변경 이벤트 트리거
-
-													// 한국어 를 2번 눌러야 하므로 1번 더 누르는 이벤트 트리거 동작
-													if (gtcombo.value == "ko") {
-														gtcombo.dispatchEvent(new Event('change'));
-													}
-												}
-												return false;
-											});
-						</script>
-						<sec:authorize access="hasAnyRole('ADMIN' , 'SUPER_ADMIN')">
-							<li class="nav-item"><a
-								class="nav-link ${(fn:contains(nowUri, 'tip_list.do'))?'active':'' }"
-								href="/tip/tip_list.do">가이드 & Tip</a></li>
-							<li class="nav-item"><a
-								class="nav-link ${(fn:contains(nowUri, 'notice_list.do'))?'active':'' }"
-								href="/notice/notice_list.do">공지사항</a></li>
-							<li class="nav-item"><a
-								class="nav-link ${(fn:contains(nowUri, 'income.do'))?'active':'' }"
-								href="/admin/manage/income.do">수익현황</a></li>
-							<li class="nav-item"><a
-								class="nav-link ${(fn:contains(nowUri, 'admin_cor_list.do'))?'active':'' }"
-								href="/admin/manage/admin_cor_list.do">중개사 회원관리</a></li>
-							<li class="nav-item"><a
-								class="nav-link ${(fn:contains(nowUri, 'admin_user_list.do'))?'active':'' }"
-								href="/admin/manage/admin_user_list.do">일반 회원관리</a></li>
-						</sec:authorize>
-
-
-						<sec:authorize access="hasAnyRole('USER' , 'NON')">
-							<li class="nav-item"><a
-								class="nav-link ${(fn:contains(nowUri, 'map_view.do'))?'active':'' }"
-								href="/map/map_view.do">지도</a></li>
-							<li class="nav-item"><a
-								class="nav-link ${(fn:contains(nowUri, 'looked_room.do'))?'active':'' }"
-								href="/favorite/looked_room.do?username=${username }">관심목록</a></li>
-							<li class="nav-item"><a
-								class="nav-link ${(fn:contains(nowUri, 'alert_list.do'))?'active':'' }"
-								href="/alert/alert_list.do?username=${username }">알림</a></li>
-						</sec:authorize>
-
-						<sec:authorize access="hasRole('MEMBER')">
-							<li class="nav-item"><a
-								class="nav-link ${(fn:contains(nowUri, 'map_view.do'))?'active':'' }"
-								href="/map/map_view.do">지도</a></li>
-							<li class="nav-item"><a
-								class="nav-link ${(fn:contains(nowUri, 'cor_view.do'))?'active':'' }"
-								href="/coroperation/cor_view.do?username=${username }">내
-									매물관리</a></li>
-							<li class="nav-item"><a
-								class="nav-link ${(fn:contains(nowUri, 'alert_list.do'))?'active':'' }"
-								href="/alert/alert_list.do?username=${username }">알림</a></li>
-						</sec:authorize>
-
-						<sec:authorize access="isAnonymous()">
-							<li class="nav-item"><a
-								class="nav-link ${(fn:contains(nowUri, 'map_view.do'))?'active':'' }"
-								href="/map/map_view.do">지도</a></li>
-							<li class="nav-item"><a
-								class="nav-link ${(fn:contains(nowUri, 'looked_room_non.do'))?'active':'' }"
-								href="/favorite/looked_room_non.do">관심목록</a></li>
-							<li class="nav-item"><a
-								class="nav-link ${(fn:contains(nowUri, 'alert_list.do'))?'active':'' }"
-								href="/alert/alert_list.do">알림</a></li>
-							<li class="nav-item"><a
-								class="nav-link ${(fn:contains(nowUri, 'user_login.do'))?'active':'' }"
-								href="/user/user_login.do">로그인</a>
-						</sec:authorize>
-
-						<sec:authorize
-							access="hasAnyRole('USER' , 'NON' , 'ADMIN' , 'SUPER_ADMIN')">
-							<li class="nav-item dropdown"><a
-								class="nav-link dropdown-toggle" href="#" id="dropdown04"
-								data-bs-toggle="dropdown" aria-expanded="false">${nickname }</a>
-								<ul class="dropdown-menu dropdown-menu-end"
-									aria-labelledby="dropdown04">
-									<li><sec:authorize access="isAuthenticated()">
-											<c:if test="${empty kakao}">
-												<li><a class="dropdown-item"
-													href="/user/user_password_check.do?username=${username }">마이페이지</a>
-												</li>
-												<form name="lg" action="/user/user_logout.do" method="post">
-													<input type="hidden" name="${_csrf.parameterName }"
-														value="${_csrf.token }"> <a class="dropdown-item"
-														href="javascript:lg.submit();">로그아웃</a>
-												</form>
-											</c:if>
-											<c:if test="${!empty kakao}">
-												<li><a class="dropdown-item"
-													href="/user/user_modify_kakao.do?username=${username }">마이페이지</a>
-												</li>
-												<a class="dropdown-item"
-													href="https://kauth.kakao.com/oauth/logout?client_id=ec529ddcb0a1e3f154fc6847679fe18a&logout_redirect_uri=${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/user/user_login.do">카카오
-													로그아웃</a>
-											</c:if>
-										</sec:authorize></li>
-								</ul></li>
-						</sec:authorize>
-
-						<sec:authorize access="hasRole('MEMBER')">
-							<!-- 현재 로그인 한 중개사의 정보를 받아옴 -->
-							<c:set var="name">
-								<sec:authentication property="principal.user.cor.name" />
-							</c:set>
-							<!-- 현재 로그인 한 중개사의 정보를 받아옴 종료 -->
-
-							<li class="nav-item dropdown"><a
-								class="nav-link dropdown-toggle" href="#" id="dropdown04"
-								data-bs-toggle="dropdown" aria-expanded="false">${name }</a>
-								<ul class="dropdown-menu dropdown-menu-end"
-									aria-labelledby="dropdown04">
-									<li><a class="dropdown-item"
-										href="/user/user_password_check.do?username=${username }">마이페이지</a></li>
-									<li><sec:authorize access="isAuthenticated()">
-											<form name="lg" action="/user/user_logout.do" method="post">
-												<input type="hidden" name="${_csrf.parameterName }"
-													value="${_csrf.token }"> <a class="dropdown-item"
-													href="javascript:lg.submit()">로그아웃</a>
-											</form>
-										</sec:authorize></li>
-								</ul></li>
-						</sec:authorize>
-
-						<sec:authorize access="isAnonymous()">
-							<li class="nav-item dropdown"><a
-								class="nav-link dropdown-toggle" href="#" id="dropdown04"
-								data-bs-toggle="dropdown" aria-expanded="false">회원가입</a>
-								<ul class="dropdown-menu dropdown-menu-end"
-									aria-labelledby="dropdown04">
-									<li><a class="dropdown-item" href="/user/user_register.do">일반회원</a></li>
-									<li><a class="dropdown-item"
-										href="/user/user_register_cor.do">중개사 회원</a></li>
-								</ul></li>
-						</sec:authorize>
-					</ul>
-				</div>
-				<!-- 네비 목록 끝 -->
-
+				<div class="row my-2">
+					<div class="col-md-4">
+						<!-- brand 부분에 텍스트 대신 이미지 추가 -->
+						<img src="/resources/images/logo_001.png"
+							onClick="location.href='/';" style="width: 20%;">
+		
+						<!-- 화면 축소시 나오는 = 버튼 -->
+						<button class="navbar-toggler" type="button"
+							data-bs-toggle="collapse" data-bs-target="#navbarsExample04"
+							aria-controls="navbarsExample04" aria-expanded="false"
+							aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+						<!-- = 버튼 끝 -->
+					</div>
+				
+				
+					<div class="col-md-8">
+						<div class="row justify-content-end">
+							<div class="col-4">
+								<!-- 구글 번역기 API -->
+									<div id="google_translate_element" style="display: none;"></div>
+									<!-- "새 번역 링크 UI" -->
+									<ul class="translation-links fs-6" >
+										<li><a href="javascript:void(0)"
+											class="korean" data-lang="ko">한국어</a></li>
+										<li><a href="javascript:void(0)" class="japanese"
+											data-lang="ja">日本語</a></li>
+									</ul>
+									<script
+										src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+									<script type="text/javascript">
+										/* 구글 번역 초기화 */
+										function googleTranslateElementInit() {
+											new google.translate.TranslateElement({
+												pageLanguage : 'ko',
+												autoDisplay : true
+											}, 'google_translate_element');
+										}
+									</script>
+									<script type="text/javascript">
+										/* 새 UI 선택 클릭 이벤트가 발생하면
+										   감춤 처리한 구글 번역 콤보리스트에
+										   선택한 언어를 적용해 변경 이벤트를 발생시키는 코드  */
+										document
+												.querySelector('.translation-links')
+												.addEventListener(
+														'click',
+														function(event) {
+			
+															let el = event.target;
+															if (el != null) {
+																while (el.nodeName == 'FONT') {
+																	el = el.parentElement;
+																}//data-lang 속성이 있는 태그 찾기
+																const tolang = el.dataset.lang; // 변경할 언어 코드 얻기
+																const gtcombo = document
+																		.querySelector('.goog-te-combo');
+																if (gtcombo == null) {
+																	alert("Error: Could not find Google translate Combolist.");
+																	return false;
+																}
+			
+																console.log(gtcombo.value);
+																
+																gtcombo.value = tolang; // 변경할 언어 적용
+																
+																gtcombo
+																		.dispatchEvent(new Event(
+																				'change')); // 변경 이벤트 트리거
+			
+																// 한국어 를 2번 눌러야 하므로 1번 더 누르는 이벤트 트리거 동작
+																if (gtcombo.value == "ko") {
+																	gtcombo.dispatchEvent(new Event('change'));
+																}
+															}
+															return false;
+														});
+									</script>
+									
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-12 mt-1">
+								<!-- 네비 목록 시작 -->
+								<div class="collapse navbar-collapse justify-content-end mynavbar"
+									id="navbarsExample04">
+									<ul class="navbar-nav mb-2 mb-md-0 gx-2">
+				
+										<!-- 현재 주소 정보 가져오기 -->
+										<c:set var="nowUri"
+											value="${requestScope['javax.servlet.forward.request_uri']}" />
+				
+										<!-- 현재 로그인 한 유저의 정보를 받아옴 시작-->
+										<sec:authorize access="isAuthenticated()">
+											<c:set var="username">
+												<sec:authentication property="principal.user.username" />
+											</c:set>
+											<c:set var="nickname">
+												<sec:authentication property="principal.user.nickname" />
+											</c:set>
+										</sec:authorize>
+										<!-- 현재 로그인 한 유저의 정보를 받아옴 끝-->
+				
+										
+										<sec:authorize access="hasAnyRole('ADMIN' , 'SUPER_ADMIN')">
+											<li class="nav-item"><a
+												class="nav-link ${(fn:contains(nowUri, 'tip_list.do'))?'active':'' }"
+												href="/tip/tip_list.do">가이드 & Tip</a></li>
+											<li class="nav-item"><a
+												class="nav-link ${(fn:contains(nowUri, 'notice_list.do'))?'active':'' }"
+												href="/notice/notice_list.do">공지사항</a></li>
+											<li class="nav-item"><a
+												class="nav-link ${(fn:contains(nowUri, 'income.do'))?'active':'' }"
+												href="/admin/manage/income.do">가입현황</a></li>
+											<li class="nav-item"><a
+												class="nav-link ${(fn:contains(nowUri, 'admin_cor_list.do'))?'active':'' }"
+												href="/admin/manage/admin_cor_list.do">중개사 회원관리</a></li>
+											<li class="nav-item"><a
+												class="nav-link ${(fn:contains(nowUri, 'admin_user_list.do'))?'active':'' }"
+												href="/admin/manage/admin_user_list.do">일반 회원관리</a></li>
+										</sec:authorize>
+				
+				
+										<sec:authorize access="hasAnyRole('USER' , 'NON')">
+											<li class="nav-item"><a
+												class="nav-link ${(fn:contains(nowUri, 'map_view.do'))?'active':'' }"
+												href="/map/map_view.do">지도</a></li>
+											<li class="nav-item"><a
+												class="nav-link ${(fn:contains(nowUri, 'looked_room.do'))?'active':'' }"
+												href="/favorite/looked_room.do?username=${username }">관심목록</a></li>
+											<li class="nav-item"><a
+												class="nav-link ${(fn:contains(nowUri, 'alert_list.do'))?'active':'' }"
+												href="/alert/alert_list.do?username=${username }">알림</a></li>
+										</sec:authorize>
+				
+										<sec:authorize access="hasRole('MEMBER')">
+											<li class="nav-item"><a
+												class="nav-link ${(fn:contains(nowUri, 'map_view.do'))?'active':'' }"
+												href="/map/map_view.do">지도</a></li>
+											<li class="nav-item"><a
+												class="nav-link ${(fn:contains(nowUri, 'cor_view.do'))?'active':'' }"
+												href="/coroperation/cor_view.do?username=${username }">내
+													매물관리</a></li>
+											<li class="nav-item"><a
+												class="nav-link ${(fn:contains(nowUri, 'alert_list.do'))?'active':'' }"
+												href="/alert/alert_list.do?username=${username }">알림</a></li>
+										</sec:authorize>
+				
+										<sec:authorize access="isAnonymous()">
+											<li class="nav-item"><a
+												class="nav-link ${(fn:contains(nowUri, 'map_view.do'))?'active':'' }"
+												href="/map/map_view.do">지도</a></li>
+											<li class="nav-item"><a
+												class="nav-link ${(fn:contains(nowUri, 'looked_room_non.do'))?'active':'' }"
+												href="/favorite/looked_room_non.do">관심목록</a></li>
+											<li class="nav-item"><a
+												class="nav-link ${(fn:contains(nowUri, 'alert_list.do'))?'active':'' }"
+												href="/alert/alert_list.do">알림</a></li>
+											<li class="nav-item"><a
+												class="nav-link ${(fn:contains(nowUri, 'user_login.do'))?'active':'' }"
+												href="/user/user_login.do">로그인</a>
+										</sec:authorize>
+				
+										<sec:authorize
+											access="hasAnyRole('USER' , 'NON' , 'ADMIN' , 'SUPER_ADMIN')">
+											<li class="nav-item dropdown"><a
+												class="nav-link dropdown-toggle" href="#" id="dropdown04"
+												data-bs-toggle="dropdown" aria-expanded="false">${nickname }</a>
+												<ul class="dropdown-menu dropdown-menu-end"
+													aria-labelledby="dropdown04">
+													<li><sec:authorize access="isAuthenticated()">
+															<c:if test="${empty kakao}">
+																<li><a class="dropdown-item"
+																	href="/user/user_password_check.do?username=${username }">마이페이지</a>
+																</li>
+																<form name="lg" action="/user/user_logout.do" method="post">
+																	<input type="hidden" name="${_csrf.parameterName }"
+																		value="${_csrf.token }"> <a class="dropdown-item"
+																		href="javascript:lg.submit();">로그아웃</a>
+																</form>
+															</c:if>
+															<c:if test="${!empty kakao}">
+																<li><a class="dropdown-item"
+																	href="/user/user_modify_kakao.do?username=${username }">마이페이지</a>
+																</li>
+																<a class="dropdown-item"
+																	href="https://kauth.kakao.com/oauth/logout?client_id=ec529ddcb0a1e3f154fc6847679fe18a&logout_redirect_uri=${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/user/user_login.do">카카오
+																	로그아웃</a>
+															</c:if>
+														</sec:authorize></li>
+												</ul></li>
+										</sec:authorize>
+				
+										<sec:authorize access="hasRole('MEMBER')">
+											<!-- 현재 로그인 한 중개사의 정보를 받아옴 -->
+											<c:set var="name">
+												<sec:authentication property="principal.user.cor.name" />
+											</c:set>
+											<!-- 현재 로그인 한 중개사의 정보를 받아옴 종료 -->
+				
+											<li class="nav-item dropdown"><a
+												class="nav-link dropdown-toggle" href="#" id="dropdown04"
+												data-bs-toggle="dropdown" aria-expanded="false">${name }</a>
+												<ul class="dropdown-menu dropdown-menu-end"
+													aria-labelledby="dropdown04">
+													<li><a class="dropdown-item"
+														href="/user/user_password_check.do?username=${username }">마이페이지</a></li>
+													<li><sec:authorize access="isAuthenticated()">
+															<form name="lg" action="/user/user_logout.do" method="post">
+																<input type="hidden" name="${_csrf.parameterName }"
+																	value="${_csrf.token }"> <a class="dropdown-item"
+																	href="javascript:lg.submit()">로그아웃</a>
+															</form>
+														</sec:authorize></li>
+												</ul></li>
+										</sec:authorize>
+				
+										<sec:authorize access="isAnonymous()">
+											<li class="nav-item dropdown"><a
+												class="nav-link dropdown-toggle" href="#" id="dropdown04"
+												data-bs-toggle="dropdown" aria-expanded="false">회원가입</a>
+												<ul class="dropdown-menu dropdown-menu-end"
+													aria-labelledby="dropdown04">
+													<li><a class="dropdown-item" href="/user/user_register.do">일반회원</a></li>
+													<li><a class="dropdown-item"
+														href="/user/user_register_cor.do">중개사 회원</a></li>
+												</ul></li>
+										</sec:authorize>
+									</ul>
+								</div>
+								<!-- 네비 목록 끝 -->
+							</div>
+						</div>
+					</div>
+			</div>
 			</div>
 		</nav>
 		<!-- /.navbar-collapse -->

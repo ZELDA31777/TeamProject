@@ -366,8 +366,7 @@ h1{
 									</button>
 								</h2>
 								<div id="flush-collapse01" class="accordion-collapse collapse"
-									aria-labelledby="flush-heading01"
-									data-bs-parent="#accordionFlushExample">
+									aria-labelledby="flush-heading01">
 									<div class="accordion-body">
 										<p class="qstyle">A</p>
 										<p class="naityousize">
@@ -392,8 +391,7 @@ h1{
 									</button>
 								</h2>
 								<div id="flush-collapse02" class="accordion-collapse collapse"
-									aria-labelledby="flush-heading02"
-									data-bs-parent="#accordionFlushExample">
+									aria-labelledby="flush-heading02">
 									<div class="accordion-body">
 										<p class="qstyle">A</p>
 										<p class="naityousize">
@@ -422,8 +420,7 @@ h1{
 									</button>
 								</h2>
 								<div id="flush-collapse03" class="accordion-collapse collapse"
-									aria-labelledby="flush-heading03"
-									data-bs-parent="#accordionFlushExample">
+									aria-labelledby="flush-heading03">
 									<div class="accordion-body">
 										<p class="qstyle">A</p>
 										<p class="naityousize">
@@ -448,8 +445,7 @@ h1{
 									</button>
 								</h2>
 								<div id="flush-collapse04" class="accordion-collapse collapse"
-									aria-labelledby="flush-heading04"
-									data-bs-parent="#accordionFlushExample">
+									aria-labelledby="flush-heading04">
 									<div class="accordion-body">
 										<p class="qstyle">A</p>
 										<p class="naityousize">마이페이지에서 비밀번호를 입력하시고, 회원탈퇴 버튼을 누르시면 탈퇴하실 수 있습니다.</p>
@@ -475,8 +471,7 @@ h1{
 									</button>
 								</h2>
 								<div id="flush-collapse05" class="accordion-collapse collapse"
-									aria-labelledby="flush-heading05"
-									data-bs-parent="#accordionFlushExample">
+									aria-labelledby="flush-heading05">
 									<div class="accordion-body">
 										<p class="qstyle">A</p>
 										<p class="naityousize">
@@ -502,8 +497,7 @@ h1{
 									</button>
 								</h2>
 								<div id="flush-collapse06" class="accordion-collapse collapse"
-									aria-labelledby="flush-heading06"
-									data-bs-parent="#accordionFlushExample">
+									aria-labelledby="flush-heading06">
 									<div class="accordion-body">
 										<p class="qstyle">A</p>
 										<p class="naityousize">원픽의 회원중개자들은 가입시 사업자번호와 중개사사진을 등록하여
@@ -530,8 +524,7 @@ h1{
 									</button>
 								</h2>
 								<div id="flush-collapse07" class="accordion-collapse collapse"
-									aria-labelledby="flush-heading07"
-									data-bs-parent="#accordionFlushExample">
+									aria-labelledby="flush-heading07">
 									<div class="accordion-body">
 										<p class="qstyle">A</p>
 										<p class="naityousize">해당 중개사와 거래한 회원만 작성할 수 있는 이용자 후기를 통해
@@ -554,8 +547,7 @@ h1{
 									</button>
 								</h2>
 								<div id="flush-collapse08" class="accordion-collapse collapse"
-									aria-labelledby="flush-heading08"
-									data-bs-parent="#accordionFlushExample">
+									aria-labelledby="flush-heading08">
 									<div class="accordion-body">
 										<p class="qstyle">A</p>
 										<p class="naityousize">

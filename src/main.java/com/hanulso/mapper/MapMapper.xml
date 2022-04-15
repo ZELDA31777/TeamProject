@@ -12,7 +12,8 @@
 	</select>
 	
 	<select id="getList0" resultType="com.hanulso.domain.ProductVO">
-		select * from one_product
+		select p.*, NVL(m.pcheck,0) pc from one_product p left outer join one_premium m
+		on p.username = m.username
 		<where>
 			<!-- 방종류 -->
 			<choose>
@@ -162,6 +163,23 @@
 				and addr2=#{addr2}
 			</if>
 		</where>
+	</select>
+	
+	<select id="getList0TopCor" resultType="com.hanulso.domain.CorVO">
+		SELECT r.* 
+		FROM (
+			SELECT c.*, regdate, pcheck as pc
+		    FROM one_cor c INNER JOIN one_premium p
+		    ON c.username=p.username
+		    WHERE pcheck = 1
+		    <if test="addr2 != null">
+				AND addr like '%'||#{addr2}||'%'
+			</if>
+		    ORDER BY regdate ASC
+		) r
+	<![CDATA[
+		WHERE ROWNUM<=2
+	]]>
 	</select>
 	
 	
