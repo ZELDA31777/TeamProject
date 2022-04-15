@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hanulso.domain.ChartVO;
+import com.hanulso.domain.Criteria;
+import com.hanulso.domain.PageVO;
+import com.hanulso.domain.PremiumVO;
 import com.hanulso.service.ChartService;
 
 import lombok.extern.log4j.Log4j;
@@ -20,33 +22,44 @@ public class ChartController {
 
 	@Autowired
 	private ChartService chartService;
-	
-	@GetMapping("/admin/manage/income.do")
-	public void chart_list(Model model) {
-		
-		List<ChartVO> uList = chartService.user_chart_list();
-		List<ChartVO> mList = chartService.member_chart_list();
-		List<ChartVO> pList = chartService.premium_chart_list();
-		
-		for (ChartVO chartVO : uList) {
-			log.info(chartVO.getDdate());
-			log.info(chartVO.getUserno());
-		}
-		
-		for (ChartVO chartVO : mList) {
-			log.info(chartVO.getDdate());
-			log.info(chartVO.getMemberno());
-		}
-		
-		for (ChartVO chartVO : pList) {
-			log.info(chartVO.getDdate());
-			log.info(chartVO.getPreno());
-		}
 
-		model.addAttribute("uList", uList);
-		model.addAttribute("mList", mList);
-		model.addAttribute("pList", pList);
+	@GetMapping("/admin/manage/income.do")
+	public String chart_list(Criteria cri, Model model) {
+
+		List<ChartVO> uList = chartService.user_chart_list();
+
+		List<ChartVO> mList = chartService.member_chart_list();
+
+		List<ChartVO> pList = chartService.premium_chart_list();
+
+		String uinfo = "";
+		for (ChartVO chartVO : uList) {
+			uinfo += chartVO.getUserno() + ",";
+		}
+		uinfo = "[" + uinfo.substring(0, uinfo.length() - 1) + "]";
+
+		String minfo = "";
+		for (ChartVO chartVO : mList) {
+			minfo += chartVO.getMemberno() + ",";
+		}
+		minfo = "[" + minfo.substring(0, minfo.length() - 1) + "]";
+
+		String pinfo = "";
+		for (ChartVO chartVO : pList) {
+			pinfo += chartVO.getPreno() + ",";
+		}
+		pinfo = "[" + pinfo.substring(0, pinfo.length() - 1) + "]";
+
+		model.addAttribute("uinfo", uinfo);
+		model.addAttribute("minfo", minfo);
+		model.addAttribute("pinfo", pinfo);
+
+		List<PremiumVO> list = chartService.chart_list(cri);
+		int total = chartService.getTotalCount(cri);
+		model.addAttribute("list", list);
+		model.addAttribute("pageMaker", new PageVO(cri, total));
+		
+		return "/admin/manage/income";
 		
 	}
-	
 }

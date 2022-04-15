@@ -3,24 +3,61 @@
 <mapper namespace="com.hanulso.mapper.ChartMapper">
 
 	<select id="user_chart_list" resultType="com.hanulso.domain.ChartVO">
-		SELECT TO_CHAR(regdate, 'yyyy-mm') as ddate , count(*) as userno
-		FROM one_user where grade='ROLE_USER'
-		GROUP BY TO_CHAR(regdate, 'yyyy-mm')
-		order by ddate
+		SELECT oc.ddate, COUNT(ou.rdate) userno
+		FROM one_chart oc left outer join
+		(SELECT TO_CHAR(regdate,'mm') as rdate
+		FROM one_user
+		WHERE EXTRACT(YEAR FROM SYSDATE)=TO_CHAR(regdate,'yyyy') AND
+		grade='ROLE_USER') ou
+		ON oc.ddate=ou.rdate
+		GROUP BY oc.ddate
+		ORDER BY oc.ddate
 	</select>
-	
+
 	<select id="member_chart_list" resultType="com.hanulso.domain.ChartVO">
-		SELECT TO_CHAR(regdate, 'yyyy-mm') as ddate , count(*) as memberno
-		FROM one_user where grade='ROLE_MEMBER'
-		GROUP BY TO_CHAR(regdate, 'yyyy-mm')
-		order by ddate
+		SELECT oc.ddate, COUNT(ou.rdate) memberno
+		FROM one_chart oc left outer join
+		(SELECT TO_CHAR(regdate,'mm') as rdate
+		FROM one_user
+		WHERE EXTRACT(YEAR FROM SYSDATE)=TO_CHAR(regdate,'yyyy') AND
+		grade='ROLE_MEMBER') ou
+		ON oc.ddate=ou.rdate
+		GROUP BY oc.ddate
+		ORDER BY oc.ddate
+	</select>
+
+	<select id="premium_chart_list" resultType="com.hanulso.domain.ChartVO">
+		SELECT oc.ddate, COUNT(ou.rdate) preno
+		FROM one_chart oc left outer join
+		(SELECT TO_CHAR(regdate,'mm') as rdate
+		FROM one_premium
+		WHERE EXTRACT(YEAR FROM SYSDATE)=TO_CHAR(regdate,'yyyy') AND
+		pcheck=1) ou
+		ON oc.ddate=ou.rdate
+		GROUP BY oc.ddate
+		ORDER BY oc.ddate
 	</select>
 	
-	<select id="premium_chart_list" resultType="com.hanulso.domain.ChartVO">
-		SELECT TO_CHAR(regdate , 'yyyy-mm') as ddate , count(*) as preno
-		FROM one_premium
-		GROUP BY TO_CHAR(regdate, 'yyyy-mm')
-		order by ddate
+	<select id="chart_list" resultType="com.hanulso.domain.PremiumVO">
+		<![CDATA[
+			select * from (
+			select rownum rn, merchant_uid, regdate, plastdate, username
+			from one_premium
+			where
+		]]>	
+		<![CDATA[
+			rownum <= #{pageNum} * #{amount} order by regdate desc
+			)where rn > (#{pageNum}-1) * #{amount} 
+		]]>
 	</select>
+	
+	<select id="getTotalCount" resultType="int">
+		select count(*) from one_premium
+	</select> 
+  
+	
+	
+	
+	
 
 </mapper>
