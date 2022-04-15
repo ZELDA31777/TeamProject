@@ -19,7 +19,6 @@
 			<div class="col-md-2"><strong>작성일</strong></div>
 			</div>
 			</div>
-
 		
 		<c:if test="${!empty list}">
 		<c:set var="num" value="${pageMaker.total - ((pageMaker.cri.pageNum-1)*(pageMaker.cri.amount))}" />
@@ -32,7 +31,7 @@
 		<div class="d-flex w-100 align-items-center justify-content-between">
 		
 		<div class="col-md-2">
-			<strong class="mb-1">${num}</strong>
+			<strong>${num}</strong>
 		</div>
 		<div class="col-md-8">
 			<small>${list.notice_title}</small>

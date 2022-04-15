@@ -37,7 +37,7 @@
 	<select id="tip_list" resultType="com.hanulso.domain.KnowledgeVO">
 		<![CDATA[
 			select * from (
-			select /*+ index_desc(one_admin_tip one_admin_tip_no) */ rownum rn, tip_no, tip_title, tip_content, tip_regdate
+			select /*+ index_desc(one_admin_tip one_admin_tip_pk) */ rownum rn, tip_no, tip_title, tip_content, tip_regdate
 			from one_admin_tip
 			where
 		]]>	
@@ -46,7 +46,7 @@
 		
 		<![CDATA[
 			rownum <= #{pageNum} * #{amount} order by tip_no desc
-			)where rn >= (#{pageNum}-1) * #{amount} 
+			)where rn > (#{pageNum}-1) * #{amount}
 		]]>
 	</select>
 	
