@@ -99,7 +99,7 @@ iframe.goog-te-banner-frame {
 }
 
 .mynavbar .nav-item {
-	padding: 0 1rem;
+	padding: 0 0.5rem;
 }
 
 </style>
@@ -112,10 +112,10 @@ iframe.goog-te-banner-frame {
 			aria-label="Fourth navbar example">
 			<div class="container-fluid">
 				<div class="row my-2">
-					<div class="col-md-4">
+					<div class="col-md-2">
 						<!-- brand 부분에 텍스트 대신 이미지 추가 -->
 						<img src="/resources/images/logo_001.png"
-							onClick="location.href='/';" style="width: 20%;">
+							onClick="location.href='/';" style="width: 40%;">
 		
 						<!-- 화면 축소시 나오는 = 버튼 -->
 						<button class="navbar-toggler" type="button"
@@ -128,9 +128,10 @@ iframe.goog-te-banner-frame {
 					</div>
 				
 				
-					<div class="col-md-8">
+					<div class="col-md-10">
+						<div class="container-fluid">
 						<div class="row justify-content-end">
-							<div class="col-4">
+							<div class="col-3">
 								<!-- 구글 번역기 API -->
 									<div id="google_translate_element" style="display: none;"></div>
 									<!-- "새 번역 링크 UI" -->
@@ -191,6 +192,7 @@ iframe.goog-te-banner-frame {
 														});
 									</script>
 									
+							</div>
 							</div>
 						</div>
 						<div class="row">
