@@ -29,14 +29,19 @@ public class MapServiceImpl implements MapService {
 		return mapper.map_modal_view(pno);
 	}
 	
+	// [전체 방] 탭 선택 시  
 	@Override
 	public List<ProductVO> getList0(ProductSearchConditionVO pscvo) {
 		return mapper.getList0(pscvo);
 	}
+	@Override
+	public List<CorVO> getList0TopCor(ProductSearchConditionVO pscvo) {
+		return mapper.getList0TopCor(pscvo);
+	}
 	
+	// [중개사] 탭 선택 시
 	@Override
 	public List<CorVO> getList1(ProductSearchConditionVO pscvo) {
-		// TODO Auto-generated method stub
 		return mapper.getList1(pscvo);
 	}
 }

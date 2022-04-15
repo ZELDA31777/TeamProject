@@ -16,6 +16,7 @@ public interface MapMapper {
 	public ProductVO map_modal_view(int pno);
 	
 	public List<ProductVO> getList0(ProductSearchConditionVO pscvo);
+	public List<CorVO> getList0TopCor(ProductSearchConditionVO pscvo);
 	
 	public List<CorVO> getList1(ProductSearchConditionVO pscvo);
 	

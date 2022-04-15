@@ -742,8 +742,48 @@ h4 {
 
 				markList = [];
 
-				for (var i=0; i<list.length; i++) {
-					if (flag == 0) { // [전체 방] 탭 선택
+				if (flag == 0) {
+				// [전체 방] 탭 선택
+				
+					// 상단 프리미엄 중개사 출력
+					list = result.clist;
+					for (var i=0; i<list.length; i++) {
+						htmlStr += `<div class="card w-100">
+							<div class="card-body">
+								<div class="row m-0 gx-3">
+									<div class="col-5"
+										style="background: blue; background-clip: content-box; height: calc(200px - 32px);">
+										<!-- 썸네일 이미지 출력 -->
+										<img class="product_view"
+											src="/upload/`+list[i].profile+`"
+											style="width: 100%; height: 100%; `+(list[i].pc==1?'border : 5px solid #71c9ce;':'') +`" data-idx=`+i+`
+											href="/coroperation/cor_view.do?username=`+list[i].username+`"
+											onclick="window.open(this.getAttribute('href'), '_blank');"
+											onmouseover="jumpMarker(this.dataset.idx);"
+											onmouseout="stopMarker(this.dataset.idx);">
+									</div>
+									<div class="col-7">
+										<div class="iamnls">
+											<div class="fOVNCS" style="flex-grow: 0;">
+												<h1 class="kPmScS">
+													`+list[i].corname+`</h1>
+												<p class="fGfKPR">
+													대표자 : `+list[i].name+`
+												</p>
+												<p class="fYtEsj">연락처 : `+list[i].tel+`</p>
+												<p class="fYtEsj" style="margin-bottom: 0.5rem;">`+list[i].addr.substring(6)+`</p>
+											</div>
+											<div class="eCimNy">`+(list[i].pc==1?'<i class="fa-solid fa-crown" style="color: #71c9ce"></i><p style="font-size: 0.7rem; font-weight: 700; display:inline">프리미엄 중개사</p>':"")+`</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>`;
+					}
+
+					// 매물 출력
+					list = result.plist;
+					for (var i=0; i<list.length; i++) {
 						htmlStr += `<div class="card w-100">
 							<div class="card-body">
 								<div class="row m-0 gx-3">
@@ -759,7 +799,7 @@ h4 {
 											onmouseover="jumpMarker(this.dataset.idx);"
 											onmouseout="stopMarker(this.dataset.idx);">
 									</div>
-									<div class="col-7">
+									<div class="col-7" `+(list[i].pc==1?`style="background-image:url('/resources/images/crown1.png'); background-size: contain;"`:`""`)+`>
 										<div class="iamnls">
 											<div class="fOVNCS">
 												<h1 class="kPmScS">보증금 / 월세
@@ -789,8 +829,12 @@ h4 {
 						});
 
 						markList.push(marker);
-						
-					} else { // [중개사무소] 탭 상태
+					}
+					if (list.length == 0) htmlStr += noList[flag];
+				} else {
+				// [중개사무소] 탭 상태
+					list = result.clist;
+					for (var i=0; i<list.length; i++) {
 						htmlStr += `<div class="card w-100">
 							<div class="card-body">
 								<div class="row m-0 gx-3">
@@ -836,12 +880,10 @@ h4 {
 
 						markList.push(marker);
 					}
-
-					
-				}
+					if (list.length == 0) htmlStr += noList[flag];
+				}				
 				
-				
-				$(navContent[flag]).html(htmlStr.length==0?noList[flag]:htmlStr);
+				$(navContent[flag]).html(htmlStr);
 				
 			},
 			error: function(xhr, status, err) {

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
 import com.hanulso.domain.*;
 import com.hanulso.service.*;
 import com.hanulso.security.CustomUserDetails;
@@ -64,7 +65,7 @@ public class MapController {
 	// [전체 방] 탭
 	@PostMapping(value = "/getList0.do", produces = { org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE }) 
 	@ResponseBody
-	public List<ProductVO> getList0(HttpServletRequest request) { // [전체 방] 목록 가져오기
+	public MapListVO getList0(HttpServletRequest request) { // [전체 방] 목록 가져오기
 		ProductSearchConditionVO pscvo = new ProductSearchConditionVO();
 
 		String[] values;
@@ -103,19 +104,18 @@ public class MapController {
 		// 지역 설정에서 동을 선택 시 not null
 		pscvo.setAddr2(request.getParameter("addr2"));
 		
-		return service.getList0(pscvo);
-
+		return new MapListVO(service.getList0TopCor(pscvo),service.getList0(pscvo));
 	}
 	
 	// [중개사무소] 탭
 	@PostMapping(value = "/getList1.do", produces = { org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE })
 	@ResponseBody
-	public List<CorVO> getList1(HttpServletRequest request) {
+	public MapListVO getList1(HttpServletRequest request) {
 		ProductSearchConditionVO pscvo = new ProductSearchConditionVO();
 		
 		// 지역 설정에서 동을 선택 시 not null
 		pscvo.setAddr2(request.getParameter("addr2"));
 		
-		return service.getList1(pscvo);
+		return new MapListVO(service.getList1(pscvo), null);
 	}
 }

@@ -29,4 +29,6 @@ public class ProductVO {
 	private Date regdate;
 	private Date selldate;
 	private String username;
+	
+	private int pc; // one_premium 테이블의 pcheck 값 (null 도 0으로 판단)
 }
