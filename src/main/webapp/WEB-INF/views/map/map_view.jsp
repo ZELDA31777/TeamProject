@@ -334,9 +334,6 @@ h4 {
 										</div>
 									</div>
 
-									<button type="button" class="btn btn-light"
-										style="float: right;">조건 삭제</button>
-
 								</div>
 							</li>
 						</ul>
@@ -363,11 +360,6 @@ h4 {
 											<input type="number" class="w-100" name="area" min="5" max="50" value="50" step="5" data-idx="1" pattern="\d*">
 										</div>
 									</div>
-									
-
-									<button type="button" class="btn btn-light"
-										style="float: right;">조건 삭제</button>
-
 								</div>
 							</li>
 						</ul>
@@ -799,7 +791,7 @@ h4 {
 											onmouseover="jumpMarker(this.dataset.idx);"
 											onmouseout="stopMarker(this.dataset.idx);">
 									</div>
-									<div class="col-7" `+(list[i].pc==1?`style="background-image:url('/resources/images/crown1.png'); background-size: contain;"`:`""`)+`>
+									<div class="col-7" `+(list[i].pc==1?`style="background-image:url('/resources/images/crown1.png'); background-size: contain; background-repeat: no-repeat;"`:`""`)+`>
 										<div class="iamnls">
 											<div class="fOVNCS">
 												<h1 class="kPmScS">보증금 / 월세
