@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hanulso.domain.ChartVO;
+import com.hanulso.domain.Criteria;
+import com.hanulso.domain.PremiumVO;
 import com.hanulso.mapper.ChartMapper;
 
 @Service
@@ -27,6 +29,18 @@ public class ChartServiceImpl implements ChartService{
 	@Override
 	public List<ChartVO> premium_chart_list() {
 		return mapper.premium_chart_list();
+	}
+	
+	@Override
+	public List<PremiumVO> chart_list(Criteria cri) {
+		// TODO Auto-generated method stub
+		return mapper.chart_list(cri);
+	}
+	
+	@Override
+	public int getTotalCount(Criteria cri) {
+		// TODO Auto-generated method stub
+		return mapper.getTotalCount(cri);
 	}
 
 }
