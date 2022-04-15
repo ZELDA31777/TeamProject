@@ -448,7 +448,8 @@ h1{
 									aria-labelledby="flush-heading04">
 									<div class="accordion-body">
 										<p class="qstyle">A</p>
-										<p class="naityousize">마이페이지에서 비밀번호를 입력하시고, 회원탈퇴 버튼을 누르시면 탈퇴하실 수 있습니다.</p>
+										<p class="naityousize">마이페이지에서 비밀번호를 입력하시고, <br>
+										회원탈퇴 버튼을 누르시면 탈퇴하실 수 있습니다.</p>
 									</div>
 								</div>
 							</div>
