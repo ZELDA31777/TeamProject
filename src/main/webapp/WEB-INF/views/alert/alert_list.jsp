@@ -2,6 +2,19 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp"%>
 
+<style>
+.list-group-item {
+   position: relative;
+    display: block;
+    padding: 0;
+    color: #212529;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,.125);
+}
+   
+
+</style>
 <!-- 아임포트 라이브러리 추가 시작-->
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
@@ -33,9 +46,9 @@
 
 	<!-- 비회원 알림 내용 -->
 	<sec:authorize access="isAnonymous()">
-		<div align="center">
+		<div align="center" style="padding-top:5%;">
 			로그인이 필요한 서비스입니다.
-			<div>
+			<div style="padding-top:2%;">
 				<a href="/user/user_login.do"><button type="button"
 						class="btn btn-light">로그인</button></a>
 			</div>
@@ -100,7 +113,7 @@
 							</c:forEach>
 							</c:if>
 						<c:if test="${empty alertList}">
-							<div class="container-fluid text-center">
+							<div class="container-fluid text-center" style="margin-top:5%; margin-bottom:5%;">
 								관심지역에 새로 등록된 매물이 없습니다.
 							</div>
 						</c:if>
@@ -159,17 +172,13 @@
 					<div
 						class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white">
 						<div class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
-							<svg class="bi me-2" width="30" height="24">
-				</svg> <span class="fs-5 fw-semibold"><strong class="mb-1">총
+						 <span class="fs-5 fw-semibold"><strong class="mb-1">총
 									게시글 ${pageMaker.total}</strong></span>
 						</div>
-
-
-
-						<div class="row">
-							<div class="col-md-2">번호</div>
-							<div class="col-md-8">제목</div>
-							<div class="col-md-2">작성일</div>
+						<div class="row" style="--bs-gutter-x: 0;">
+							<div class="col-md-2" style="text-align:center;">번호</div>
+							<div class="col-md-8" style="text-align:center;">제목</div>
+							<div class="col-md-2" style="text-align:center;">작성일</div>
 						</div>
 
 
@@ -179,19 +188,19 @@
 							<c:forEach var="list" items="${list}">
 
 								<div
-									class="list-group list-group-flush border-bottom scrollarea row">
+									class="list-group list-group-flush border-bottom scrollarea row" style="--bs-gutter-x: 0;">
 									<a href="/notice/notice_view.do?notice_no=${list.notice_no}"
 										class="list-group-item list-group-item-action py-3 lh-tight"
 										aria-current="true">
 										<div class="d-flex w-100 align-items-center justify-content-between">
-											<div class="col-md-2">
+											<div class="col-md-2" style="text-align:center;">
 												<strong class="mb-1">${num}</strong>
 											</div>
 
 											<div class="col-md-8">
 												<small>${list.notice_title}</small>
 											</div>
-											<div class="col-md-2">
+											<div class="col-md-2" style="text-align:center;">
 												<small><fmt:formatDate
 														value="${list.notice_regdate}" pattern="yyyy-MM-dd" /></small>
 											</div>
@@ -222,7 +231,7 @@
 						</c:if>
 					</div>
 
-					<div align="center">
+					<div align="center" style="margin-bottom:5%;">
 						<form name="searchForm" id="searchForm" method="get"
 							action="/notice/notice_list.do">
 							<input type="hidden" name="pageNum"
@@ -374,7 +383,11 @@ function iamport(flag){
 
 </script>
 <!-- 결제 스크립트 시작 -->
-
+<script>
+	$(function() {
+		$(".footer").css("padding-top", "4%");
+	});
+</script>
 
 <!-- sub contents end -->
 <%@ include file="../include/footer.jsp"%>

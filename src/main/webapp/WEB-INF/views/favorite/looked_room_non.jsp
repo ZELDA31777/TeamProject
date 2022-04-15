@@ -27,7 +27,6 @@
 <script>
 	$(function() {
 		$(".footer").css("padding-top", "4%");
-		$(".test").css("overflow", "hidden");
 	});
 </script>
 </html>
