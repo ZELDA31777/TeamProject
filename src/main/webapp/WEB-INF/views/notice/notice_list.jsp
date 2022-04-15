@@ -22,7 +22,7 @@
 
 		
 		<c:if test="${!empty list}">
-		<c:set var="num" value="${pageMaker.total - ((pageMaker.cri.pageNum-1)*10)}" />
+		<c:set var="num" value="${pageMaker.total - ((pageMaker.cri.pageNum-1)*(pageMaker.cri.amount))}" />
 		<c:forEach var="list" items="${list}">
 
 		<div class="list-group list-group-flush border-bottom scrollarea efdsfa row" style="padding-left: 0; padding-right: 0;">

@@ -175,7 +175,7 @@
 
 						<c:if test="${!empty list}">
 							<c:set var="num"
-								value="${pageMaker.total - ((pageMaker.cri.pageNum-1)*10)}" />
+								value="${pageMaker.total - ((pageMaker.cri.pageNum-1)*(pageMaker.cri.amount))}" />
 							<c:forEach var="list" items="${list}">
 
 								<div
