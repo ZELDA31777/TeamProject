@@ -39,21 +39,25 @@ public class KakaoController {
    @Autowired
    private PasswordEncoder pwencoder;
    
+   private String serverAddr;
+   
    @RequestMapping(value = "/login/getKakaoAuthUrl") 
    public @ResponseBody String getKakaoAuthUrl(
          HttpServletRequest request) throws Exception {
+	  serverAddr = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort();
       String reqUrl = 
             "https://kauth.kakao.com/oauth/authorize"
                   + "?client_id=ec529ddcb0a1e3f154fc6847679fe18a"
-                  + "&redirect_uri=http://localhost:8123/kakaoLogin"
+                  + "&redirect_uri="+serverAddr+"/kakaoLogin"
                   + "&response_type=code";
 
       return reqUrl;
    }
    // 카카오 연동정보 조회
    @RequestMapping(value = "/kakaoLogin") 
-   public String oauthKakao(String code , Model model, HttpSession session) throws Exception {
+   public String oauthKakao(String code , Model model, HttpSession session, HttpServletRequest request) throws Exception {
       System.out.println("#########" + code); 
+      serverAddr = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort();
       String access_Token = getAccessToken(code); 
       System.out.println("###access_Token#### : " +access_Token);
 
@@ -119,7 +123,7 @@ public class KakaoController {
          StringBuilder sb = new StringBuilder();
          sb.append("grant_type=authorization_code");
          sb.append("&client_id=ec529ddcb0a1e3f154fc6847679fe18a");  // rest key
-         sb.append("&redirect_uri=http://localhost:8123/kakaoLogin");     // redirect_uri
+         sb.append("&redirect_uri="+serverAddr+"/kakaoLogin");     // redirect_uri
          sb.append("&code=" + authorize_code);
          bw.write(sb.toString());
          bw.flush();

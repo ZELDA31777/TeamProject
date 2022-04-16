@@ -312,13 +312,13 @@ h1{
 	
 				<div class="col-4">
 					<div class="d-flex justify-content-center">
-						<div class="card my-3 d-inline-block" style="width: 15rem;">
+						<div class="card my-3 d-inline-block" style="width: 18rem;">
 							<div class="card-body">
 								<h5 class="card-title">원룸 평균 매물가</h5>
 								<p class="card-text border-top border-1 pt-3 pb-1 my-3">
-								월세&nbsp;<span id="roomRent" class="spanAl"></span></p>
+								월세&nbsp;<span id="roomRent" class="spanAl" style="text-align: center;"></span></p>
 								<p class="card-text pt-3 pb-1 my-3">
-								보증금&nbsp;<span id="roomDeposit" class="spanAl"></span></p>
+								보증금&nbsp;<span id="roomDeposit" class="spanAl" style="text-align: center;"></span></p>
 							</div>
 						</div>
 					</div>
@@ -326,13 +326,13 @@ h1{
 	
 				<div class="col-4">
 					<div class="d-flex justify-content-center">
-						<div class="card my-3 d-inline-block" style="width: 15rem;">
+						<div class="card my-3 d-inline-block" style="width: 18rem;">
 							<div class="card-body">
 								<h5 class="card-title">오피스텔 평균 매물가</h5>
 								<p class="card-text border-top border-1 pt-3 pb-1 my-3">
-								월세&nbsp;<span id="offRent" class="spanAl"></span></p>
+								월세&nbsp;<span id="offRent" class="spanAl" style="text-align: center;"></span></p>
 								<p class="card-text pt-3 pb-1 my-3">
-								보증금&nbsp;<span id="offDeposit" class="spanAl"></span></p>
+								보증금&nbsp;<span id="offDeposit" class="spanAl" style="text-align: center;"></span></p>
 							</div>
 						</div>
 					</div>
@@ -340,13 +340,13 @@ h1{
 	
 				<div class="col-4">
 					<div class="d-flex justify-content-center">
-						<div class="card my-3 d-inline-block" style="width: 15rem;">
+						<div class="card my-3 d-inline-block" style="width: 18rem;">
 							<div class="card-body">
 								<h5 class="card-title">전체 평균 매물가</h5>
 								<p class="card-text border-top border-1 pt-3 pb-1 my-3">
-								월세&nbsp;<span id="allRent" class="spanAl"></span></p>
+								월세&nbsp;<span id="allRent" class="spanAl" style="text-align: center;"></span></p>
 								<p class="card-text pt-3 pb-1 my-3">
-								보증금&nbsp;<span id="allDeposit" class="spanAl"></span></p>
+								보증금&nbsp;<span id="allDeposit" class="spanAl" style="text-align: center;"></span></p>
 							</div>
 						</div>
 					</div>

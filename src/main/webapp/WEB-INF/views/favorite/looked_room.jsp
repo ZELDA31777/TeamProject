@@ -113,6 +113,7 @@
 
 
 <!-- 최근에 본 목록 시작 -->
+
 			<div class="tab-pane fade" id="profile" role="tabpanel"
 				aria-labelledby="profile-tab">
 				<div
@@ -179,7 +180,6 @@
 				</div>
 			</div>
 		</div>
-	
 <!-- 최근에 본 목록 끝 -->
 	</div>
 	</sec:authorize>

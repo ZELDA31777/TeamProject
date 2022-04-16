@@ -53,14 +53,14 @@
 					<span> 로그인 </span>
 				</button>
 				
-				<button type="button" class="fiEZwu" style="background-color:transparent; border:none; background-image: url('/resources/images/kakao_login_large_wide_none.png'); background-position: 0 0; background-size: contain; background-repeat: no-repeat; margin-top: 12px; margin-left: 48px; margin-right: 48px;" onclick="location.href='https://kauth.kakao.com/oauth/authorize?client_id=ec529ddcb0a1e3f154fc6847679fe18a&redirect_uri=http://localhost:8123/kakaoLogin&response_type=code'">
+				<button type="button" class="fiEZwu" style="background-color:transparent; border:none; background-image: url('/resources/images/kakao_login_large_wide_none.png'); background-position: 0 0; background-size: contain; background-repeat: no-repeat; margin-top: 12px; margin-left: 48px; margin-right: 48px;" onclick="location.href='https://kauth.kakao.com/oauth/authorize?client_id=ec529ddcb0a1e3f154fc6847679fe18a&redirect_uri=${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/kakaoLogin&response_type=code'">
 					<span style="color: black;">카카오 로그인</span>
 				</button>
 				
 			<%--
 				<div class="container">
 					<a
-						href="https://kauth.kakao.com/oauth/authorize?client_id=ec529ddcb0a1e3f154fc6847679fe18a&redirect_uri=http://localhost:8123/kakaoLogin&response_type=code">
+						href="https://kauth.kakao.com/oauth/authorize?client_id=ec529ddcb0a1e3f154fc6847679fe18a&redirect_uri=http://192.168.30.60:8123/kakaoLogin&response_type=code">
 						<img src="/resources/icon/kakao_login_large_wide.png"
 						style="width: -webkit-fill-available; margin-left: 32px; margin-right: 32px; margin-top: 16px;">
 					</a>

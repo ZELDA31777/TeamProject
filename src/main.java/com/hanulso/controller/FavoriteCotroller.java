@@ -33,7 +33,7 @@ public class FavoriteCotroller {
 	private ProductService productService;
 
 	@GetMapping("/looked_room.do")
-	public void looked_room(@RequestParam("username") String username, HttpServletRequest request, HttpServletResponse response,Model model) {
+	public String looked_room(@RequestParam("username") String username, HttpServletRequest request, HttpServletResponse response,Model model) {
 		List<ProductVO> list = service.favorite_list(username);
 		model.addAttribute("list", list);
 		
@@ -44,6 +44,7 @@ public class FavoriteCotroller {
 			if (c.getName().startsWith("OnePickRecentViewPno-")) {
 				int pno = Integer.parseInt(c.getValue());
 				ProductVO pvo = productService.product_view(pno);
+				// 존재하지 않는 매물의 쿠키가 있다면
 				if (pvo == null) {
 					c.setMaxAge(0);
 					response.addCookie(c);
@@ -51,6 +52,7 @@ public class FavoriteCotroller {
 			}
 		}
 		model.addAttribute("clist", clist);
+		return "/favorite/looked_room";
 	}
 
 	@GetMapping("/looked_room_non.do")
