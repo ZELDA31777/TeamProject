@@ -111,7 +111,7 @@ iframe.goog-te-banner-frame {
 		<nav class="navbar navbar-expand-md navbar-light"
 			aria-label="Fourth navbar example">
 			<div class="container-fluid">
-				<div class="row my-2">
+				<div class="row my-2 w-100">
 					<div class="col-md-2">
 						<!-- brand 부분에 텍스트 대신 이미지 추가 -->
 						<img src="/resources/images/logo_001.png"
