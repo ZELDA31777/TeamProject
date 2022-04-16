@@ -54,6 +54,12 @@ public class AdminController {
 		return "/admin/manage/admin_cor_list";
 	}
 	
+	@GetMapping("/manage/admin_adm_list.do")
+	public void adm_list(Criteria cri, Model model) {
+		model.addAttribute("list", service.adm_list(cri));
+		model.addAttribute("pageMaker", new PageVO(cri, service.admTotalCount(cri)));
+	}
+	
 	@PostMapping("/manage/admin_user_delete.do")
 	public void admin_user_delete(HttpServletRequest request, HttpServletResponse response) {
 		String[] username_list = request.getParameter("username").split(",");

@@ -220,6 +220,9 @@ iframe.goog-te-banner-frame {
 										
 										<sec:authorize access="hasAnyRole('ADMIN' , 'SUPER_ADMIN')">
 											<li class="nav-item"><a
+												class="nav-link ${(fn:contains(nowUri, 'map_view.do'))?'active':'' }"
+												href="/map/map_view.do">지도</a></li>
+											<li class="nav-item"><a
 												class="nav-link ${(fn:contains(nowUri, 'tip_list.do'))?'active':'' }"
 												href="/tip/tip_list.do">가이드 & Tip</a></li>
 											<li class="nav-item"><a
@@ -228,12 +231,27 @@ iframe.goog-te-banner-frame {
 											<li class="nav-item"><a
 												class="nav-link ${(fn:contains(nowUri, 'income.do'))?'active':'' }"
 												href="/admin/manage/income.do">가입현황</a></li>
+										<!-- 회원관리 버튼으로 통합 -->
+											<li class="nav-item dropdown">
+												<a class="nav-link dropdown-toggle ${((fn:contains(nowUri, 'admin_user_list.do') or fn:contains(nowUri, 'admin_cor_list.do') or fn:contains(nowUri, 'admin_adm_list.do'))?'active':'' )}" href="#" id="dropdown_adm"
+												data-bs-toggle="dropdown" aria-expanded="false">회원 관리</a>
+												<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown_adm">
+													<li><a class="dropdown-item" href="/admin/manage/admin_user_list.do">일반 회원관리</a></li>
+													<li><a class="dropdown-item" href="/admin/manage/admin_cor_list.do">중개사 회원관리</a></li>
+												<sec:authorize access="hasRole('SUPER_ADMIN')">
+													<li><a class="dropdown-item" href="/admin/manage/admin_adm_list.do">관리자 회원관리</a></li>
+												</sec:authorize>
+												</ul>
+											</li>
+										<!-- 회원관리 버튼 끝 -->
+<%-- 회원관리 버튼으로 통합										 
 											<li class="nav-item"><a
 												class="nav-link ${(fn:contains(nowUri, 'admin_cor_list.do'))?'active':'' }"
 												href="/admin/manage/admin_cor_list.do">중개사 회원관리</a></li>
 											<li class="nav-item"><a
 												class="nav-link ${(fn:contains(nowUri, 'admin_user_list.do'))?'active':'' }"
 												href="/admin/manage/admin_user_list.do">일반 회원관리</a></li>
+ --%>
 										</sec:authorize>
 				
 				

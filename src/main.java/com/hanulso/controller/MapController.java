@@ -31,6 +31,9 @@ public class MapController {
 
 	@Autowired
 	private FavoriteService favoriteservice;
+	
+	@Autowired
+	private UserService userService;
 
 	@GetMapping("/map_view.do")
 	public void map_view(Model model) {
@@ -41,6 +44,7 @@ public class MapController {
 	@GetMapping("/map_modal_view.do")
 	public void map_modal_view(@RequestParam("pno") int pno, Model model) {
 		ProductVO pvo = service.map_modal_view(pno);
+		CorVO cvo = userService.member_select(pvo.getUsername());
 
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		// principal에 SecurityContextHolder의 값을 getContext로 불러오고, getAuthentication 현재 로그인 상태(비로그인 상태도 포함)
@@ -57,6 +61,7 @@ public class MapController {
 		
 
 		model.addAttribute("pvo", pvo);
+		model.addAttribute("cvo", cvo);
 		model.addAttribute("picList", pvo.getPicture().split("/"));
 	}
 

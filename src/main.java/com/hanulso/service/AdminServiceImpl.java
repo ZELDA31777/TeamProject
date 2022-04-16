@@ -37,5 +37,16 @@ public class AdminServiceImpl implements AdminService {
 	public int userTotalCount(Criteria cri) {
 		return mapper.userTotalCount(cri);
 	}
+	
+	// 관리자 목록
+	@Override
+	public List<UserVO> adm_list(Criteria cri) {
+		return mapper.adm_list(cri);
+	}
 
+	// 관리자 수
+	@Override
+	public int admTotalCount(Criteria cri) {
+		return mapper.admTotalCount(cri);
+	}
 }

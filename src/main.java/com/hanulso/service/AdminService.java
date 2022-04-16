@@ -13,5 +13,7 @@ public interface AdminService {
 	
 	public List<UserVO> user_list(Criteria cri);
 	public int userTotalCount(Criteria cri);
-
+	
+	public List<UserVO> adm_list(Criteria cri);
+	public int admTotalCount(Criteria cri);
 }
