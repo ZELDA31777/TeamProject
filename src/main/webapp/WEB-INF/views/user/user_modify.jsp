@@ -13,6 +13,7 @@ display : table;
 margin-left : auto;
 margin-right : auto;
 }
+
 </style>
 
 <!-- sub contents start -->
@@ -148,7 +149,7 @@ margin-right : auto;
           id="passwordConfirm" pattern="track51" required>
 	          <div class="valid-feedback">입력한 비밀번호와 일치합니다.</div>
 	          <div class="invalid-feedback">입력한 비밀번호와 일치하지 않습니다.</div>
-				<button color="blue" class="button__Button-sc-153m1au-0 fiEZwu"
+				<button class="button__Button-sc-153m1au-0 fiEZwu"
 					style="margin-top: 32px;">
 					<span> 확인 </span>
 				</button>
@@ -157,7 +158,7 @@ margin-right : auto;
 		<form class="ududud" method="post" action="user_delete.do">
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 		<input type="hidden" name="username" value="${uvo.username}">
-				<button color="blue" class="button__Button-sc-153m1au-0 fiEZwu"
+				<button class="button__Button-sc-153m1au-0 fiEZwu modify_button"
 					style="margin-top: 32px; width:100%">
 					<span> 탈퇴 </span>
 				</button>

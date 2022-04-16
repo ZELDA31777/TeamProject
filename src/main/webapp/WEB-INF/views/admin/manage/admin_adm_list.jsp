@@ -7,7 +7,7 @@
   <div class="row">
   
   
-<p style="font-size:0.8em; margin:2%;">총가입자:${pageMaker.total}명</p>
+<p style="font-size:0.8em; margin:2%;">총 관리자 수:${pageMaker.total}명</p>
 
 <div class="row" style="border-bottom:1px solid gray;">
   <div class="col-md-1">
@@ -26,7 +26,7 @@
   	<p style="font-size:0.8em;">가입일</p>
   </div>
   <div class="col-md-2">
-    <p style="font-size:0.8em;">가입상태</p>
+    <p style="font-size:0.8em;">비고</p>
   </div>
 </div>  
  
@@ -53,8 +53,10 @@
   </div>
   <div class="col-md-2">
     <p style="font-size:0.8em;">
+    <%--
     	<c:if test="${list.active eq 'active'}">인증완료</c:if>
     	<c:if test="${list.active eq 'non_active'}">미인증</c:if>
+     --%>
     </p>
   </div>
 </div> 
@@ -64,18 +66,16 @@
 </c:if>
 
 	<div class="container">
-<%--
-admin_adm_list 추가
 	<sec:authorize access="hasRole('SUPER_ADMIN')">
 		<div align="right">
 			<form name="adminRegisterJsp" action="/user/user_register_admin.do" method="get">
-				<button class="btn btn-primary" style="margin:5px;">새 관리자 등록</button>
+				<button class="btn btn-primary" style="margin:5px;">신규 관리자 등록</button>
 			</form>
 		</div>
 	</sec:authorize>
- --%>
+	
 		<div align="right">
-			<button class="btn btn-danger" style="margin:5px;" onClick="delete_user_list()">선택회원 삭제</button>
+			<button class="btn btn-danger" style="margin:5px;" onClick="delete_user_list()">선택 관리자 삭제</button>
 		</div>
 	</div>
 

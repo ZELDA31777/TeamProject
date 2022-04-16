@@ -73,4 +73,24 @@
 		grade = 'ROLE_USER'
 	</select>
 	
+	<select id="adm_list" resultType="com.hanulso.domain.UserVO">
+		<![CDATA[
+			SELECT * FROM (
+				SELECT rownum rn, username, nickname, regdate
+				FROM one_user
+				WHERE
+		]]>
+				<include refid="user_criteria" />
+		<![CDATA[
+				grade = 'ROLE_ADMIN' AND rownum <= #{pageNum} * #{amount} order by regdate desc
+			) WHERE rn > (#{pageNum}-1) * #{amount}
+		]]>
+	</select>
+	
+	<select id="admTotalCount" resultType="int">
+		SELECT COUNT(*) FROM one_user WHERE
+		<include refid="user_criteria"/>
+		grade = 'ROLE_ADMIN'
+	</select>
+	
 </mapper>

@@ -44,6 +44,8 @@ public class UserController {
 	
 	@Autowired
 	private JavaMailSender mailSender;
+	
+	private String serverAddr;
 
 	@GetMapping("/user_login.do")
 	public void user_login_form() {}
@@ -74,7 +76,7 @@ public class UserController {
 		System.out.println(uvo.getUsername());
 		String title = "회원가입 인증 이메일 입니다.";
 		String contents = "<h1>[이메일 인증]</h1><br><p>아래 링크를 클릭하시면 이메일 인증이 완료됩니다.</p>"
-                + "<a href='http://localhost:8123/user/mailCheck_done.do?username="+uvo.getUsername()+"&active_key="+uvo.getPassword()+"'>이메일 인증 확인</a>";
+                + "<a href='"+serverAddr+"/user/mailCheck_done.do?username="+uvo.getUsername()+"&active_key="+uvo.getPassword()+"'>이메일 인증 확인</a>";
 		
 		try {
 			MimeMessage message = mailSender.createMimeMessage();
@@ -100,7 +102,7 @@ public class UserController {
 		System.out.println(uvo.getUsername());
 		String title = "회원가입 인증 이메일 입니다.";
 		String contents = "<h1>[이메일 인증]</h1><br><p>아래 링크를 클릭하시면 이메일 인증이 완료됩니다.</p>"
-                + "<a href='http://localhost:8123/user/mailCheck_done_cor.do?username="+uvo.getUsername()+"&active_key="+uvo.getPassword()+"'>이메일 인증 확인</a>";
+                + "<a href='"+serverAddr+"/user/mailCheck_done_cor.do?username="+uvo.getUsername()+"&active_key="+uvo.getPassword()+"'>이메일 인증 확인</a>";
 		
 		try {
 			MimeMessage message = mailSender.createMimeMessage();
@@ -144,13 +146,14 @@ public class UserController {
 	
 	// 체크박스 favorite 는 ,로 구분되서 넘어옴
 	@PostMapping("/user_register_pro.do")
-	public String user_register_pro(UserVO uvo, Model model) {
+	public String user_register_pro(UserVO uvo, HttpServletRequest request, Model model) {
 		String inputPass = pwencoder.encode(uvo.getPassword());
 		uvo.setPassword(inputPass);
 		service.userRegister(uvo);
 		
 		System.out.println(uvo);
 		System.out.println("회원가입  with notActive");
+		serverAddr = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort();
 		mailCheck(uvo);
 		model.addAttribute("username", uvo.getUsername());
 		// 회원가입과 동시에 active 위한 메일 발송
@@ -158,7 +161,7 @@ public class UserController {
 	}
 	
 	@PostMapping("/user_register_cor_pro.do")
-	public String user_register_cor_pro(UserVO uvo, CorVO cvo, MultipartFile pimg , Model model) {
+	public String user_register_cor_pro(UserVO uvo, CorVO cvo, MultipartFile pimg , HttpServletRequest request, Model model) {
 		String inputPass = pwencoder.encode(uvo.getPassword());
 		uvo.setPassword(inputPass);
 		
@@ -180,7 +183,6 @@ public class UserController {
 				
 				String savePath = folderPath+File.separator+uploadFileName;
 				
-				
 				cvo.setProfile(savePath);
 			}
 		} catch (Exception e) {
@@ -189,6 +191,7 @@ public class UserController {
 		
 		/* 파일업로드 끝 */
 		service.corRegister(uvo, cvo);
+		serverAddr = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort();
 		mailCheckCor(uvo);
 		model.addAttribute("username", uvo.getUsername());
 		// 회원가입과 동시에 active 위한 메일 발송
@@ -205,13 +208,14 @@ public class UserController {
 	
 	
 	@PostMapping("/user_register_admin_pro.do")
-	public String user_register_admin_pro(UserVO uvo, RedirectAttributes rttr) {
+	public String user_register_admin_pro(UserVO uvo, HttpServletRequest request) {
 		String inputPass = pwencoder.encode(uvo.getPassword());
 		uvo.setPassword(inputPass);
 		service.adminRegister(uvo);
-		mailCheck(uvo);
+		serverAddr = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort();
+		// mailCheck(uvo); 관리자 가입은 메일 인증 없음.
 		// 회원가입과 동시에 active 위한 메일 발송
-		return "/user/mailCheck_Request";
+		return "redirect:admin_admin_list.do";
 	}
 	
 	
@@ -344,7 +348,7 @@ public class UserController {
 		System.out.println(uvo.getUsername());
 		String title = "비밀번호 재설정 인증 이메일입니다.";
 		String contents = "<h1>[이메일 인증]</h1><br><p>아래 링크를 클릭하시면 이메일 인증이 완료됩니다.</p>"
-                + "<a href='http://localhost:8123/user/passwordReset_mailCheck.do?username="+uvo.getUsername()+"&active_key="+uvo.getPassword()+"'>이메일 인증 확인</a>";
+                + "<a href='"+serverAddr+"/user/passwordReset_mailCheck.do?username="+uvo.getUsername()+"&active_key="+uvo.getPassword()+"'>이메일 인증 확인</a>";
 		
 		try {
 			MimeMessage message = mailSender.createMimeMessage();
@@ -371,9 +375,10 @@ public class UserController {
 	}
 	
 	@PostMapping("/passwordReset_pro.do")
-	public String paswordReset_pro(String username, Model model) {
+	public String paswordReset_pro(String username, HttpServletRequest request, Model model) {
 		UserVO uvo = service.user_select(username);
 		if(uvo != null) {
+			serverAddr = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort();
 			passwordMailCheck(uvo);
 			model.addAttribute("username",username);
 			return "/user/password_mailCheck_Request";

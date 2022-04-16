@@ -77,7 +77,7 @@
 <form class="cdcdcd" method="post" action="/admin/manage/admin_cor_delete.do">
 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 <input type="hidden" name="username" value="${list.username}">
-    <button class="btn btn-primary" style="width:120%">회원 삭제</button>
+    <button class="btn btn-danger" style="width:120%">계정 삭제</button>
 </form> 
   </div>
 				

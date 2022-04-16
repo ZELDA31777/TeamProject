@@ -42,11 +42,11 @@
 		<![CDATA[
 			select * from (
 			select rownum rn, merchant_uid, regdate, plastdate, username
-			from one_premium
+			from (select * from one_premium order by regdate desc)
 			where
 		]]>	
 		<![CDATA[
-			rownum <= #{pageNum} * #{amount} order by regdate desc
+			rownum <= #{pageNum} * #{amount}
 			)where rn > (#{pageNum}-1) * #{amount} 
 		]]>
 	</select>

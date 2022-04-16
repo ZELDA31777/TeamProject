@@ -97,6 +97,9 @@ public class ProductController {
 			if (viewCookie == null) {
 				// 만일 viewCookie가 null일 경우 쿠키를 생성해서 조회수 증가처리
 				productservice.product_view_count(pno);
+				
+				// readCnt값이 db에선 1증가 되었으므로 pvo의 readCnt 값도 1증가
+				pvo.setReadcnt(pvo.getReadcnt()+1);
 				// 쿠키 생성(이름, 값)
 				Cookie newCookie = new Cookie("cookie" + pno, "|" + pno + "|");
 

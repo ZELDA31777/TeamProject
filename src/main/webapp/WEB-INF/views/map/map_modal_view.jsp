@@ -156,7 +156,7 @@
 				</ul>
 				<div class="styled__LessorWrap-cvrpi1-13 jVGbJb">
 					<div class="styled__Name-cvrpi1-14 jueGPM">
-						<p>우리공인중개사사무소</p>
+						<p>${cvo.corname }</p>
 					</div>
 				</div>
 				<div class="styled__BtnWrap-cvrpi1-15 brpHbd row">
