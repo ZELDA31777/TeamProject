@@ -27,11 +27,14 @@ import com.google.gson.JsonParser;
 import com.hanulso.domain.UserVO;
 import com.hanulso.service.UserService;
 
+import lombok.Setter;
+
 @Controller
 public class KakaoController {
    //03-31 최종
-   @Autowired
-   private UserService service;
+	
+	@Setter(onMethod_ = @Autowired)
+	private UserService service;
    
    @Autowired
    private PasswordEncoder pwencoder;
