@@ -126,7 +126,7 @@
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-md-10"></div>
-					<div class="col-md-2">
+					<div class="col-md-2" style="margin-bottom: 5%;">
 						<a href="/product/product_write3.do">
 							<button color="blue" class="fiEZwu3">
 								<span><span id="cor_change">매물 등록</span></span>
