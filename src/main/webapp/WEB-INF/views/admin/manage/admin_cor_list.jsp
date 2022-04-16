@@ -106,10 +106,10 @@
 			<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
 			<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
 			<select class="form-select selform" name="type">
-				<option selected>선택</option>
-				<option value="N">중개사명</option>
-				<option value="A">지역명</option>
-			</select> <input type="text" name="keyword" class="form-control txtform">
+				<option >선택</option>
+				<option value="N" ${pageMaker.cri.type=='N'?'selected':''}>중개사명</option>
+				<option value="A" ${pageMaker.cri.type=='A'?'selected':''}>지역명</option>
+			</select> <input type="text" name="keyword" value="${ pageMaker.cri.type != ''? pageMaker.cri.keyword:''}" class="form-control txtform">
 			<button class="btn btn-light">검색</button>
 		</form>
 	</div>

@@ -48,5 +48,6 @@ public interface UserMapper {
 	public void cor_delete_product(String username);
 	public void cor_delete_cor(String username);
 	public void cor_delete_user(String username);
+	public void cor_delete_premium(String username);
 	
 }

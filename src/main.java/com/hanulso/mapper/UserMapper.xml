@@ -104,6 +104,10 @@
 		delete one_user where username = #{username}
 	</delete>
 	
+	<delete id="cor_delete_premium">
+		delete one_premium where username = #{username}
+	</delete>
+	
 <!-- 	
 	<resultMap type="com.hanulso.domain.UserVO" id="userMap">
 		<id property="username" column="username"/>

@@ -103,6 +103,7 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public void product_delete(ProductVO pvo) {
 		usermapper.cor_delete_favorit(pvo);
+		usermapper.cor_delete_alert(pvo);
 		mapper.product_delete(pvo);
 	}
 	
