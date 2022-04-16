@@ -22,7 +22,7 @@ margin-right : auto;
 			<div class="styled__Box-sc-1etb7tu-1 cubPeM">
 				<h1>회원정보 입력</h1>
 				<h2>원픽 서비스 이용을 위해 아래 정보를 입력해주세요.</h2>
-				<div class="input-with-label__InputWrap-sc-1p3gkts-0 eVAGdp">
+				<div class="input-with-label__InputWrap-sc-1p3gkts-0 /*eVAGdp*/">
 					<label class="bDaqny">
 						<p class="label-text">이메일</p> <input type="text" name="username"
 						class="form-control kHDHPO" id="username"
@@ -129,7 +129,17 @@ margin-right : auto;
 								</div>
 							</li>
 						</ul>
+						
+						
 					</div>
+					<!-- <div class="input-with-unit__InputWrap-sc-1e4qgti-0 cgniMn" style="clear: both;">
+						<label class="input-with-label__Label-sc-1p3gkts-1 bDaqny"> -->
+							<input class="form-control" type="checkbox" id="chkbox" required style="display: none;">
+							<div class="valid-feedback" style="clear: both;">확인되었습니다</div>
+							<div class="invalid-feedback" style="clear: both;">관심지역을 선택해주십시오.</div>
+						<!-- </label>
+					</div> -->
+					
 					</div>
 				
 				<!-- 지역 선택 끝 -->
@@ -163,14 +173,24 @@ margin-right : auto;
 	$( document ).ready( function() {
 	  $( '.jung-check-all' ).click( function() {
 	    $( '.jung-fav' ).prop( 'checked', this.checked );
+	    chkChk();
 	  });
 	});
 	
 	$( document ).ready( function() {
 		$( '.dong-check-all' ).click( function() {
 		  $( '.dong-fav' ).prop( 'checked', this.checked );
+		  chkChk();
 		});
 	});
+</script>
+
+
+<script>
+// 관심지역 선택 여부 판단
+	$("input:checkbox[name='favorite']").click( chkChk)
+	
+	function chkChk() { $("#chkbox").prop("checked", $("input:checkbox[name='favorite']:checked").length!=0);}
 </script>
 
 <script>
