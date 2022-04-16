@@ -49,7 +49,7 @@
 		<include refid="criteria"></include>
 		
 		<![CDATA[
-			rownum <= #{pageNum} * #{amount} order by notice_no desc
+			rownum <= #{pageNum} * #{amount}
 			)where rn > (#{pageNum}-1) * #{amount} 
 		]]>
 	</select>

@@ -35,7 +35,7 @@ margin-right : auto;
 				<div class="input-with-unit__InputWrap-sc-1e4qgti-0 cgniMn">
 					<label class="input-with-label__Label-sc-1p3gkts-1 bDaqny">
 						<p class="label-text">닉네임</p> <input type="text" name="nickname"
-						id="nickname" placeholder="한글 또는 영문만 가능"
+						id="nickname" placeholder="10자 이내로 입력해주세요."
 						class="form-control kHDHPO" maxlength="10" required>
 						<div class="valid-feedback">확인되었습니다</div>
 						<div class="invalid-feedback">닉네임을 입력해주십시오.</div>
