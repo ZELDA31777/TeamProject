@@ -51,7 +51,8 @@ public class HomeController {
 	public String home(Locale locale, Model model) {
 		pCheck_from_premium_list();
 		model.addAttribute("tip", service.main_tip_list());
-		model.addAttribute("top", service.main_top_list());
+		model.addAttribute("top", service.main_top_list()); // 인기매물 - 조회수 순
+		model.addAttribute("heart", service.main_heart_list()); // 인기매물 - 좋아요 순
 		model.addAttribute("faArr", avgCal());
 		return "index";
 	}

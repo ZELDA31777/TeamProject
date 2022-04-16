@@ -33,7 +33,7 @@ public class FavoriteCotroller {
 	private ProductService productService;
 
 	@GetMapping("/looked_room.do")
-	public void looked_room(@RequestParam("username") String username, HttpServletRequest request, Model model) {
+	public void looked_room(@RequestParam("username") String username, HttpServletRequest request, HttpServletResponse response,Model model) {
 		List<ProductVO> list = service.favorite_list(username);
 		model.addAttribute("list", list);
 		
@@ -43,7 +43,11 @@ public class FavoriteCotroller {
 		for (Cookie c:cookies) {
 			if (c.getName().startsWith("OnePickRecentViewPno-")) {
 				int pno = Integer.parseInt(c.getValue());
-				clist.add(productService.product_view(pno));
+				ProductVO pvo = productService.product_view(pno);
+				if (pvo == null) {
+					c.setMaxAge(0);
+					response.addCookie(c);
+				} else clist.add(pvo);
 			}
 		}
 		model.addAttribute("clist", clist);

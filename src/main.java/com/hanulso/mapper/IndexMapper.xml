@@ -17,5 +17,20 @@
 		where rownum <= 4
 	]]>
 	</select>
+	
+	<select id="main_heart_list" resultType="com.hanulso.domain.ProductVO">
+	<![CDATA[
+		SELECT * FROM
+		(SELECT * FROM
+			(SELECT * FROM
+			    (SELECT p.pno, count(*) cnt
+			    FROM one_product p inner join one_favorite f
+			    on p.pno = f.pno
+			    group by p.pno)
+			)
+			natural join one_product ORDER BY cnt desc
+		) WHERE rownum <=4
+	]]>
+	</select>
 
 </mapper>

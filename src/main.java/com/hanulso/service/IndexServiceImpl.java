@@ -25,4 +25,8 @@ public class IndexServiceImpl implements IndexService{
 		return mapper.main_top_list();
 	}
 
+	// 메인페이지에 띄울 좋아요 순 상위 4개
+	public List<ProductVO> main_heart_list() {
+		return mapper.main_heart_list();
+	}
 }

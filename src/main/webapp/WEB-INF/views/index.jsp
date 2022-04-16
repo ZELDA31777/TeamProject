@@ -146,12 +146,12 @@ h1{
 	</c:set>
 </sec:authorize>
 
-<!-- 인기매물 시작 (수정) -->
+<!-- 인기매물(조회수 순) 시작 (수정) -->
 <div class="container-fluid">
 	<div class="container newitem">
 		<div class="index_style">
 			<h2>
-				<strong>원픽</strong>의 인기매물
+				<strong>원픽</strong>의 인기매물(조회수 순)
 			</h2>
 		</div>
 		<div class="row">
@@ -189,6 +189,55 @@ h1{
 		</div>
 	</div>
 </div>
+<!-- 인기 매물(조회수 순) 끝 -->
+
+
+<!-- 인기매물(좋아요 순) 시작 (수정) -->
+<div class="container-fluid">
+	<div class="container newitem">
+		<div class="index_style">
+			<h2>
+				<strong>원픽</strong>의 인기매물(좋아요 순)
+			</h2>
+		</div>
+		<div class="row">
+			<c:if test="${!empty heart}">
+				<c:forEach var="top" items="${heart}">
+					<div class="col-md-3">
+						<li class="gAcyGl" onClick="pSend(this)" data-pno="${top.pno}">
+							<!-- onClick의 경우에는 li에 Function을 걸어주어야 인식됩니다. -->
+							<div class="hObDcQ">
+								<div class="gMnRzx">
+									<div class="thumbnail">
+										<img class="product_list_image" src="/upload/${top.thumbnail}"
+											width="60" height="60" alt="" draggable="false"
+											loading="lazy" style="width: 100%; height: 100%;">
+									</div>
+								</div>
+								<div class="bSKZAI">
+									<p class="hybbHD">
+										<c:if test="${top.type eq 0 }">원룸</c:if>
+										<c:if test="${top.type eq 1 }">오피스텔</c:if>
+									</p>
+									<p class="styled__Price-n321y7-2 bYNMgs">보증금/월세
+										${top.deposit }/${top.rent }</p>
+									<p class="styled__Desc-n321y7-3 eHtuHa">${top.floor }층,
+										${top.area }m², 관리비 ${top.manage }만</p>
+									<p class="styled__Desc-n321y7-3 eHtuHa">방 ${top.room}개 / 욕실
+										${top.shower}개, 위치 ${top.addr1} ${top.addr2}</p>
+									<div class="styled__TagWrap-n321y7-4 guJBBw"></div>
+								</div>
+							</div>
+						</li>
+					</div>
+				</c:forEach>
+			</c:if>
+		</div>
+	</div>
+</div>
+<!-- 인기 매물(좋아요 순) 끝 -->
+
+
 <!-- 인기 매물 페이지 이동 Function -->
 <form name="productForm" action="/product/product_view.do" method="post">
 	<input type="hidden" name="${_csrf.parameterName }"

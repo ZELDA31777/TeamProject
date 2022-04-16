@@ -96,7 +96,7 @@
   
 	<div align="center">
 		<form name="searchForm" id="searchForm" method="get"
-			action="/admin/manage/admin_user_list.do">
+			action="/admin/manage/admin_adm_list.do">
 			<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
 			<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
 			<select class="form-select selform" name="type">

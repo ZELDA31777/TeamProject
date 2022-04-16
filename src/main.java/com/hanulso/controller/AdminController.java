@@ -89,4 +89,19 @@ public class AdminController {
 		}
 	}
 	
+	// 유저랑 어드민 이랑 사실상 같으므로 유저삭제를 이용
+	public void admin_adm_delete(HttpServletRequest request ,HttpServletResponse response) {
+		String[] username_list = request.getParameter("username").split(",");
+		try {
+			for(String username : username_list) {
+				uservice.user_delete_user(username);
+			}
+			response.setCharacterEncoding("UTF-8");
+			response.setContentType("text/html; charset=UTF-8");
+			response.getWriter().println("<script>alert('삭제 완료');location.href='/admin/manage/admin_adm_list.do'</script>");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 }
