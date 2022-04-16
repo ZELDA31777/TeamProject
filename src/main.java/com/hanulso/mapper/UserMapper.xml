@@ -14,7 +14,7 @@
 	</update>
 	
 	<select id="user_check" resultType="int">
-		select count(*) from one_user where username = #{username, jdbcType=VARCHAR}
+		select count(*) from one_user where username = #{username}
 	</select>
 	
 	<insert id="user_insert">
